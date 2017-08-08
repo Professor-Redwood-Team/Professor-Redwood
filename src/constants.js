@@ -1,6 +1,7 @@
 'use strict';
 
-const config = require('../config/secrets.json');
+const regionsConfig = require('../config/regions.json');
+const secrets = require('../config/secrets.json');
 
 String.prototype.capitalize = function () {
 	return this.charAt(0).toUpperCase() + this.slice(1);
@@ -29,20 +30,20 @@ const tagOrComment = new RegExp(
 
 const data = {
 	BOTNAME: 'Professor Redwood',
-	BOTID: config.discord.BOTID,
+	BOTID: secrets.discord.BOTID,
 	TEAMS: ['valor', 'instinct', 'mystic'],
 	MONS: ['aerodactyl', 'chansey', 'ditto', 'dratini', 'dragonite', 'girafarig', 'grimer', 'hitmonchan', 'hitmonlee', 'hitmontop',
 		'machop', 'mareep', 'miltank', 'onix', 'porygon', 'scyther', 'tauros', 'togetic', 'larvitar', 'unown'],
 	RAIDMONS: ['alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'rhydon', 'snorlax', 'tyranitar', 'venusaur'],
 	LEGENDARYMONS: ['articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune'],
 	SPECIALMONS: ['legendary', 'highiv', 'finalevo'],
-	REGIONS: ['sf', 'eastsf', 'centralsf', 'westsf', 'southsf', 'peninsula', 'sanjose', 'marin', 'eastbay', 'sacramento', 'allregions'],
+	REGIONS: regionsConfig.regions,
 	COMMON_MISSPELLINGS: {
 		'unknown': 'unown',
 		'hooh': 'ho-oh',
 		'ttar': 'tyranitar',
 	},
-	ROLE_IDS: config.discord.ROLE_IDS,
+	ROLE_IDS: secrets.discord.ROLE_IDS,
 };
 
 const standardizePokemonName = (name) => {
