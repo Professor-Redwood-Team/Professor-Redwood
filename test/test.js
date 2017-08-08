@@ -162,7 +162,7 @@ describe('Chat commands', () => {
 		});
 	});
 
-	describe.only('!reset', () => {
+	describe('!reset', () => {
 		it('reset', () => {
 			let msg = Object.assign(fakeMessage, {content: '!reset'});
 			let result = resetCommand(fakeDiscordData)(msg);
