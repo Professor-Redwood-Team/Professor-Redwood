@@ -1,17 +1,15 @@
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Summary ###
+Professor Redwood has arrived from the California Bay Area. He will help you run your local discord communities for Pokemon GO. See our bot in action on the SF PoGo Raids Meetup https://discord.gg/9MJdRZm
 
 ### Who do I talk to? ###
-666theguy and plangslammer
+Please contact us on our discord 666theguy and plangslammer.
 
-* Summary of set up
-Set up your Discord:
+### How do I contribute? ###
+Coming soon.
+
+### How do I get set up? ###
+To run this bot you will need a ES6 node environment. The bot currently does not have database functions.
+
 1) Create a role called mod and give it the following privileges:
 - Display role members separately from online members
 - Manage Roles
