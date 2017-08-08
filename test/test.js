@@ -6,13 +6,14 @@ const assert = require('assert');
 
 const breakpointCommand = require('../src/chatcommands/breakpoint');
 const checkNew = require('../src/chatcommands/checkNew');
-const raidCpCommand = require('../src/chatcommands/raidcp');
 const countersCommand = require('../src/chatcommands/counters');
 const helpCommand = require('../src/chatcommands/help');
-const teamCommand = require('../src/chatcommands/team');
-const wantCommand = require('../src/chatcommands/want');
 const playCommand = require('../src/chatcommands/play');
 const raidCommand = require('../src/chatcommands/raid');
+const raidCpCommand = require('../src/chatcommands/raidcp');
+const resetCommand = require('../src/chatcommands/reset');
+const teamCommand = require('../src/chatcommands/team');
+const wantCommand = require('../src/chatcommands/want');
 
 const fakeDiscordData = {
 	getEmoji: (p) => {return ':' + p + ':';},
@@ -158,6 +159,15 @@ describe('Chat commands', () => {
 			let result = raidCommand(fakeDiscordData)(msg);
 
 			assert(result.indexOf('put something here') > -1);
+		});
+	});
+
+	describe.only('!reset', () => {
+		it('reset', () => {
+			let msg = Object.assign(fakeMessage, {content: '!reset'});
+			let result = resetCommand(fakeDiscordData)(msg);
+
+			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf');
 		});
 	});
 
