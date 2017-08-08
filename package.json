@@ -1,7 +1,7 @@
 {
-  "name": "Discord",
+  "name": "Professor Redwood",
   "version": "1.0.0",
-  "description": "",
+  "description": "Discord bot for pokemon go",
   "main": "bot-test.js",
   "dependencies": {
     "discord.js": "^11.1.0",
@@ -16,5 +16,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
