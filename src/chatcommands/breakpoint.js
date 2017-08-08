@@ -59,13 +59,17 @@ function getEffectiveness(move, defender) {
     var multiplier = 1.0;
     for (var i=0; i<defenderTypes.length; i++) {
         var defenderType = defenderTypes[i];
-        // check if it's not very effective
-        if (types[moveType]["nve"].indexOf(defenderType) >= 0) {
-            multiplier *= 0.714;
-        }
         // check if it's super effective
         if (types[moveType]["se"].indexOf(defenderType) >= 0) {
             multiplier *= 1.4;
+        }
+        // check if it's not very effective
+        else if (types[moveType]["nve"].indexOf(defenderType) >= 0) {
+            multiplier *= 0.714;
+        }
+        // check if defender is "immune"
+        else if (types[moveType]["immune"].indexOf(defenderType) >= 0) {
+            multiplier *= 0.714 * 0.714;
         }
     }
     return multiplier;
