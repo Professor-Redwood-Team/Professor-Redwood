@@ -100,7 +100,7 @@ function calcBreakpoint(attacker, move, iv, defender) {
     }
     for (var index in bosses) {
         var defender = bosses[index];
-        if(!defender) {
+        if(!defender || !pokemon[defender.toUpperCase()]) {
             reply = 'Sorry, I can\'t find that defender. Remember to enter the pokemon\'s exact name in the pokedex.\n'+usage;
             return reply;
         }

@@ -76,6 +76,13 @@ describe('Chat commands', () => {
 
 			assert(result.indexOf('FUTURE SIGHT damage') > -1);
 		});
+
+		it('invalid defender', () => {
+			let msg = Object.assign(fakeMessage, {content: '!breakpoint golem rock_throw 15 Zapados'});
+			let result = breakpointCommand(fakeDiscordData)(msg);
+
+			assert(result.indexOf("Sorry, I can't find that defender") > -1);
+		});
 	});
 	describe('checkNew', () => {
 		const newUserMessage = {
