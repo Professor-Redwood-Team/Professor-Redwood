@@ -88,7 +88,6 @@ const raid = (data, message) => {
 			// this portion had to be chained to the promise so that it would asynchronous, and that detail would get updated/adjusted within the promise
 			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
 				detail + ' added by ' + message.member.displayName;
-			console.log("reply sent already :(")
 			message.channel.send(reply);
 			let forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
 			//send alert to #gymraids_alerts channel
