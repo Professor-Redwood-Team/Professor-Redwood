@@ -85,6 +85,7 @@ const raid = (data, message) => {
 	getLocation(detail.substring(0,255), channelName)
 		.then(url => {
 			detail = url;
+			// this portion had to be chained to the promise so that it would asynchronous, and that detail would get updated/adjusted within the promise
 			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
 				detail + ' added by ' + message.member.displayName;
 			console.log("reply sent already :(")
