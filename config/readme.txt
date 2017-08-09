@@ -13,5 +13,7 @@ Create a secrets.json in this directory with the following structure
     "user": "admin",
     "password": "password",
     "database": "discordDB"
-  }
+  },
+  "DATABASE_URL": "MongoDB URL here (i.e. mongodb://localhost:27017/organize-raid)",
+  "GOOGLE_API_KEY": "google places api key here" 
 }
