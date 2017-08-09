@@ -82,6 +82,14 @@ const raid = (data, message) => {
 	//location information of raid
 	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
+	if (!detail) {
+		reply = 'Raid not processed, no location details. Use format: !raid [bossName] [minutesRemaining] [location details]';
+		message.channel.send(reply);
+		return reply;
+	}
+	if (detail.length > 255) {
+		detail = detail.substring(0,255);
+	}
 	getLocation(detail.substring(0,255), channelName)
 		.then(url => {
 			detail = url;
@@ -93,15 +101,11 @@ const raid = (data, message) => {
 			//send alert to #gymraids_alerts channel
 			data.channelsByName['gymraids_alerts'].send(forwardReply);
 		})
-		.catch(err => console.log(err))
-	if (!detail) {
-		reply = 'Raid not processed, no location details. Use format: !raid [bossName] [minutesRemaining] [location details]';
-		message.channel.send(reply);
-		return reply;
-	}
-	if (detail.length > 255) {
-		detail = detail.substring(0,255);
-	}
+		.catch(() => { 
+			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
+			detail + ' added by ' + message.member.displayName;
+			message.channel.send(reply) 
+		})
 
 	//var sql = 'INSERT INTO raids (boss, channel, endTime, detail) VALUES (\'' + boss + '\', \'' + channelId + '\', \'' + date.toString() + '\', \'' + detail + '\');';
 	//console.log(sql); //currently logging all sql to the console for testing purposes
