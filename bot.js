@@ -59,11 +59,12 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	if (message.member && message.member.id && message.member.id === CONSTANTS.BOTID) return;
+	if ((message.member && message.member.id === CONSTANTS.BOTID) ||
+		(message.author && message.author.id === CONSTANTS.BOTID)) return;
 
 	//TESTING PURPOSES ONLY PLEASE REMOVE
 	//if (message.channel.name !== 'professor_redwood') return;
-	
+
 	if (message.channel.type === 'dm' || message.channel.type === 'group') {
 		message.channel.send('I currently have no direct message functions. Please go to channel #start_here');
 		return;
