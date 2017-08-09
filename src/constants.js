@@ -44,6 +44,7 @@ const data = {
 		'ttar': 'tyranitar',
 	},
 	ROLE_IDS: secrets.discord.ROLE_IDS,
+	PROTECTED_ROLES: ['admin', 'mod', 'dev', 'VIP', '@everyone', 'instinct', 'valor', 'mystic'],
 };
 
 const standardizePokemonName = (name) => {

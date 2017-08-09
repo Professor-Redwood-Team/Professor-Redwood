@@ -169,6 +169,16 @@ describe('Chat commands', () => {
 
 			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf');
 		});
+
+		it('reset VIP', () => {
+			let resetVIPMessageData = Object.assign(fakeMessage);
+			resetVIPMessageData.member.roles.push({'name': 'VIP'});
+			resetVIPMessageData.member.roles.push({'name': 'badrole'});
+			let msg = Object.assign(fakeMessage, {content: '!reset'});
+			let result = resetCommand(fakeDiscordData)(msg);
+
+			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf badrole');
+		});
 	});
 
 	describe('!team', () => {
