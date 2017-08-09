@@ -1,5 +1,5 @@
 'use strict';
-
+const getLocation = require('../lib/places');
 const CONSTANTS = require('./../constants');
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
 //Format a date object as a string in 12 hour format
@@ -82,6 +82,18 @@ const raid = (data, message) => {
 	//location information of raid
 	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
+	getLocation(detail.substring(0,255), channelName)
+		.then(url => {
+			detail = url;
+			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
+				detail + ' added by ' + message.member.displayName;
+			console.log("reply sent already :(")
+			message.channel.send(reply);
+			let forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
+			//send alert to #gymraids_alerts channel
+			data.channelsByName['gymraids_alerts'].send(forwardReply);
+		})
+		.catch(err => console.log(err))
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: !raid [bossName] [minutesRemaining] [location details]';
 		message.channel.send(reply);
@@ -102,12 +114,6 @@ const raid = (data, message) => {
 		}
 	});
 	*/
-	reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
-		detail + ' added by ' + message.member.displayName;
-	message.channel.send(reply);
-	let forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
-	//send alert to #gymraids_alerts channel
-	data.channelsByName['gymraids_alerts'].send(forwardReply);
 	//send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {
 		if (role.type === 'role') {

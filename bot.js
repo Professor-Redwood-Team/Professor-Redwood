@@ -2,6 +2,7 @@
 
 const Discord = require('discord.js');
 // const mySQL = require('mysql');
+const mongoose = require('mongoose')
 
 const chatCommandsFunc = require('./src/chatrouter');
 const CONSTANTS = require('./src/constants');
@@ -16,6 +17,12 @@ db.connect((err) => {
 	if (err) throw err;
 	console.log('Database Connected!');
 }); */
+
+mongoose.Promise = global.Promise;
+mongoose.connect(config.DATABASE_URL);
+mongoose.connection
+  .once('open', () => console.log('Database Connected!'))
+  .on('error', error => console.log(`Database connection error: ${error}`));
 
 const rolesByName = {};
 const emojisByName = {};
