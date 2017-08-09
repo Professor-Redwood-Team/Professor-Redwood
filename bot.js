@@ -97,7 +97,6 @@ client.on('message', message => {
 	else if (command === '!cp') {return CHATCOMMANDS.cp(message);}
 	else if (command === '!counter' || command === '!counters') {CHATCOMMANDS.counters(message);}
 	else if (command === '!help') {CHATCOMMANDS.help(message);}
-	else if (command === '!reset') {CHATCOMMANDS.reset(message);}
 
 	//Inside Professor Redwood Channel, OK to touch message.member
 	if (reply === '' && !message.member) {
@@ -108,7 +107,7 @@ client.on('message', message => {
 	if (command === '!play') {CHATCOMMANDS.play(message);}
 	else if (command === '!team') {CHATCOMMANDS.team(message);}
 	else if (command === '!want') {CHATCOMMANDS.want(message);}
-
+	else if (command === '!reset') {CHATCOMMANDS.reset(message);}
 });
 
 client.login(token);
