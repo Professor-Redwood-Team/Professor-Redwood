@@ -44,3 +44,44 @@ ActiveRaids.prototype.addToTail = function(value) {
 
   this.tail = newRaid
 }
+
+ActiveRaids.prototype.removeHead = function() {
+  if (!this.head) return null
+  
+  const val = this.head.value
+  this.head = this.head.next
+  
+  if(this.head) {
+    this.head.prev = null
+  }
+
+  return val
+}
+
+ActiveRaids.prototype.removeTail = function() {
+  if(this.tail) return null
+  const val = this.tail.value
+  this.tail = this.tail.prev
+
+  if (this.tail) {
+    this.tail.next = null
+  }
+  else {
+    this.head = null
+  }
+
+  return val
+}
+
+ActiveRaids.prototype.search = function(searchValue) {
+  const currentRaid = this.head
+
+  while(currentRaid) {
+    if(currentRaid.value == searchValue) return currentRaid.value
+    currentRaid = currentRaid.next
+  }
+
+  return null
+}
+
+module.exports = ActiveRaids
