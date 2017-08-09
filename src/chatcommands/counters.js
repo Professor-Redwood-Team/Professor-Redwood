@@ -5,6 +5,7 @@
 // See https://github.com/saucyallison/discordbot
 
 const counters = require('../../data/counters.json');
+const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
 
 function formatList(list, separator) {
@@ -35,11 +36,15 @@ const getCounters = (data, message) => {
 			u = "__";
 			if ("stats" in counterHash) { // this is the updated format for Lugia only right now
 				reply = "**" + pokemon.capitalize() + "** " + data.getEmoji(pokemon) + " ";
-				// stats
+				// Raid boss stats (HP, CP)
 				for (var stat in counterHash["stats"]) {
 					reply = reply + stat + " **" + counterHash["stats"][stat] + "** | "
 				}
-				reply = reply.slice(0, -2) + "\n";
+				var info = pokemonInfo[pokemon.toUpperCase()];
+				// Regular stats (Attack, Defense)
+				reply += "Atk **" + info["stats"]["attack"] + "** | ";
+				reply += "Def **" + info["stats"]["defense"] + "**";
+				reply += "\n";
 				// fast moves
 				reply = reply + "[ " + formatList(counterHash["fast"], " /") + " -- ";
 				// charge moves
