@@ -5,8 +5,9 @@ const path = require('path')
 const axios = require('axios')
 const Location = require('./models')
 const saveResult = require('./utils/query')
-const coords = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'location.json')))
+const coords = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../../config/location.json')))
 const GOOGLE_API_KEY = require('../../../config/secrets.json').GOOGLE_API_KEY 
+
 function mapChannel(channel) {
   for (var prop in coords) {
     if(channel.includes(prop)) return coords[prop]
