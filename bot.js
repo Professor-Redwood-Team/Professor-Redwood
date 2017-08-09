@@ -13,5 +13,4 @@ db.connect((err) => {
 	console.log('Database Connected!');
 }); */
 
-
 client.login(token);
