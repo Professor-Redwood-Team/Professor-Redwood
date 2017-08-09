@@ -92,11 +92,12 @@ client.on('message', message => {
 		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
 		return;
 	}
-   
+
 	if (command === '!breakpoint' || command === '!bp') {return CHATCOMMANDS.breakpoint(message);}
 	else if (command === '!cp') {return CHATCOMMANDS.cp(message);}
 	else if (command === '!counter' || command === '!counters') {CHATCOMMANDS.counters(message);}
 	else if (command === '!help') {CHATCOMMANDS.help(message);}
+	else if (command === '!reset') {CHATCOMMANDS.reset(message);}
 
 	//Inside Professor Redwood Channel, OK to touch message.member
 	if (reply === '' && !message.member) {

@@ -1,7 +1,9 @@
 'use strict';
 
 const CONSTANTS = require('./../constants');
+
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
+
 //Format a date object as a string in 12 hour format
 const format_time = (date_obj) => {
 	// formats a javascript Date object into a 12h AM/PM time string
@@ -31,12 +33,12 @@ const removeTags = (html) => {
 const raid = (data, message) => {
 	let reply = '';
 
-	const msgSplit = message.content.toLowerCase().split(" ");
+	const msgSplit = message.content.toLowerCase().split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
-        reply = 'Sorry, incorrect format.\n'+usage;
-        message.channel.send(reply);
-        return reply;
-    }
+		reply = 'Sorry, incorrect format.\n'+usage;
+		message.channel.send(reply);
+		return reply;
+	}
 	let boss = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
 
 	var bossTag = boss; //generate a tag for the boss to alert users
@@ -110,11 +112,11 @@ const raid = (data, message) => {
 	data.channelsByName['gymraids_alerts'].send(forwardReply);
 	//send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {
-		if (role.type === 'role') {
-			var roleName = data.GUILD.roles.get(role.id).name;
-			if(CONSTANTS.REGIONS.indexOf(roleName) > -1 && roleName !== 'sf' && roleName !== 'allregions') {
-				data.channelsByName['gymraids_' + roleName].send(forwardReply);
-			}
+		if (role.type !== 'role') return;
+
+		var roleName = data.GUILD.roles.get(role.id).name;
+		if (CONSTANTS.REGIONS.indexOf(roleName) > -1 && roleName !== 'sf' && roleName !== 'allregions') {
+			data.channelsByName['gymraids_' + roleName].send(forwardReply);
 		}
 	});
 
