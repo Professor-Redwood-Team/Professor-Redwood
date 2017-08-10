@@ -51,8 +51,11 @@ client.on('ready', (done) => {
 		getEmoji,
 	});
 
-	console.log('Asynchronous data loaded!'); // eslint-disable-line
-	if (done) done();
+	if (done) {
+		done();
+	} else {
+		console.log('Asynchronous data loaded!'); // eslint-disable-line
+	}
 });
 
 client.on('message', (message, cb) => {
