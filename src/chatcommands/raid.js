@@ -57,7 +57,12 @@ const raid = (data, message) => {
 
 	var legendaryTag = '';
 	if (CONSTANTS.LEGENDARYMONS.indexOf(boss) > -1) {
-		legendaryTag = ' <@&' + CONSTANTS.ROLE_IDS['@legendary'] + '> ';
+		if (data.rolesByName['legendary']) {
+			legendaryTag = ' <@&' + data.rolesByName['legendary'].id + '> ';
+		} else {
+			legendaryTag = '';
+			console.warn('Please create a role called legendary.'); //eslint-disable-line
+		}
 	}
 
 	const channelName = message.channel.name;
@@ -109,14 +114,24 @@ const raid = (data, message) => {
 	message.channel.send(reply);
 	let forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
 	//send alert to #gymraids_alerts channel
-	data.channelsByName['gymraids_alerts'].send(forwardReply);
+	if (data.channelsByName['gymraids_alerts']) {
+		data.channelsByName['gymraids_alerts'].send(forwardReply);
+	} else {
+		console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
+	}
+
 	//send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {
 		if (role.type !== 'role') return;
 
 		var roleName = data.GUILD.roles.get(role.id).name;
+		// todo : get rid of SF reference
 		if (CONSTANTS.REGIONS.indexOf(roleName) > -1 && roleName !== 'sf' && roleName !== 'allregions') {
-			data.channelsByName['gymraids_' + roleName].send(forwardReply);
+			if (data.channelsByName['gymraids_' + roleName]) {
+				data.channelsByName['gymraids_' + roleName].send(forwardReply);
+			} else {
+				console.warn('Please add the channel gymraids_' + roleName); // eslint-disable-line
+			}
 		}
 	});
 

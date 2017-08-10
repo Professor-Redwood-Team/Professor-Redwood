@@ -43,7 +43,6 @@ const data = {
 		'hooh': 'ho-oh',
 		'ttar': 'tyranitar',
 	},
-	ROLE_IDS: secrets.discord.ROLE_IDS,
 	PROTECTED_ROLES: ['admin', 'mod', 'dev', 'VIP', '@everyone', 'timeout_inthecorner'], // todo : move to a config file
 };
 

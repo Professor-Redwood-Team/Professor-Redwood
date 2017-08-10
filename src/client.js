@@ -25,7 +25,7 @@ const getEmoji = (pokemon) => {
 	return '';
 };
 
-client.on('ready', (done) => {
+client.on('ready', () => {
 	client.channels.forEach((channel) => {
 		channelsByName[channel.name] = channel;
 	});
@@ -52,7 +52,7 @@ client.on('ready', (done) => {
 	});
 
 	console.log('Asynchronous data loaded!'); // eslint-disable-line
-	done();
+	//done();
 });
 
 client.on('message', (message, cb) => {
@@ -83,7 +83,7 @@ client.on('message', (message, cb) => {
 			message.channel.send(reply);
 			return reply;
 		}
-		CHATCOMMANDS.raid(message);
+		return cb(CHATCOMMANDS.raid(message));
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
@@ -91,10 +91,10 @@ client.on('message', (message, cb) => {
 		return;
 	}
 
-	if (command === '!breakpoint' || command === '!bp') {return CHATCOMMANDS.breakpoint(message);}
+	if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
 	else if (command === '!cp') {return cb(CHATCOMMANDS.cp(message));}
-	else if (command === '!counter' || command === '!counters') {CHATCOMMANDS.counters(message);}
-	else if (command === '!help') {CHATCOMMANDS.help(message);}
+	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
+	else if (command === '!help') {return cb(CHATCOMMANDS.help(message));}
 
 	//Inside Professor Redwood Channel, OK to touch message.member
 	if (reply === '' && !message.member) {
@@ -102,10 +102,10 @@ client.on('message', (message, cb) => {
 		return;
 	}
 
-	if (command === '!play') {CHATCOMMANDS.play(message);}
-	else if (command === '!team') {CHATCOMMANDS.team(message);}
-	else if (command === '!want') {CHATCOMMANDS.want(message);}
-	else if (command === '!reset') {CHATCOMMANDS.reset(message);}
+	if (command === '!play') {return cb(CHATCOMMANDS.play(message));}
+	else if (command === '!team') {return cb(CHATCOMMANDS.team(message));}
+	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
+	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
 
 });
 
