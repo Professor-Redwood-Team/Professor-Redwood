@@ -5,7 +5,7 @@ Professor Redwood has arrived from the California Bay Area. He will help you run
 Please contact us on our discord 666theguy and plangslammer.
 
 ### How do I contribute? ###
-Coming soon.
+Coming soon. Make a pull request!
 
 ### How do I get set up? ###
 To run this bot you will need a ES6 node environment. The bot currently does not have database functions.
