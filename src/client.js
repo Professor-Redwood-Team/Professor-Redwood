@@ -52,7 +52,7 @@ client.on('ready', (done) => {
 	});
 
 	console.log('Asynchronous data loaded!'); // eslint-disable-line
-	done();
+	if (done) done();
 });
 
 client.on('message', (message, cb) => {
