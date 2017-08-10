@@ -67,8 +67,8 @@ const raid = (data, message) => {
 
 	const channelName = message.channel.name;
 	const minutesLeft = parseInt(msgSplit[2]);
-	if (isNaN(minutesLeft)) {
-		reply = 'Raid not processed, ensure minutes remaining is a number.\n'+usage;
+	if (isNaN(minutesLeft) || minutesLeft < 1 || minutesLeft > 120) {
+		reply = 'Raid not processed, ensure minutes remaining is a integer between 1 and 120.\n'+usage;
 		message.channel.send(reply);
 		return reply;
 	}
