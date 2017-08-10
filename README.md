@@ -15,6 +15,7 @@ To run this bot you will need a ES6 node environment. The bot currently does not
 - Manage Roles
 - Check all boxes under Text Permissions
 2) Create roles (this will take a while):
+- currently roles must be completely lowercase or youre going to have a bad time see https://github.com/stefangimmillaro/Professor-Redwood/issues/22
 - valor, instinct, and mystic: all with at least: Display role members seperately, Read & Send Messages (recommend unchecking Mention Everyone), and color each team appropriately
 - create one role for each region that you plan to use. Regions consist of multiple channels. Channels consist of multiple neighborhoods. Examples in SF are: sf, peninsula, sanjose, eastbay
 - create a role named 'allregions'
