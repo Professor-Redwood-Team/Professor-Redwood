@@ -120,7 +120,13 @@ describe('Acceptance Chat Commands', () => {
 	});
 
 	describe('!help', () => {
-
+		it('normal', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!help'});
+			sendMessage(msg, (result) => {
+				assert.equal(result.slice(0, 35), '**!team mystic | valor | instinct**');
+				done();
+			});
+		});
 	});
 
 	describe('!play', () => {

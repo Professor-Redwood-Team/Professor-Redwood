@@ -165,15 +165,6 @@ describe('Chat commands', () => {
 		});
 	});
 
-	describe('!help', () => {
-		it('help', () => {
-			let msg = Object.assign(fakeMessage, {content: '!help'});
-			let result = helpCommand(fakeDiscordData)(msg);
-
-			assert(result.indexOf('To gain access') > -1);
-		});
-	});
-
 	describe.skip('!raid', () => {
 		it('raid', () => {
 			let msg = Object.assign(fakeMessage, {content: '!raid lugia 105 caltrain station'});
