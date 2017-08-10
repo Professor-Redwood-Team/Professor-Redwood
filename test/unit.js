@@ -6,13 +6,14 @@ const assert = require('assert');
 
 const breakpointCommand = require('../src/chatcommands/breakpoint');
 const checkNew = require('../src/chatcommands/checkNew');
-const raidCpCommand = require('../src/chatcommands/raidcp');
 const countersCommand = require('../src/chatcommands/counters');
 const helpCommand = require('../src/chatcommands/help');
-const teamCommand = require('../src/chatcommands/team');
-const wantCommand = require('../src/chatcommands/want');
 const playCommand = require('../src/chatcommands/play');
 const raidCommand = require('../src/chatcommands/raid');
+const raidCpCommand = require('../src/chatcommands/raidcp');
+const resetCommand = require('../src/chatcommands/reset');
+const teamCommand = require('../src/chatcommands/team');
+const wantCommand = require('../src/chatcommands/want');
 
 const fakeDiscordData = {
 	getEmoji: (p) => {return ':' + p + ':';},
@@ -68,7 +69,20 @@ describe('Chat commands', () => {
 
 			//revisit after counter.js reformat
 			assert(result.indexOf('damage against Ho-oh') > -1);
-			//assert.ok(result.indexOf('**Future Sight Counters**') > -1);
+		});
+
+		it('alakazam', () => {
+			let msg = Object.assign(fakeMessage, {content: '!breakpoint alakazam future_sight 15'});
+			let result = breakpointCommand(fakeDiscordData)(msg);
+
+			assert(result.indexOf('FUTURE SIGHT damage') > -1);
+		});
+
+		it('invalid defender', () => {
+			let msg = Object.assign(fakeMessage, {content: '!breakpoint golem rock_throw 15 Zapados'});
+			let result = breakpointCommand(fakeDiscordData)(msg);
+
+			assert(result.indexOf("Sorry, I can't find that defender") > -1);
 		});
 	});
 	describe('checkNew', () => {
@@ -114,8 +128,9 @@ describe('Chat commands', () => {
 			let result = countersCommand(fakeDiscordData)(msg);
 
 			//revisit after counter.js reformat
-			assert.equal(result.slice(0,45), '**Lugia** :lugia: HP **12500** | CP **42753**');
+			assert.equal(result.slice(0,73), '**Lugia** :lugia: HP **12500** | CP **42753** | Atk **193** | Def **323**');
 			assert.ok(result.indexOf('**Future Sight Counters**') > -1);
+			assert.ok(result.indexOf('__Cloyster__: Frost Breath') > -1);
 		});
 
 		it('tyranitar', () => {
@@ -124,6 +139,13 @@ describe('Chat commands', () => {
 
 			assert.equal(result.slice(0,38), 'Counters for **Tyranitar** :tyranitar:');
 			assert.ok(result.indexOf('Poliwrath') > -1);
+		});
+
+		it('raikou', () => {
+			let msg = Object.assign(fakeMessage, {content: '!counter raikou'});
+			let result = countersCommand(fakeDiscordData)(msg);
+
+			assert.ok(result.indexOf('Dragon Breath') > -1);
 		});
 	});
 
@@ -158,6 +180,25 @@ describe('Chat commands', () => {
 			let result = raidCommand(fakeDiscordData)(msg);
 
 			assert(result.indexOf('put something here') > -1);
+		});
+	});
+
+	describe('!reset', () => {
+		it('reset', () => {
+			let msg = Object.assign(fakeMessage, {content: '!reset'});
+			let result = resetCommand(fakeDiscordData)(msg);
+
+			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf');
+		});
+
+		it('reset VIP', () => {
+			let resetVIPMessageData = Object.assign(fakeMessage);
+			resetVIPMessageData.member.roles.push({'name': 'VIP'});
+			resetVIPMessageData.member.roles.push({'name': 'badrole'});
+			let msg = Object.assign(fakeMessage, {content: '!reset'});
+			let result = resetCommand(fakeDiscordData)(msg);
+
+			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf badrole');
 		});
 	});
 

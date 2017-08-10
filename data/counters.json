@@ -350,8 +350,7 @@
    },
    "articuno":{
       "omastar":[
-         "Rock Throw + Rock Slide",
-         "Rock Throw + Rock Blast"
+         "Rock Throw + Rock Slide / Rock Blast"
       ],
       "tyranitar":[
          "Any + Stone Edge"
@@ -440,7 +439,7 @@
          },
          "Hydro Pump": {
             "lapras": ["Frost Breath + Blizzard / Ice Beam"],
-            "cloyster": ["Icy Breath + Blizzard / Avalanche"],
+            "cloyster": ["Frost Breath + Blizzard / Avalanche"],
             "jynx": ["Frost Breath + Avalanche"]
          },
          "Future Sight": {
@@ -490,7 +489,7 @@
          "Mud Slap / Mud Shot + Earthquake / Stone Edge"
       ],
       "dragonite":[
-         "Dragon Tail / Dragon Breth + Dragon Claw / Outrage"
+         "Dragon Tail / Dragon Breath + Dragon Claw / Outrage"
       ],
       "machamp":[
          "Counter / Karate Chop + Dynamic Punch / Close Combat"

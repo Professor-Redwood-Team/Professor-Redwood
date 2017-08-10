@@ -1,6 +1,7 @@
 'use strict';
 
 // See https://github.com/saucyallison/discordbot
+/* eslint-disable */
 
 const CONSTANTS = require('./../constants');
 
@@ -27,7 +28,7 @@ function getDamage(attacker, iv, move, defender, level) {
     var defenseIV = 15;
     var defenderCPM = getCPM(40);
     var STAB = getSTAB(move, attacker);
-    var effectiveness = getEffectiveness(move, defender)
+    var effectiveness = getEffectiveness(move, defender);
     return Math.floor(0.5 * power * ((attack+attackIV) * attackerCPM) / ((defense+defenseIV) * defenderCPM) * STAB * effectiveness) + 1;
 }
 
@@ -59,13 +60,17 @@ function getEffectiveness(move, defender) {
     var multiplier = 1.0;
     for (var i=0; i<defenderTypes.length; i++) {
         var defenderType = defenderTypes[i];
-        // check if it's not very effective
-        if (types[moveType]["nve"].indexOf(defenderType) >= 0) {
-            multiplier *= 0.714;
-        }
         // check if it's super effective
         if (types[moveType]["se"].indexOf(defenderType) >= 0) {
             multiplier *= 1.4;
+        }
+        // check if it's not very effective
+        else if (types[moveType]["nve"].indexOf(defenderType) >= 0) {
+            multiplier *= 0.714;
+        }
+        // check if defender is "immune"
+        else if (types[moveType]["immune"].indexOf(defenderType) >= 0) {
+            multiplier *= 0.714 * 0.714;
         }
     }
     return multiplier;
@@ -96,7 +101,7 @@ function calcBreakpoint(attacker, move, iv, defender) {
     }
     for (var index in bosses) {
         var defender = bosses[index];
-        if(!defender) {
+        if(!defender || !pokemon[defender.toUpperCase()]) {
             reply = 'Sorry, I can\'t find that defender. Remember to enter the pokemon\'s exact name in the pokedex.\n'+usage;
             return reply;
         }
@@ -156,9 +161,10 @@ const getBreakpoint = (data, message) => {
 	const attacker = CONSTANTS.standardizePokemonName(msgSplit[1]);
     const move = msgSplit[2];
     const iv = msgSplit[3]; // check for int 0-15
-    if (isNaN(iv) || iv > 15 || iv < 1) {
-        message.channel.send("Sorry, IV must be 0-15.\n"+usage);
-        return;
+    if (isNaN(iv) || iv > 15 || iv < 0) {
+		reply = "Sorry, IV must be 0-15.\n"+usage
+        message.channel.send(reply);
+        return reply;
     }
     let defender = null; // specifying defender is optional
     if (msgSplit.length >= 5) {
