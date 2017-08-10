@@ -25,7 +25,7 @@ const getEmoji = (pokemon) => {
 	return '';
 };
 
-client.on('ready', () => {
+client.on('ready', (done) => {
 	client.channels.forEach((channel) => {
 		channelsByName[channel.name] = channel;
 	});
@@ -52,7 +52,7 @@ client.on('ready', () => {
 	});
 
 	console.log('Asynchronous data loaded!'); // eslint-disable-line
-	//done();
+	done();
 });
 
 client.on('message', (message, cb) => {

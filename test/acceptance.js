@@ -23,7 +23,7 @@ const fakeMessage = {
 	},
 };
 
-describe.only('Acceptance Chat Commands', () => {
+describe('Acceptance Chat Commands', () => {
 	var client;
 
 	beforeEach((done) => {

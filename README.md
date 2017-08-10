@@ -39,6 +39,6 @@ To run this bot you will need a ES6 node environment. The bot currently does not
 - Choose the name of your Discord server
 - Authorize the Bot!
 - Go to the Server Settings for your discord, and search for a user/member, find your bot and grant it mod privileges
-5) Go to the config folder and create a secrets.json. Follow instructions in the config readme.txt.
+5) Go to the config folder and create a secrets.json. Follow instructions in the config/readme.txt.
 6) Run your bot
 node bot.js
