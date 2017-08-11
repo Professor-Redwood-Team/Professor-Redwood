@@ -1,7 +1,9 @@
 'use strict';
 const getLocation = require('../lib/places');
 const CONSTANTS = require('./../constants');
+
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
+
 //Format a date object as a string in 12 hour format
 const format_time = (date_obj) => {
 	// formats a javascript Date object into a 12h AM/PM time string
@@ -31,12 +33,12 @@ const removeTags = (html) => {
 const raid = (data, message) => {
 	let reply = '';
 
-	const msgSplit = message.content.toLowerCase().split(" ");
+	const msgSplit = message.content.toLowerCase().split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
-        reply = 'Sorry, incorrect format.\n'+usage;
-        message.channel.send(reply);
-        return reply;
-    }
+		reply = 'Sorry, incorrect format.\n'+usage;
+		message.channel.send(reply);
+		return reply;
+	}
 	let boss = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
 
 	var bossTag = boss; //generate a tag for the boss to alert users
@@ -55,13 +57,18 @@ const raid = (data, message) => {
 
 	var legendaryTag = '';
 	if (CONSTANTS.LEGENDARYMONS.indexOf(boss) > -1) {
-		legendaryTag = ' <@&' + CONSTANTS.ROLE_IDS['@legendary'] + '> ';
+		if (data.rolesByName['legendary']) {
+			legendaryTag = ' <@&' + data.rolesByName['legendary'].id + '> ';
+		} else {
+			legendaryTag = '';
+			console.warn('Please create a role called legendary.'); //eslint-disable-line
+		}
 	}
 
 	const channelName = message.channel.name;
 	const minutesLeft = parseInt(msgSplit[2]);
-	if (isNaN(minutesLeft)) {
-		reply = 'Raid not processed, ensure minutes remaining is a number.\n'+usage;
+	if (isNaN(minutesLeft) || minutesLeft < 1 || minutesLeft > 120) {
+		reply = 'Raid not processed, ensure minutes remaining is a integer between 1 and 120.\n'+usage;
 		message.channel.send(reply);
 		return reply;
 	}
@@ -115,12 +122,31 @@ const raid = (data, message) => {
 		}
 	});
 	*/
+<<<<<<< HEAD
+=======
+	reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
+		detail + ' added by ' + message.member.displayName;
+	message.channel.send(reply);
+	let forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
+	//send alert to #gymraids_alerts channel
+	if (data.channelsByName['gymraids_alerts']) {
+		data.channelsByName['gymraids_alerts'].send(forwardReply);
+	} else {
+		console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
+	}
+
+>>>>>>> 5f6521e98669642b3c119cfdbe2d34fe19737bfe
 	//send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {
-		if (role.type === 'role') {
-			var roleName = data.GUILD.roles.get(role.id).name;
-			if(CONSTANTS.REGIONS.indexOf(roleName) > -1 && roleName !== 'sf' && roleName !== 'allregions') {
+		if (role.type !== 'role') return;
+
+		var roleName = data.GUILD.roles.get(role.id).name;
+		// todo : get rid of SF reference
+		if (CONSTANTS.REGIONS.indexOf(roleName) > -1 && roleName !== 'sf' && roleName !== 'allregions') {
+			if (data.channelsByName['gymraids_' + roleName]) {
 				data.channelsByName['gymraids_' + roleName].send(forwardReply);
+			} else {
+				console.warn('Please add the channel gymraids_' + roleName); // eslint-disable-line
 			}
 		}
 	});

@@ -1,23 +1,20 @@
 'use strict';
 
-const Discord = require('discord.js');
 // const mySQL = require('mysql');
 const mongoose = require('mongoose')
 
-const chatCommandsFunc = require('./src/chatrouter');
-const CONSTANTS = require('./src/constants');
+const client = require('./src/client');
 const config = require('./config/secrets.json');
 
-const client = new Discord.Client();
 const token = config.discord.token;
-/*
-const db = mySQL.createConnection(config.mysql);
+/* const db = mySQL.createConnection(config.mysql);
 // let's not connect to the database for now
 db.connect((err) => {
 	if (err) throw err;
 	console.log('Database Connected!');
 }); */
 
+<<<<<<< HEAD
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DATABASE_URL);
 mongoose.connection
@@ -116,4 +113,6 @@ client.on('message', message => {
 
 });
 
+=======
+>>>>>>> 5f6521e98669642b3c119cfdbe2d34fe19737bfe
 client.login(token);
