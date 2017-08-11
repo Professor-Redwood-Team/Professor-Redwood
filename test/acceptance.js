@@ -134,6 +134,13 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
+		it('uppercase', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!Counters Raikou'});
+			sendMessage(msg, (result) => {
+				assert.ok(result.indexOf('Dragon Breath') > -1);
+				done();
+			});
+		});
 		it('bad pokemon', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!counter failure'});
 			sendMessage(msg, (result) => {

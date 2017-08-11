@@ -77,7 +77,7 @@ client.on('message', (message, cb) => {
 	}
 
 	let reply = '';
-	const command = message.content.split(' ')[0];
+	const command = message.content.split(' ')[0].toLowerCase();
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
 	if (command === '!raid') {
@@ -110,6 +110,8 @@ client.on('message', (message, cb) => {
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
 
+	console.log('Command not found: ' + command); // eslint-disable-line
+	return cb('Command not found: ' + command);
 });
 
 module.exports = client;
