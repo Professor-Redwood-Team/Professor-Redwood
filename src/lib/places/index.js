@@ -6,7 +6,7 @@ const axios = require('axios')
 const Location = require('./models')
 const saveResult = require('./utils/query')
 const coords = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../../config/location.json')))
-const GOOGLE_API_KEY = require('../../../config/secrets.json').GOOGLE_API_KEY 
+const GOOGLE_API_KEY = require('../../../config/secrets.json').GOOGLE_API_KEY || null
 
 function mapChannel(channel) {
   for (var prop in coords) {
@@ -39,26 +39,31 @@ function getUrl(id) {
 
 module.exports = function getLocation(location, channel) {
   return new Promise((resolve, reject) => {
-    const coords = mapChannel(channel)
-      Location.
-        findOne({ query: location }).
-        where('channel').equals(channel).
-        exec((err, data) => {
-          if (err) reject(err)
-          if (data == null) { 
-            placesLocation(location, channel, coords)
-              .then(id => {
-                getUrl(id)
-                  .then(url => { 
-                    saveResult(channel, location, url)
-                    resolve(url) 
-                  })
-              })
-              .catch(location => reject(location))
-          } 
-          else {
-            resolve(data.result)
-          }
-        })
+    if (GOOGLE_API_KEY !== null) {
+      const coords = mapChannel(channel)
+        Location.
+          findOne({ query: location }).
+          where('channel').equals(channel).
+          exec((err, data) => {
+            if (err) reject(err)
+            if (data == null) { 
+              placesLocation(location, channel, coords)
+                .then(id => {
+                  getUrl(id)
+                    .then(url => { 
+                      saveResult(channel, location, url)
+                      resolve(url) 
+                    })
+                })
+                .catch(location => reject(location))
+            } 
+            else {
+              resolve(data.result)
+            }
+          })
+    }
+    else {
+      reject('No Key')
+    }
   })
 }

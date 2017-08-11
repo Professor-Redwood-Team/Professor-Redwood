@@ -18,11 +18,13 @@ db.connect((err) => {
 	console.log('Database Connected!');
 }); */
 
-mongoose.Promise = global.Promise;
-mongoose.connect(config.DATABASE_URL);
-mongoose.connection
-  .once('open', () => console.log('Database Connected!'))
-  .on('error', error => console.log(`Database connection error: ${error}`));
+if (config.DATABASE_URL !== null) {
+	mongoose.Promise = global.Promise;
+	mongoose.connect(config.DATABASE_URL);
+	mongoose.connection
+		.once('open', () => console.log('Database Connected!'))
+		.on('error', error => console.log(`Database connection error: ${error}`));
+}
 
 const rolesByName = {};
 const emojisByName = {};
