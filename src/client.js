@@ -1,7 +1,7 @@
 'use strict';
 
 const Discord = require('discord.js');
-
+const Channel = require('./lib/raid-org/models/Channel')
 const chatCommandsFunc = require('./chatrouter');
 const CONSTANTS = require('./constants');
 
@@ -29,6 +29,13 @@ client.on('ready', (done) => {
 	client.channels.forEach((channel) => {
 		channelsByName[channel.name] = channel;
 	});
+
+	let { name } = channelsByName[channel]
+
+	name.forEach(function(name) {
+		this[name] = new Channel(name)
+	})
+
 
 	// todo : for the current design of the bot this is always a singleton
 	client.guilds.forEach((guild) => {
