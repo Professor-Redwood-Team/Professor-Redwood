@@ -54,37 +54,7 @@ const fakeMessage = {
 	},
 };
 
-describe('Chat commands', () => {
-	describe('breakpoint', () => {
-		it('failure', () => {
-			let msg = Object.assign(fakeMessage, {content: '!breakpoint golem'});
-			let result = breakpointCommand(fakeDiscordData)(msg);
-
-			assert.equal(result.slice(0,23), 'Sorry, incorrect format');
-		});
-
-		it('golem', () => {
-			let msg = Object.assign(fakeMessage, {content: '!breakpoint golem rock_throw 15'});
-			let result = breakpointCommand(fakeDiscordData)(msg);
-
-			//revisit after counter.js reformat
-			assert(result.indexOf('damage against Ho-oh') > -1);
-		});
-
-		it('alakazam', () => {
-			let msg = Object.assign(fakeMessage, {content: '!breakpoint alakazam future_sight 15'});
-			let result = breakpointCommand(fakeDiscordData)(msg);
-
-			assert(result.indexOf('FUTURE SIGHT damage') > -1);
-		});
-
-		it('invalid defender', () => {
-			let msg = Object.assign(fakeMessage, {content: '!breakpoint golem rock_throw 15 Zapados'});
-			let result = breakpointCommand(fakeDiscordData)(msg);
-
-			assert(result.indexOf("Sorry, I can't find that defender") > -1);
-		});
-	});
+describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 	describe('checkNew', () => {
 		const newUserMessage = {
 			channel: {
@@ -115,65 +85,6 @@ describe('Chat commands', () => {
 		});
 	});
 
-	describe('!counters', () => {
-		it('failure', () => {
-			let msg = Object.assign(fakeMessage, {content: '!counters failure'});
-			let result = countersCommand(fakeDiscordData)(msg);
-
-			assert.equal(result, 'Sorry, counters for Failure aren\'t available at this time');
-		});
-
-		it('lugia', () => {
-			let msg = Object.assign(fakeMessage, {content: '!counters lugia'});
-			let result = countersCommand(fakeDiscordData)(msg);
-
-			//revisit after counter.js reformat
-			assert.equal(result.slice(0,73), '**Lugia** :lugia: HP **12500** | CP **42753** | Atk **193** | Def **323**');
-			assert.ok(result.indexOf('**Future Sight Counters**') > -1);
-			assert.ok(result.indexOf('__Cloyster__: Frost Breath') > -1);
-		});
-
-		it('tyranitar', () => {
-			let msg = Object.assign(fakeMessage, {content: '!counter tyranitar'});
-			let result = countersCommand(fakeDiscordData)(msg);
-
-			assert.equal(result.slice(0,38), 'Counters for **Tyranitar** :tyranitar:');
-			assert.ok(result.indexOf('Poliwrath') > -1);
-		});
-
-		it('raikou', () => {
-			let msg = Object.assign(fakeMessage, {content: '!counter raikou'});
-			let result = countersCommand(fakeDiscordData)(msg);
-
-			assert.ok(result.indexOf('Dragon Breath') > -1);
-		});
-	});
-
-	describe('!cp', () => {
-		it('lugia', () => {
-			let msg = Object.assign(fakeMessage, {content: '!cp lugia'});
-			let result = raidCpCommand(fakeDiscordData)(msg);
-
-			assert.equal(result, '**Lugia** :lugia: Raid CP @ Lv20: [min: **1969**, max: **2056**]');
-		});
-
-		it('failure', () => {
-			let msg = Object.assign(fakeMessage, {content: '!cp failure'});
-			let result = raidCpCommand(fakeDiscordData)(msg);
-
-			assert.equal(result, 'Sorry, CP for Failure isn\'t available at this time');
-		});
-	});
-
-	describe.skip('!raid', () => {
-		it('raid', () => {
-			let msg = Object.assign(fakeMessage, {content: '!raid lugia 105 caltrain station'});
-			let result = raidCommand(fakeDiscordData)(msg);
-
-			assert(result.indexOf('put something here') > -1);
-		});
-	});
-
 	describe('!reset', () => {
 		it('reset', () => {
 			let msg = Object.assign(fakeMessage, {content: '!reset'});
@@ -191,51 +102,6 @@ describe('Chat commands', () => {
 
 			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf badrole');
 		});
-	});
-
-	describe('!team', () => {
-		it('valor', () => {
-			let msg = Object.assign(fakeMessage, {content: '!team valor'});
-			let result = teamCommand(fakeDiscordData)(msg);
-
-			assert.equal(result, 'Welcome ' + fakeMessage.member.displayName + '! You now have access to valor\'s private chat');
-		});
-
-		it('failure', () => {
-			let msg = Object.assign(fakeMessage, {content: '!team failure'});
-			let result = teamCommand(fakeDiscordData)(msg);
-
-			assert.equal(result, fakeMessage.member.displayName + ', please pick a correct team and type !team valor|mystic|instinct');
-		});
-	});
-
-	describe('!want', () => {
-		it('unown', () => {
-			let msg = Object.assign(fakeMessage, {content: '!want unown'});
-			let result = wantCommand(fakeDiscordData)(msg);
-
-			assert.equal(result, 'OK Unit Test User! I will let you know when someone spots a unown in the wild or as a raid boss');
-		});
-		it('unknown / misspelling', () => {
-			let msg = Object.assign(fakeMessage, {content: '!want unknown'});
-			let result = wantCommand(fakeDiscordData)(msg);
-
-			assert.equal(result, 'OK Unit Test User! I will let you know when someone spots a unown in the wild or as a raid boss');
-		});
-		it('tyranitar', () => {
-			let msg = Object.assign(fakeMessage, {content: '!want tyranitar'});
-			let result = wantCommand(fakeDiscordData)(msg);
-
-			assert.equal(result, 'Oh? I will ignore tyranitar for you, Unit Test User');
-		});
-		it('failure', () => {
-			let msg = Object.assign(fakeMessage, {content: '!want failure'});
-			let result = wantCommand(fakeDiscordData)(msg);
-
-			assert.equal(result.slice(0, 173), 'I\'m sorry, I can\'t find failure. Remember you can only type one pokemon\'s' +
-				' name at a time. Type **!want pokemonName** where pokemonName is one item in any of the lists below:');
-		});
-		
 	});
 
 	describe('!play', () => {
