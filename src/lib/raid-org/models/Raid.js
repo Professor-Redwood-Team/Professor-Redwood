@@ -1,18 +1,16 @@
-const Raid = function(author, id, time) {
+'use strict'
+/**
+ * This constructor sets up the structure and necessity of the raid
+ * @param {string} author - Takes the message.channel.author value 
+ * @param {string} id - Generates a new ID 
+ * @param {Number} time - Time Left
+ * @param {string} location - Location detail (either text or google map link)
+ */
+const Raid = function(author, id, time, location) {
   this.author = author
   this.id = id
-  this.players = []
-  this.num_players = this.players.length || 0
   this.time = time
+  this.location = location
 }
 
-// JOIN
-Raid.prototype.add = function(player, addtl = 0) {
-  this.players.push(player)
-  // Case: Somebody says their joining but they are bringing X players or have X phones/accounts
-  if (addtl > 0) {
-    this.num_players += 3
-  }
-
-  return this.num_players
-}
+module.exports = Raid

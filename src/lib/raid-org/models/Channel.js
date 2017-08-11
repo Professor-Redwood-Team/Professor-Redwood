@@ -23,8 +23,11 @@ Channel.prototype.list = function() {
       time: raid.time
     })
   })
-
   return result
 }
 
-Channel
+Channel.prototype.remove = function(index) {
+
+}
+
+module.exports = Channel
