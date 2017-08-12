@@ -1,7 +1,7 @@
 'use strict';
 const getLocation = require('../lib/places');
 const CONSTANTS = require('./../constants');
-
+const Raids = require('../lib/raid-org/index').Raids
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
 
 //Format a date object as a string in 12 hour format
@@ -100,7 +100,11 @@ const raid = (data, message) => {
 			//send alert to #gymraids_alerts channel
 			data.channelsByName['gymraids_alerts'].send(forwardReply);
 		})
-		.catch(err => console.log(err))
+		.catch(() => {
+			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
+			detail + ' added by ' + message.member.displayName;
+			message.channel.send(reply)
+		})
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: !raid [bossName] [minutesRemaining] [location details]';
 		message.channel.send(reply);
@@ -121,8 +125,6 @@ const raid = (data, message) => {
 		}
 	});
 	*/
-<<<<<<< HEAD
-=======
 	reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
 		detail + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
@@ -134,7 +136,6 @@ const raid = (data, message) => {
 		console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
 	}
 
->>>>>>> 5f6521e98669642b3c119cfdbe2d34fe19737bfe
 	//send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {
 		if (role.type !== 'role') return;
