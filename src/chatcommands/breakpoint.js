@@ -147,7 +147,7 @@ function getBosses(attacker) {
             bosses.push(boss);
         }
     }
-    return bosses.slice(Math.max(bosses.length - 3, 1)); // return last 3 elements
+    return bosses.slice(-3); // return last 3 elements
 }
 
 const getBreakpoint = (data, message) => {
