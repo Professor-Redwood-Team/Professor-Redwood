@@ -59,6 +59,7 @@ describe('Acceptance Chat Commands', () => {
 			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15'});
 			sendMessage(msg, (result) => {
 				assert(result.indexOf('FUTURE SIGHT damage against Venusaur\nLv20:   103') > -1);
+				assert(result.match(/damage against/g).length >= 3);
 				done();
 			});
 		});
