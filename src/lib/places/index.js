@@ -42,11 +42,12 @@ module.exports = function getLocation(location, channel) {
     if (GOOGLE_API_KEY !== null) {
       const coords = mapChannel(channel)
         Location.
-          findOne({ query: location }).
+          findOne({ query: { $regex : location, $options : 'i' } }).
           where('channel').equals(channel).
           exec((err, data) => {
             if (err) reject(err)
             if (data == null) { 
+              console.log(log)
               placesLocation(location, channel, coords)
                 .then(id => {
                   getUrl(id)
