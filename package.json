@@ -8,7 +8,8 @@
     "discord.js": "^11.1.0",
     "mocha": "^3.5.0",
     "mongoose": "^4.11.6",
-    "mysql": "^2.14.0"
+    "mysql": "^2.14.0",
+    "randomkey": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^4.3.0"
