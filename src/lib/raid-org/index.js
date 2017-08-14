@@ -5,17 +5,18 @@ const Raid = require('./models/Raid')
 const rk = require('randomkey')
 let date = new Date()
 
+// TODO: Need expire command
+
 class Raids {
-  constructor() {
-    this.raids = null
-  }
   /**
    * Add a raid to the Database
    * @param {Object} param0 - This will take an object of pokemon, start time in minutes as a Number, and the location details (can be google maps)
    */
+
   add({pokemon, expiration_time, location}) {
     return new Promise((resolve, reject) => {
-      let raid = new Raid({ pokemon, expiration_time, location })    
+      let id = rk(4, rk.alphanumeric)
+      let raid = new Raid({ id, pokemon, expiration_time, location })
       raid.save(err => { if(err) reject(err) })
       resolve(raid)
     })
@@ -44,7 +45,12 @@ class Raids {
       Raid.
         find({ channel, pokemon }).where('expiration_time').gte(current_time).exec((err, data) => {
           if (err) reject(err)
-          if (data.length <= 0) reject(`No current raids are reported for ${pokemon} in ${channel}, at this time`)
+          if (data.length <= 0) { 
+            reject(`No current raids are reported for ${pokemon} in ${channel}, at this time`)
+          }
+          else {
+            resolve(data)
+          }
         })
     })
   }
@@ -54,20 +60,89 @@ class Raids {
    */
   expire() {
     let current_time = date.setMinutes(date.getMinutes())
-    this.raids.forEach((raid, index) => { 
-      if (raid.expiration_time <= current_time){ raids.splice(i, 1) } 
-    })
-    // Raid.deleteMany({ expiration_time: { $lte: current_time } })
-    //   .then(() => console.log(`Deleted raids after ${current_time}`))
-    //   .catch(err => console.log(`Error at expire method: ${err}`))
+    Raid.deleteMany({ expiration_time: { $lte: current_time } })
+      .then(() => console.log(`Deleted raids after ${current_time}`))
+      .catch(err => console.log(`Error at expire method: ${err}`))
   }
-  
 
 }
 
-class Groups extends Raids {
-  constructor(id) {
-    this.id
+class Groups {
+  /**
+   * 
+   * @param {String} id - This is raid ID that is referenced back in the Raid Class
+   * @param {String} author - The Author's message to indicate who created the group
+   * @param {String} channel - The channel where message was indicated to reference region
+   * @param {Number} num_of_players - This is optional, 
+   * @param {*} start_time 
+   */
+  start(id, author, channel, num_of_players = 0, start_time) {
+    let current_time = date.setMinutes(date.getMinutes())
+    let rk = rk(3, rk.alphanumeric)
+    return new Promise((resolve, reject) => {
+      Raid.findOne({ id, channel }).
+        where('expiration_time').gte(current_time).
+        exec((err, data) => {
+          if (err) reject(err)
+          if (data === null) { reject(`No raid ${id} found in this ${channel}. Please check again`)}
+          if (data !== null) {
+            var group = new Group({
+              leader: author,
+              num_of_players: num_of_players,
+              pokemon: data.pokemon,
+              location: data.location,
+              channel: data.channel,
+              start_time
+            })
+            group.save((err) => { 
+              if(err) { reject(err) }
+            })
+            resolve(group)
+          }
+        })
+    })
+  }
+
+  join(id, author, num_of_players = 1) {
+    let current_time = date.setMinutes(date.getMinutes())
+    if (num_of_players == 0) num_of_players = 1
+
+    Group.
+      findOneAndUpdate({ id, channel }, { $inc: { num_of_players: num_of_players } }, { new: true } ).
+      where('start_time').gte(current_time).exec((err, data) => {
+        if (err) { reject(err) }
+        if (!data) { resolve(`No group ${id} found in this ${channel}. Please check your group ID` )}
+        if (data) { resolve(data) }
+      })
+  }
+  
+  listByChannel(channel) {
+    let current_time = date.setMinutes(date.getMinutes())
+    return new Promise((resolve,  reject) => {
+      Group.find({ channel }).where('start_time').gte(current_time).exec((err, data) => {
+        if(err) reject(err)
+        if(data.length <= 0) {reject (`There are currently no groups for list of raids in ${channel}`) }
+        if(data.length > 0) { resolve(data) }
+      })
+    })
+  }
+
+  listByPokemon(channel, pokemon) {
+    let current_time = date.setMinutes(date.getMinutes())
+    return new Promise((resolve, reject) => {
+      Group.find({ channel }, { pokemon }).where('start_time').gte(current_time).exec((err, data) => {
+        if(err) reject(err)
+        if(data.length <= 0) {reject(`There are currently no groups for ${pokemon} in ${channel}`)}
+        if(data.length <= 0) {resolve(data)}
+      })
+    })
+  }
+
+  expire() {
+    let current_time = date.setMinutes(date.getMinutes())
+    Raid.deleteMany({ expiration_time: { $lte: current_time } })
+      .then(() => console.log(`Deleted raids after ${current_time}`))
+      .catch(err => console.log(`Error at expire method: ${err}`))
   }
 }
 
