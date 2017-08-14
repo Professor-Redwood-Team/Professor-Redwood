@@ -1,7 +1,6 @@
 'use strict';
 
 const Discord = require('discord.js');
-
 const chatCommandsFunc = require('./chatrouter');
 const CONSTANTS = require('./constants');
 

@@ -1,6 +1,7 @@
 'use strict';
 
 // const mySQL = require('mysql');
+const mongoose = require('mongoose')
 
 const client = require('./src/client');
 const config = require('./config/secrets.json');
