@@ -77,14 +77,21 @@ client.on('message', (message, cb) => {
 	const command = message.content.split(' ')[0];
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid') {
+	if (command === '!raid' || command === '!raids') {
 		if (message.channel.name.indexOf('-') === -1) {
 			reply = message.member.displayName + ', raid commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
 			return reply;
 		}
-		return cb(CHATCOMMANDS.raid(message));
+		if (command === '!raid') return cb(CHATCOMMANDS.raid(message));
+		if (command === '!raids') return cb(CHATCOMMANDS.raids(message));
 	}
+	//Inside Professor Redwood Channel, Do not touch message.member
+	else if (message.channel.name !== 'professor_redwood') {
+		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
+		return;
+	}
+
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
 		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');

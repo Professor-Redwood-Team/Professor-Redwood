@@ -7,6 +7,7 @@ const cp = require('./chatcommands/raidcp');
 const help = require('./chatcommands/help');
 const play = require('./chatcommands/play');
 const raid = require('./chatcommands/raid');
+const raids = require('./chatcommands/raids');
 const reset = require('./chatcommands/reset');
 const team = require('./chatcommands/team');
 const want = require('./chatcommands/want');
@@ -20,6 +21,7 @@ module.exports = (data) => {
 		help: help(data),
 		play: play(data),
 		raid: raid(data),
+		raids: raids(data),
 		reset: reset(data),
 		team: team(data),
 		want: want(data),

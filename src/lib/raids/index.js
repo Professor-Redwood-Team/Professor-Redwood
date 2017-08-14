@@ -56,7 +56,7 @@ class Raids {
   static listByChannel(channel) {
     return new Promise((resolve, reject) => {
       Raid.
-        find({ channel }).where('expiration_time').gte(current_time).exec(err, data => {
+        find({ channel }).where('expiration_time').gte(current_time).exec((err, data) => {
           if (err) reject(err)
           if (data.length <= 0) reject(`No current raids reported in ${channel}, at this time`)
           if (data.length > 0) resolve(data)

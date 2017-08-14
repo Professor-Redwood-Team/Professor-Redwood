@@ -47,7 +47,6 @@ module.exports = function getLocation(location, channel) {
           exec((err, data) => {
             if (err) reject(err)
             if (data == null) { 
-              console.log(log)
               placesLocation(location, channel, coords)
                 .then(id => {
                   getUrl(id)
