@@ -105,7 +105,7 @@ const raid = (data, message) => {
 			detail = url;
 			// this portion had to be chained to the promise so that it would asynchronous, and that detail would get updated/adjusted within the promise
 			Raids
-				.add(boss, minutesLeft, detail)
+				.add(boss, date, detail)
 				.then(({ id }) => {
 					reply = '**' + id  + '** - ' + 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
 						detail + ' added by ' + message.member.displayName;

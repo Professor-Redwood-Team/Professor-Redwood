@@ -9,22 +9,35 @@ let current_time = date.setMinutes(date.getMinutes())
 // TODO: Need expire command
 
 class Raids {
-  /**
-   * Add a raid to the Database
-   * @param {Object} param0 - This will take an object of pokemon, start time in minutes as a Number, and the location details (can be google maps)
-   */
 
-  static add(pokemon, expiration_time, location) {
+  /**
+   * Method adds a raid
+   * @param {String} pokemon - Pokemon in query 
+   * @param {Number} expiration_time - Minutes Left
+   * @param {String} formatted_time - Formatted Time
+   * @param {String} location - URL or Query of Location
+   */
+  static add(pokemon, expiration_time, formatted_time, channel, location) {
     return new Promise((resolve, reject) => {
       let id = rk(4, rk.alphanumeric)
-      let raid = new Raid({ id, pokemon, expiration_time, location })
-      raid.save(err => { 
-        if(err) {
-          console.log(err)
-          reject(err)
-        } 
-      })
-      resolve(raid)
+
+      Raid
+        .findOne({ pokemon, formatted_time, location })
+        .where('channel').equals(channel)
+        .exec((err, doc) => {
+          if(err) reject(err)
+          if(doc !== null) reject(`Raid for ** ${doc.pokemon} ** at ${doc.formatted_time} already exists. Please reference: ${doc.id}`)
+          if(doc === null) {
+            let raid = new Raid({ id, pokemon, expiration_time, formatted_time, channel, location })
+            raid.save(err => { 
+              if(err) {
+                console.log(err)
+                reject(err)
+              } 
+            })
+            resolve(raid)
+          }
+        })
     })
   }
 
