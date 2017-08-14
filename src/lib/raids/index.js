@@ -28,7 +28,14 @@ class Raids {
           if(err) reject(err)
           if(doc !== null) reject(`Raid for ** ${doc.pokemon} ** at ${doc.formatted_time} already exists. Please reference: ${doc.id}`)
           if(doc === null) {
-            let raid = new Raid({ id, pokemon, expiration_time, formatted_time, channel, location })
+            let raid = new Raid({ 
+              id,
+              pokemon,
+              expiration_time,
+              formatted_time,
+              channel,
+              location
+            })
             raid.save(err => { 
               if(err) {
                 console.log(err)
