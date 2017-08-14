@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 const breakpoint = require('./chatcommands/breakpoint');

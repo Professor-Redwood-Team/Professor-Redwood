@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 const regionsConfig = require('../config/regions.json');

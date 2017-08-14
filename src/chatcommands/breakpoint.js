@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 // See https://github.com/saucyallison/discordbot
