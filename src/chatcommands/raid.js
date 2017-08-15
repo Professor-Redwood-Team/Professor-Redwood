@@ -3,6 +3,9 @@
 
 const CONSTANTS = require('./../constants');
 
+import type {Message, Role} from 'discord.js';
+import type {CommandData} from '../types';
+
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
 
 //Format a date object as a string in 12 hour format
@@ -31,7 +34,7 @@ const removeTags = (html) => {
 	return html.replace(/</g, '&lt;');
 };
 
-const raid = (data, message) => {
+const raid = (data: CommandData, message: Message) => {
 	let reply = '';
 
 	const msgSplit = message.content.toLowerCase().split(' ');
@@ -44,7 +47,7 @@ const raid = (data, message) => {
 
 	var bossTag = boss; //generate a tag for the boss to alert users
 
-	data.GUILD.roles.forEach((role) => {
+	data.GUILD.roles.forEach((role: Role) => {
 		if (role.name === boss){
 			bossTag = '<@&' + role.id + '>'; //if the boss name is found as a role, put in mention format
 		}
@@ -199,6 +202,6 @@ const raid = (data, message) => {
  return;
  }*/
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return raid(data, message);
 });

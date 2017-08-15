@@ -3,15 +3,17 @@
 
 const CONSTANTS = require('./../constants');
 
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
 
-const handleHelp = (data, message) => {
+const handleHelp = (data: CommandData, message) => {
 	let reply = '';
 
 	reply = '**!team mystic | valor | instinct**\n*(you may only be on one team)*\nGrants you access to team chat and allows you to chat in most channels\n\n';
 
 	reply += '**!play ' + CONSTANTS.REGIONS.join('|') + '** \n*(one region at a time, run again for more regions)*\n';
 	reply += 'Hides neighborhood channels outside of your selected region(s) (see ' + data.channelsByName['start_here'] + '\n\n';
-	
+
 	reply += '**!want pokemonName**\n*(type **!want** for a list of available pokemon*\nStarts OR stops alerts you receive for specified pokemon\n\n';
 
 	reply += '**!cp pokemonName** or **!counters pokemonName**\n*(available for tier 3-5 raid bosses*)\nDisplays the CP range at level 20 or the best counters for the specified pokemon\n\n';
@@ -23,6 +25,6 @@ const handleHelp = (data, message) => {
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return handleHelp(data, message);
 });

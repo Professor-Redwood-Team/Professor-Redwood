@@ -6,12 +6,14 @@ const Discord = require('discord.js');
 const chatCommandsFunc = require('./chatrouter');
 const CONSTANTS = require('./constants');
 
+import type {CommandData} from './types';
+
 const client = new Discord.Client();
 
 const rolesByName = {};
 const emojisByName = {};
 const channelsByName = {};
-var CHATCOMMANDS;
+var CHATCOMMANDS: CommandData;
 var GUILD;
 
 // ** Helper functions: **

@@ -45,17 +45,14 @@ const data = {
 		'ttar': 'tyranitar',
 	},
 	PROTECTED_ROLES: ['admin', 'mod', 'dev', 'VIP', '@everyone', 'timeout_inthecorner'], // todo : move to a config file
-};
 
-const standardizePokemonName = (name) => {
-	name = name.toLowerCase();
-	if (data.COMMON_MISSPELLINGS[name]) {
-		name = data.COMMON_MISSPELLINGS[name];
-	}
-	return name;
+	standardizePokemonName: (name: string) => {
+		name = name.toLowerCase();
+		if (data.COMMON_MISSPELLINGS[name]) {
+			name = data.COMMON_MISSPELLINGS[name];
+		}
+		return name;
+	},
 };
-
-//make this more elegant when we have more than one
-data.standardizePokemonName = standardizePokemonName;
 
 module.exports = data;

@@ -9,6 +9,9 @@ const counters = require('../../data/counters.json');
 const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
 
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
+
 function formatList(list, separator) {
 	var listStr = "";
 	for (var i=0; i<list.length; i++) {
@@ -19,7 +22,7 @@ function formatList(list, separator) {
 // Returns a String list of recommended counters for the given Pokemon
 const getCounters = (data, message) => {
 	let pokemon = message.content.split(' ').slice(-1)[0].toLowerCase();
-    
+
     pokemon = CONSTANTS.standardizePokemonName(pokemon);
 	var counterHash = counters[pokemon];
 	var reply = "";
@@ -80,6 +83,6 @@ const getCounters = (data, message) => {
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return getCounters(data, message);
 });

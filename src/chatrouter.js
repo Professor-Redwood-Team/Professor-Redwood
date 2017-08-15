@@ -13,7 +13,9 @@ const reset = require('./chatcommands/reset');
 const team = require('./chatcommands/team');
 const want = require('./chatcommands/want');
 
-module.exports = (data) => {
+import type {CommandData} from './types';
+
+module.exports = (data: CommandData) => {
 	return {
 		breakpoint: breakpoint(data),
 		checkNew: checkNew(data),

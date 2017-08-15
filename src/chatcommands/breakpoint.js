@@ -13,6 +13,9 @@ const pokemon = require('../../data/pokemon.json');
 const moves = require('../../data/moves.json');
 const types = require('../../data/types.json');
 
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
+
 function roundTo(num, digits) {
     return +(Math.round(Number(num + "e+"+digits))  + "e-"+digits);
 }
@@ -150,7 +153,7 @@ function getBosses(attacker) {
     return bosses.slice(-3); // return last 3 elements
 }
 
-const getBreakpoint = (data, message) => {
+const getBreakpoint = (data: CommandData, message: Message) => {
 	let reply = '';
 	const msgSplit = message.content.toLowerCase().split(" ");
 	if (!msgSplit || msgSplit.length < 4) {
@@ -171,11 +174,11 @@ const getBreakpoint = (data, message) => {
         defender = CONSTANTS.standardizePokemonName(msgSplit[4]);
     }
     reply = calcBreakpoint(attacker, move, iv, defender);
-    
+
 	message.channel.send(reply);
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return getBreakpoint(data, message);
 });

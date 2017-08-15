@@ -3,8 +3,10 @@
 
 const CONSTANTS = require('./../constants');
 
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
 
-const assignTeam = (data, message) => {
+const assignTeam = (data: CommandData, message: Message) => {
 	let reply = '';
 
 	if (message.member.roles) {
@@ -32,6 +34,6 @@ const assignTeam = (data, message) => {
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return assignTeam(data, message);
 });

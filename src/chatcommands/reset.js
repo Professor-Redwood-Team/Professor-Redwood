@@ -3,7 +3,10 @@
 
 const CONSTANTS = require('./../constants');
 
-const resetRoles = (data, message) => {
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
+
+const resetRoles = (data: CommandData, message: Message) => {
 	let reply = 'You have no roles to reset ' + message.member.displayName;
 
 	if (message.member.roles) {
@@ -39,6 +42,6 @@ const resetRoles = (data, message) => {
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return resetRoles(data, message);
 });
