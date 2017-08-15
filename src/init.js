@@ -60,10 +60,14 @@ function initRoles(rolesByName, guild) {
 function initChannels(channelsByName, rolesByName, guild) {
 	const promises = [];
 
+	const READWRITE = {READ_MESSAGES: true, SEND_MESSAGES: true};
+	const READONLY = {READ_MESSAGES: true, SEND_MESSAGES: false};
+	const NOACCESS = {READ_MESSAGES: false, SEND_MESSAGES: false};
+
 	// professor_redwood (a channel specifically for bot commands) - @everyone may Read & Send messages
 	if (!channelsByName.hasOwnProperty('professor_redwood')) {
 		promises.push(guild.createChannel('professor_redwood', 'text').then((channel) => {
-			return channel.overwritePermissions(rolesByName['@everyone'], {READ_MESSAGES: true, SEND_MESSAGES: true}).then(() => channel);
+			return channel.overwritePermissions(rolesByName['@everyone'], READWRITE).then(() => channel);
 		}));
 	}
 
@@ -72,10 +76,10 @@ function initChannels(channelsByName, rolesByName, guild) {
 		if (!channelsByName.hasOwnProperty(team)) {
 			promises.push(guild.createChannel(team, 'text').then((channel) => {
 				return Promise.all([
-					channel.overwritePermissions(rolesByName.admin, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-					channel.overwritePermissions(rolesByName.mod, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-					channel.overwritePermissions(rolesByName[team], {READ_MESSAGES: true, SEND_MESSAGES: true}),
-					channel.overwritePermissions(rolesByName['@everyone'], {READ_MESSAGES: false, SEND_MESSAGES: false}),
+					channel.overwritePermissions(rolesByName.admin, READWRITE),
+					channel.overwritePermissions(rolesByName.mod, READWRITE),
+					channel.overwritePermissions(rolesByName[team], READWRITE),
+					channel.overwritePermissions(rolesByName['@everyone'], NOACCESS),
 				]).then(() => channel);
 			}));
 		}
@@ -85,12 +89,12 @@ function initChannels(channelsByName, rolesByName, guild) {
 	if (!channelsByName.hasOwnProperty('gymraids_alerts')) {
 		promises.push(guild.createChannel('gymraids_alerts', 'text').then((channel) => {
 			return Promise.all([
-				channel.overwritePermissions(rolesByName.admin, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-				channel.overwritePermissions(rolesByName.mod, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-				channel.overwritePermissions(rolesByName.instinct, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-				channel.overwritePermissions(rolesByName.mystic, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-				channel.overwritePermissions(rolesByName.valor, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-				channel.overwritePermissions(rolesByName['@everyone'], {READ_MESSAGES: false, SEND_MESSAGES: false}),
+				channel.overwritePermissions(rolesByName.admin, READWRITE),
+				channel.overwritePermissions(rolesByName.mod, READWRITE),
+				channel.overwritePermissions(rolesByName.instinct, READWRITE),
+				channel.overwritePermissions(rolesByName.mystic, READWRITE),
+				channel.overwritePermissions(rolesByName.valor, READWRITE),
+				channel.overwritePermissions(rolesByName['@everyone'], NOACCESS),
 			]).then(() => channel);
 		}));
 	}
@@ -99,9 +103,9 @@ function initChannels(channelsByName, rolesByName, guild) {
 	if (!channelsByName.hasOwnProperty('start_here')) {
 		promises.push(guild.createChannel('start_here', 'text').then((channel) => {
 			return Promise.all([
-				channel.overwritePermissions(rolesByName.admin, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-				channel.overwritePermissions(rolesByName.mod, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-				channel.overwritePermissions(rolesByName['@everyone'], {READ_MESSAGES: true, SEND_MESSAGES: false}),
+				channel.overwritePermissions(rolesByName.admin, READWRITE),
+				channel.overwritePermissions(rolesByName.mod, READWRITE),
+        channel.overwritePermissions(rolesByName['@everyone'], READONLY),
 			]).then(() => channel);
 		}));
 	}
@@ -116,10 +120,10 @@ function initChannels(channelsByName, rolesByName, guild) {
 		if (region !== 'allregions' && !channelsByName.hasOwnProperty(regionalRaidChannel)) {
 			promises.push(guild.createChannel(regionalRaidChannel, 'text').then((channel) => {
 				return Promise.all([
-					channel.overwritePermissions(rolesByName.admin, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-					channel.overwritePermissions(rolesByName.mod, {READ_MESSAGES: true, SEND_MESSAGES: true}),
-					channel.overwritePermissions(rolesByName[region], {READ_MESSAGES: true, SEND_MESSAGES: true}),
-					channel.overwritePermissions(rolesByName['@everyone'], {READ_MESSAGES: false, SEND_MESSAGES: false}),
+					channel.overwritePermissions(rolesByName.admin, READWRITE),
+					channel.overwritePermissions(rolesByName.mod, READWRITE),
+					channel.overwritePermissions(rolesByName[region], READWRITE),
+					channel.overwritePermissions(rolesByName['@everyone'], NOACCESS),
 				]).then(() => channel);
 			}));
 		}
