@@ -14,7 +14,7 @@ const moves = require('../../data/moves.json');
 const types = require('../../data/types.json');
 
 function roundTo(num, digits) {
-    return +(Math.round(num + "e+"+digits)  + "e-"+digits);
+    return +(Math.round(Number(num + "e+"+digits))  + "e-"+digits);
 }
 
 function getDamage(attacker, iv, move, defender, level) {
