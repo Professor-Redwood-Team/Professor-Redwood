@@ -97,7 +97,7 @@ class Groups {
    * @param {String} author - The Author's message to indicate who created the group
    * @param {String} channel - The channel where message was indicated to reference region
    * @param {Number} num_of_players - This is optional, 
-   * @param {*} start_time 
+   * @param {Number} start_time - Start time of the group
    */
   static start(id, author, channel, num_of_players = 0, start_time) {
     let rk = rk(3, rk.alphanumeric)
@@ -125,11 +125,11 @@ class Groups {
     })
   }
 
-  static join(id, author, num_of_players = 1) {
+  static joinGroup(id, author, num_of_players = 1) {
     if (num_of_players == 0 || num_of_players === null) num_of_players = 1
 
     Group.
-      findOneAndUpdate({ id, channel }, { $inc: { num_of_players: num_of_players } }, { new: true } ).
+      findOneAndUpdate({ id, channel }, { $push: { players: author }, $inc: { num_of_players: num_of_players } }, { new: true } ).
       where('start_time').gte(current_time).exec((err, data) => {
         if (err) { reject(err) }
         if (!data) { resolve(`No group ${id} found in this ${channel}. Please check your group ID` )}
