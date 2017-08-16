@@ -1,6 +1,7 @@
 'use strict';
 
 // const mySQL = require('mysql');
+const mongoose = require('mongoose')
 
 const client = require('./src/client');
 const config = require('./config/secrets.json');
@@ -12,5 +13,13 @@ db.connect((err) => {
 	if (err) throw err;
 	console.log('Database Connected!');
 }); */
+
+if (config.DATABASE_URL !== null) {
+	mongoose.Promise = global.Promise;
+	mongoose.connect(config.DATABASE_URL);
+	mongoose.connection
+		.once('open', () => console.log('Database Connected!'))
+		.on('error', error => console.log(`Database connection error: ${error}`));
+}
 
 client.login(token);
