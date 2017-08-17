@@ -74,7 +74,7 @@ const raid = (data, message) => {
 	}
 	var date = new Date(); //get today's date/time
 	date.setMinutes(date.getMinutes() + minutesLeft); //add minutes remaining to get end time
-
+	
 	var twelveHrDate = format_time(date); //calc the friendly 12h date string for the UI
 
 	//clean the date variable into a UTC object compatible with mysql and discord. this may no longer be required
@@ -102,10 +102,12 @@ const raid = (data, message) => {
   
 	getLocation(detail.substring(0,255), channelName)
 		.then(url => {
+			let d = date.setMinutes(date.getMinutes() + minutesLeft)
+			console.log(d)
 			detail = url;
 			// this portion had to be chained to the promise so that it would asynchronous, and that detail would get updated/adjusted within the promise
 			Raids
-				.add(boss, date.setMinutes(date.getMinutes() + minutesLeft), twelveHrDate, channelName, detail)
+				.add(boss, d, date, twelveHrDate, channelName, detail)
 				.then(({ id }) => {
 					reply = '**' + id  + '** - ' + 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
 						detail + ' added by ' + message.member.displayName;

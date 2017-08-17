@@ -17,6 +17,7 @@ const raids = (data, message) => {
         let list = raids.map(raid => `** ${raid.id} ** - ${raid.pokemon} ends at ${raid.formatted_time}, found at: ${raid.location} \n`).join('\n')
         channel.send(list)
       })
+      .catch(err => channel.send(err))
   }
   
   if (content.length > 1) {
@@ -26,6 +27,7 @@ const raids = (data, message) => {
         let list = raids.map(raid => `** ${raid.id} ** - ${raid.pokemon} ends at ${raid.formatted_time}, found at: ${raid.location} \n`).join('\n')
         channel.send(list)
       })
+      .catch(err => channel.send(err))
   }
 }
 

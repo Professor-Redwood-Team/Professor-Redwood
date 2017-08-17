@@ -4,6 +4,7 @@ const RaidSchema = new mongoose.Schema({
   id: { type: String, default: 0 },
   pokemon: { type: String, lowercase: true },
   formatted_time: { type: String },
+  expiration_time_string: { type: Date, required: true },
   expiration_time: { type: Number },
   location: { type: String },
   channel: { type: String, required: true }

@@ -77,7 +77,7 @@ client.on('message', (message, cb) => {
 	const command = message.content.split(' ')[0];
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid' || command === '!raids') {
+	if (command === '!raid' || command === '!raids' || command === '!group') {
 		if (message.channel.name.indexOf('-') === -1) {
 			reply = message.member.displayName + ', raid commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
@@ -85,6 +85,7 @@ client.on('message', (message, cb) => {
 		}
 		if (command === '!raid') return cb(CHATCOMMANDS.raid(message));
 		if (command === '!raids') return cb(CHATCOMMANDS.raids(message));
+		if (command === '!group') return cb(CHATCOMMANDS.group(message))
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
