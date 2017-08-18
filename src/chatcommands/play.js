@@ -1,9 +1,12 @@
+/* @flow */
 'use strict';
 
 const CONSTANTS = require('./../constants');
 
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
 
-const assignPlay = (data, message) => {
+const assignPlay = (data: CommandData, message: Message) => {
 	let reply = '';
 
 	const wantedRegion = message.content.split(' ').slice(-1)[0].toLowerCase();
@@ -41,6 +44,6 @@ const assignPlay = (data, message) => {
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return assignPlay(data, message);
 });

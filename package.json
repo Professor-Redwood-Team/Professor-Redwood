@@ -9,9 +9,16 @@
     "mysql": "^2.14.0"
   },
   "devDependencies": {
-    "eslint": "^4.3.0"
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "eslint": "^4.3.0",
+    "flow-bin": "^0.52.0",
+    "flow-typed": "^2.1.5"
   },
   "scripts": {
+    "bot": "babel-node bot.js",
+    "flow": "flow",
+    "flow-typed": "flow-typed",
     "test": "mocha"
   },
   "keywords": [],

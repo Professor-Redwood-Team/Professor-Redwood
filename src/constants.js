@@ -1,11 +1,8 @@
+/* @flow */
 'use strict';
 
 const regionsConfig = require('../config/regions.json');
 const secrets = require('../config/secrets.json');
-
-String.prototype.capitalize = function () {
-	return this.charAt(0).toUpperCase() + this.slice(1);
-};
 
 const alphanumeric = (inputtxt) => {
 	var letterNumber = /^[0-9a-zA-Z]+$/;
@@ -44,17 +41,15 @@ const data = {
 		'ttar': 'tyranitar',
 	},
 	PROTECTED_ROLES: ['admin', 'mod', 'dev', 'VIP', '@everyone', 'timeout_inthecorner'], // todo : move to a config file
-};
 
-const standardizePokemonName = (name) => {
-	name = name.toLowerCase();
-	if (data.COMMON_MISSPELLINGS[name]) {
-		name = data.COMMON_MISSPELLINGS[name];
-	}
-	return name;
+	standardizePokemonName: (name: string) => {
+		name = name.toLowerCase();
+		if (data.COMMON_MISSPELLINGS[name]) {
+			name = data.COMMON_MISSPELLINGS[name];
+		}
+		return name;
+	},
+	tagOrComment,
 };
-
-//make this more elegant when we have more than one
-data.standardizePokemonName = standardizePokemonName;
 
 module.exports = data;

@@ -1,7 +1,10 @@
+/* @flow */
 'use strict';
 
 const CONSTANTS = require('./../constants');
 
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
 
 const checkNew = (data, message) => {
 	let reply = '';
@@ -26,6 +29,6 @@ const checkNew = (data, message) => {
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return checkNew(data, message);
 });

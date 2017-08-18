@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 const Discord = require('discord.js');
@@ -5,12 +6,14 @@ const Discord = require('discord.js');
 const chatCommandsFunc = require('./chatrouter');
 const CONSTANTS = require('./constants');
 
+import type {CommandData} from './types';
+
 const client = new Discord.Client();
 
 const rolesByName = {};
 const emojisByName = {};
 const channelsByName = {};
-var CHATCOMMANDS;
+var CHATCOMMANDS: CommandData;
 var GUILD;
 
 // ** Helper functions: **
@@ -27,7 +30,9 @@ const getEmoji = (pokemon) => {
 
 client.on('ready', (done) => {
 	client.channels.forEach((channel) => {
-		channelsByName[channel.name] = channel;
+		if (channel instanceof Discord.GuildChannel) {
+			channelsByName[channel.name] = channel;
+		}
 	});
 
 	// todo : for the current design of the bot this is always a singleton

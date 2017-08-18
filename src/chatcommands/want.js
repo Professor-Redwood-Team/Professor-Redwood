@@ -1,9 +1,12 @@
+/* @flow */
 'use strict';
 
 const CONSTANTS = require('./../constants');
 
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
 
-const assignWant = (data, message) => {
+const assignWant = (data: CommandData, message: Message) => {
 	let reply = '';
 	let wantedMon = message.content.split(' ').slice(-1)[0].toLowerCase();
 
@@ -44,14 +47,6 @@ const assignWant = (data, message) => {
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return assignWant(data, message);
 });
-
-
-
-
-
-
-
-

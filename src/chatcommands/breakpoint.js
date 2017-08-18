@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 // See https://github.com/saucyallison/discordbot
@@ -11,9 +12,13 @@ const levelToCPM = require('../../data/levelToCPM.json');
 const pokemon = require('../../data/pokemon.json');
 const moves = require('../../data/moves.json');
 const types = require('../../data/types.json');
+const {capitalize} = require('../utils');
+
+import type {Message} from 'discord.js';
+import type {CommandData} from '../types';
 
 function roundTo(num, digits) {
-    return +(Math.round(num + "e+"+digits)  + "e-"+digits);
+    return +(Math.round(Number(num + "e+"+digits))  + "e-"+digits);
 }
 
 function getDamage(attacker, iv, move, defender, level) {
@@ -99,14 +104,13 @@ function calcBreakpoint(attacker, move, iv, defender) {
     	reply = 'Sorry, I can\'t find that move. Remember to replace spaces with _ when typing a move.\n'+usage;
         return reply;
     }
-    for (var index in bosses) {
-        var defender = bosses[index];
+    for (var defender of bosses) {
         if(!defender || !pokemon[defender.toUpperCase()]) {
             reply = 'Sorry, I can\'t find that defender. Remember to enter the pokemon\'s exact name in the pokedex.\n'+usage;
             return reply;
         }
         breakpoints[defender] = {}
-        reply += move.replace("_", " ")+" damage against "+defender.capitalize()+"\n";
+        reply += move.replace("_", " ")+" damage against "+capitalize(defender)+"\n";
 
         var currentMaxDamage = getDamage(attacker, iv, move, defender, 20);
         breakpoints[defender][20] = currentMaxDamage;
@@ -150,7 +154,7 @@ function getBosses(attacker) {
     return bosses.slice(-3); // return last 3 elements
 }
 
-const getBreakpoint = (data, message) => {
+const getBreakpoint = (data: CommandData, message: Message) => {
 	let reply = '';
 	const msgSplit = message.content.toLowerCase().split(" ");
 	if (!msgSplit || msgSplit.length < 4) {
@@ -160,7 +164,7 @@ const getBreakpoint = (data, message) => {
     }
 	const attacker = CONSTANTS.standardizePokemonName(msgSplit[1]);
     const move = msgSplit[2];
-    const iv = msgSplit[3]; // check for int 0-15
+    const iv = Number(msgSplit[3]); // check for int 0-15
     if (isNaN(iv) || iv > 15 || iv < 0) {
 		reply = "Sorry, IV must be 0-15.\n"+usage
         message.channel.send(reply);
@@ -171,11 +175,11 @@ const getBreakpoint = (data, message) => {
         defender = CONSTANTS.standardizePokemonName(msgSplit[4]);
     }
     reply = calcBreakpoint(attacker, move, iv, defender);
-    
+
 	message.channel.send(reply);
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
+module.exports = (data: CommandData) => ( (message: Message) => {
 	return getBreakpoint(data, message);
 });
