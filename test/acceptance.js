@@ -9,6 +9,7 @@ const client = require('../src/client');
 describe('Acceptance Chat Commands', () => {
 	var client;
 	var fakeMessage;
+	var fakeNeighborhoodMessage;
 
 	beforeEach((done) => {
 		client = require('../src/client');
@@ -19,6 +20,7 @@ describe('Acceptance Chat Commands', () => {
 				{name: 'lugia', id: 249}
 			],
 			roles: [],
+			channels:[	],
 		}];
 
 		fakeMessage = {
@@ -26,6 +28,25 @@ describe('Acceptance Chat Commands', () => {
 				send: () => {},
 				permissionOverwrites: [],
 				name: 'professor_redwood',
+			},
+			member: {
+				addRole: () => {return true;},
+				removeRole: () => {return true;},
+				displayName: 'Unit Test User',
+				roles: [
+					{'name': 'tyranitar'},
+					{'name': 'westsf'},
+				]
+			},
+		};
+
+		fakeNeighborhoodMessage = {
+			delete: () => {return true;},
+			channel: {
+				send: () => {},
+				permissionOverwrites: [],
+				name: 'test-channel',
+				overwritePermissions:() => {return true;} 
 			},
 			member: {
 				addRole: () => {return true;},
@@ -187,6 +208,16 @@ describe('Acceptance Chat Commands', () => {
 			let msg = Object.assign(fakeMessage, {content: '!help'});
 			sendMessage(msg, (result) => {
 				assert.equal(result.slice(0, 35), '**!team mystic | valor | instinct**');
+				done();
+			});
+		});
+	});
+
+	describe('!hide', () => {
+		it('normal', (done) => {
+			let msg = Object.assign(fakeNeighborhoodMessage, {content: '!hide'});
+			sendMessage(msg, (result) => {
+				assert.equal(result, 'Hiding channel test-channel for user: Unit Test User');
 				done();
 			});
 		});

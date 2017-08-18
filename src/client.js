@@ -70,12 +70,12 @@ client.on('message', (message, cb) => {
 	}
 
 	// todo : make the router do the routing
-
+	
 	if (message.content[0] !== '!') {
 		if (message.member)	{CHATCOMMANDS.checkNew(message);}
 		return;
 	}
-
+	
 	let reply = '';
 	const command = message.content.split(' ')[0].toLowerCase();
 
@@ -88,6 +88,7 @@ client.on('message', (message, cb) => {
 		}
 		return cb(CHATCOMMANDS.raid(message));
 	}
+	else if (message.member && command === '!hide') {return cb(CHATCOMMANDS.hide(message));}
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
 		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
