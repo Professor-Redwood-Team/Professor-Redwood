@@ -4,10 +4,6 @@
 const regionsConfig = require('../config/regions.json');
 const secrets = require('../config/secrets.json');
 
-String.prototype.capitalize = function () {
-	return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
 const alphanumeric = (inputtxt) => {
 	var letterNumber = /^[0-9a-zA-Z]+$/;
 	return (inputtxt.value && inputtxt.value.match(letterNumber));

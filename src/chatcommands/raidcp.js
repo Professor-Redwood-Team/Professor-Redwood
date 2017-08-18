@@ -3,6 +3,7 @@
 
 const CONSTANTS = require('./../constants');
 const cp = require('../../data/cp.json');
+const {capitalize} = require('../utils');
 
 import type {Message} from 'discord.js';
 import type {CommandData} from '../types';
@@ -18,9 +19,9 @@ const raidCp = (data: CommandData, message: Message) => {
 	let reply;
 
 	if (!pokeCp) {
-		reply = 'Sorry, CP for ' + pokemon.capitalize() + ' isn\'t available at this time';
+		reply = 'Sorry, CP for ' + capitalize(pokemon) + ' isn\'t available at this time';
 	} else {
-		reply = '**' + pokemon.capitalize() + '** ' + data.getEmoji(pokemon) + ' Raid CP @ Lv20: [min: **' + pokeCp.min + '**, max: **' + pokeCp.max + '**]';
+		reply = '**' + capitalize(pokemon) + '** ' + data.getEmoji(pokemon) + ' Raid CP @ Lv20: [min: **' + pokeCp.min + '**, max: **' + pokeCp.max + '**]';
 	}
 
 	message.channel.send(reply);

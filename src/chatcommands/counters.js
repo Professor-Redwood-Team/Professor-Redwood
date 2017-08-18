@@ -8,6 +8,7 @@
 const counters = require('../../data/counters.json');
 const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
+const {capitalize} = require('../utils');
 
 import type {Message} from 'discord.js';
 import type {CommandData} from '../types';
@@ -28,7 +29,7 @@ const getCounters = (data, message) => {
 	var reply = "";
 
 	if (!counterHash || Object.keys(counterHash).length == 0) {
-		reply = "Sorry, counters for "+pokemon.capitalize()+" aren't available at this time";
+		reply = "Sorry, counters for "+capitalize(pokemon)+" aren't available at this time";
 		message.channel.send(reply);
 		return reply;
 	}
@@ -39,7 +40,7 @@ const getCounters = (data, message) => {
 			let isLegendary = true; // For now, having a hash bigger than 0 means it's legendary. No movesets for regular raid bosses yet
 			u = "__";
 			if ("stats" in counterHash) { // this is the updated format for Lugia only right now
-				reply = "**" + pokemon.capitalize() + "** " + data.getEmoji(pokemon) + " ";
+				reply = "**" + capitalize(pokemon) + "** " + data.getEmoji(pokemon) + " ";
 				// Raid boss stats (HP, CP)
 				for (var stat in counterHash["stats"]) {
 					reply = reply + stat + " **" + counterHash["stats"][stat] + "** | "
@@ -62,7 +63,7 @@ const getCounters = (data, message) => {
 					reply = reply + "**" + counterType + " Counters**\n";
 					for (var pkmnName in counterHash["counters"][counterType]) {
 						for (var i=0; i<counterHash["counters"][counterType][pkmnName].length; i++) {
-							reply = reply + "- __" + pkmnName.capitalize() + "__: " + counterHash["counters"][counterType][pkmnName][i] + "\n";
+							reply = reply + "- __" + capitalize(pkmnName) + "__: " + counterHash["counters"][counterType][pkmnName][i] + "\n";
 						}
 					}
 					reply = reply + "\n";
@@ -71,14 +72,14 @@ const getCounters = (data, message) => {
 				return reply;
 			}
 		}
-		reply = reply + "\n" + u + counter.capitalize() + u;
+		reply = reply + "\n" + u + capitalize(counter) + u;
 		for (var i=0; i<counterHash[counter].length; i++) {
 			if (i == 0) reply = reply + "\n"; // add a newline between
 			reply = reply + "- "+counterHash[counter][i]+"\n";
 		}
 	}
 
-	reply = "Counters for **" + pokemon.capitalize() + "** " + data.getEmoji(pokemon) +"\n" + reply;
+	reply = "Counters for **" + capitalize(pokemon) + "** " + data.getEmoji(pokemon) +"\n" + reply;
 	message.channel.send(reply);
 	return reply;
 };

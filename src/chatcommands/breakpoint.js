@@ -12,6 +12,7 @@ const levelToCPM = require('../../data/levelToCPM.json');
 const pokemon = require('../../data/pokemon.json');
 const moves = require('../../data/moves.json');
 const types = require('../../data/types.json');
+const {capitalize} = require('../utils');
 
 import type {Message} from 'discord.js';
 import type {CommandData} from '../types';
@@ -109,7 +110,7 @@ function calcBreakpoint(attacker, move, iv, defender) {
             return reply;
         }
         breakpoints[defender] = {}
-        reply += move.replace("_", " ")+" damage against "+defender.capitalize()+"\n";
+        reply += move.replace("_", " ")+" damage against "+capitalize(defender)+"\n";
 
         var currentMaxDamage = getDamage(attacker, iv, move, defender, 20);
         breakpoints[defender][20] = currentMaxDamage;
