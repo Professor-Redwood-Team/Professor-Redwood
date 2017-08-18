@@ -164,7 +164,7 @@ const getBreakpoint = (data: CommandData, message: Message) => {
     }
 	const attacker = CONSTANTS.standardizePokemonName(msgSplit[1]);
     const move = msgSplit[2];
-    const iv = msgSplit[3]; // check for int 0-15
+    const iv = Number(msgSplit[3]); // check for int 0-15
     if (isNaN(iv) || iv > 15 || iv < 0) {
 		reply = "Sorry, IV must be 0-15.\n"+usage
         message.channel.send(reply);
