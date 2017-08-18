@@ -30,7 +30,9 @@ const getEmoji = (pokemon) => {
 
 client.on('ready', (done) => {
 	client.channels.forEach((channel) => {
-		channelsByName[channel.name] = channel;
+		if (channel instanceof Discord.GuildChannel) {
+			channelsByName[channel.name] = channel;
+		}
 	});
 
 	// todo : for the current design of the bot this is always a singleton

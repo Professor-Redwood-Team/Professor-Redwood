@@ -2,6 +2,7 @@
 'use strict';
 
 const CONSTANTS = require('./../constants');
+const {GuildChannel} = require('discord.js');
 
 import type {Message, Role} from 'discord.js';
 import type {CommandData} from '../types';
@@ -35,12 +36,18 @@ const removeTags = (html) => {
 };
 
 const raid = (data: CommandData, message: Message) => {
+	const channel = message.channel;
+	// Only allow !raid reports from group channels
+	if (!(channel instanceof GuildChannel)) {
+		return;
+	}
+
 	let reply = '';
 
 	const msgSplit = message.content.toLowerCase().split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
 		reply = 'Sorry, incorrect format.\n'+usage;
-		message.channel.send(reply);
+		channel.send(reply);
 		return reply;
 	}
 	let boss = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
@@ -69,11 +76,11 @@ const raid = (data: CommandData, message: Message) => {
 		}
 	}
 
-	const channelName = message.channel.name;
+	const channelName = channel.name;
 	const minutesLeft = parseInt(msgSplit[2]);
 	if (isNaN(minutesLeft) || minutesLeft < 1 || minutesLeft > 120) {
 		reply = 'Raid not processed, ensure minutes remaining is a integer between 1 and 120.\n'+usage;
-		message.channel.send(reply);
+		channel.send(reply);
 		return reply;
 	}
 	var date = new Date(); //get today's date/time
@@ -95,7 +102,7 @@ const raid = (data: CommandData, message: Message) => {
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: !raid [bossName] [minutesRemaining] [location details]';
-		message.channel.send(reply);
+		channel.send(reply);
 		return reply;
 	}
 	if (detail.length > 255) {
@@ -109,13 +116,13 @@ const raid = (data: CommandData, message: Message) => {
 		if (err) {
 			console.log(err + '\n' + sql);
 			} else {
-			message.channel.send('Processed Raid #' + result.insertId + ' as ' + bossTag + ' (ending: ' + twelveHrDate + ') at ' + detail + ' added by ' + message.member.displayName);
+			channel.send('Processed Raid #' + result.insertId + ' as ' + bossTag + ' (ending: ' + twelveHrDate + ') at ' + detail + ' added by ' + message.member.displayName);
 		}
 	});
 	*/
 	reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
 		detail + ' added by ' + message.member.displayName;
-	message.channel.send(reply);
+	channel.send(reply);
 	let forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
 	//send alert to #gymraids_alerts channel
 	if (data.channelsByName['gymraids_alerts']) {
@@ -125,7 +132,7 @@ const raid = (data: CommandData, message: Message) => {
 	}
 
 	//send alert to regional alert channel
-	message.channel.permissionOverwrites.forEach((role) => {
+	channel.permissionOverwrites.forEach((role) => {
 		if (role.type !== 'role') return;
 
 		var roleName = data.GUILD.roles.get(role.id).name;
@@ -143,21 +150,21 @@ const raid = (data: CommandData, message: Message) => {
 };
 
 /*	else if (message.content.substring(0,8) == '!raidegg') {
- if (message.channel.id == CHANNEL_IDS['#gymraids-alerts'] || message.channel.id == CHANNEL_IDS['#gymraids-meetups']) {
- message.channel.send(message.member.displayName + ', raid commands should only be run in the corresponding neighborhood channel');
+ if (channel.id == CHANNEL_IDS['#gymraids-alerts'] || channel.id == CHANNEL_IDS['#gymraids-meetups']) {
+ channel.send(message.member.displayName + ', raid commands should only be run in the corresponding neighborhood channel');
  return;
  }
  const tier = message.content.split(' ')[1];
  var tierNum = parseInt(tier);
  if (isNaN(tierNum)) {
- message.channel.send('Raid not processed, use format: !raidegg [tierNumber] [minutesUntilHatch] [location details]');
+ channel.send('Raid not processed, use format: !raidegg [tierNumber] [minutesUntilHatch] [location details]');
  return;
  }
 
- const channelId = message.channel.id;
+ const channelId = channel.id;
  const minutesToStart = parseInt(message.content.split(' ')[2]);
  if (isNaN(minutesToStart)) {
- message.channel.send('Raid not processed, use format: !raidegg [tierNumber] [minutesUntilHatch] [location details]');
+ channel.send('Raid not processed, use format: !raidegg [tierNumber] [minutesUntilHatch] [location details]');
  return;
  }
  var date = new Date(); //get today's date/time
@@ -177,7 +184,7 @@ const raid = (data: CommandData, message: Message) => {
  var detail = message.content.substring(message.content.indexOf(minutesToStart.toString()) + minutesToStart.toString().length + 1);
  detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql
  if (detail == null || detail == '') {
- message.channel.send('Raid not processed: use format: !raidegg [tierNumber] [minutesUntilHatch] [location details]');
+ channel.send('Raid not processed: use format: !raidegg [tierNumber] [minutesUntilHatch] [location details]');
  return;
  }
  if (detail.length > 255) {
@@ -191,12 +198,12 @@ const raid = (data: CommandData, message: Message) => {
  console.log(err + '\n' + sql);
 
  } else {
- message.channel.send('Processed Unhatched Raid #' + result.insertId + ' as Tier ' + tier + ' (cracking: ' + twelveHrDate + ') at ' + detail + ' added by ' + message.member.displayName);
+ channel.send('Processed Unhatched Raid #' + result.insertId + ' as Tier ' + tier + ' (cracking: ' + twelveHrDate + ') at ' + detail + ' added by ' + message.member.displayName);
  }
 
  });
 
- message.channel.send('Unhatched Raid reported to ' + client.channels.get(CHANNEL_IDS['#gymraids-alerts']) + ' as Tier ' + tier + ' (cracking: ' + twelveHrDate + ') at ' + detail + ' added by ' + message.member.displayName);
+ channel.send('Unhatched Raid reported to ' + client.channels.get(CHANNEL_IDS['#gymraids-alerts']) + ' as Tier ' + tier + ' (cracking: ' + twelveHrDate + ') at ' + detail + ' added by ' + message.member.displayName);
  //send alert to #gymraids-alerts channel
  client.channels.get(CHANNEL_IDS['#gymraids-alerts']).send('- ***Tier ' + tier + ' egg*** reported in ' + client.channels.get(channelId) + ' cracking at ' + twelveHrDate + ' at ' + detail);
  return;
