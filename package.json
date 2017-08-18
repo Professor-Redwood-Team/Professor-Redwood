@@ -17,6 +17,8 @@
   },
   "scripts": {
     "bot": "babel-node bot.js",
+    "flow": "flow",
+    "flow-typed": "flow-typed",
     "test": "mocha"
   },
   "keywords": [],
