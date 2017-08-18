@@ -49,6 +49,7 @@ const data = {
 		}
 		return name;
 	},
+	tagOrComment,
 };
 
 module.exports = data;
