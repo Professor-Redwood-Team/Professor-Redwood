@@ -71,14 +71,14 @@ client.on('message', (message, cb) => {
 
 	// todo : make the router do the routing
 	
-	if (message.member)	{CHATCOMMANDS.checkNew(message);}
+	let reply = '';
+	const command = message.content.split(' ')[0].toLowerCase();
+
+	if (message.member && command !=== '!play')	{CHATCOMMANDS.checkNew(message);}
 
 	if (message.content[0] !== '!') {
 		return;
 	}
-	
-	let reply = '';
-	const command = message.content.split(' ')[0].toLowerCase();
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
 	if (command === '!raid' || command === '!egg') {
