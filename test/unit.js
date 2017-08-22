@@ -72,9 +72,7 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 			let msg = Object.assign(newUserMessage, {content: 'hi'});
 			let result = checkNew(fakeDiscordData)(msg);
 
-			assert.equal(result, 'Welcome Unit Test User - I\'ve given you access to all neighborhood channels. Read more' +
-				' about the discord at #start_here. To filter out unwanted regions and neighborhood channels, ' +
-				'go to undefined and use the **!play** command or type **!help**');
+			assert.equal(result, 'Welcome Unit Test User - Please read discord rules and learn bot commands in #start_here before doing anything. For now, I\'ve given you allregions. Run bot commands in undefined and type **!help** for more information.');
 		});
 
 		it('subsequent message', () => {

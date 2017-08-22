@@ -270,7 +270,7 @@ describe('Acceptance Chat Commands', () => {
 			let msg = Object.assign(fakeMessage, {content: '!team instinct'});
 			msg.member.roles.push({'name': 'mystic'});
 			sendMessage(msg, (result) => {
-				assert.equal(result, 'Unit Test User, you already have a team assigned.');
+				assert.equal(result, 'Unit Test User, you already have a team assigned. Run **!reset** to reset all of your roles on this discord.');
 				done();
 			});
 		});
