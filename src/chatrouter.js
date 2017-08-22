@@ -4,6 +4,7 @@ const breakpoint = require('./chatcommands/breakpoint');
 const checkNew = require('./chatcommands/checkNew');
 const counters = require('./chatcommands/counters');
 const cp = require('./chatcommands/raidcp');
+const egg = require('./chatcommands/egg');
 const help = require('./chatcommands/help');
 const hide = require('./chatcommands/hide');
 const play = require('./chatcommands/play');
@@ -18,6 +19,7 @@ module.exports = (data) => {
 		checkNew: checkNew(data),
 		counters: counters(data),
 		cp: cp(data),
+		egg: egg(data),
 		help: help(data),
 		hide: hide(data),
 		play: play(data),

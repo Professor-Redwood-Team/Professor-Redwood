@@ -19,8 +19,12 @@ describe('Acceptance Chat Commands', () => {
 				{name: 'tyranitar', id: 248},
 				{name: 'lugia', id: 249}
 			],
-			roles: [],
-			channels:[	],
+			roles: [
+				{name: 'westsf', id: 1}
+			],
+			channels:[
+				{name: 'gymraids_alerts', id: 12345},
+			],
 		}];
 
 		fakeMessage = {
@@ -44,7 +48,9 @@ describe('Acceptance Chat Commands', () => {
 			delete: () => {return true;},
 			channel: {
 				send: () => {},
-				permissionOverwrites: [],
+				permissionOverwrites: [
+					//{type: 'role', name: 'eastsf', id: 1}
+				],
 				name: 'test-channel',
 				overwritePermissions:() => {return true;} 
 			},
@@ -198,6 +204,16 @@ describe('Acceptance Chat Commands', () => {
 			let msg = Object.assign(fakeMessage, {content: '!cp'});
 			sendMessage(msg, (result) => {
 				assert.equal(result, 'Usage: !cp raidBossPokemon');
+				done();
+			});
+		});
+	});
+
+	describe('!egg', () => {
+		it('normal', (done) => {
+			let msg = Object.assign(fakeNeighborhoodMessage, {content: '!egg 4 110 caltrain station'});
+			sendMessage(msg, (result) => {
+				console.log(result);
 				done();
 			});
 		});
