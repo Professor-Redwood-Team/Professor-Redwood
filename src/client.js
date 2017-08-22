@@ -71,8 +71,9 @@ client.on('message', (message, cb) => {
 
 	// todo : make the router do the routing
 	
+	if (message.member)	{CHATCOMMANDS.checkNew(message);}
+
 	if (message.content[0] !== '!') {
-		if (message.member)	{CHATCOMMANDS.checkNew(message);}
 		return;
 	}
 	
