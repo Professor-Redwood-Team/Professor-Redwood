@@ -74,7 +74,7 @@ client.on('message', (message, cb) => {
 	let reply = '';
 	const command = message.content.split(' ')[0].toLowerCase();
 
-	if (message.member && command !=== '!play')	{CHATCOMMANDS.checkNew(message);}
+	if (message.member && command !== '!play')	{CHATCOMMANDS.checkNew(message);}
 
 	if (message.content[0] !== '!') {
 		return;
@@ -90,13 +90,12 @@ client.on('message', (message, cb) => {
 		if (command === '!raid') {return cb(CHATCOMMANDS.raid(message));}
 		else {return cb(CHATCOMMANDS.egg(message));}
 	}
-	else if (message.member && command === '!hide') {return cb(CHATCOMMANDS.hide(message));}
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
 		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
 		return;
 	}
-
+	
 	if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
 	else if (command === '!cp') {return cb(CHATCOMMANDS.cp(message));}
 	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
@@ -109,6 +108,7 @@ client.on('message', (message, cb) => {
 	}
 
 	if (command === '!play') {return cb(CHATCOMMANDS.play(message));}
+	else if (command === '!hide') {return cb(CHATCOMMANDS.hide(message));}
 	else if (command === '!team') {return cb(CHATCOMMANDS.team(message));}
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}

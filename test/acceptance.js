@@ -231,9 +231,9 @@ describe('Acceptance Chat Commands', () => {
 
 	describe('!hide', () => {
 		it('normal', (done) => {
-			let msg = Object.assign(fakeNeighborhoodMessage, {content: '!hide'});
+			let msg = Object.assign(fakeMessage, {content: '!hide bayview-'});
 			sendMessage(msg, (result) => {
-				assert.equal(result, 'Hiding channel test-channel for user: Unit Test User');
+				assert.equal(result, 'Hiding channel bayview- for user: Unit Test User');
 				done();
 			});
 		});

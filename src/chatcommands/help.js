@@ -11,8 +11,8 @@ const handleHelp = (data, message) => {
 	reply += '**!play ' + CONSTANTS.REGIONS.join('|') + '** \n*(one region at a time, run again for more regions)*\n';
 	reply += 'Hides neighborhood channels outside of your selected region(s) (see ' + data.channelsByName['start_here'] + '\n\n';
 
-	reply += '**!hide**\n*(run inside neighborhood channels with a - in their name)*\n';
-	reply += 'Removes the channel you run the command in from your channel list' + '\n\n';
+	reply += '**!hide #channel**\n*(specify the channel using # at the beginning)*\n';
+	reply += 'Removes the channel you specify from your channel list' + '\n\n';
 
 	reply += '**!want pokemonName**\n*(type **!want** for a list of available pokemon*\nStarts OR stops alerts you receive for specified pokemon\n\n';
 
