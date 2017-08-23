@@ -113,8 +113,9 @@ client.on('message', (message, cb) => {
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
 
-	console.log('Command not found: ' + command); // eslint-disable-line
-	return cb('Command not found: ' + command);
+	const errorMessage = 'Command not found: ' + command;
+	constants.hook ? constants.hook.send(errorMessage) : console.log(errorMessage); // eslint-disable-line
+	return cb(errorMessage);
 });
 
 module.exports = client;

@@ -213,7 +213,7 @@ describe('Acceptance Chat Commands', () => {
 		it('normal', (done) => {
 			let msg = Object.assign(fakeNeighborhoodMessage, {content: '!egg 4 110 caltrain station'});
 			sendMessage(msg, (result) => {
-				console.log(result);
+				console.log(result); // remove when test works
 				done();
 			});
 		});

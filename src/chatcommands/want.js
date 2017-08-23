@@ -31,7 +31,7 @@ const assignWant = (data, message) => {
 		});
 	}
 
-	if(!currWantsMon) {
+	if (!currWantsMon) {
 		message.member.addRole(data.rolesByName[wantedMon]);
 		reply = 'OK ' + message.member.displayName + '! I will let you know when someone spots a ' + wantedMon + ' in the wild or as a raid boss';
 
@@ -47,11 +47,3 @@ const assignWant = (data, message) => {
 module.exports = (data) => ( (message) => {
 	return assignWant(data, message);
 });
-
-
-
-
-
-
-
-
