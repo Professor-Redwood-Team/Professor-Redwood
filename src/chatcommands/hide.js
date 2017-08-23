@@ -35,13 +35,12 @@ const handleHide = (data, message) => {
 	if(CONSTANTS.PROTECTED_CHANNELS.indexOf(channel.name) == -1) {
 		channel.overwritePermissions(message.author, hideUser);
 		reply = 'Hiding channel ' + channel.name + ' for user: ' + message.member.displayName;
-		console.log(reply);
 	}
 	else {
 		reply = 'You can\'t hide a protected channel. Protected channels are: ' + CONSTANTS.PROTECTED_CHANNELS.join(', ');
-		message.channel.send(reply);
 	}
 	//	message.delete();	
+	message.channel.send(reply);
 	return reply;
 };
 
