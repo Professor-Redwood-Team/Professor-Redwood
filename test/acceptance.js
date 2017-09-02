@@ -68,6 +68,54 @@ describe('Acceptance Chat Commands', () => {
 
 	//wrong channel commands - check new
 
+	describe('!attack', () => {
+		it('snorlax', (done) => {
+			let validCommands = ["!dmg 15 20 snorlax hyper_beam 20 mewtwo 15",
+								 "!dmg 20 15 snorlax hyper_beam 20 mewtwo 15",
+								 "!dmg 15 snorlax 20 hyper_beam 20 mewtwo 15",
+								 "!dmg snorlax 20 15 hyper_beam 20 mewtwo 15",
+								 "!dmg snorlax 20 hyper_beam 15 20 mewtwo 15",
+								 "!dmg snorlax 20 hyper_beam 15 15 20 mewtwo",
+								 "!dmg snorlax 20 hyper_beam 15 20 mewtwo 15",
+								 "!dmg snorlax 20 hyper_beam 15 mewtwo 15 20",
+								 "!dmg snorlax 20 hyper_beam 15 mewtwo 20",
+								 "!dmg snorlax 20 hyper_beam 15 mewtwo",
+								 "!dmg snorlax 20 hyper_beam mewtwo",
+								 "!dmg snorlax hyper_beam 15 mewtwo",
+								 "!dmg 15 snorlax hyper_beam mewtwo",
+								 "!dmg snorlax hyper_beam mewtwo",
+								 "!dmg snorlax 30 30 30 30 30 hyper_beam mewtwo"];
+			validCommands.forEach(function(cmd) {
+				let msg = Object.assign(fakeMessage, {content: cmd});
+				sendMessage(msg, (result) => {
+					assert(result.indexOf('HYPER BEAM does 94 damage') > -1);
+				});
+			});
+			done();
+		});
+		it('bad attacker', (done) => {
+			let msg = "!dmg snorkachu hyper_beam mewtwo"
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('Sorry, incorrect format.') > -1);
+				done();
+			});
+		});
+		it('bad defender', (done) => {
+			let msg = "!dmg snorlax 30 30 30 30 30 hyper_beam"
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('Sorry, incorrect format.') > -1);
+				done();
+			});
+		});
+		it('bad move', (done) => {
+			let msg = "!dmg snorlax 30 30 30 30 30 hyper_butt mewtwo"
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('Sorry, incorrect format.') > -1);
+				done();
+			});
+		});
+	});
+
 	describe('!breakpoint', () => {
 		it('golem', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!breakpoint golem rock_throw 15'});

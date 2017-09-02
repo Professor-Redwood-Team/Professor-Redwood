@@ -94,8 +94,9 @@ client.on('message', (message, cb) => {
 		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
 		return;
 	}
-
-	if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
+	if (command === '!attack' || command === '!atk' ||
+		command === '!damage' || command === '!dmg') {return cb(CHATCOMMANDS.attack(message));}
+	else if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
 	else if (command === '!cp') {return cb(CHATCOMMANDS.cp(message));}
 	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
 	else if (command === '!help') {return cb(CHATCOMMANDS.help(message));}
