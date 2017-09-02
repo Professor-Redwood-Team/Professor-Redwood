@@ -70,21 +70,21 @@ describe('Acceptance Chat Commands', () => {
 
 	describe('!attack', () => {
 		it('snorlax', (done) => {
-			let validCommands = ["!dmg 15 20 snorlax hyper_beam 20 mewtwo 15",
-								 "!dmg 20 15 snorlax hyper_beam 20 mewtwo 15",
-								 "!dmg 15 snorlax 20 hyper_beam 20 mewtwo 15",
-								 "!dmg snorlax 20 15 hyper_beam 20 mewtwo 15",
-								 "!dmg snorlax 20 hyper_beam 15 20 mewtwo 15",
-								 "!dmg snorlax 20 hyper_beam 15 15 20 mewtwo",
-								 "!dmg snorlax 20 hyper_beam 15 20 mewtwo 15",
-								 "!dmg snorlax 20 hyper_beam 15 mewtwo 15 20",
-								 "!dmg snorlax 20 hyper_beam 15 mewtwo 20",
-								 "!dmg snorlax 20 hyper_beam 15 mewtwo",
-								 "!dmg snorlax 20 hyper_beam mewtwo",
-								 "!dmg snorlax hyper_beam 15 mewtwo",
-								 "!dmg 15 snorlax hyper_beam mewtwo",
-								 "!dmg snorlax hyper_beam mewtwo",
-								 "!dmg snorlax 30 30 30 30 30 hyper_beam mewtwo"];
+			let validCommands = ["!attack 15 20 snorlax hyper_beam 20 mewtwo 15",
+								 "!attack 20 15 snorlax hyper_beam 20 mewtwo 15",
+								 "!attack 15 snorlax 20 hyper_beam 20 mewtwo 15",
+								 "!attack snorlax 20 15 hyper_beam 20 mewtwo 15",
+								 "!attack snorlax 20 hyper_beam 15 20 mewtwo 15",
+								 "!attack snorlax 20 hyper_beam 15 15 20 mewtwo",
+								 "!attack snorlax 20 hyper_beam 15 20 mewtwo 15",
+								 "!attack snorlax 20 hyper_beam 15 mewtwo 15 20",
+								 "!attack snorlax 20 hyper_beam 15 mewtwo 20",
+								 "!attack snorlax 20 hyper_beam 15 mewtwo",
+								 "!attack snorlax 20 hyper_beam mewtwo",
+								 "!attack snorlax hyper_beam 15 mewtwo",
+								 "!attack 15 snorlax hyper_beam mewtwo",
+								 "!attack snorlax hyper_beam mewtwo",
+								 "!attack snorlax 30 30 30 30 30 hyper_beam mewtwo"];
 			validCommands.forEach(function(cmd) {
 				let msg = Object.assign(fakeMessage, {content: cmd});
 				sendMessage(msg, (result) => {
@@ -94,21 +94,21 @@ describe('Acceptance Chat Commands', () => {
 			done();
 		});
 		it('bad attacker', (done) => {
-			let msg = "!dmg snorkachu hyper_beam mewtwo"
+			let msg = Object.assign(fakeMessage, {content: '!attack snorkachu hyper_beam mewtwo'});
 			sendMessage(msg, (result) => {
 				assert(result.indexOf('Sorry, incorrect format.') > -1);
 				done();
 			});
 		});
 		it('bad defender', (done) => {
-			let msg = "!dmg snorlax 30 30 30 30 30 hyper_beam"
+			let msg = Object.assign(fakeMessage, {content: '!attack snorlax 30 30 30 30 30 hyper_beam'});
 			sendMessage(msg, (result) => {
 				assert(result.indexOf('Sorry, incorrect format.') > -1);
 				done();
 			});
 		});
 		it('bad move', (done) => {
-			let msg = "!dmg snorlax 30 30 30 30 30 hyper_butt mewtwo"
+			let msg = Object.assign(fakeMessage, {content: '!attack snorlax 30 30 30 30 30 hyper_butt mewtwo'});
 			sendMessage(msg, (result) => {
 				assert(result.indexOf('Sorry, incorrect format.') > -1);
 				done();
@@ -157,8 +157,8 @@ describe('Acceptance Chat Commands', () => {
 		it('bad iv letters', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight zzzzz'});
 			sendMessage(msg, (result) => {
-				assert(result.indexOf('Sorry, IV must be 0-15.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
-				done();
+				assert(result.indexOf('Sorry, I can\'t find that defender. Remember to enter the pokemon\'s exact name in' +
+						' the pokedex.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);				done();
 			});
 		});
 		it('bad move', (done) => {
