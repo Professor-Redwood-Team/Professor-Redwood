@@ -19,8 +19,12 @@ describe('Acceptance Chat Commands', () => {
 				{name: 'tyranitar', id: 248},
 				{name: 'lugia', id: 249}
 			],
-			roles: [],
-			channels:[	],
+			roles: [
+				{name: 'westsf', id: 1}
+			],
+			channels:[
+				{name: 'gymraids_alerts', id: 12345},
+			],
 		}];
 
 		fakeMessage = {
@@ -44,7 +48,9 @@ describe('Acceptance Chat Commands', () => {
 			delete: () => {return true;},
 			channel: {
 				send: () => {},
-				permissionOverwrites: [],
+				permissionOverwrites: [
+					//{type: 'role', name: 'eastsf', id: 1}
+				],
 				name: 'test-channel',
 				overwritePermissions:() => {return true;} 
 			},
@@ -251,6 +257,16 @@ describe('Acceptance Chat Commands', () => {
 		});
 	});
 
+	describe('!egg', () => {
+		it('normal', (done) => {
+			let msg = Object.assign(fakeNeighborhoodMessage, {content: '!egg 4 110 caltrain station'});
+			sendMessage(msg, (result) => {
+				console.log(result);
+				done();
+			});
+		});
+	});
+
 	describe('!help', () => {
 		it('normal', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!help'});
@@ -263,9 +279,9 @@ describe('Acceptance Chat Commands', () => {
 
 	describe('!hide', () => {
 		it('normal', (done) => {
-			let msg = Object.assign(fakeNeighborhoodMessage, {content: '!hide'});
+			let msg = Object.assign(fakeMessage, {content: '!hide bayview-'});
 			sendMessage(msg, (result) => {
-				assert.equal(result, 'Hiding channel test-channel for user: Unit Test User');
+				assert.equal(result, 'Hiding channel bayview- for user: Unit Test User');
 				done();
 			});
 		});
@@ -302,7 +318,7 @@ describe('Acceptance Chat Commands', () => {
 			let msg = Object.assign(fakeMessage, {content: '!team instinct'});
 			msg.member.roles.push({'name': 'mystic'});
 			sendMessage(msg, (result) => {
-				assert.equal(result, 'Unit Test User, you already have a team assigned.');
+				assert.equal(result, 'Unit Test User, you already have a team assigned. Run **!reset** to reset all of your roles on this discord.');
 				done();
 			});
 		});

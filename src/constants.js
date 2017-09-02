@@ -47,6 +47,7 @@ const data = {
 		'hooh': 'ho-oh',
 		'ttar': 'tyranitar',
 	},
+	PROTECTED_CHANNELS: ['start_here', 'professor_redwood', 'announcements'], // todo : move to a config file
 	PROTECTED_ROLES: ['admin', 'mod', 'dev', 'VIP', '@everyone', 'timeout_inthecorner'], // todo : move to a config file
 };
 

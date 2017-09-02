@@ -71,24 +71,25 @@ client.on('message', (message, cb) => {
 
 	// todo : make the router do the routing
 	
-	if (message.content[0] !== '!') {
-		if (message.member)	{CHATCOMMANDS.checkNew(message);}
-		return;
-	}
-	
 	let reply = '';
 	const command = message.content.split(' ')[0].toLowerCase();
 
+	if (message.member && command !== '!play')	{CHATCOMMANDS.checkNew(message);}
+
+	if (message.content[0] !== '!') {
+		return;
+	}
+
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid') {
+	if (command === '!raid' || command === '!egg') {
 		if (message.channel.name.indexOf('-') === -1) {
 			reply = message.member.displayName + ', raid commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
 			return reply;
 		}
-		return cb(CHATCOMMANDS.raid(message));
+		if (command === '!raid') {return cb(CHATCOMMANDS.raid(message));}
+		else {return cb(CHATCOMMANDS.egg(message));}
 	}
-	else if (message.member && command === '!hide') {return cb(CHATCOMMANDS.hide(message));}
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
 		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
@@ -108,6 +109,7 @@ client.on('message', (message, cb) => {
 	}
 
 	if (command === '!play') {return cb(CHATCOMMANDS.play(message));}
+	else if (command === '!hide') {return cb(CHATCOMMANDS.hide(message));}
 	else if (command === '!team') {return cb(CHATCOMMANDS.team(message));}
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
