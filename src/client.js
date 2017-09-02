@@ -73,6 +73,8 @@ client.on('message', (message, cb) => {
 	
 	let reply = '';
 	const command = message.content.split(' ')[0].toLowerCase();
+	// replace any multiple spaces with a single space
+	while (message.content.indexOf('  ') > -1) {message.content = message.content.replace('  ', ' ');}
 
 	if (message.member && command !== '!play')	{CHATCOMMANDS.checkNew(message);}
 
