@@ -112,6 +112,14 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
+		it('additional spaces', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!bp alakazam  future_sight 15'});
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('FUTURE SIGHT damage against Venusaur\nLv20:   103') > -1);
+				assert(result.match(/damage against/g).length >= 3);
+				done();
+			});
+		});
 		it('bad iv letters', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight zzzzz'});
 			sendMessage(msg, (result) => {
