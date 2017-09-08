@@ -16,7 +16,7 @@ const handleHelp = (data, message) => {
 
 	reply += '**!want pokemonName**\n*(type **!want** for a list of available pokemon*\nStarts OR stops alerts you receive for specified pokemon\n\n';
 
-	reply += '**!reset**\n*(run inside neighborhood channels with a - in their name)*\n';
+	reply += '**!reset**\n*(reverses !team, !want, !play, !hide commands)*\n';
 	reply += 'Resets your profile on the discord: including team, alerts, and channel hiding' + '\n\n';
 
 	reply += '**!cp pokemonName** or **!counters pokemonName**\n*(available for tier 3-5 raid bosses*)\nDisplays the CP range at level 20 or the best counters for the specified pokemon\n\n';
