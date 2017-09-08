@@ -114,7 +114,7 @@ client.on('message', (message, cb) => {
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
 
 	const errorMessage = 'Command not found: ' + command;
-	constants.hook ? constants.hook.send(errorMessage) : console.log(errorMessage); // eslint-disable-line
+	CONSTANTS.log(errorMessage);
 	return cb(errorMessage);
 });
 

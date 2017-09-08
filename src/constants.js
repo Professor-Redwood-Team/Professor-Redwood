@@ -1,5 +1,7 @@
 'use strict';
 
+const Discord = require('discord.js');
+
 const regionsConfig = require('../config/regions.json');
 const secrets = require('../config/secrets.json');
 
@@ -46,7 +48,17 @@ const data = {
 	},
 	PROTECTED_CHANNELS: ['start_here', 'professor_redwood', 'announcements'], // todo : move to a config file
 	PROTECTED_ROLES: ['admin', 'mod', 'dev', 'VIP', '@everyone', 'timeout_inthecorner'], // todo : move to a config file
-	HOOK: new Discord.WebhookClient(secrets.webhook.log.id, secrets.webhook.log.token)
+};
+
+const webhook = secrets.webhook.log.token ? new Discord.WebhookClient(secrets.webhook.log.id, secrets.webhook.log.token) : null;
+data.log = (msg) => {
+	if (webhook) {
+		webhook.send(msg)
+			.then()
+			.catch(console.error); // eslint-disable-line
+	} else {
+		console.log(msg); // eslint-disable-line
+	}
 };
 
 //make this more elegant when we have more than one
