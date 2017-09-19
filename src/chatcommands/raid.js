@@ -1,5 +1,6 @@
 'use strict';
 
+const raidimage = require('./raidimage');
 const CONSTANTS = require('./../constants');
 
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
@@ -34,12 +35,25 @@ const raid = (data, message) => {
 	let reply = '';
 
 	const msgSplit = message.content.toLowerCase().split(' ');
-	if (!msgSplit || msgSplit.length < 4) {
+	const imageUrls = message.embeds.filter((elem, index, arr) => elem.image && elem.image.url);
+	if ((!imageUrls || imageUrls.length == 0) && (!msgSplit || msgSplit.length < 4)) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
 		return reply;
 	}
-	let boss = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
+	if ((!imageUrls || imageUrls.length == 0)) {
+		var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
+		return createReply(data, message, msgSplit[1], parseInt(msgSplit[2]), detail)
+	} else {
+		return new Promise((resolve, reject) => {
+			raidimage.readUrl(imageUrls[0].image.url)
+				.then(result => resolve(createReply(data, message, result.pokemon, result.minutesLeft, result.gym)));
+		});
+	}
+}
+
+const raid = (data, message, pokemon, minutesLeft, detail) => {
+	let boss = CONSTANTS.standardizePokemonName(pokemon.toLowerCase());
 
 	var bossTag = boss; //generate a tag for the boss to alert users
 
@@ -66,7 +80,6 @@ const raid = (data, message) => {
 	}
 
 	const channelName = message.channel.name;
-	const minutesLeft = parseInt(msgSplit[2]);
 	if (isNaN(minutesLeft) || minutesLeft < 1 || minutesLeft > 120) {
 		reply = 'Raid not processed, ensure minutes remaining is a integer between 1 and 120.\n'+usage;
 		message.channel.send(reply);
@@ -87,7 +100,6 @@ const raid = (data, message) => {
 	*/
 
 	//location information of raid
-	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: !raid [bossName] [minutesRemaining] [location details]';
