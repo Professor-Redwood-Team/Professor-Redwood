@@ -35,24 +35,43 @@ const raid = (data, message) => {
 	let reply = '';
 
 	const msgSplit = message.content.toLowerCase().split(' ');
-	const imageUrls = message.embeds.filter((elem, index, arr) => elem.image && elem.image.url);
+	console.log(message);
+	const imageUrls = message.attachments
+		.filter((elem, index, arr) => elem.height && elem.width && elem.url)
+		.map((elem, index, arr) => elem.url);
+	console.log(imageUrls);
 	if ((!imageUrls || imageUrls.length == 0) && (!msgSplit || msgSplit.length < 4)) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
 		return reply;
 	}
 	if ((!imageUrls || imageUrls.length == 0)) {
-		var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
-		return createReply(data, message, msgSplit[1], parseInt(msgSplit[2]), detail)
+		var minutesLeft = parseInt(msgSplit[2]);
+		var detail = null;
+		if (minutesLeft && !isNaN(minutesLeft)) {
+			detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
+		}
+		return createReply(data, message, msgSplit[1], minutesLeft, detail)
 	} else {
 		return new Promise((resolve, reject) => {
-			raidimage.readUrl(imageUrls[0].image.url)
-				.then(result => resolve(createReply(data, message, result.pokemon, result.minutesLeft, result.gym)));
+			raidimage.readUrl(imageUrls[0])
+				.then(result => {
+					if (!result.pokemon) {
+						reject('Raid Boss name could not be found');
+					} else if (!result.gym) {
+						reject('Gym name could not be found');
+					} else if (!result.minutesLeft) {
+						reject('Time remaining could not be found');
+					} else {
+						resolve(createReply(data, message, result.pokemon, result.minutesLeft, result.gym));
+					}
+				});
 		});
 	}
 }
 
-const raid = (data, message, pokemon, minutesLeft, detail) => {
+const createReply = (data, message, pokemon, minutesLeft, detail) => {
+	let reply = '';
 	let boss = CONSTANTS.standardizePokemonName(pokemon.toLowerCase());
 
 	var bossTag = boss; //generate a tag for the boss to alert users

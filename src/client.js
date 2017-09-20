@@ -26,7 +26,9 @@ const getEmoji = (pokemon) => {
 };
 
 const resolve = (cb, message) => {
-	Promise.resolve(message).then(result => cb(result));
+	Promise.resolve(message)
+		.then(result => cb(result))
+		.catch(err => cb(err));
 }
 
 client.on('ready', (done) => {
