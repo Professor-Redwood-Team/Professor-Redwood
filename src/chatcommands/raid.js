@@ -35,11 +35,9 @@ const raid = (data, message) => {
 	let reply = '';
 
 	const msgSplit = message.content.toLowerCase().split(' ');
-	console.log(message);
 	const imageUrls = message.attachments
 		.filter((elem, index, arr) => elem.height && elem.width && elem.url)
 		.map((elem, index, arr) => elem.url);
-	console.log(imageUrls);
 	if ((!imageUrls || imageUrls.length == 0) && (!msgSplit || msgSplit.length < 4)) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
