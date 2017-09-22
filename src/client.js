@@ -73,6 +73,8 @@ client.on('message', (message, cb) => {
 	
 	let reply = '';
 	const command = message.content.split(' ')[0].toLowerCase();
+	// replace any multiple spaces with a single space
+	while (message.content.indexOf('  ') > -1) {message.content = message.content.replace('  ', ' ');}
 
 	if (message.member && command !== '!play')	{CHATCOMMANDS.checkNew(message);}
 
@@ -113,8 +115,9 @@ client.on('message', (message, cb) => {
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
 
-	console.log('Command not found: ' + command); // eslint-disable-line
-	return cb('Command not found: ' + command);
+	const errorMessage = 'Command not found: ' + command;
+	CONSTANTS.log(errorMessage);
+	return cb(errorMessage);
 });
 
 module.exports = client;
