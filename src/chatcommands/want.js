@@ -9,7 +9,8 @@ const assignWant = (data, message) => {
 
 	wantedMon = CONSTANTS.standardizePokemonName(wantedMon);
 
-	if (CONSTANTS.MONS.indexOf(wantedMon) === -1 && CONSTANTS.RAIDMONS.indexOf(wantedMon) === -1 && CONSTANTS.LEGENDARYMONS.indexOf(wantedMon) === -1 && CONSTANTS.SPECIALMONS.indexOf(wantedMon) === -1) {
+	if (CONSTANTS.MONS.indexOf(wantedMon) === -1 && CONSTANTS.RAIDMONS.indexOf(wantedMon) === -1 && CONSTANTS.LEGENDARYMONS.indexOf(wantedMon) === -1 && 
+		CONSTANTS.SPECIALMONS.indexOf(wantedMon) === -1 && CONSTANTS.EGGTIERS.indexOf(wantedMon) === -1) {
 		reply = 'I\'m sorry, I can\'t find ' + wantedMon + '. Remember you can only type one pokemon\'s name at a time. Type **!want pokemonName** where pokemonName is one item in any of the lists below:' +
 				'\n**Legendary Pokemon**: ' + CONSTANTS.LEGENDARYMONS.join('|') +
 				'\n**Egg Tiers**: ' + CONSTANTS.EGGTIERS.join('|') +
