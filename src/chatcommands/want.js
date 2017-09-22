@@ -18,6 +18,7 @@ const assignWant = (data, message) => {
 				'\n**Wild Pokemon**: ' + CONSTANTS.MONS.join('|') +
 				'\n**Special Case**: ' + CONSTANTS.SPECIALMONS.join('|') +
 				'\nWhere *legendary* is any legendary pokemon' +
+				'\nWhere *sponsored* is a raid at a sponsored gym' +
 				'\nWhere *highiv* is a wild rare spawn that a user finds that is *amazing*, a *wonder*, or *can battle with the best of them*' +
 				'\nWhere *finalevo* is a wild spawn of a final evolution';
 		message.channel.send(reply);
