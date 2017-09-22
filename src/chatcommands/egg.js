@@ -48,8 +48,16 @@ const egg = (data, message) => {
 	}
 
 	let tierEmoji = '';
-	if (tier == 5) tierEmoji = 'legendaryraid';
-	else if (tier > 2) tierEmoji = 'rareraid';
+	var eggTag = 'Tier ' + tier;
+	if (tier == 5) {
+		tierEmoji = 'legendaryraid';
+		eggTag = ' <@&' + data.rolesByName['tier5'].id + '> ';
+	}
+	else if (tier > 2) {
+		tierEmoji = 'rareraid';
+		if(tier == 3) eggTag = ' <@&' + data.rolesByName['tier3'].id + '> ';
+		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';
+	}
 	else tierEmoji = 'normalraid'; 
 
 	const channelName = message.channel.name;
@@ -76,7 +84,7 @@ const egg = (data, message) => {
 		detail = detail.substring(0,255);
 	}
 
-	reply = 'Tier ' + tier + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' +
+	reply = eggTag + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' +
 		detail + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
 	let forwardReply = '- **Tier ' + tier + '** ' + data.getEmoji(tierEmoji) + ' egg reported in ' + data.channelsByName[channelName] + ' hatching at ' + twelveHrDate + ' at ' + detail;
