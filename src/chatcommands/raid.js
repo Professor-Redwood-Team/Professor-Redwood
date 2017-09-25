@@ -1,10 +1,6 @@
 'use strict';
-<<<<<<< HEAD
 const getLocation = require('../lib/places');
-=======
-
 const pokemonInfo = require('../../data/pokemon.json');
->>>>>>> cad976e229d7822cb06c1939abb3bf8c0b457b36
 const CONSTANTS = require('./../constants');
 
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
