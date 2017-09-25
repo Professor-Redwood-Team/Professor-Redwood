@@ -1,12 +1,9 @@
 'use strict';
-<<<<<<< HEAD
 const getLocation = require('../lib/places');
-=======
 
 const pokemonInfo = require('../../data/pokemon.json');
->>>>>>> cad976e229d7822cb06c1939abb3bf8c0b457b36
 const CONSTANTS = require('./../constants');
-const Raids = require('../lib/raids').Raids
+
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
 
 //Format a date object as a string in 12 hour format
@@ -85,7 +82,7 @@ const raid = (data, message) => {
 	}
 	var date = new Date(); //get today's date/time
 	date.setMinutes(date.getMinutes() + minutesLeft); //add minutes remaining to get end time
-	
+
 	var twelveHrDate = format_time(date); //calc the friendly 12h date string for the UI
 
 	//clean the date variable into a UTC object compatible with mysql and discord. this may no longer be required
@@ -113,28 +110,21 @@ const raid = (data, message) => {
   
 	getLocation(detail.substring(0,255), channelName)
 		.then(url => {
-			let d = date.setMinutes(date.getMinutes() + minutesLeft)
-			console.log(d)
 			detail = url;
 			// this portion had to be chained to the promise so that it would asynchronous, and that detail would get updated/adjusted within the promise
-			Raids
-				.add(boss, d, date, twelveHrDate, channelName, detail)
-				.then(({ id }) => {
-					reply = '**' + id  + '** - ' + 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
-						detail + ' added by ' + message.member.displayName;
-					forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] +
-						' ending at ' + twelveHrDate + ' at ' + detail;
-					message.channel.send(reply);
-					//send alert to #gymraids_alerts channel
-					if (data.channelsByName['gymraids_alerts']) {
-						data.channelsByName['gymraids_alerts'].send(forwardReply);
-					} else {
-						console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
-					}
-				})
-				.catch(err => console.log(`Raids command had an ${err}`) )
+			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
+				detail + ' added by ' + message.member.displayName;
+      forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] +
+        ' ending at ' + twelveHrDate + ' at ' + detail;
+			message.channel.send(reply);
+			//send alert to #gymraids_alerts channel
+			if (data.channelsByName['gymraids_alerts']) {
+        data.channelsByName['gymraids_alerts'].send(forwardReply);
+      } else {
+        console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
+      }
 		})
-		.catch((err) => { 
+		.catch(() => { 
 			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
 			detail + ' added by ' + message.member.displayName;
 			message.channel.send(reply) 
@@ -151,8 +141,6 @@ const raid = (data, message) => {
 		}
 	});
 	*/
-<<<<<<< HEAD
-=======
 	reply = bossTag + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' +
 		detail + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
@@ -163,7 +151,6 @@ const raid = (data, message) => {
 	} else {
 		console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
 	}
->>>>>>> cad976e229d7822cb06c1939abb3bf8c0b457b36
 
 	//send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {
