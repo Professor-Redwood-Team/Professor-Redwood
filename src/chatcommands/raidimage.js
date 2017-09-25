@@ -229,7 +229,7 @@ var readImage = function(im) {
   return [
     image.copy().crop(.20, .052, .792, .065).sharpen().grayscale().blackwhite(40).cropLetters().recognize(), // gym
     image.copy().crop(0, .234, 1, .091).grayscale().blackwhite().cropLetters().recognize(), // name
-    image.copy().crop(.741, .579, .185, .055).sharpen().grayscale().blackwhite(10).cropLetters([20, 5]).recognize(expireMinutes).catch(err => null), // expire time
+    image.copy().crop(.741, .589, .185, .045).sharpen().grayscale().blackwhite(10).cropLetters([20, 5]).recognize(expireMinutes).catch(err => null), // expire time
     recognizeRects(notif, notifTimes, 0) // image time
   ]
 }
