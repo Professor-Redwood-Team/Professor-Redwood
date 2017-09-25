@@ -1,5 +1,10 @@
 'use strict';
+<<<<<<< HEAD
 const getLocation = require('../lib/places');
+=======
+
+const pokemonInfo = require('../../data/pokemon.json');
+>>>>>>> cad976e229d7822cb06c1939abb3bf8c0b457b36
 const CONSTANTS = require('./../constants');
 const Raids = require('../lib/raids').Raids
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
@@ -41,6 +46,12 @@ const raid = (data, message) => {
 	}
 	let boss = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
 
+	if (!pokemonInfo[boss.toUpperCase()]) {
+		reply = 'Sorry, boss not found. Please make sure to type the exact name of the raid boss and DO NOT USE THE @ tag.\n'+usage;
+		message.channel.send(reply);
+		return reply;
+	}
+
 	var bossTag = boss; //generate a tag for the boss to alert users
 
 	data.GUILD.roles.forEach((role) => {
@@ -67,8 +78,8 @@ const raid = (data, message) => {
 
 	const channelName = message.channel.name;
 	const minutesLeft = parseInt(msgSplit[2]);
-	if (isNaN(minutesLeft)) {
-		reply = 'Raid not processed, ensure minutes remaining is a number.\n'+usage;
+	if (isNaN(minutesLeft) || minutesLeft < 1 || minutesLeft > 120) {
+		reply = 'Raid not processed, ensure minutes remaining is a integer between 1 and 120.\n'+usage;
 		message.channel.send(reply);
 		return reply;
 	}
@@ -140,6 +151,19 @@ const raid = (data, message) => {
 		}
 	});
 	*/
+<<<<<<< HEAD
+=======
+	reply = bossTag + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' +
+		detail + ' added by ' + message.member.displayName;
+	message.channel.send(reply);
+	let forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
+	//send alert to #gymraids_alerts channel
+	if (data.channelsByName['gymraids_alerts']) {
+		data.channelsByName['gymraids_alerts'].send(forwardReply);
+	} else {
+		console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
+	}
+>>>>>>> cad976e229d7822cb06c1939abb3bf8c0b457b36
 
 	//send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {

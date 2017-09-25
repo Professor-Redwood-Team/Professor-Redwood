@@ -17,9 +17,7 @@ const checkNew = (data, message) => {
 
 	if (grantAll) {
 		message.member.addRole(data.rolesByName['allregions']);
-		reply = 'Welcome ' + message.member.displayName + ' - I\'ve given you access to all neighborhood channels. Read more about the discord at ' +
-			data.channelsByName['start_here'] +
-			'. To filter out unwanted regions and neighborhood channels, go to ' + data.channelsByName['professor_redwood']  + ' and use the **!play** command or type **!help**';
+		reply = 'Welcome ' + message.member.displayName + ' - Please read discord rules and learn bot commands in ' + data.channelsByName['start_here'] + ' before doing anything. For now, I\'ve given you allregions. Run bot commands in ' + data.channelsByName['professor_redwood']  + ' and type **!help** for more information.';
 		message.channel.send(reply);
 	}
 
