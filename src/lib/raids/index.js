@@ -155,7 +155,6 @@ class Groups {
     return new Promise((resolve,  reject) => {
       Group.find({ channel }).where('start_time').gte(current_time).exec((err, data) => {
         if(err) {
-          console.log(err)
           reject(`Something went wrong with listing your groups by ${channel}, ping @adcoord.`)
         }
         if(data.length <= 0) { reject (`There are currently no groups for list of raids in ${channel}`) }

@@ -45,7 +45,6 @@ const groups = (data, message) => {
         channel.send(list)
     })
     .catch((err) => { 
-      console.log(err)
       channel.send(`Error: ${err}`)
     })
   }
@@ -61,8 +60,6 @@ const groups = (data, message) => {
         
         let d = new Date(),
         start_time = d.setMinutes(d.getMinutes() + Number(content[3]))
-  
-        console.log(start_time)
   
         let start_time_string = d.toString(),
         num_of_players = content[4] || 0,
@@ -96,16 +93,16 @@ const groups = (data, message) => {
           let { name } = channel,
           pokemon = content[2]
           Groups
-          .listByPokemon(name, pokemon)
-          .then(groups => {
-            let groupList = groups.map(group => {
-              `
-              ** ${group.id} ** - ${group.pokemon}
-              ** Players **   : ${group.num_of_players}
-              ** Group **     : ${group.players}
-              ** Location **  : ${group.location}
-              ** Start Time **: ${group.start_time}
-              `
+            .listByPokemon(name, pokemon)
+            .then(groups => {
+              let groupList = groups.map(group => {
+`
+** ${group.id} ** - ${group.pokemon}
+** Players **   : ${group.num_of_players}
+** Group **     : ${group.players}
+** Location **  : ${group.location}
+** Start Time **: ${group.start_time}
+`
             }).join('\n')
             channel.send(groupList)
           })
