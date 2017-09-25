@@ -54,14 +54,18 @@ const raid = (data, message) => {
 		return new Promise((resolve, reject) => {
 			raidimage.readUrl(imageUrls[0])
 				.then(result => {
-					if (!result.pokemon) {
-						reject('Raid Boss name could not be found');
-					} else if (!result.gym) {
-						reject('Gym name could not be found');
-					} else if (!result.minutesLeft) {
-						reject('Time remaining could not be found');
-					} else {
+					if (result.pokemon && result.gym && result.minutesLeft) {
 						resolve(createReply(data, message, result.pokemon, result.minutesLeft, result.gym));
+					} else {
+						if (!result.pokemon) {
+							reply = 'Raid Boss name could not be found';
+						} else if (!result.gym) {
+							reply = 'Gym name could not be found';
+						} else if (!result.minutesLeft) {
+							reply = 'Time remaining could not be found';
+						}
+						message.channel.send(reply);
+						reject(reply);
 					}
 				});
 		});
