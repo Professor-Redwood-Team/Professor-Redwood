@@ -313,22 +313,35 @@
       }
    },
    "mewtwo":{
-      "tyranitar":[
-         "Bite + Crunch / Stone Edge"
-      ],
-      "gengar":[
-         "Any + Shadow Ball",
-         "Shadow Claw + Any"
-      ],
-      "houndoom":[
-         "Snarl + Foul Play"
-      ],
-      "pinsir":[
-         "Bug Bite / Fury Cutter + X Scissor"
-      ],
-      "scizor":[
-         "Fury Cutter + X Scissor"
-      ]
+      "stats": {
+         "HP": "12500",
+         "CP": "49430"
+      },
+      "fast": ["Psycho Cut", "Confusion"],
+      "charge": ["Focus Blast", "Shadow Ball", "Hyper Beam", "Psychic"],
+      "weaknesses": ["Bug", "Ghost", "Dark"],
+      "resistances": ["Fighting", "Psychic"],
+      "counters": {
+         "Overall": {
+            "tyranitar": ["Bite + Crunch / Stone Edge"],
+            "mewtwo": ["Any Psychic + Shadow Ball"],
+            "houndoom": ["Any Dark + Any Dark"],
+            "lugia": ["Dragon Tail / Extrasensory + Sky Attack"],
+            "snorlax": ["Lick + Hyper Beam"],
+            "scizor": ["Fury Cutter + X-Scissor"],
+            "dragonite": ["Dragon Tail / Steel Wing + Outrage"]
+         },
+         "Focus Blast": {
+            "gyarados": ["Bite + Crunch"]
+         },
+         "Shadow Ball": {
+            "blissey": ["Pound + Hyper Beam"],
+            "pinsir": ["Bug Bite / Fury Cutter + X-Scissor"]
+         },
+         "Glass Cannon vs Anything but Shadow Ball": {
+            "gengar": ["Shadow Claw / Sucker Punch / Hex + Shadow Ball / Sludge Bomb"]
+         }
+      }
    },
    "mew":{
       "tyranitar":[

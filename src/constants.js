@@ -1,5 +1,7 @@
 'use strict';
 
+const Discord = require('discord.js');
+
 const regionsConfig = require('../config/regions.json');
 const secrets = require('../config/secrets.json');
 
@@ -34,19 +36,34 @@ const data = {
 	TEAMS: ['valor', 'instinct', 'mystic'],
 	MONS: ['aerodactyl', 'chansey', 'ditto', 'dratini', 'dragonite', 'girafarig', 'grimer', 'hitmonchan', 'hitmonlee', 'hitmontop',
 		'machop', 'mareep', 'miltank', 'onix', 'porygon', 'scyther', 'tauros', 'togetic', 'larvitar', 'unown'],
+	EGGTIERS: ['tier3', 'tier4', 'tier5'],
 	RAIDMONS: ['alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'rhydon', 'snorlax', 'tyranitar', 'venusaur'],
 	LEGENDARYMONS: ['articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune'],
-	SPECIALMONS: ['legendary', 'highiv', 'finalevo'],
+	SPECIALMONS: ['legendary', 'sponsored', 'highiv', 'finalevo'],
 	REGIONS: regionsConfig.regions,
 	COMMON_MISSPELLINGS: {
-		'unknown': 'unown',
 		'hooh': 'ho-oh',
+		'milktank': 'miltank',
 		'ttar': 'tyranitar',
+		'unknown': 'unown',
 	},
+	PROTECTED_CHANNELS: ['start_here', 'professor_redwood', 'announcements'], // todo : move to a config file
 	PROTECTED_ROLES: ['admin', 'mod', 'dev', 'VIP', '@everyone', 'timeout_inthecorner'], // todo : move to a config file
 };
 
-const standardizePokemonName = (name) => {
+const webhook = secrets.webhook.log.token ? new Discord.WebhookClient(secrets.webhook.log.id, secrets.webhook.log.token) : null;
+data.log = (msg) => {
+	if (webhook) {
+		webhook.send(msg)
+			.then()
+			.catch(console.error); // eslint-disable-line
+	} else {
+		console.log(msg); // eslint-disable-line
+	}
+};
+
+//make this more elegant when we have more than one
+data.standardizePokemonName = (name) => {
 	name = name.toLowerCase();
 	if (data.COMMON_MISSPELLINGS[name]) {
 		name = data.COMMON_MISSPELLINGS[name];
@@ -54,7 +71,5 @@ const standardizePokemonName = (name) => {
 	return name;
 };
 
-//make this more elegant when we have more than one
-data.standardizePokemonName = standardizePokemonName;
 
 module.exports = data;
