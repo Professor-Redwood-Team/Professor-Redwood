@@ -75,7 +75,6 @@ data.standardizePokemonName = (name, type) => {
 	const mons = (type == 'wild') ? data.WILDMONS : 
 		(type == 'raid') ? data.ALLRAIDMONS :
 		data.ALLMONS;
-	console.log(mons[name]);
 	if (!mons[name]) {
 		var fuzzy = new FuzzySet(mons, true);
 		var results = fuzzy.get(name, name, .75);
