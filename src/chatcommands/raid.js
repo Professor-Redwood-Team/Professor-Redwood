@@ -39,7 +39,7 @@ const raid = (data, message) => {
 		message.channel.send(reply);
 		return reply;
 	}
-	let boss = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
+	let boss = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase(), 'raid');
 
 	var bossTag = boss; //generate a tag for the boss to alert users
 

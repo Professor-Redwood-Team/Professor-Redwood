@@ -5,6 +5,7 @@
   "main": "bot-test.js",
   "dependencies": {
     "discord.js": "^11.1.0",
+    "fuzzyset.js": "^0.0.4",
     "mocha": "^3.5.0",
     "mysql": "^2.14.0"
   },
