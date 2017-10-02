@@ -25,6 +25,12 @@ const getEmoji = (pokemon) => {
 	return '';
 };
 
+const resolve = (cb, message) => {
+	Promise.resolve(message)
+		.then(result => cb(result))
+		.catch(err => cb(err));
+}
+
 client.on('ready', (done) => {
 	client.channels.forEach((channel) => {
 		channelsByName[channel.name] = channel;
@@ -89,8 +95,8 @@ client.on('message', (message, cb) => {
 			message.channel.send(reply);
 			return reply;
 		}
-		if (command === '!raid') {return cb(CHATCOMMANDS.raid(message));}
-		else {return cb(CHATCOMMANDS.egg(message));}
+		if (command === '!raid') {return resolve(cb, CHATCOMMANDS.raid(message));}
+		else {return resolve(cb, CHATCOMMANDS.egg(message));}
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
@@ -98,10 +104,10 @@ client.on('message', (message, cb) => {
 		return;
 	}
 	
-	if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
-	else if (command === '!cp') {return cb(CHATCOMMANDS.cp(message));}
-	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
-	else if (command === '!help') {return cb(CHATCOMMANDS.help(message));}
+	if (command === '!breakpoint' || command === '!bp') {return resolve(cb, CHATCOMMANDS.breakpoint(message));}
+	else if (command === '!cp') {return resolve(cb, CHATCOMMANDS.cp(message));}
+	else if (command === '!counter' || command === '!counters') {return resolve(cb, CHATCOMMANDS.counters(message));}
+	else if (command === '!help') {return resolve(cb, CHATCOMMANDS.help(message));}
 
 	//Inside Professor Redwood Channel, OK to touch message.member
 	if (reply === '' && !message.member) {
@@ -109,15 +115,15 @@ client.on('message', (message, cb) => {
 		return;
 	}
 
-	if (command === '!play') {return cb(CHATCOMMANDS.play(message));}
-	else if (command === '!hide') {return cb(CHATCOMMANDS.hide(message));}
-	else if (command === '!team') {return cb(CHATCOMMANDS.team(message));}
-	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
-	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
+	if (command === '!play') {return resolve(cb, CHATCOMMANDS.play(message));}
+	else if (command === '!hide') {return resolve(cb, CHATCOMMANDS.hide(message));}
+	else if (command === '!team') {return resolve(cb, CHATCOMMANDS.team(message));}
+	else if (command === '!want') {return resolve(cb, CHATCOMMANDS.want(message));}
+	else if (command === '!reset') {return resolve(cb, CHATCOMMANDS.reset(message));}
 
 	const errorMessage = 'Command not found: ' + command;
 	CONSTANTS.log(errorMessage);
-	return cb(errorMessage);
+	return resolve(cb, errorMessage);
 });
 
 module.exports = client;

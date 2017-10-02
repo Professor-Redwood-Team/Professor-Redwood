@@ -6,7 +6,11 @@
   "dependencies": {
     "discord.js": "^11.1.0",
     "mocha": "^3.5.0",
-    "mysql": "^2.14.0"
+    "moment": "^2.18.1",
+    "mysql": "^2.14.0",
+    "opencv": "^6.0.0",
+    "request": "^2.81.0",
+    "tesseract.js": "^1.0.10"
   },
   "devDependencies": {
     "eslint": "^4.3.0"

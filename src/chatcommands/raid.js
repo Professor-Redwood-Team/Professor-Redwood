@@ -1,5 +1,6 @@
 'use strict';
 
+const raidimage = require('./raidimage');
 const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
 
@@ -35,12 +36,46 @@ const raid = (data, message) => {
 	let reply = '';
 
 	const msgSplit = message.content.toLowerCase().split(' ');
-	if (!msgSplit || msgSplit.length < 4) {
+	const imageUrls = message.attachments
+		.filter((elem, index, arr) => elem.height && elem.width && elem.url)
+		.map((elem, index, arr) => elem.url);
+	if ((!imageUrls || imageUrls.length == 0) && (!msgSplit || msgSplit.length < 4)) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
 		return reply;
 	}
-	let boss = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
+	if ((!imageUrls || imageUrls.length == 0)) {
+		var minutesLeft = parseInt(msgSplit[2]);
+		var detail = null;
+		if (minutesLeft && !isNaN(minutesLeft)) {
+			detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
+		}
+		return createReply(data, message, msgSplit[1], minutesLeft, detail)
+	} else {
+		return new Promise((resolve, reject) => {
+			raidimage.raidBossUrl(imageUrls[0])
+				.then(result => {
+					if (result.pokemon && result.gym && result.minutesLeft) {
+						resolve(createReply(data, message, result.pokemon, result.minutesLeft, result.gym));
+					} else {
+						if (!result.pokemon) {
+							reply = 'Raid Boss name could not be found';
+						} else if (!result.gym) {
+							reply = 'Gym name could not be found';
+						} else if (!result.minutesLeft) {
+							reply = 'Time remaining could not be found';
+						}
+						message.channel.send(reply);
+						reject(reply);
+					}
+				});
+		});
+	}
+}
+
+const createReply = (data, message, pokemon, minutesLeft, detail) => {
+	let reply = '';
+	let boss = CONSTANTS.standardizePokemonName(pokemon.toLowerCase());
 
 	if (!pokemonInfo[boss.toUpperCase()]) {
 		reply = 'Sorry, boss not found. Please make sure to type the exact name of the raid boss and DO NOT USE THE @ tag.\n'+usage;
@@ -73,7 +108,6 @@ const raid = (data, message) => {
 	}
 
 	const channelName = message.channel.name;
-	const minutesLeft = parseInt(msgSplit[2]);
 	if (isNaN(minutesLeft) || minutesLeft < 1 || minutesLeft > 120) {
 		reply = 'Raid not processed, ensure minutes remaining is a integer between 1 and 120.\n'+usage;
 		message.channel.send(reply);
@@ -94,7 +128,6 @@ const raid = (data, message) => {
 	*/
 
 	//location information of raid
-	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: !raid [bossName] [minutesRemaining] [location details]';
