@@ -4,11 +4,12 @@ var moment = require('moment')
 var request = require('request')
 
 var debugfile = 1
-var DEBUG = false
+const DEBUG = false
 
-var MORPH_RECT = 0
-var MORPH_CROSS = 1
-var MORPH_ELLIPSE = 2 
+const MORPH_RECT = 0
+const MORPH_CROSS = 1
+const MORPH_ELLIPSE = 2 
+
 
 function ImageProcessor(img) {
   this.img = img
@@ -35,6 +36,7 @@ ImageProcessor.prototype.grayscale = function() {
   this.img.convertTo(dest, cv.Constants.CV_8UC1)
   dest.convertGrayscale()
   this.img = dest
+  this.debug('grayscale', this.img)
   return this
 }
 
@@ -63,16 +65,16 @@ ImageProcessor.prototype.dilate = function() {
 
 ImageProcessor.prototype.opening = function() {
   var element = cv.imgproc.getStructuringElement(MORPH_RECT, [2, 2] )
-  this.img.dilate(1, element)
   this.img.erode(1, element)
+  this.img.dilate(1, element)
   this.debug('opening', this.img)
   return this
 }
 
 ImageProcessor.prototype.closing = function() {
   var element = cv.imgproc.getStructuringElement(MORPH_RECT, [2, 2] )
-  this.img.erode(1, element)
   this.img.dilate(1, element)
+  this.img.erode(1, element)
   this.debug('closing', this.img)
   return this
 }
@@ -208,29 +210,71 @@ var recognizeRects = function(image, rects, index) {
     })
 }
 
-var readFile = function(filename) {
-  cv.readImage(filename, function(err, im) {
-    if (err) throw err
-    readImage(im)
-  })
+var recognizeNotifBar = function(image) {
+  var notif = image.copy().crop(0, 0, 1, .036).grayscale()
+  notif.debug('notif', notif.img)
+  var notifTimes = detect(notif.copy(true).canny().img, [10, 2])
+
+  return recognizeRects(notif, notifTimes, 0)
 }
 
-var readImage = function(im) {
+var countTiers = function(image) {
+  var count = 0
+  var contours = image.img.findContours()
+
+  for(var i = 0; i < contours.size(); ++i) {
+    if (contours.area(i)>1000) { 
+      ++count
+      if (DEBUG) {
+        var rect = contours.boundingRect(i)
+        console.log(rect)
+        var xy = [rect.x, rect.y]
+        var wh = [rect.width, rect.height]
+        image.img.rectangle(xy, wh, [255, 255, 255], 5)
+      }
+    }
+  }
+  image.debug('tiers')
+  return count
+}
+
+var eggTier = function(image) {
+   return countTiers(image.copy().crop(.290, .280, .420, .055).grayscale().blackwhite().closing())
+}
+
+var raidImage = function(im, isEgg) {
 
   var width = im.width()
   var height = im.height()
   if (width < 1 || height < 1) throw new Error('Image has no size')
 
   var image = new ImageProcessor(im).removeAlpha()
-  var notif = image.copy().crop(0, 0, 1, .036).grayscale()
-  notif.debug('notif', notif.img)
-  var notifTimes = detect(notif.copy(true).canny().img, [10, 2])
 
   return [
     image.copy().crop(.20, .052, .792, .065).sharpen().grayscale().blackwhite(40).cropLetters().recognize(), // gym
-    image.copy().crop(0, .234, 1, .091).grayscale().blackwhite().cropLetters().recognize(), // name
-    image.copy().crop(.741, .589, .185, .045).sharpen().grayscale().blackwhite(10).cropLetters([20, 5]).recognize(expireMinutes).catch(err => null), // expire time
-    recognizeRects(notif, notifTimes, 0) // image time
+    isEgg ? null : image.copy().crop(0, .234, 1, .091).grayscale().blackwhite().cropLetters().recognize(), // name
+    isEgg ? eggTier(image) : null, //tier
+    isEgg  
+      ? image.copy().crop(.370, .195, .260, .055).sharpen().grayscale().blackwhite(10).cropLetters([20, 5]).recognize(expireMinutes).catch(err => null)
+      : image.copy().crop(.741, .589, .185, .045).sharpen().grayscale().blackwhite(10).cropLetters([20, 5]).recognize(expireMinutes).catch(err => null), // expire time
+    recognizeNotifBar(image) // image time
+  ]
+}
+
+var raidEggImage = function(im) {
+
+  var width = im.width()
+  var height = im.height()
+  if (width < 1 || height < 1) throw new Error('Image has no size')
+
+  var image = new ImageProcessor(im).removeAlpha()
+
+  return [
+    image.copy().crop(.20, .052, .792, .065).sharpen().grayscale().blackwhite(40).cropLetters().recognize(), // gym
+    null, //pokemon
+    image.copy().crop(.290, .280, .420, .055).sharpen().grayscale().blackwhite(10), // tier
+    image.copy().crop(.370, .195, .260, .055).sharpen().grayscale().blackwhite(10).cropLetters([20, 5]).recognize(expireMinutes).catch(err => null), // expire time
+    recognizeNotifBar(image) // image time
   ]
 }
 
@@ -244,17 +288,18 @@ ImageProcessor.prototype.debug = function(prefix, img) {
   return this
 }
 
-var readUrl = function(url) {
+var raidImageUrl = function(url, isEgg) {
   return new Promise((resolve, reject) => {
     var stream = new cv.ImageDataStream()
     stream.on('load', (im) => {
-      Promise.all(readImage(im))
+      Promise.all(raidImage(im, isEgg))
         .then(results => {
           resolve({
             gym : results[0],
             pokemon : results[1],
-            minutesLeft : results[2],
-            imageTime : results[3]
+            tier : results[2],
+            minutesLeft : results[3],
+            imageTime : results[4]
           })
         })
         .catch(err => reject(err))
@@ -264,4 +309,12 @@ var readUrl = function(url) {
   })
 }
 
-module.exports = {readUrl}
+var raidBossUrl = function(url) {
+  return raidImageUrl(url, false)
+}
+
+var raidEggUrl = function(url) {
+  return raidImageUrl(url, true)
+}
+
+module.exports = {raidBossUrl, raidEggUrl}

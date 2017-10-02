@@ -52,7 +52,7 @@ const raid = (data, message) => {
 		return createReply(data, message, msgSplit[1], minutesLeft, detail)
 	} else {
 		return new Promise((resolve, reject) => {
-			raidimage.readUrl(imageUrls[0])
+			raidimage.raidBossUrl(imageUrls[0])
 				.then(result => {
 					if (result.pokemon && result.gym && result.minutesLeft) {
 						resolve(createReply(data, message, result.pokemon, result.minutesLeft, result.gym));
