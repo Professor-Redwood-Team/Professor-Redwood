@@ -62,7 +62,8 @@ client.on('message', (message, cb) => {
 	if (!cb) cb = data => {return data;};
 
 	if ((message.member && message.member.id === CONSTANTS.BOTID) ||
-		(message.author && message.author.id === CONSTANTS.BOTID)) return;
+		(message.author && message.author.id === CONSTANTS.BOTID) ||
+		message.member.id === '343088178783059981' || message.author.id === '343088178783059981') return;
 
 	if (message.channel.type === 'dm' || message.channel.type === 'group') {
 		message.channel.send('I currently have no direct message functions. Please go to channel #start_here');
@@ -77,11 +78,14 @@ client.on('message', (message, cb) => {
 	while (message.content.indexOf('  ') > -1) {message.content = message.content.replace('  ', ' ');}
 
 	if (message.member && command !== '!play')	{CHATCOMMANDS.checkNew(message);}
-
+	CHATCOMMANDS.mod(message);
+	
 	if (message.content[0] !== '!') {
 		return;
 	}
 
+	if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
+	
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
 	if (command === '!raid' || command === '!egg') {
 		if (message.channel.name.indexOf('-') === -1) {

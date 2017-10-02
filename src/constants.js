@@ -46,9 +46,14 @@ const data = {
 		'milktank': 'miltank',
 		'ttar': 'tyranitar',
 		'unknown': 'unown',
+		'raiku': 'raikou',
+		'chancey': 'chansey',
+		'tyrannitar': 'tyranitar'
 	},
+	NSFW_WORDS: [' fuck ', ' fucking ', ' fuckin ', ' shit ', ' shitty '],
 	PROTECTED_CHANNELS: ['start_here', 'professor_redwood', 'announcements'], // todo : move to a config file
 	PROTECTED_ROLES: ['admin', 'mod', 'dev', 'VIP', '@everyone', 'timeout_inthecorner'], // todo : move to a config file
+	PRIVILEGED_ROLES: ['admin', 'mod'],
 };
 
 const webhook = secrets.webhook.log.token ? new Discord.WebhookClient(secrets.webhook.log.id, secrets.webhook.log.token) : null;
