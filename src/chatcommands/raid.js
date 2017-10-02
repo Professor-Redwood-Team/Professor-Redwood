@@ -1,6 +1,7 @@
 'use strict';
 
 const raidimage = require('./raidimage');
+const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
 
 const usage = 'Command usage: **!raid boss minutesLeft location details**';
@@ -75,6 +76,12 @@ const raid = (data, message) => {
 const createReply = (data, message, pokemon, minutesLeft, detail) => {
 	let reply = '';
 	let boss = CONSTANTS.standardizePokemonName(pokemon.toLowerCase());
+
+	if (!pokemonInfo[boss.toUpperCase()]) {
+		reply = 'Sorry, boss not found. Please make sure to type the exact name of the raid boss and DO NOT USE THE @ tag.\n'+usage;
+		message.channel.send(reply);
+		return reply;
+	}
 
 	var bossTag = boss; //generate a tag for the boss to alert users
 
