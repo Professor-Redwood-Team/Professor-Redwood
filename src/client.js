@@ -62,8 +62,7 @@ client.on('message', (message, cb) => {
 	if (!cb) cb = data => {return data;};
 
 	if ((message.member && message.member.id === CONSTANTS.BOTID) ||
-		(message.author && message.author.id === CONSTANTS.BOTID) ||
-		message.member.id === '343088178783059981' || message.author.id === '343088178783059981') return;
+		(message.author && message.author.id === CONSTANTS.BOTID)) return;
 
 	if (message.channel.type === 'dm' || message.channel.type === 'group') {
 		message.channel.send('I currently have no direct message functions. Please go to channel #start_here');
@@ -84,16 +83,15 @@ client.on('message', (message, cb) => {
 		return;
 	}
 
-	if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
-	
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid' || command === '!egg') {
+	if (command === '!raid' || command === '!egg' || command === '!wild') {
 		if (message.channel.name.indexOf('-') === -1) {
-			reply = message.member.displayName + ', raid commands should only be run in the corresponding neighborhood channel';
+			reply = message.member.displayName + ', raid/egg/wild commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
 			return reply;
 		}
 		if (command === '!raid') {return cb(CHATCOMMANDS.raid(message));}
+		else if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
 		else {return cb(CHATCOMMANDS.egg(message));}
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
