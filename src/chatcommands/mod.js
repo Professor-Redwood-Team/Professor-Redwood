@@ -10,7 +10,6 @@ const handleMod = (data, message) => {
 		if (message.member) {
 			if (message.member.roles) {
 				message.member.roles.forEach( (role) => {
-					console.log(role.name);
 					if (CONSTANTS.PRIVILEGED_ROLES.indexOf(role.name) > -1)	{
 						privileged = true;
 					}
