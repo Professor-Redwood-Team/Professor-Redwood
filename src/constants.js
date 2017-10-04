@@ -1,9 +1,11 @@
 'use strict';
 
 const Discord = require('discord.js');
+const FuzzySet = require('fuzzyset.js');
 
 const regionsConfig = require('../config/regions.json');
 const secrets = require('../config/secrets.json');
+const pokemon = require('../config/pokemon.json');
 
 String.prototype.capitalize = function () {
 	return this.charAt(0).toUpperCase() + this.slice(1);
@@ -38,7 +40,10 @@ const data = {
 		'machop', 'mareep', 'miltank', 'onix', 'porygon', 'scyther', 'tauros', 'togetic', 'larvitar', 'unown'],
 	EGGTIERS: ['tier3', 'tier4', 'tier5'],
 	RAIDMONS: ['alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'rhydon', 'snorlax', 'tyranitar', 'venusaur'],
-	LEGENDARYMONS: ['articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune'],
+	LEGENDARYMONS: pokemon.filter(p => p.legendary).map(p => p.name.toLowerCase()),
+	ALLRAIDMONS: pokemon.filter(p => p.raid).map(p => p.name.toLowerCase()),
+	WILDMONS: pokemon.filter(p => p.wild).map(p => p.name.toLowerCase()),
+	ALLMONS: pokemon.map(p => p.name.toLowerCase()),
 	SPECIALMONS: ['legendary', 'sponsored', 'highiv', 'finalevo'],
 	REGIONS: regionsConfig.regions,
 	COMMON_MISSPELLINGS: {
@@ -68,10 +73,20 @@ data.log = (msg) => {
 };
 
 //make this more elegant when we have more than one
-data.standardizePokemonName = (name) => {
+data.standardizePokemonName = (name, type) => {
 	name = name.toLowerCase();
 	if (data.COMMON_MISSPELLINGS[name]) {
 		name = data.COMMON_MISSPELLINGS[name];
+	}
+	const mons = (type == 'wild') ? data.WILDMONS : 
+		(type == 'raid') ? data.ALLRAIDMONS :
+		data.ALLMONS;
+	if (!mons[name]) {
+		var fuzzy = new FuzzySet(mons, true);
+		var results = fuzzy.get(name, name, .75);
+		if (results && results.length == 1) {
+			name = results[0][1];
+		}
 	}
 	return name;
 };
