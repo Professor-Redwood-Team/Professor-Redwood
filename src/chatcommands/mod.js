@@ -18,7 +18,10 @@ const handleMod = (data, message) => {
 		}
 		if (!privileged) {
 			let roleid = message.content.substring(message.content.indexOf('<@&') + 3);
-			roleid = roleid.substring(0, roleid.length-1);
+			if (roleid.indexOf(' ') > -1)
+				roleid = roleid.substring(0, roleid.indexOf(' ')-1);
+			else
+				roleid = roleid.substring(0, roleid.length-1);
 			data.GUILD.roles.forEach((role) => {
 				if (role.id == roleid) {
 					let wantedMon = role.name;
