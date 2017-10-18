@@ -97,6 +97,13 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
+		it('gen 3', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!bp golem rock_throw 15 regice'});
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('ROCK THROW damage against Regice\nLv20:   5') > -1);
+				done();
+			});
+		});
 		it('bad defender', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15 fail'});
 			sendMessage(msg, (result) => {
