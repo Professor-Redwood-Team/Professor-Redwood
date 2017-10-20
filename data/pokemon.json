@@ -6613,10 +6613,13 @@
   "SABLEYE":{
     "moves":{
       "charge":[
-
+        "POWER_GEM",
+        "FOUL_PLAY",
+        "SHADOW_SNEAK"
       ],
       "fast":[
-
+        "SHADOW_CLAW",
+        "FEINT_ATTACK"
       ]
     },
     "stats":{
@@ -7610,10 +7613,13 @@
   "SHUPPET":{
     "moves":{
       "charge":[
-
+        "OMINOUS_WIND",
+        "NIGHT_SHADE",
+        "SHADOW_SNEAK"
       ],
       "fast":[
-
+        "FEINT_ATTACK",
+        "ASTONISH"
       ]
     },
     "stats":{
@@ -7629,10 +7635,13 @@
   "BANETTE":{
     "moves":{
       "charge":[
-
+        "SHADOW_BALL",
+        "DAZZLING_GLEAM",
+        "THUNDER"
       ],
       "fast":[
-
+        "HEX",
+        "SHADOW_CLAW"
       ]
     },
     "stats":{
@@ -7648,10 +7657,13 @@
   "DUSKULL":{
     "moves":{
       "charge":[
-
+        "OMINOUS_WIND",
+        "NIGHT_SHADE",
+        "SHADOW_SNEAK"
       ],
       "fast":[
-
+        "HEX",
+        "ASTONISH"
       ]
     },
     "stats":{
@@ -7667,7 +7679,9 @@
   "DUSCLOPS":{
     "moves":{
       "charge":[
-
+        "SHADOW_PUNCH",
+        "ICE_PUNCH",
+        "FIRE_PUNCH"
       ],
       "fast":[
 
