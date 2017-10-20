@@ -8,9 +8,15 @@ const CONSTANTS = require('./../constants');
 const usage = 'Command usage: **!breakpoint attacker attack_name iv (optional: defender)**';
 const counters = require('../../data/counters.json');
 const levelToCPM = require('../../data/levelToCPM.json');
-const pokemon = require('../../data/pokemon.json');
+// const pokemon = require('../../data/pokemon.json');
 const moves = require('../../data/moves.json');
 const types = require('../../data/types.json');
+
+// ADDING pokemon model and query
+const Pokemon = require('../../db/models/pokemon')
+const findInModel = require('../../db/db-utils').findInModel
+const findOne = require('../../db/db-utils').findOne
+
 
 function roundTo(num, digits) {
     return +(Math.round(num + "e+"+digits)  + "e-"+digits);
@@ -37,7 +43,14 @@ function getPower(move) {
 }
 
 function getBaseStat(name, stat) {
-    return pokemon[name]["stats"][stat];
+    // return pokemon[name]["stats"][stat];
+    findOne(Pokemon, { 'name': { $regex: name, $options: i } }, 'stats' , null)
+        .then(result => {
+            return result.stats[stat]
+        })
+        .catch(err => {
+            return err
+        })
 }
 
 function getCPM(level) {
