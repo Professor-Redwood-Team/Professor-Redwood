@@ -6,6 +6,7 @@
   "dependencies": {
     "discord.js": "^11.1.0",
     "mocha": "^3.5.0",
+    "mongoose": "^4.12.3",
     "mysql": "^2.14.0"
   },
   "devDependencies": {
