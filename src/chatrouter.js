@@ -7,7 +7,6 @@ const cp = require('./chatcommands/raidcp');
 const egg = require('./chatcommands/egg');
 const help = require('./chatcommands/help');
 const hide = require('./chatcommands/hide');
-const info = require('./chatcommands/info');
 const mod = require('./chatcommands/mod');
 const play = require('./chatcommands/play');
 const raid = require('./chatcommands/raid');
@@ -25,7 +24,6 @@ module.exports = (data) => {
 		egg: egg(data),
 		help: help(data),
 		hide: hide(data),
-		info: info(data),
 		mod: mod(data),
 		play: play(data),
 		raid: raid(data),
