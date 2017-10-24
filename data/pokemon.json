@@ -5636,25 +5636,15 @@
     }
   },
   "TREECKO":{
-    "moves":{
-      "charge":[
-
-      ],
-      "fast":[
-
-      ]
-    },
-    "stats":{
-      "attack":124,
-      "defense":104,
-      "hp":80
-    },
     "id":251,
     "types":[
       "GRASS"
-    ]
-  },
-  "GROVYLE":{
+    ],
+    "stats":{
+      "attack":124,
+      "defense":104,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -5662,18 +5652,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":172,
-      "defense":130,
-      "hp":100
-    },
+    }
+  },
+  "GROVYLE":{
     "id":252,
     "types":[
       "GRASS"
-    ]
-  },
-  "SCEPTILE":{
+    ],
+    "stats":{
+      "attack":172,
+      "defense":130,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -5681,18 +5671,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":223,
-      "defense":180,
-      "hp":140
-    },
+    }
+  },
+  "SCEPTILE":{
     "id":253,
     "types":[
       "GRASS"
-    ]
-  },
-  "TORCHIC":{
+    ],
+    "stats":{
+      "attack":223,
+      "defense":180,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -5700,18 +5690,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":130,
-      "defense":92,
-      "hp":90
-    },
+    }
+  },
+  "TORCHIC":{
     "id":254,
     "types":[
       "FIRE"
-    ]
-  },
-  "COMBUSKEN":{
+    ],
+    "stats":{
+      "attack":130,
+      "defense":92,
+      "stamina":90
+    },
     "moves":{
       "charge":[
 
@@ -5719,19 +5709,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":163,
-      "defense":115,
-      "hp":120
-    },
+    }
+  },
+  "COMBUSKEN":{
     "id":255,
     "types":[
       "FIRE",
       "FIGHTING"
-    ]
-  },
-  "BLAZIKEN":{
+    ],
+    "stats":{
+      "attack":163,
+      "defense":115,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -5739,19 +5729,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":240,
-      "defense":141,
-      "hp":160
-    },
+    }
+  },
+  "BLAZIKEN":{
     "id":256,
     "types":[
       "FIRE",
       "FIGHTING"
-    ]
-  },
-  "MUDKIP":{
+    ],
+    "stats":{
+      "attack":240,
+      "defense":141,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -5759,18 +5749,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":126,
-      "defense":93,
-      "hp":100
-    },
+    }
+  },
+  "MUDKIP":{
     "id":257,
     "types":[
       "WATER"
-    ]
-  },
-  "MARSHTOMP":{
+    ],
+    "stats":{
+      "attack":126,
+      "defense":93,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -5778,19 +5768,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":156,
-      "defense":133,
-      "hp":140
-    },
+    }
+  },
+  "MARSHTOMP":{
     "id":258,
     "types":[
       "WATER",
       "GROUND"
-    ]
-  },
-  "SWAMPERT":{
+    ],
+    "stats":{
+      "attack":156,
+      "defense":133,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -5798,19 +5788,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":208,
-      "defense":175,
-      "hp":200
-    },
+    }
+  },
+  "SWAMPERT":{
     "id":259,
     "types":[
       "WATER",
       "GROUND"
-    ]
-  },
-  "POOCHYENA":{
+    ],
+    "stats":{
+      "attack":208,
+      "defense":175,
+      "stamina":200
+    },
     "moves":{
       "charge":[
 
@@ -5818,18 +5808,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":96,
-      "defense":63,
-      "hp":70
-    },
+    }
+  },
+  "POOCHYENA":{
     "id":260,
     "types":[
       "DARK"
-    ]
-  },
-  "MIGHTYENA":{
+    ],
+    "stats":{
+      "attack":96,
+      "defense":63,
+      "stamina":70
+    },
     "moves":{
       "charge":[
 
@@ -5837,18 +5827,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":171,
-      "defense":137,
-      "hp":140
-    },
+    }
+  },
+  "MIGHTYENA":{
     "id":261,
     "types":[
       "DARK"
-    ]
-  },
-  "ZIGZAGOON":{
+    ],
+    "stats":{
+      "attack":171,
+      "defense":137,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -5856,18 +5846,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":58,
-      "defense":80,
-      "hp":76
-    },
+    }
+  },
+  "ZIGZAGOON":{
     "id":262,
     "types":[
       "NORMAL"
-    ]
-  },
-  "LINOONE":{
+    ],
+    "stats":{
+      "attack":58,
+      "defense":80,
+      "stamina":76
+    },
     "moves":{
       "charge":[
 
@@ -5875,18 +5865,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":142,
-      "defense":128,
-      "hp":156
-    },
+    }
+  },
+  "LINOONE":{
     "id":263,
     "types":[
       "NORMAL"
-    ]
-  },
-  "WURMPLE":{
+    ],
+    "stats":{
+      "attack":142,
+      "defense":128,
+      "stamina":156
+    },
     "moves":{
       "charge":[
 
@@ -5894,18 +5884,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":75,
-      "defense":61,
-      "hp":90
-    },
+    }
+  },
+  "WURMPLE":{
     "id":264,
     "types":[
       "BUG"
-    ]
-  },
-  "SILCOON":{
+    ],
+    "stats":{
+      "attack":75,
+      "defense":61,
+      "stamina":90
+    },
     "moves":{
       "charge":[
 
@@ -5913,18 +5903,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":60,
-      "defense":91,
-      "hp":100
-    },
+    }
+  },
+  "SILCOON":{
     "id":265,
     "types":[
       "BUG"
-    ]
-  },
-  "BEAUTIFLY":{
+    ],
+    "stats":{
+      "attack":60,
+      "defense":91,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -5932,19 +5922,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":189,
-      "defense":98,
-      "hp":120
-    },
+    }
+  },
+  "BEAUTIFLY":{
     "id":266,
     "types":[
       "BUG",
       "FLYING"
-    ]
-  },
-  "CASCOON":{
+    ],
+    "stats":{
+      "attack":189,
+      "defense":98,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -5952,18 +5942,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":60,
-      "defense":91,
-      "hp":100
-    },
+    }
+  },
+  "CASCOON":{
     "id":267,
     "types":[
       "BUG"
-    ]
-  },
-  "DUSTOX":{
+    ],
+    "stats":{
+      "attack":60,
+      "defense":91,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -5971,19 +5961,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":98,
-      "defense":172,
-      "hp":120
-    },
+    }
+  },
+  "DUSTOX":{
     "id":268,
     "types":[
       "BUG",
       "POISON"
-    ]
-  },
-  "LOTAD":{
+    ],
+    "stats":{
+      "attack":98,
+      "defense":172,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -5991,19 +5981,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":71,
-      "defense":86,
-      "hp":80
-    },
+    }
+  },
+  "LOTAD":{
     "id":269,
     "types":[
       "WATER",
       "GRASS"
-    ]
-  },
-  "LOMBRE":{
+    ],
+    "stats":{
+      "attack":71,
+      "defense":86,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -6011,19 +6001,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":112,
-      "defense":128,
-      "hp":120
-    },
+    }
+  },
+  "LOMBRE":{
     "id":270,
     "types":[
       "WATER",
       "GRASS"
-    ]
-  },
-  "LUDICOLO":{
+    ],
+    "stats":{
+      "attack":112,
+      "defense":128,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6031,19 +6021,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":173,
-      "defense":191,
-      "hp":160
-    },
+    }
+  },
+  "LUDICOLO":{
     "id":271,
     "types":[
       "WATER",
       "GRASS"
-    ]
-  },
-  "SEEDOT":{
+    ],
+    "stats":{
+      "attack":173,
+      "defense":191,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -6051,18 +6041,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":71,
-      "defense":86,
-      "hp":80
-    },
+    }
+  },
+  "SEEDOT":{
     "id":272,
     "types":[
       "GRASS"
-    ]
-  },
-  "NUZLEAF":{
+    ],
+    "stats":{
+      "attack":71,
+      "defense":86,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -6070,19 +6060,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":134,
-      "defense":78,
-      "hp":140
-    },
+    }
+  },
+  "NUZLEAF":{
     "id":273,
     "types":[
       "GRASS",
       "DARK"
-    ]
-  },
-  "SHIFTRY":{
+    ],
+    "stats":{
+      "attack":134,
+      "defense":78,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -6090,19 +6080,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":200,
-      "defense":121,
-      "hp":180
-    },
+    }
+  },
+  "SHIFTRY":{
     "id":274,
     "types":[
       "GRASS",
       "DARK"
-    ]
-  },
-  "TAILLOW":{
+    ],
+    "stats":{
+      "attack":200,
+      "defense":121,
+      "stamina":180
+    },
     "moves":{
       "charge":[
 
@@ -6110,19 +6100,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":106,
-      "defense":61,
-      "hp":80
-    },
+    }
+  },
+  "TAILLOW":{
     "id":275,
     "types":[
       "NORMAL",
       "FLYING"
-    ]
-  },
-  "SWELLOW":{
+    ],
+    "stats":{
+      "attack":106,
+      "defense":61,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -6130,19 +6120,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":185,
-      "defense":130,
-      "hp":120
-    },
+    }
+  },
+  "SWELLOW":{
     "id":276,
     "types":[
       "NORMAL",
       "FLYING"
-    ]
-  },
-  "WINGULL":{
+    ],
+    "stats":{
+      "attack":185,
+      "defense":130,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6150,19 +6140,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":106,
-      "defense":61,
-      "hp":80
-    },
+    }
+  },
+  "WINGULL":{
     "id":277,
     "types":[
       "WATER",
       "FLYING"
-    ]
-  },
-  "PELIPPER":{
+    ],
+    "stats":{
+      "attack":106,
+      "defense":61,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -6170,19 +6160,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":175,
-      "defense":189,
-      "hp":120
-    },
+    }
+  },
+  "PELIPPER":{
     "id":278,
     "types":[
       "WATER",
       "FLYING"
-    ]
-  },
-  "RALTS":{
+    ],
+    "stats":{
+      "attack":175,
+      "defense":189,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6190,19 +6180,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":79,
-      "defense":63,
-      "hp":56
-    },
+    }
+  },
+  "RALTS":{
     "id":279,
     "types":[
       "PSYCHIC",
       "FAIRY"
-    ]
-  },
-  "KIRLIA":{
+    ],
+    "stats":{
+      "attack":79,
+      "defense":63,
+      "stamina":56
+    },
     "moves":{
       "charge":[
 
@@ -6210,19 +6200,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":117,
-      "defense":100,
-      "hp":76
-    },
+    }
+  },
+  "KIRLIA":{
     "id":280,
     "types":[
       "PSYCHIC",
       "FAIRY"
-    ]
-  },
-  "GARDEVOIR":{
+    ],
+    "stats":{
+      "attack":117,
+      "defense":100,
+      "stamina":76
+    },
     "moves":{
       "charge":[
 
@@ -6230,19 +6220,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":237,
-      "defense":220,
-      "hp":136
-    },
+    }
+  },
+  "GARDEVOIR":{
     "id":281,
     "types":[
       "PSYCHIC",
       "FAIRY"
-    ]
-  },
-  "SURSKIT":{
+    ],
+    "stats":{
+      "attack":237,
+      "defense":220,
+      "stamina":136
+    },
     "moves":{
       "charge":[
 
@@ -6250,19 +6240,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":93,
-      "defense":97,
-      "hp":80
-    },
+    }
+  },
+  "SURSKIT":{
     "id":282,
     "types":[
       "BUG",
       "WATER"
-    ]
-  },
-  "MASQUERAIN":{
+    ],
+    "stats":{
+      "attack":93,
+      "defense":97,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -6270,19 +6260,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":192,
-      "defense":161,
-      "hp":140
-    },
+    }
+  },
+  "MASQUERAIN":{
     "id":283,
     "types":[
       "BUG",
       "FLYING"
-    ]
-  },
-  "SHROOMISH":{
+    ],
+    "stats":{
+      "attack":192,
+      "defense":161,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -6290,18 +6280,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":74,
-      "defense":110,
-      "hp":120
-    },
+    }
+  },
+  "SHROOMISH":{
     "id":284,
     "types":[
       "GRASS"
-    ]
-  },
-  "BRELOOM":{
+    ],
+    "stats":{
+      "attack":74,
+      "defense":110,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6309,19 +6299,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":241,
-      "defense":153,
-      "hp":120
-    },
+    }
+  },
+  "BRELOOM":{
     "id":285,
     "types":[
       "GRASS",
       "FIGHTING"
-    ]
-  },
-  "SLAKOTH":{
+    ],
+    "stats":{
+      "attack":241,
+      "defense":153,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6329,18 +6319,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":104,
-      "defense":104,
-      "hp":120
-    },
+    }
+  },
+  "SLAKOTH":{
     "id":286,
     "types":[
       "NORMAL"
-    ]
-  },
-  "VIGOROTH":{
+    ],
+    "stats":{
+      "attack":104,
+      "defense":104,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6348,18 +6338,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":159,
-      "defense":159,
-      "hp":160
-    },
+    }
+  },
+  "VIGOROTH":{
     "id":287,
     "types":[
       "NORMAL"
-    ]
-  },
-  "SLAKING":{
+    ],
+    "stats":{
+      "attack":159,
+      "defense":159,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -6367,18 +6357,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":319,
-      "defense":201,
-      "hp":300
-    },
+    }
+  },
+  "SLAKING":{
     "id":288,
     "types":[
       "NORMAL"
-    ]
-  },
-  "NINCADA":{
+    ],
+    "stats":{
+      "attack":319,
+      "defense":201,
+      "stamina":300
+    },
     "moves":{
       "charge":[
 
@@ -6386,19 +6376,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":80,
-      "defense":153,
-      "hp":62
-    },
+    }
+  },
+  "NINCADA":{
     "id":289,
     "types":[
       "BUG",
       "GROUND"
-    ]
-  },
-  "NINJASK":{
+    ],
+    "stats":{
+      "attack":80,
+      "defense":153,
+      "stamina":62
+    },
     "moves":{
       "charge":[
 
@@ -6406,19 +6396,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":199,
-      "defense":116,
-      "hp":122
-    },
+    }
+  },
+  "NINJASK":{
     "id":290,
     "types":[
       "BUG",
       "FLYING"
-    ]
-  },
-  "SHEDINJA":{
+    ],
+    "stats":{
+      "attack":199,
+      "defense":116,
+      "stamina":122
+    },
     "moves":{
       "charge":[
 
@@ -6426,19 +6416,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":153,
-      "defense":80,
-      "hp":2
-    },
+    }
+  },
+  "SHEDINJA":{
     "id":291,
     "types":[
       "BUG",
       "GHOST"
-    ]
-  },
-  "WHISMUR":{
+    ],
+    "stats":{
+      "attack":153,
+      "defense":80,
+      "stamina":2
+    },
     "moves":{
       "charge":[
 
@@ -6446,18 +6436,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":92,
-      "defense":42,
-      "hp":128
-    },
+    }
+  },
+  "WHISMUR":{
     "id":292,
     "types":[
       "NORMAL"
-    ]
-  },
-  "LOUDRED":{
+    ],
+    "stats":{
+      "attack":92,
+      "defense":42,
+      "stamina":128
+    },
     "moves":{
       "charge":[
 
@@ -6465,18 +6455,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":134,
-      "defense":81,
-      "hp":168
-    },
+    }
+  },
+  "LOUDRED":{
     "id":293,
     "types":[
       "NORMAL"
-    ]
-  },
-  "EXPLOUD":{
+    ],
+    "stats":{
+      "attack":134,
+      "defense":81,
+      "stamina":168
+    },
     "moves":{
       "charge":[
 
@@ -6484,18 +6474,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":179,
-      "defense":142,
-      "hp":208
-    },
+    }
+  },
+  "EXPLOUD":{
     "id":294,
     "types":[
       "NORMAL"
-    ]
-  },
-  "MAKUHITA":{
+    ],
+    "stats":{
+      "attack":179,
+      "defense":142,
+      "stamina":208
+    },
     "moves":{
       "charge":[
 
@@ -6503,18 +6493,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":99,
-      "defense":54,
-      "hp":144
-    },
+    }
+  },
+  "MAKUHITA":{
     "id":295,
     "types":[
       "FIGHTING"
-    ]
-  },
-  "HARIYAMA":{
+    ],
+    "stats":{
+      "attack":99,
+      "defense":54,
+      "stamina":144
+    },
     "moves":{
       "charge":[
 
@@ -6522,18 +6512,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":209,
-      "defense":114,
-      "hp":288
-    },
+    }
+  },
+  "HARIYAMA":{
     "id":296,
     "types":[
       "FIGHTING"
-    ]
-  },
-  "AZURILL":{
+    ],
+    "stats":{
+      "attack":209,
+      "defense":114,
+      "stamina":288
+    },
     "moves":{
       "charge":[
 
@@ -6541,19 +6531,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":36,
-      "defense":71,
-      "hp":100
-    },
+    }
+  },
+  "AZURILL":{
     "id":297,
     "types":[
       "NORMAL",
       "FAIRY"
-    ]
-  },
-  "NOSEPASS":{
+    ],
+    "stats":{
+      "attack":36,
+      "defense":71,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -6561,18 +6551,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":82,
-      "defense":236,
-      "hp":60
-    },
+    }
+  },
+  "NOSEPASS":{
     "id":298,
     "types":[
       "ROCK"
-    ]
-  },
-  "SKITTY":{
+    ],
+    "stats":{
+      "attack":82,
+      "defense":236,
+      "stamina":60
+    },
     "moves":{
       "charge":[
 
@@ -6580,18 +6570,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":84,
-      "defense":84,
-      "hp":100
-    },
+    }
+  },
+  "SKITTY":{
     "id":299,
     "types":[
       "NORMAL"
-    ]
-  },
-  "DELCATTY":{
+    ],
+    "stats":{
+      "attack":84,
+      "defense":84,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -6599,18 +6589,38 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":132,
-      "defense":132,
-      "hp":140
-    },
+    }
+  },
+  "DELCATTY":{
     "id":300,
     "types":[
       "NORMAL"
-    ]
+    ],
+    "stats":{
+      "attack":132,
+      "defense":132,
+      "stamina":140
+    },
+    "moves":{
+      "charge":[
+
+      ],
+      "fast":[
+
+      ]
+    }
   },
   "SABLEYE":{
+    "id":301,
+    "types":[
+      "DARK",
+      "GHOST"
+    ],
+    "stats":{
+      "attack":141,
+      "defense":141,
+      "stamina":100
+    },
     "moves":{
       "charge":[
         "POWER_GEM",
@@ -6621,39 +6631,19 @@
         "SHADOW_CLAW",
         "FEINT_ATTACK"
       ]
-    },
-    "stats":{
-      "attack":141,
-      "defense":141,
-      "hp":100
-    },
-    "id":301,
-    "types":[
-      "DARK",
-      "GHOST"
-    ]
+    }
   },
   "MAWILE":{
-    "moves":{
-      "charge":[
-
-      ],
-      "fast":[
-
-      ]
-    },
-    "stats":{
-      "attack":155,
-      "defense":155,
-      "hp":100
-    },
     "id":302,
     "types":[
       "STEEL",
       "FAIRY"
-    ]
-  },
-  "ARON":{
+    ],
+    "stats":{
+      "attack":155,
+      "defense":155,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -6661,19 +6651,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":121,
-      "defense":168,
-      "hp":100
-    },
+    }
+  },
+  "ARON":{
     "id":303,
     "types":[
       "STEEL",
       "ROCK"
-    ]
-  },
-  "LAIRON":{
+    ],
+    "stats":{
+      "attack":121,
+      "defense":168,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -6681,19 +6671,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":158,
-      "defense":240,
-      "hp":120
-    },
+    }
+  },
+  "LAIRON":{
     "id":304,
     "types":[
       "STEEL",
       "ROCK"
-    ]
-  },
-  "AGGRON":{
+    ],
+    "stats":{
+      "attack":158,
+      "defense":240,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6701,19 +6691,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":198,
-      "defense":314,
-      "hp":140
-    },
+    }
+  },
+  "AGGRON":{
     "id":305,
     "types":[
       "STEEL",
       "ROCK"
-    ]
-  },
-  "MEDITITE":{
+    ],
+    "stats":{
+      "attack":198,
+      "defense":314,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -6721,19 +6711,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":78,
-      "defense":107,
-      "hp":60
-    },
+    }
+  },
+  "MEDITITE":{
     "id":306,
     "types":[
       "FIGHTING",
       "PSYCHIC"
-    ]
-  },
-  "MEDICHAM":{
+    ],
+    "stats":{
+      "attack":78,
+      "defense":107,
+      "stamina":60
+    },
     "moves":{
       "charge":[
 
@@ -6741,19 +6731,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":121,
-      "defense":152,
-      "hp":120
-    },
+    }
+  },
+  "MEDICHAM":{
     "id":307,
     "types":[
       "FIGHTING",
       "PSYCHIC"
-    ]
-  },
-  "ELECTRIKE":{
+    ],
+    "stats":{
+      "attack":121,
+      "defense":152,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6761,18 +6751,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":123,
-      "defense":78,
-      "hp":80
-    },
+    }
+  },
+  "ELECTRIKE":{
     "id":308,
     "types":[
       "ELECTRIC"
-    ]
-  },
-  "MANECTRIC":{
+    ],
+    "stats":{
+      "attack":123,
+      "defense":78,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -6780,18 +6770,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":215,
-      "defense":127,
-      "hp":140
-    },
+    }
+  },
+  "MANECTRIC":{
     "id":309,
     "types":[
       "ELECTRIC"
-    ]
-  },
-  "PLUSLE":{
+    ],
+    "stats":{
+      "attack":215,
+      "defense":127,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -6799,18 +6789,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":167,
-      "defense":147,
-      "hp":120
-    },
+    }
+  },
+  "PLUSLE":{
     "id":310,
     "types":[
       "ELECTRIC"
-    ]
-  },
-  "MINUN":{
+    ],
+    "stats":{
+      "attack":167,
+      "defense":147,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6818,18 +6808,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":147,
-      "defense":167,
-      "hp":120
-    },
+    }
+  },
+  "MINUN":{
     "id":311,
     "types":[
       "ELECTRIC"
-    ]
-  },
-  "VOLBEAT":{
+    ],
+    "stats":{
+      "attack":147,
+      "defense":167,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -6837,37 +6827,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":143,
-      "defense":171,
-      "hp":130
-    },
+    }
+  },
+  "VOLBEAT":{
     "id":312,
     "types":[
       "BUG"
-    ]
-  },
-  "ILLUMISE":{
-    "moves":{
-      "charge":[
-
-      ],
-      "fast":[
-
-      ]
-    },
+    ],
     "stats":{
       "attack":143,
       "defense":171,
-      "hp":130
+      "stamina":130
     },
-    "id":313,
-    "types":[
-      "BUG"
-    ]
-  },
-  "ROSELIA":{
     "moves":{
       "charge":[
 
@@ -6875,19 +6846,38 @@
       "fast":[
 
       ]
-    },
+    }
+  },
+  "ILLUMISE":{
+    "id":313,
+    "types":[
+      "BUG"
+    ],
     "stats":{
-      "attack":186,
-      "defense":148,
-      "hp":100
+      "attack":143,
+      "defense":171,
+      "stamina":130
     },
+    "moves":{
+      "charge":[
+
+      ],
+      "fast":[
+
+      ]
+    }
+  },
+  "ROSELIA":{
     "id":314,
     "types":[
       "GRASS",
       "POISON"
-    ]
-  },
-  "GULPIN":{
+    ],
+    "stats":{
+      "attack":186,
+      "defense":148,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -6895,18 +6885,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":80,
-      "defense":99,
-      "hp":140
-    },
+    }
+  },
+  "GULPIN":{
     "id":315,
     "types":[
       "POISON"
-    ]
-  },
-  "SWALOT":{
+    ],
+    "stats":{
+      "attack":80,
+      "defense":99,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -6914,18 +6904,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":140,
-      "defense":159,
-      "hp":200
-    },
+    }
+  },
+  "SWALOT":{
     "id":316,
     "types":[
       "POISON"
-    ]
-  },
-  "CARVANHA":{
+    ],
+    "stats":{
+      "attack":140,
+      "defense":159,
+      "stamina":200
+    },
     "moves":{
       "charge":[
 
@@ -6933,19 +6923,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":171,
-      "defense":39,
-      "hp":90
-    },
+    }
+  },
+  "CARVANHA":{
     "id":317,
     "types":[
       "WATER",
       "DARK"
-    ]
-  },
-  "SHARPEDO":{
+    ],
+    "stats":{
+      "attack":171,
+      "defense":39,
+      "stamina":90
+    },
     "moves":{
       "charge":[
 
@@ -6953,19 +6943,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":243,
-      "defense":83,
-      "hp":140
-    },
+    }
+  },
+  "SHARPEDO":{
     "id":318,
     "types":[
       "WATER",
       "DARK"
-    ]
-  },
-  "WAILMER":{
+    ],
+    "stats":{
+      "attack":243,
+      "defense":83,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -6973,18 +6963,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":136,
-      "defense":68,
-      "hp":260
-    },
+    }
+  },
+  "WAILMER":{
     "id":319,
     "types":[
       "WATER"
-    ]
-  },
-  "WAILORD":{
+    ],
+    "stats":{
+      "attack":136,
+      "defense":68,
+      "stamina":260
+    },
     "moves":{
       "charge":[
 
@@ -6992,18 +6982,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":175,
-      "defense":87,
-      "hp":340
-    },
+    }
+  },
+  "WAILORD":{
     "id":320,
     "types":[
       "WATER"
-    ]
-  },
-  "NUMEL":{
+    ],
+    "stats":{
+      "attack":175,
+      "defense":87,
+      "stamina":340
+    },
     "moves":{
       "charge":[
 
@@ -7011,19 +7001,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":119,
-      "defense":82,
-      "hp":120
-    },
+    }
+  },
+  "NUMEL":{
     "id":321,
     "types":[
       "FIRE",
       "GROUND"
-    ]
-  },
-  "CAMERUPT":{
+    ],
+    "stats":{
+      "attack":119,
+      "defense":82,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -7031,19 +7021,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":194,
-      "defense":139,
-      "hp":140
-    },
+    }
+  },
+  "CAMERUPT":{
     "id":322,
     "types":[
       "FIRE",
       "GROUND"
-    ]
-  },
-  "TORKOAL":{
+    ],
+    "stats":{
+      "attack":194,
+      "defense":139,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -7051,18 +7041,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":151,
-      "defense":234,
-      "hp":140
-    },
+    }
+  },
+  "TORKOAL":{
     "id":323,
     "types":[
       "FIRE"
-    ]
-  },
-  "SPOINK":{
+    ],
+    "stats":{
+      "attack":151,
+      "defense":234,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -7070,18 +7060,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":125,
-      "defense":145,
-      "hp":120
-    },
+    }
+  },
+  "SPOINK":{
     "id":324,
     "types":[
       "PSYCHIC"
-    ]
-  },
-  "GRUMPIG":{
+    ],
+    "stats":{
+      "attack":125,
+      "defense":145,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -7089,18 +7079,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":171,
-      "defense":211,
-      "hp":160
-    },
+    }
+  },
+  "GRUMPIG":{
     "id":325,
     "types":[
       "PSYCHIC"
-    ]
-  },
-  "SPINDA":{
+    ],
+    "stats":{
+      "attack":171,
+      "defense":211,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -7108,18 +7098,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":116,
-      "defense":116,
-      "hp":120
-    },
+    }
+  },
+  "SPINDA":{
     "id":326,
     "types":[
       "NORMAL"
-    ]
-  },
-  "TRAPINCH":{
+    ],
+    "stats":{
+      "attack":116,
+      "defense":116,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -7127,18 +7117,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":162,
-      "defense":78,
-      "hp":90
-    },
+    }
+  },
+  "TRAPINCH":{
     "id":327,
     "types":[
       "GROUND"
-    ]
-  },
-  "VIBRAVA":{
+    ],
+    "stats":{
+      "attack":162,
+      "defense":78,
+      "stamina":90
+    },
     "moves":{
       "charge":[
 
@@ -7146,19 +7136,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":134,
-      "defense":99,
-      "hp":100
-    },
+    }
+  },
+  "VIBRAVA":{
     "id":328,
     "types":[
       "GROUND",
       "DRAGON"
-    ]
-  },
-  "FLYGON":{
+    ],
+    "stats":{
+      "attack":134,
+      "defense":99,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -7166,19 +7156,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":205,
-      "defense":168,
-      "hp":160
-    },
+    }
+  },
+  "FLYGON":{
     "id":329,
     "types":[
       "GROUND",
       "DRAGON"
-    ]
-  },
-  "CACNEA":{
+    ],
+    "stats":{
+      "attack":205,
+      "defense":168,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -7186,18 +7176,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":156,
-      "defense":74,
-      "hp":100
-    },
+    }
+  },
+  "CACNEA":{
     "id":330,
     "types":[
       "GRASS"
-    ]
-  },
-  "CACTURNE":{
+    ],
+    "stats":{
+      "attack":156,
+      "defense":74,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -7205,19 +7195,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":221,
-      "defense":115,
-      "hp":140
-    },
+    }
+  },
+  "CACTURNE":{
     "id":331,
     "types":[
       "GRASS",
       "DARK"
-    ]
-  },
-  "SWABLU":{
+    ],
+    "stats":{
+      "attack":221,
+      "defense":115,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -7225,19 +7215,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":76,
-      "defense":139,
-      "hp":90
-    },
+    }
+  },
+  "SWABLU":{
     "id":332,
     "types":[
       "NORMAL",
       "FLYING"
-    ]
-  },
-  "ALTARIA":{
+    ],
+    "stats":{
+      "attack":76,
+      "defense":139,
+      "stamina":90
+    },
     "moves":{
       "charge":[
 
@@ -7245,19 +7235,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":141,
-      "defense":208,
-      "hp":150
-    },
+    }
+  },
+  "ALTARIA":{
     "id":333,
     "types":[
       "DRAGON",
       "FLYING"
-    ]
-  },
-  "ZANGOOSE":{
+    ],
+    "stats":{
+      "attack":141,
+      "defense":208,
+      "stamina":150
+    },
     "moves":{
       "charge":[
 
@@ -7265,18 +7255,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":222,
-      "defense":124,
-      "hp":146
-    },
+    }
+  },
+  "ZANGOOSE":{
     "id":334,
     "types":[
       "NORMAL"
-    ]
-  },
-  "SEVIPER":{
+    ],
+    "stats":{
+      "attack":222,
+      "defense":124,
+      "stamina":146
+    },
     "moves":{
       "charge":[
 
@@ -7284,18 +7274,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":196,
-      "defense":118,
-      "hp":146
-    },
+    }
+  },
+  "SEVIPER":{
     "id":335,
     "types":[
       "POISON"
-    ]
-  },
-  "LUNATONE":{
+    ],
+    "stats":{
+      "attack":196,
+      "defense":118,
+      "stamina":146
+    },
     "moves":{
       "charge":[
 
@@ -7303,19 +7293,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":178,
-      "defense":163,
-      "hp":180
-    },
+    }
+  },
+  "LUNATONE":{
     "id":336,
     "types":[
       "ROCK",
       "PSYCHIC"
-    ]
-  },
-  "SOLROCK":{
+    ],
+    "stats":{
+      "attack":178,
+      "defense":163,
+      "stamina":180
+    },
     "moves":{
       "charge":[
 
@@ -7323,19 +7313,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":178,
-      "defense":163,
-      "hp":180
-    },
+    }
+  },
+  "SOLROCK":{
     "id":337,
     "types":[
       "ROCK",
       "PSYCHIC"
-    ]
-  },
-  "BARBOACH":{
+    ],
+    "stats":{
+      "attack":178,
+      "defense":163,
+      "stamina":180
+    },
     "moves":{
       "charge":[
 
@@ -7343,19 +7333,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":93,
-      "defense":83,
-      "hp":100
-    },
+    }
+  },
+  "BARBOACH":{
     "id":338,
     "types":[
       "WATER",
       "GROUND"
-    ]
-  },
-  "WHISCASH":{
+    ],
+    "stats":{
+      "attack":93,
+      "defense":83,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -7363,19 +7353,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":151,
-      "defense":142,
-      "hp":220
-    },
+    }
+  },
+  "WHISCASH":{
     "id":339,
     "types":[
       "WATER",
       "GROUND"
-    ]
-  },
-  "CORPHISH":{
+    ],
+    "stats":{
+      "attack":151,
+      "defense":142,
+      "stamina":220
+    },
     "moves":{
       "charge":[
 
@@ -7383,18 +7373,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":141,
-      "defense":113,
-      "hp":86
-    },
+    }
+  },
+  "CORPHISH":{
     "id":340,
     "types":[
       "WATER"
-    ]
-  },
-  "CRAWDAUNT":{
+    ],
+    "stats":{
+      "attack":141,
+      "defense":113,
+      "stamina":86
+    },
     "moves":{
       "charge":[
 
@@ -7402,19 +7392,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":224,
-      "defense":156,
-      "hp":126
-    },
+    }
+  },
+  "CRAWDAUNT":{
     "id":341,
     "types":[
       "WATER",
       "DARK"
-    ]
-  },
-  "BALTOY":{
+    ],
+    "stats":{
+      "attack":224,
+      "defense":156,
+      "stamina":126
+    },
     "moves":{
       "charge":[
 
@@ -7422,19 +7412,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":77,
-      "defense":131,
-      "hp":80
-    },
+    }
+  },
+  "BALTOY":{
     "id":342,
     "types":[
       "GROUND",
       "PSYCHIC"
-    ]
-  },
-  "CLAYDOL":{
+    ],
+    "stats":{
+      "attack":77,
+      "defense":131,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -7442,19 +7432,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":140,
-      "defense":236,
-      "hp":120
-    },
+    }
+  },
+  "CLAYDOL":{
     "id":343,
     "types":[
       "GROUND",
       "PSYCHIC"
-    ]
-  },
-  "LILEEP":{
+    ],
+    "stats":{
+      "attack":140,
+      "defense":236,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -7462,19 +7452,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":105,
-      "defense":154,
-      "hp":132
-    },
+    }
+  },
+  "LILEEP":{
     "id":344,
     "types":[
       "ROCK",
       "GRASS"
-    ]
-  },
-  "CRADILY":{
+    ],
+    "stats":{
+      "attack":105,
+      "defense":154,
+      "stamina":132
+    },
     "moves":{
       "charge":[
 
@@ -7482,19 +7472,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":152,
-      "defense":198,
-      "hp":172
-    },
+    }
+  },
+  "CRADILY":{
     "id":345,
     "types":[
       "ROCK",
       "GRASS"
-    ]
-  },
-  "ANORITH":{
+    ],
+    "stats":{
+      "attack":152,
+      "defense":198,
+      "stamina":172
+    },
     "moves":{
       "charge":[
 
@@ -7502,19 +7492,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":176,
-      "defense":100,
-      "hp":90
-    },
+    }
+  },
+  "ANORITH":{
     "id":346,
     "types":[
       "ROCK",
       "BUG"
-    ]
-  },
-  "ARMALDO":{
+    ],
+    "stats":{
+      "attack":176,
+      "defense":100,
+      "stamina":90
+    },
     "moves":{
       "charge":[
 
@@ -7522,19 +7512,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":222,
-      "defense":183,
-      "hp":150
-    },
+    }
+  },
+  "ARMALDO":{
     "id":347,
     "types":[
       "ROCK",
       "BUG"
-    ]
-  },
-  "FEEBAS":{
+    ],
+    "stats":{
+      "attack":222,
+      "defense":183,
+      "stamina":150
+    },
     "moves":{
       "charge":[
 
@@ -7542,18 +7532,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":29,
-      "defense":102,
-      "hp":40
-    },
+    }
+  },
+  "FEEBAS":{
     "id":348,
     "types":[
       "WATER"
-    ]
-  },
-  "MILOTIC":{
+    ],
+    "stats":{
+      "attack":29,
+      "defense":102,
+      "stamina":40
+    },
     "moves":{
       "charge":[
 
@@ -7561,18 +7551,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":192,
-      "defense":242,
-      "hp":190
-    },
+    }
+  },
+  "MILOTIC":{
     "id":349,
     "types":[
       "WATER"
-    ]
-  },
-  "CASTFORM":{
+    ],
+    "stats":{
+      "attack":192,
+      "defense":242,
+      "stamina":190
+    },
     "moves":{
       "charge":[
 
@@ -7580,18 +7570,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":139,
-      "defense":139,
-      "hp":140
-    },
+    }
+  },
+  "CASTFORM":{
     "id":350,
     "types":[
       "NORMAL"
-    ]
-  },
-  "KECLEON":{
+    ],
+    "stats":{
+      "attack":139,
+      "defense":139,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -7599,18 +7589,37 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":161,
-      "defense":212,
-      "hp":120
-    },
+    }
+  },
+  "KECLEON":{
     "id":351,
     "types":[
       "NORMAL"
-    ]
+    ],
+    "stats":{
+      "attack":161,
+      "defense":212,
+      "stamina":120
+    },
+    "moves":{
+      "charge":[
+
+      ],
+      "fast":[
+
+      ]
+    }
   },
   "SHUPPET":{
+    "id":352,
+    "types":[
+      "GHOST"
+    ],
+    "stats":{
+      "attack":138,
+      "defense":66,
+      "stamina":88
+    },
     "moves":{
       "charge":[
         "OMINOUS_WIND",
@@ -7621,18 +7630,18 @@
         "FEINT_ATTACK",
         "ASTONISH"
       ]
-    },
-    "stats":{
-      "attack":138,
-      "defense":66,
-      "hp":88
-    },
-    "id":352,
-    "types":[
-      "GHOST"
-    ]
+    }
   },
   "BANETTE":{
+    "id":353,
+    "types":[
+      "GHOST"
+    ],
+    "stats":{
+      "attack":218,
+      "defense":127,
+      "stamina":128
+    },
     "moves":{
       "charge":[
         "SHADOW_BALL",
@@ -7643,18 +7652,18 @@
         "HEX",
         "SHADOW_CLAW"
       ]
-    },
-    "stats":{
-      "attack":218,
-      "defense":127,
-      "hp":128
-    },
-    "id":353,
-    "types":[
-      "GHOST"
-    ]
+    }
   },
   "DUSKULL":{
+    "id":354,
+    "types":[
+      "GHOST"
+    ],
+    "stats":{
+      "attack":70,
+      "defense":162,
+      "stamina":40
+    },
     "moves":{
       "charge":[
         "OMINOUS_WIND",
@@ -7665,18 +7674,18 @@
         "HEX",
         "ASTONISH"
       ]
-    },
-    "stats":{
-      "attack":70,
-      "defense":162,
-      "hp":40
-    },
-    "id":354,
-    "types":[
-      "GHOST"
-    ]
+    }
   },
   "DUSCLOPS":{
+    "id":355,
+    "types":[
+      "GHOST"
+    ],
+    "stats":{
+      "attack":124,
+      "defense":234,
+      "stamina":80
+    },
     "moves":{
       "charge":[
         "SHADOW_PUNCH",
@@ -7686,38 +7695,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":124,
-      "defense":234,
-      "hp":80
-    },
-    "id":355,
-    "types":[
-      "GHOST"
-    ]
+    }
   },
   "TROPIUS":{
-    "moves":{
-      "charge":[
-
-      ],
-      "fast":[
-
-      ]
-    },
-    "stats":{
-      "attack":136,
-      "defense":165,
-      "hp":198
-    },
     "id":356,
     "types":[
       "GRASS",
       "FLYING"
-    ]
-  },
-  "CHIMECHO":{
+    ],
+    "stats":{
+      "attack":136,
+      "defense":165,
+      "stamina":198
+    },
     "moves":{
       "charge":[
 
@@ -7725,18 +7715,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":175,
-      "defense":174,
-      "hp":150
-    },
+    }
+  },
+  "CHIMECHO":{
     "id":357,
     "types":[
       "PSYCHIC"
-    ]
-  },
-  "ABSOL":{
+    ],
+    "stats":{
+      "attack":175,
+      "defense":174,
+      "stamina":150
+    },
     "moves":{
       "charge":[
 
@@ -7744,18 +7734,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":246,
-      "defense":120,
-      "hp":130
-    },
+    }
+  },
+  "ABSOL":{
     "id":358,
     "types":[
       "DARK"
-    ]
-  },
-  "WYNAUT":{
+    ],
+    "stats":{
+      "attack":246,
+      "defense":120,
+      "stamina":130
+    },
     "moves":{
       "charge":[
 
@@ -7763,18 +7753,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":41,
-      "defense":86,
-      "hp":190
-    },
+    }
+  },
+  "WYNAUT":{
     "id":359,
     "types":[
       "PSYCHIC"
-    ]
-  },
-  "SNORUNT":{
+    ],
+    "stats":{
+      "attack":41,
+      "defense":86,
+      "stamina":190
+    },
     "moves":{
       "charge":[
 
@@ -7782,18 +7772,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":95,
-      "defense":95,
-      "hp":100
-    },
+    }
+  },
+  "SNORUNT":{
     "id":360,
     "types":[
       "ICE"
-    ]
-  },
-  "GLALIE":{
+    ],
+    "stats":{
+      "attack":95,
+      "defense":95,
+      "stamina":100
+    },
     "moves":{
       "charge":[
 
@@ -7801,18 +7791,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":162,
-      "defense":162,
-      "hp":160
-    },
+    }
+  },
+  "GLALIE":{
     "id":361,
     "types":[
       "ICE"
-    ]
-  },
-  "SPHEAL":{
+    ],
+    "stats":{
+      "attack":162,
+      "defense":162,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -7820,19 +7810,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":95,
-      "defense":90,
-      "hp":140
-    },
+    }
+  },
+  "SPHEAL":{
     "id":362,
     "types":[
       "ICE",
       "WATER"
-    ]
-  },
-  "SEALEO":{
+    ],
+    "stats":{
+      "attack":95,
+      "defense":90,
+      "stamina":140
+    },
     "moves":{
       "charge":[
 
@@ -7840,19 +7830,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":137,
-      "defense":132,
-      "hp":180
-    },
+    }
+  },
+  "SEALEO":{
     "id":363,
     "types":[
       "ICE",
       "WATER"
-    ]
-  },
-  "WALREIN":{
+    ],
+    "stats":{
+      "attack":137,
+      "defense":132,
+      "stamina":180
+    },
     "moves":{
       "charge":[
 
@@ -7860,19 +7850,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":182,
-      "defense":176,
-      "hp":220
-    },
+    }
+  },
+  "WALREIN":{
     "id":364,
     "types":[
       "ICE",
       "WATER"
-    ]
-  },
-  "CLAMPERL":{
+    ],
+    "stats":{
+      "attack":182,
+      "defense":176,
+      "stamina":220
+    },
     "moves":{
       "charge":[
 
@@ -7880,18 +7870,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":133,
-      "defense":149,
-      "hp":70
-    },
+    }
+  },
+  "CLAMPERL":{
     "id":365,
     "types":[
       "WATER"
-    ]
-  },
-  "HUNTAIL":{
+    ],
+    "stats":{
+      "attack":133,
+      "defense":149,
+      "stamina":70
+    },
     "moves":{
       "charge":[
 
@@ -7899,18 +7889,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":197,
-      "defense":194,
-      "hp":110
-    },
+    }
+  },
+  "HUNTAIL":{
     "id":366,
     "types":[
       "WATER"
-    ]
-  },
-  "GOREBYSS":{
+    ],
+    "stats":{
+      "attack":197,
+      "defense":194,
+      "stamina":110
+    },
     "moves":{
       "charge":[
 
@@ -7918,18 +7908,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":211,
-      "defense":194,
-      "hp":110
-    },
+    }
+  },
+  "GOREBYSS":{
     "id":367,
     "types":[
       "WATER"
-    ]
-  },
-  "RELICANTH":{
+    ],
+    "stats":{
+      "attack":211,
+      "defense":194,
+      "stamina":110
+    },
     "moves":{
       "charge":[
 
@@ -7937,19 +7927,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":162,
-      "defense":234,
-      "hp":200
-    },
+    }
+  },
+  "RELICANTH":{
     "id":368,
     "types":[
       "WATER",
       "ROCK"
-    ]
-  },
-  "LUVDISC":{
+    ],
+    "stats":{
+      "attack":162,
+      "defense":234,
+      "stamina":200
+    },
     "moves":{
       "charge":[
 
@@ -7957,18 +7947,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":81,
-      "defense":134,
-      "hp":86
-    },
+    }
+  },
+  "LUVDISC":{
     "id":369,
     "types":[
       "WATER"
-    ]
-  },
-  "BAGON":{
+    ],
+    "stats":{
+      "attack":81,
+      "defense":134,
+      "stamina":86
+    },
     "moves":{
       "charge":[
 
@@ -7976,18 +7966,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":134,
-      "defense":107,
-      "hp":90
-    },
+    }
+  },
+  "BAGON":{
     "id":370,
     "types":[
       "DRAGON"
-    ]
-  },
-  "SHELGON":{
+    ],
+    "stats":{
+      "attack":134,
+      "defense":107,
+      "stamina":90
+    },
     "moves":{
       "charge":[
 
@@ -7995,18 +7985,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":172,
-      "defense":179,
-      "hp":130
-    },
+    }
+  },
+  "SHELGON":{
     "id":371,
     "types":[
       "DRAGON"
-    ]
-  },
-  "SALAMENCE":{
+    ],
+    "stats":{
+      "attack":172,
+      "defense":179,
+      "stamina":130
+    },
     "moves":{
       "charge":[
 
@@ -8014,19 +8004,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":277,
-      "defense":168,
-      "hp":190
-    },
+    }
+  },
+  "SALAMENCE":{
     "id":372,
     "types":[
       "DRAGON",
       "FLYING"
-    ]
-  },
-  "BELDUM":{
+    ],
+    "stats":{
+      "attack":277,
+      "defense":168,
+      "stamina":190
+    },
     "moves":{
       "charge":[
 
@@ -8034,19 +8024,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":96,
-      "defense":141,
-      "hp":80
-    },
+    }
+  },
+  "BELDUM":{
     "id":373,
     "types":[
       "STEEL",
       "PSYCHIC"
-    ]
-  },
-  "METANG":{
+    ],
+    "stats":{
+      "attack":96,
+      "defense":141,
+      "stamina":80
+    },
     "moves":{
       "charge":[
 
@@ -8054,19 +8044,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":138,
-      "defense":185,
-      "hp":120
-    },
+    }
+  },
+  "METANG":{
     "id":374,
     "types":[
       "STEEL",
       "PSYCHIC"
-    ]
-  },
-  "METAGROSS":{
+    ],
+    "stats":{
+      "attack":138,
+      "defense":185,
+      "stamina":120
+    },
     "moves":{
       "charge":[
 
@@ -8074,19 +8064,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":257,
-      "defense":248,
-      "hp":160
-    },
+    }
+  },
+  "METAGROSS":{
     "id":375,
     "types":[
       "STEEL",
       "PSYCHIC"
-    ]
-  },
-  "REGIROCK":{
+    ],
+    "stats":{
+      "attack":257,
+      "defense":248,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -8094,37 +8084,37 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":179,
-      "defense":356,
-      "hp":160
-    },
+    }
+  },
+  "REGIROCK":{
     "id":376,
     "types":[
       "ROCK"
-    ]
-  },
-  "REGICE":{
-    "moves":{
-      "charge":[
-
-      ],
-      "fast":[
-
-      ]
-    },
+    ],
     "stats":{
       "attack":179,
       "defense":356,
-      "hp":160
+      "stamina":160
     },
+    "moves":{
+      "charge":[
+
+      ],
+      "fast":[
+
+      ]
+    }
+  },
+  "REGICE":{
     "id":377,
     "types":[
       "ICE"
-    ]
-  },
-  "REGISTEEL":{
+    ],
+    "stats":{
+      "attack":179,
+      "defense":356,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -8132,18 +8122,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":143,
-      "defense":285,
-      "hp":160
-    },
+    }
+  },
+  "REGISTEEL":{
     "id":378,
     "types":[
       "STEEL"
-    ]
-  },
-  "LATIAS":{
+    ],
+    "stats":{
+      "attack":143,
+      "defense":285,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -8151,19 +8141,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":228,
-      "defense":268,
-      "hp":160
-    },
+    }
+  },
+  "LATIAS":{
     "id":379,
     "types":[
       "DRAGON",
       "PSYCHIC"
-    ]
-  },
-  "LATIOS":{
+    ],
+    "stats":{
+      "attack":228,
+      "defense":268,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -8171,19 +8161,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":268,
-      "defense":228,
-      "hp":160
-    },
+    }
+  },
+  "LATIOS":{
     "id":380,
     "types":[
       "DRAGON",
       "PSYCHIC"
-    ]
-  },
-  "KYOGRE":{
+    ],
+    "stats":{
+      "attack":268,
+      "defense":228,
+      "stamina":160
+    },
     "moves":{
       "charge":[
 
@@ -8191,37 +8181,18 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":297,
-      "defense":276,
-      "hp":200
-    },
+    }
+  },
+  "KYOGRE":{
     "id":381,
     "types":[
       "WATER"
-    ]
-  },
-  "GROUDON":{
-    "moves":{
-      "charge":[
-
-      ],
-      "fast":[
-
-      ]
-    },
+    ],
     "stats":{
       "attack":297,
       "defense":276,
-      "hp":200
+      "stamina":200
     },
-    "id":382,
-    "types":[
-      "GROUND"
-    ]
-  },
-  "RAYQUAZA":{
     "moves":{
       "charge":[
 
@@ -8229,19 +8200,38 @@
       "fast":[
 
       ]
-    },
+    }
+  },
+  "GROUDON":{
+    "id":382,
+    "types":[
+      "GROUND"
+    ],
     "stats":{
-      "attack":312,
-      "defense":187,
-      "hp":210
+      "attack":297,
+      "defense":276,
+      "stamina":200
     },
+    "moves":{
+      "charge":[
+
+      ],
+      "fast":[
+
+      ]
+    }
+  },
+  "RAYQUAZA":{
     "id":383,
     "types":[
       "DRAGON",
       "FLYING"
-    ]
-  },
-  "JIRACHI":{
+    ],
+    "stats":{
+      "attack":312,
+      "defense":187,
+      "stamina":210
+    },
     "moves":{
       "charge":[
 
@@ -8249,19 +8239,19 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":210,
-      "defense":210,
-      "hp":200
-    },
+    }
+  },
+  "JIRACHI":{
     "id":384,
     "types":[
       "STEEL",
       "PSYCHIC"
-    ]
-  },
-  "DEOXYS":{
+    ],
+    "stats":{
+      "attack":210,
+      "defense":210,
+      "stamina":200
+    },
     "moves":{
       "charge":[
 
@@ -8269,15 +8259,25 @@
       "fast":[
 
       ]
-    },
-    "stats":{
-      "attack":345,
-      "defense":115,
-      "hp":100
-    },
+    }
+  },
+  "DEOXYS":{
     "id":385,
     "types":[
       "PSYCHIC"
-    ]
+    ],
+    "stats":{
+      "attack":345,
+      "defense":115,
+      "stamina":100
+    },
+    "moves":{
+      "charge":[
+
+      ],
+      "fast":[
+
+      ]
+    }
   }
 }
