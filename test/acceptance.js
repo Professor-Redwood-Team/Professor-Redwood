@@ -97,6 +97,13 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
+		it('bp fix', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!bp raikou thunder_shock 15 suicune'});
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('Lv31:   5 (+25%)') > -1);
+				done();
+			});
+		});
 		it('bad defender', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15 fail'});
 			sendMessage(msg, (result) => {

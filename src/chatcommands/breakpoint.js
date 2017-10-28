@@ -41,7 +41,7 @@ function getBaseStat(name, stat) {
 }
 
 function getCPM(level) {
-    return roundTo(levelToCPM[level.toString()], 3);
+    return levelToCPM[level.toString()];
 }
 
 function getSTAB(move, attacker) {
