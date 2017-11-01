@@ -26,7 +26,7 @@ function getDamage(attacker, iv, move, defender, level) {
     var attackerCPM = getCPM(level);
     var defense = getBaseStat(defender, "defense");
     var defenseIV = 15;
-    var defenderCPM = getCPM(40);
+    var defenderCPM = 0.79; // Tier 4/5 CPM
     var STAB = getSTAB(move, attacker);
     var effectiveness = getEffectiveness(move, defender);
     return Math.floor(0.5 * power * ((attack+attackIV) * attackerCPM) / ((defense+defenseIV) * defenderCPM) * STAB * effectiveness) + 1;
