@@ -8,6 +8,7 @@ const CONSTANTS = require('./../constants');
 const usage = 'Command usage: **!breakpoint attacker attack_name iv (optional: defender)**';
 const counters = require('../../data/counters.json');
 const levelToCPM = require('../../data/levelToCPM.json');
+const raidBossTiers = require('../../data/raidBossTiers.json');
 const pokemon = require('../../data/pokemon.json');
 const moves = require('../../data/moves.json');
 const types = require('../../data/types.json');
@@ -26,7 +27,7 @@ function getDamage(attacker, iv, move, defender, level) {
     var attackerCPM = getCPM(level);
     var defense = getBaseStat(defender, "defense");
     var defenseIV = 15;
-    var defenderCPM = 0.79; // Tier 4/5 CPM
+    var defenderCPM = getBossCPM(defender)
     var STAB = getSTAB(move, attacker);
     var effectiveness = getEffectiveness(move, defender);
     return Math.floor(0.5 * power * ((attack+attackIV) * attackerCPM) / ((defense+defenseIV) * defenderCPM) * STAB * effectiveness) + 1;
@@ -42,6 +43,22 @@ function getBaseStat(name, stat) {
 
 function getCPM(level) {
     return levelToCPM[level.toString()];
+}
+
+function getBossCPM(boss) {
+    var tierToCPM = {
+        "5": 0.79,
+        "4": 0.79,
+        "3": 0.73,
+        "2": 0.67,
+        "1": 0.61
+    };
+    var tier;
+    tier = raidBossTiers[boss];
+    if (!tier) {
+        return 0.79; // this isn't a raid boss, so assume tier 4/5
+    }
+    return tierToCPM[tier];
 }
 
 function getSTAB(move, attacker) {

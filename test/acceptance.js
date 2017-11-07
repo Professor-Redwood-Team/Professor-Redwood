@@ -104,6 +104,13 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
+		it('lower tier boss', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!bp zapdos thunderbolt 15 cloyster'});
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('Lv20:   48') > -1);
+				done();
+			});
+		});
 		it('bad defender', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15 fail'});
 			sendMessage(msg, (result) => {
