@@ -35,9 +35,9 @@ const data = {
 	BOTID: secrets.discord.BOTID,
 	TEAMS: ['valor', 'instinct', 'mystic'],
 	MONS: ['aerodactyl', 'chansey', 'ditto', 'dratini', 'farfetch\'d','dragonite', 'girafarig', 'grimer', 'hitmonchan', 'hitmonlee', 'hitmontop',
-		'machop', 'mareep', 'miltank', 'onix', 'porygon', 'scyther', 'tauros', 'togetic', 'larvitar', 'unown'],
+		'machop', 'makuhita', 'mareep', 'miltank', 'onix', 'porygon', 'ralts', 'scyther', 'slakoth', 'tauros', 'togetic', 'larvitar', 'unown', 'zangoose'],
 	EGGTIERS: ['tier3', 'tier4', 'tier5'],
-	RAIDMONS: ['alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'rhydon', 'snorlax', 'tyranitar', 'venusaur'],
+	RAIDMONS: ['absol', 'alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'mawile', 'rhydon', 'snorlax', 'tyranitar', 'venusaur'],
 	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune'],
 	SPECIALMONS: ['sponsored', 'highiv', 'finalevo'],
 	REGIONS: regionsConfig.regions,
@@ -48,7 +48,8 @@ const data = {
 		'unknown': 'unown',
 		'raiku': 'raikou',
 		'chancey': 'chansey',
-		'tyrannitar': 'tyranitar'
+		'tyrannitar': 'tyranitar',
+		'slakoff': 'slakoth'
 	},
 	NSFW_WORDS: [' fuck ', ' fucking ', ' fuckin ', ' shit ', ' shitty '],
 	PROTECTED_CHANNELS: ['start_here', 'professor_redwood', 'announcements'], // todo : move to a config file
