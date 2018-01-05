@@ -36,10 +36,10 @@ const data = {
 	TEAMS: ['valor', 'instinct', 'mystic'],
 	MONS: ['aerodactyl', 'chansey', 'ditto', 'dratini', 'farfetch\'d', 'dragonite', 'girafarig', 'grimer', 'hitmonchan', 'hitmonlee', 'hitmontop',
 		'machop', 'makuhita', 'mareep', 'miltank', 'onix', 'porygon', 'ralts', 'scyther', 'slakoth', 'tauros', 'togetic', 'larvitar', 'unown', 'zangoose', 'feebas',
-		'wailmer', 'lotad', 'aron', 'trapinch', 'bagon', 'beldum', 'kyogre', 'rayquaza', 'latios', 'latias', 'jirachi', 'deoxys', 'regirock'],
+		'wailmer', 'seviper', 'lotad', 'aron', 'trapinch', 'bagon', 'beldum'],
 	EGGTIERS: ['tier3', 'tier4', 'tier5'],
 	RAIDMONS: ['absol', 'alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'mawile', 'rhydon', 'snorlax', 'tyranitar', 'venusaur'],
-	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune', 'groudon', 'regirock', 'registeel'],
+	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune', 'groudon', 'regirock', 'registeel', 'kyogre', 'rayquaza', 'latios', 'latias', 'jirachi', 'deoxys'],
 	SPECIALMONS: ['sponsored', 'highiv', 'finalevo'],
 	REGIONS: regionsConfig.regions,
 	COMMON_MISSPELLINGS: {
