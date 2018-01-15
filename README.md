@@ -1,11 +1,8 @@
 ### Summary ###
 Professor Redwood has arrived from the California Bay Area. He will help you run your local discord communities for Pokemon GO. See our bot in action on the SF PoGo Raids Meetup https://discord.gg/9MJdRZm
 
-### Who do I talk to? ###
-Please contact us on our discord 666theguy and plangslammer.
-
 ### How do I contribute? ###
-Coming soon. Make a pull request!
+Make a pull request!
 
 ### How do I get set up? ###
 To run this bot you will need a ES6 node environment. The bot currently does not have database functions.
