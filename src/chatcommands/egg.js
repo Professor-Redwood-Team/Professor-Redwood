@@ -2,7 +2,7 @@
 
 const CONSTANTS = require('./../constants');
 
-const usage = 'Command usage: **!egg tier# minutesLeft location details**';
+const usage = 'Command usage: **!egg tier# minutesLeft [exgym] location details**';
 
 //Format a date object as a string in 12 hour format
 const format_time = (date_obj) => {
@@ -72,8 +72,25 @@ const egg = (data, message) => {
 
 	var twelveHrDate = format_time(date); //calc the friendly 12h date string for the UI
 
+	//'exgym' parameter checks and tag assignment
+	//  This will NOT detect @exgym in the parameter string. Must implement check/correct similar to boss, if desired.
+	var specialRaidTag = ""
+	const keyWord = msgSplit[3].toLowerCase() //get the fourth parameter to check for matching keyword
+	if (CONSTANTS.SPECIALRAIDS.indexOf(keyWord) > -1) {
+		if (data.rolesByName[keyWord]) {
+			specialRaidTag = ' <@&' + data.rolesByName[keyWord].id + '> ';
+		} else { 		//create keyWordtag
+			specialRaidTag = '';
+			console.warn('Please create a role called ' + keyword + '.'); //eslint-disable-line
+		}
+	}
+
 	//location information of raid
-	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1);
+	var keyWordLength = 0
+	if (specialRaidTag !== "") {
+		keyWordLength = keyWord.length + 1;
+	}
+	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1 + keyWordLength);
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format:\n'+usage;
@@ -85,7 +102,7 @@ const egg = (data, message) => {
 	}
 
 	reply = eggTag + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' +
-		detail + ' added by ' + message.member.displayName;
+		detail + specialRaidTag + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
 	let forwardReply = '- **Tier ' + tier + '** ' + data.getEmoji(tierEmoji) + ' egg reported in ' + data.channelsByName[channelName] + ' hatching at ' + twelveHrDate + ' at ' + detail;
 	//send alert to #gymraids_alerts channel

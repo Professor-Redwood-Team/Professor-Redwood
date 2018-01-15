@@ -3,7 +3,7 @@
 const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
 
-const usage = 'Command usage: **!raid boss minutesRemaining [sponsored] [park] location details**';
+const usage = 'Command usage: **!raid boss minutesRemaining [exgym] location details**';
 
 //Format a date object as a string in 12 hour format
 const format_time = (date_obj) => {
@@ -93,8 +93,8 @@ const raid = (data, message) => {
 			('00' + date.getUTCSeconds()).slice(-2);
 	*/
 
-	//'sponsored'/'park' parameter checks and tag assignment
-	//  This will NOT detect @sponsored or @park in the parameter string. Must implement check/correct similar to boss, if desired.
+	//'exgym' parameter checks and tag assignment
+	//  This will NOT detect @exgym in the parameter string. Must implement check/correct similar to boss, if desired.
 	var specialRaidTag = ""
 	const keyWord = msgSplit[3].toLowerCase() //get the fourth parameter to check for matching keyword
 	if (CONSTANTS.SPECIALRAIDS.indexOf(keyWord) > -1) {

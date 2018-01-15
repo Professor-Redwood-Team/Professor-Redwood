@@ -39,8 +39,8 @@ const data = {
 	EGGTIERS: ['tier3', 'tier4', 'tier5'],
 	RAIDMONS: ['alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'rhydon', 'snorlax', 'tyranitar', 'venusaur'],
 	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune'],
-	SPECIALMONS: ['sponsored', 'highiv', 'finalevo'],
-	SPECIALRAIDS: ['sponsored', 'park'],
+	SPECIALMONS: ['highiv', 'finalevo'],
+	SPECIALRAIDS: ['exgym'],
 	REGIONS: regionsConfig.regions,
 	COMMON_MISSPELLINGS: {
 		'hooh': 'ho-oh',
