@@ -4,8 +4,10 @@
   "description": "Discord bot for pokemon go",
   "main": "bot-test.js",
   "dependencies": {
+    "axios": "^0.16.2",
     "discord.js": "^11.1.0",
     "mocha": "^3.5.0",
+    "mongoose": "^4.11.6",
     "mysql": "^2.14.0"
   },
   "devDependencies": {

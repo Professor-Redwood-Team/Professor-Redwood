@@ -1,5 +1,5 @@
 'use strict';
-
+const getLocation = require('../lib/places');
 const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
 
@@ -104,6 +104,30 @@ const raid = (data, message) => {
 	if (detail.length > 255) {
 		detail = detail.substring(0,255);
 	}
+  let forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] +
+      ' ending at ' + twelveHrDate + ' at ' + detail;
+  
+	getLocation(detail.substring(0,255), channelName)
+		.then(url => {
+			detail = url;
+			// this portion had to be chained to the promise so that it would asynchronous, and that detail would get updated/adjusted within the promise
+			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
+				detail + ' added by ' + message.member.displayName;
+      forwardReply = '- **' + boss.toUpperCase() + '** ' + data.getEmoji(boss) + ' raid reported in ' + data.channelsByName[channelName] +
+        ' ending at ' + twelveHrDate + ' at ' + detail;
+			message.channel.send(reply);
+			//send alert to #gymraids_alerts channel
+			if (data.channelsByName['gymraids_alerts']) {
+        data.channelsByName['gymraids_alerts'].send(forwardReply);
+      } else {
+        console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
+      }
+		})
+		.catch(() => { 
+			reply = 'Raid reported to ' + data.channelsByName['gymraids_alerts'] + ' as ' + legendaryTag + bossTag + ' (ending: ' + twelveHrDate + ') at ' +
+			detail + ' added by ' + message.member.displayName;
+			message.channel.send(reply) 
+		})
 
 	//var sql = 'INSERT INTO raids (boss, channel, endTime, detail) VALUES (\'' + boss + '\', \'' + channelId + '\', \'' + date.toString() + '\', \'' + detail + '\');';
 	//console.log(sql); //currently logging all sql to the console for testing purposes
@@ -116,6 +140,8 @@ const raid = (data, message) => {
 		}
 	});
 	*/
+<<<<<<< HEAD
+=======
 	reply = bossTag + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' +
 		detail + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
@@ -126,6 +152,7 @@ const raid = (data, message) => {
 	} else {
 		console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
 	}
+>>>>>>> cad976e229d7822cb06c1939abb3bf8c0b457b36
 
 	//send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {
