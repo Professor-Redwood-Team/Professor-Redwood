@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 
 const chatCommandsFunc = require('./chatrouter');
 const CONSTANTS = require('./constants');
-
+const logger = require('../logger');
 const client = new Discord.Client();
 
 const rolesByName = {};
@@ -26,6 +26,7 @@ const getEmoji = (pokemon) => {
 };
 
 client.on('ready', (done) => {
+	logger.info({ event: 'Ready!' });
 	client.channels.forEach((channel) => {
 		channelsByName[channel.name] = channel;
 	});
@@ -54,7 +55,7 @@ client.on('ready', (done) => {
 	if (done) {
 		done();
 	} else {
-		console.log('Asynchronous data loaded!'); // eslint-disable-line
+		logger.info('Asynchronous data loaded!'); // eslint-disable-line
 	}
 });
 
@@ -100,6 +101,8 @@ client.on('message', (message, cb) => {
 		return;
 	}
 	
+	logger.info({ event: `${message.member.displayName} said ${message.content} in ${message.channel.name}` });
+
 	if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
 	else if (command === '!cp') {return cb(CHATCOMMANDS.cp(message));}
 	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
@@ -118,6 +121,7 @@ client.on('message', (message, cb) => {
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
 
 	const errorMessage = 'Command not found: ' + command;
+	logger.info({ event: `${command} was not understood `});
 	CONSTANTS.log(errorMessage);
 	return cb(errorMessage);
 });
