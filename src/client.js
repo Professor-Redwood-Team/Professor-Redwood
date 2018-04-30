@@ -97,7 +97,15 @@ client.on('message', (message, cb) => {
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
-		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
+		if (message.channel.name.indexOf('-') > 0) //neighborhood channel
+			message.channel.send(message.member.displayName + ', I don\'t recognize your entry in this channel\n' +
+				'For raids, use **!raid boss timeLeft location**\n' +
+				'For eggs, use **!egg tierNumber timeLeft location**\n' +
+				'For wild spawns, use **!wild pokemonName location**\n' +
+				'For everything else, go to ' + channelsByName['professor_redwood'] + ' channel and type **!help**');
+		else
+			message.channel.send(message.member.displayName + ', I don\'t recognize your entry, please make sure you are in ' +
+				channelsByName['professor_redwood'] + ' for bot commands. Try **!help**!')
 		return;
 	}
 	
