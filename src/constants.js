@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 
 const regionsConfig = require('../config/regions.json');
 const secrets = require('../config/secrets.json');
+const logger = require('../logger');
 
 String.prototype.capitalize = function () {
 	return this.charAt(0).toUpperCase() + this.slice(1);
@@ -63,7 +64,7 @@ data.log = (msg) => {
 	if (webhook) {
 		webhook.send(msg)
 			.then()
-			.catch(console.error); // eslint-disable-line
+			.catch(err => logger.error({ event: `Error with webhook ${err.message}`})); // eslint-disable-line
 	} else {
 		console.log(msg); // eslint-disable-line
 	}
