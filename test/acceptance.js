@@ -97,6 +97,7 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
+
 		it('gen 3', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!bp golem rock_throw 15 regice'});
 			sendMessage(msg, (result) => {
