@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 
 const regionsConfig = require('../config/regions.json');
 const secrets = require('../config/secrets.json');
+const logger = require('../logger');
 
 String.prototype.capitalize = function () {
 	return this.charAt(0).toUpperCase() + this.slice(1);
@@ -34,11 +35,12 @@ const data = {
 	BOTNAME: 'Professor Redwood',
 	BOTID: secrets.discord.BOTID,
 	TEAMS: ['valor', 'instinct', 'mystic'],
-	MONS: ['aerodactyl', 'chansey', 'ditto', 'dratini', 'dragonite', 'girafarig', 'grimer', 'hitmonchan', 'hitmonlee', 'hitmontop',
-		'machop', 'mareep', 'miltank', 'onix', 'porygon', 'scyther', 'tauros', 'togetic', 'larvitar', 'unown'],
+	MONS: ['aerodactyl', 'chansey', 'ditto', 'dratini', 'farfetch\'d', 'dragonite', 'girafarig', 'grimer', 'hitmonchan', 'hitmonlee', 'hitmontop',
+		'machop', 'makuhita', 'mareep', 'miltank', 'onix', 'porygon', 'ralts', 'scyther', 'slakoth', 'tauros', 'togetic', 'larvitar', 'unown', 'zangoose', 'feebas',
+		'wailmer', 'seviper', 'lotad', 'aron', 'trapinch', 'bagon', 'beldum', 'lileep', 'chimecho', 'anorith'],
 	EGGTIERS: ['tier3', 'tier4', 'tier5'],
-	RAIDMONS: ['alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'rhydon', 'snorlax', 'tyranitar', 'venusaur'],
-	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune'],
+	RAIDMONS: ['absol', 'aggron', 'alakazam', 'blastoise', 'charizard', 'gengar', 'lapras', 'machamp', 'mawile', 'rhydon', 'snorlax', 'tyranitar', 'venusaur', 'wailmer'],
+	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune', 'groudon', 'regirock', 'registeel', 'kyogre', 'rayquaza', 'latios', 'latias', 'jirachi', 'deoxys', 'regice'],
 	SPECIALMONS: ['sponsored', 'highiv', 'finalevo'],
 	REGIONS: regionsConfig.regions,
 	COMMON_MISSPELLINGS: {
@@ -48,7 +50,8 @@ const data = {
 		'unknown': 'unown',
 		'raiku': 'raikou',
 		'chancey': 'chansey',
-		'tyrannitar': 'tyranitar'
+		'tyrannitar': 'tyranitar',
+		'slakoff': 'slakoth'
 	},
 	NSFW_WORDS: [' fuck ', ' fucking ', ' fuckin ', ' shit ', ' shitty '],
 	PROTECTED_CHANNELS: ['start_here', 'professor_redwood', 'announcements'], // todo : move to a config file
@@ -61,7 +64,7 @@ data.log = (msg) => {
 	if (webhook) {
 		webhook.send(msg)
 			.then()
-			.catch(console.error); // eslint-disable-line
+			.catch(err => logger.error({ event: `Error with webhook ${err.message}`})); // eslint-disable-line
 	} else {
 		console.log(msg); // eslint-disable-line
 	}

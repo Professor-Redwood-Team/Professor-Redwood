@@ -97,17 +97,11 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
-		it('bp fix', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp raikou thunder_shock 15 suicune'});
+
+		it('gen 3', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!bp golem rock_throw 15 regice'});
 			sendMessage(msg, (result) => {
-				assert(result.indexOf('Lv31:   5 (+25%)') > -1);
-				done();
-			});
-		});
-		it('lower tier boss', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp zapdos thunderbolt 15 cloyster'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('Lv20:   48') > -1);
+				assert(result.indexOf('ROCK THROW damage against Regice\nLv20:   5') > -1);
 				done();
 			});
 		});

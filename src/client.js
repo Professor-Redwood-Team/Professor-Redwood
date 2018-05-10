@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 
 const chatCommandsFunc = require('./chatrouter');
 const CONSTANTS = require('./constants');
-
+const logger = require('../logger');
 const client = new Discord.Client();
 
 const rolesByName = {};
@@ -26,6 +26,7 @@ const getEmoji = (pokemon) => {
 };
 
 client.on('ready', (done) => {
+	logger.info({ event: 'Ready!' });
 	client.channels.forEach((channel) => {
 		channelsByName[channel.name] = channel;
 	});
@@ -54,7 +55,7 @@ client.on('ready', (done) => {
 	if (done) {
 		done();
 	} else {
-		console.log('Asynchronous data loaded!'); // eslint-disable-line
+		logger.info('Asynchronous data loaded!'); // eslint-disable-line
 	}
 });
 
@@ -96,10 +97,20 @@ client.on('message', (message, cb) => {
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
 	else if (message.channel.name !== 'professor_redwood') {
-		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
+		if (message.channel.name.indexOf('-') > 0) //neighborhood channel
+			message.channel.send(message.member.displayName + ', I don\'t recognize your entry in this channel\n' +
+				'For raids, use **!raid boss timeLeft location**\n' +
+				'For eggs, use **!egg tierNumber timeLeft location**\n' +
+				'For wild spawns, use **!wild pokemonName location**\n' +
+				'For everything else, go to ' + channelsByName['professor_redwood'] + ' channel and type **!help**');
+		else
+			message.channel.send(message.member.displayName + ', I don\'t recognize your entry, please make sure you are in ' +
+				channelsByName['professor_redwood'] + ' for bot commands. Try **!help**!')
 		return;
 	}
 	
+	logger.info({ event: `${message.member.displayName} said ${message.content} in ${message.channel.name}` });
+
 	if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
 	else if (command === '!cp') {return cb(CHATCOMMANDS.cp(message));}
 	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
@@ -118,6 +129,7 @@ client.on('message', (message, cb) => {
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
 
 	const errorMessage = 'Command not found: ' + command;
+	logger.info({ event: `${command} was not understood `});
 	CONSTANTS.log(errorMessage);
 	return cb(errorMessage);
 });
