@@ -10,15 +10,16 @@ const assignWant = (data, message) => {
 	wantedMon = CONSTANTS.standardizePokemonName(wantedMon);
 
 	if (CONSTANTS.MONS.indexOf(wantedMon) === -1 && CONSTANTS.RAIDMONS.indexOf(wantedMon) === -1 && CONSTANTS.LEGENDARYMONS.indexOf(wantedMon) === -1 && 
-		CONSTANTS.SPECIALMONS.indexOf(wantedMon) === -1 && CONSTANTS.EGGTIERS.indexOf(wantedMon) === -1) {
+		CONSTANTS.SPECIALMONS.indexOf(wantedMon) === -1 && CONSTANTS.SPECIALRAIDS.indexOf(wantedMon) === -1 && CONSTANTS.EGGTIERS.indexOf(wantedMon) === -1) {
 		reply = 'I\'m sorry, I can\'t find ' + wantedMon + '. Remember you can only type one pokemon\'s name at a time. Type **!want pokemonName** where pokemonName is one item in any of the lists below:' +
 				'\n**Legendary Pokemon**: ' + CONSTANTS.LEGENDARYMONS.join('|') +
 				'\n**Egg Tiers**: ' + CONSTANTS.EGGTIERS.join('|') +
 				'\n**Raid Boss Pokemon**: ' + CONSTANTS.RAIDMONS.join('|') +
 				'\n**Wild Pokemon**: ' + CONSTANTS.MONS.join('|') +
 				'\n**Special Case**: ' + CONSTANTS.SPECIALMONS.join('|') +
+				'\n**Special Raids**: ' + CONSTANTS.SPECIALRAIDS.join('|') +
 				'\nWhere *legendary* is any legendary pokemon' +
-				'\nWhere *sponsored* is a raid at a sponsored gym' +
+				'\nWhere *exgym* is a raid at an EX-raid eligible gym' +
 				'\nWhere *highiv* is a wild rare spawn that a user finds that is *amazing*, a *wonder*, or *can battle with the best of them*' +
 				'\nWhere *finalevo* is a wild spawn of a final evolution';
 		message.channel.send(reply);
@@ -36,7 +37,13 @@ const assignWant = (data, message) => {
 
 	if (!currWantsMon) {
 		message.member.addRole(data.rolesByName[wantedMon]);
-		reply = 'OK ' + message.member.displayName + '! I will let you know when someone spots a ' + wantedMon + ' in the wild or as a raid boss. \nRemember you can run this command again to stop alerts for ' + wantedMon;
+		reply = 'OK ' + message.member.displayName + '! I will let you know when someone spots a ' + wantedMon 
+		if (CONSTANTS.SPECIALRAIDS.indexOf(wantedMon) !== -1 ||  CONSTANTS.EGGTIERS.indexOf(wantedMon) !== -1) {
+			reply += ' raid.'
+		} else {
+			reply += ' in the wild or as a raid boss.'
+		}
+		reply += '\nRemember you can run this command again to stop alerts for ' + wantedMon + '.';
 
 	} else {
 		message.member.removeRole(data.rolesByName[wantedMon]);
