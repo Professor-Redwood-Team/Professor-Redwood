@@ -27,7 +27,7 @@ const handleMod = (data, message) => {
 					let wantedMon = role.name;
 					if (CONSTANTS.MONS.indexOf(wantedMon) > -1 || CONSTANTS.RAIDMONS.indexOf(wantedMon) > -1 || CONSTANTS.LEGENDARYMONS.indexOf(wantedMon) > -1 || 
 					CONSTANTS.EGGTIERS.indexOf(wantedMon) > -1) {
-						reply = '**HEY** :rage: \nDo **NOT** tag pokemon names with @ anymore, that\'s my job now. I will tag mons for you with the !raid or !wild commands.\nFor usage and rules, please read Rule#5 in ' 
+						reply = '**HEY** :rage: \nDo **NOT** use the @ tag when reporting Pokemon or Raids; that\'s my job! Please use the appropriate **!raid**, **!egg**, or **!wild** commands instead.\nFor usage and rules, please read Rule#5 in ' 
 							+ data.channelsByName['start_here'] + '. You have been warned!';
 						message.channel.send(reply);
 					}
