@@ -9,6 +9,7 @@ const help = require('./chatcommands/help');
 const hide = require('./chatcommands/hide');
 const mod = require('./chatcommands/mod');
 const play = require('./chatcommands/play');
+const quest = require('./chatcommands/quest');
 const raid = require('./chatcommands/raid');
 const reset = require('./chatcommands/reset');
 const team = require('./chatcommands/team');
@@ -26,6 +27,7 @@ module.exports = (data) => {
 		hide: hide(data),
 		mod: mod(data),
 		play: play(data),
+		quest: quest(data),
 		raid: raid(data),
 		reset: reset(data),
 		team: team(data),
