@@ -43,6 +43,7 @@ const data = {
 	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune', 'groudon', 'regirock', 'registeel', 'kyogre', 'rayquaza', 'latios', 'latias', 'jirachi', 'deoxys', 'regice'],
 	SPECIALMONS: ['highiv', 'finalevo'],
 	SPECIALRAIDS: ['exgym'],
+	QUESTREWARDS: ['stardust', 'technical_machine', 'rarecandy', 'shinycheck'],
 	REGIONS: regionsConfig.regions,
 	COMMON_MISSPELLINGS: {
 		'hooh': 'ho-oh',
@@ -52,7 +53,10 @@ const data = {
 		'raiku': 'raikou',
 		'chancey': 'chansey',
 		'tyrannitar': 'tyranitar',
-		'slakoff': 'slakoth'
+		'slakoff': 'slakoth',
+		'tm': 'technical_machine',
+		'chargetm': 'technical_machine',
+		'fasttm': 'technical_machine'
 	},
 	NSFW_WORDS: [' fuck ', ' fucking ', ' fuckin ', ' shit ', ' shitty '],
 	PROTECTED_CHANNELS: ['start_here', 'professor_redwood', 'announcements'], // todo : move to a config file
