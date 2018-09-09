@@ -43,7 +43,7 @@ const data = {
 	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune', 'groudon', 'regirock', 'registeel', 'kyogre', 'rayquaza', 'latios', 'latias', 'jirachi', 'deoxys', 'regice'],
 	SPECIALMONS: ['highiv', 'finalevo'],
 	SPECIALRAIDS: ['exgym'],
-	QUESTREWARDS: ['stardust', 'technical_machine', 'rarecandy', 'shinycheck'],
+	QUESTREWARDS: ['stardust', 'technical_machine', 'rarecandy', 'shinycheck', 'silver_pinap'],
 	REGIONS: regionsConfig.regions,
 	COMMON_MISSPELLINGS: {
 		'hooh': 'ho-oh',
