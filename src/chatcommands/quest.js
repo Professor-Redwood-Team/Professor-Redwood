@@ -47,7 +47,7 @@ const quest = (data, message) => {
 		//if (detail.toLowerCase().indexOf('tm ') > -1)
 		//	detail = detail.substring(detail.toLowerCase().indexOf('tm ') + 3)
 	}
-	else if (message.content.indexOf('stardust') > -1 || message.content.indexOf('dust') > -1) {
+	else if (message.content.indexOf('stardust') > -1 || message.content.indexOf('dust ') > -1) {
 		reward = 'stardust';
 		//detail = detail.substring(detail.toLowerCase().indexOf('dust') + 5);
 	}	
