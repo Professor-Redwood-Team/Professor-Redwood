@@ -47,11 +47,15 @@ const quest = (data, message) => {
 		//if (detail.toLowerCase().indexOf('tm ') > -1)
 		//	detail = detail.substring(detail.toLowerCase().indexOf('tm ') + 3)
 	}
-	else if (message.content.indexOf('stardust') > -1 || message.content.indexOf('dust') > -1) {
+	else if (message.content.indexOf('stardust') > -1 || message.content.indexOf('dust ') > -1) {
 		reward = 'stardust';
 		//detail = detail.substring(detail.toLowerCase().indexOf('dust') + 5);
+	}	
+	else if (message.content.indexOf('silverpinap') > -1 || message.content.indexOf('silver p') > -1) {
+	reward = 'silver_pinap';
+	//detail = detail.substring(detail.toLowerCase().indexOf('silver p') + 8);	
+		
 	}
-
 	var rewardTag = reward; //generate a tag for the pokemon to alert users
 
 	data.GUILD.roles.forEach((role) => {
