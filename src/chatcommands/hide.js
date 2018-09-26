@@ -9,8 +9,8 @@ const handleHide = (data, message) => {
 	let reply = '';
 
 	var hideUser = {
-			'READ_MESSAGES' : false
-		};
+		'READ_MESSAGES' : false,
+	};
 
 	const channelLink = message.content.split(' ').slice(-1)[0].toLowerCase();
 	if(!channelLink) {

@@ -44,7 +44,7 @@ const wild = (data, message) => {
 	if (!detail) {
 		reply = 'Wild sighting not processed, no location details.\n'+usage;
 		message.channel.send(reply);
-		return reply
+		return reply;
 	}
 	if (detail.length > 255) {
 		detail = detail.substring(0,255);

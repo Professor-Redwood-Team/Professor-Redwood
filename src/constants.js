@@ -56,7 +56,7 @@ const data = {
 		'slakoff': 'slakoth',
 		'tm': 'technical_machine',
 		'chargetm': 'technical_machine',
-		'fasttm': 'technical_machine'
+		'fasttm': 'technical_machine',
 	},
 	NSFW_WORDS: [' fuck ', ' fucking ', ' fuckin ', ' shit ', ' shitty '],
 	PROTECTED_CHANNELS: ['start_here', 'professor_redwood', 'announcements'], // todo : move to a config file

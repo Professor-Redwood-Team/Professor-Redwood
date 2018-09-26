@@ -30,7 +30,7 @@ const quest = (data, message) => {
 	if (!detail) {
 		reply = 'Quest report not processed, not enough information.\n'+usage;
 		message.channel.send(reply);
-		return reply
+		return reply;
 	}
 
 	let reward = msgSplit[1].toLowerCase();
@@ -52,7 +52,7 @@ const quest = (data, message) => {
 		//detail = detail.substring(detail.toLowerCase().indexOf('dust') + 5);
 	}	
 	else if (message.content.indexOf('silverpinap') > -1 || message.content.indexOf('silver p') > -1) {
-	reward = 'silver_pinap';
+		reward = 'silver_pinap';
 	//detail = detail.substring(detail.toLowerCase().indexOf('silver p') + 8);	
 		
 	}
