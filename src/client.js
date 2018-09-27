@@ -111,7 +111,7 @@ client.on('message', (message, cb) => {
 				'For everything else, go to ' + channelsByName['professor_redwood'] + ' channel and type **!help**');
 		else
 			message.channel.send(message.member.displayName + ', I don\'t recognize your entry, you need to be in the channel for bot commands. Please click here: ' +
-				channelsByName['professor_redwood'] + ' and type **!help**')
+				channelsByName['professor_redwood'] + ' and type **!help**');
 		return;
 	}
 	

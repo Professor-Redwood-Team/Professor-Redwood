@@ -95,8 +95,8 @@ const raid = (data, message) => {
 
 	//'exgym' parameter checks and tag assignment
 	//  This will NOT detect @exgym in the parameter string. Must implement check/correct similar to boss, if desired.
-	var specialRaidTag = ""
-	const keyWord = msgSplit[3].toLowerCase() //get the fourth parameter to check for matching keyword
+	var specialRaidTag = '';
+	const keyWord = msgSplit[3].toLowerCase(); //get the fourth parameter to check for matching keyword
 	if (CONSTANTS.SPECIALRAIDS.indexOf(keyWord) > -1) {
 		if (data.rolesByName[keyWord]) {
 			specialRaidTag = ' <@&' + data.rolesByName[keyWord].id + '> ';
@@ -107,8 +107,8 @@ const raid = (data, message) => {
 	} 
 
 	//location information of raid
-	var keyWordLength = 0
-	if (specialRaidTag !== "") {
+	var keyWordLength = 0;
+	if (specialRaidTag !== '') {
 		keyWordLength = keyWord.length + 1;
 	}
 	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1 + keyWordLength);

@@ -39,13 +39,13 @@ const assignWant = (data, message) => {
 
 	if (!currWantsMon) {
 		message.member.addRole(data.rolesByName[wantedMon]);
-		reply = 'OK ' + message.member.displayName + '! I will let you know when someone reports a ' + wantedMon 
+		reply = 'OK ' + message.member.displayName + '! I will let you know when someone reports a ' + wantedMon; 
 		if (CONSTANTS.SPECIALRAIDS.indexOf(wantedMon) !== -1 ||  CONSTANTS.EGGTIERS.indexOf(wantedMon) !== -1) {
-			reply += ' raid.'
+			reply += ' raid.';
 		} else if (CONSTANTS.QUESTREWARDS.indexOf(wantedMon) !== -1) {
-			reply += ' quest.'
+			reply += ' quest.';
 		} else {
-			reply += ' in the wild or as a raid boss.'
+			reply += ' in the wild or as a raid boss.';
 		}
 		reply += '\nRemember you can **run this command again to stop alerts** for ' + wantedMon + '.';
 

@@ -1,10 +1,12 @@
-const express = require('express')
-const Switch = require('../controllers/switches')
+'use strict';
 
-const router = express.Router()
+const express = require('express');
+const Switch = require('../controllers/switches');
 
-router.post('/off', Switch.Off)
-router.post('/on', Switch.On)
-router.post('/restart', Switch.Restart)
+const router = express.Router();
 
-module.exports = router
+router.post('/off', Switch.Off);
+router.post('/on', Switch.On);
+router.post('/restart', Switch.Restart);
+
+module.exports = router;
