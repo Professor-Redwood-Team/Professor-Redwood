@@ -10,7 +10,6 @@ before_install:
   fi
 - tar -xzf credentials.tar.gz
 - mkdir -p lib
-- npm i -g npm@version-number
 - gcloud auth activate-service-account --key-file client-secret.json
 
 cache:
