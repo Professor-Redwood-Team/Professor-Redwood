@@ -1,3 +1,6 @@
 node_modules
 config/secrets.json
 .idea
+client-secret.json
+api_key
+credentials.tar.gz
