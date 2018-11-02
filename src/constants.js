@@ -38,7 +38,7 @@ const data = {
 	MONS: ['aerodactyl', 'anorith', 'aron', 'bagon', 'beldum', 'blissey', 'chansey', 'chimecho', 'cranidos', 'ditto', 'dratini', 'farfetch\'d', 'feebas', 'dragonite', 'gible', 'girafarig', 'grimer', 'hitmonchan', 'hitmonlee', 'hitmontop', 'larvitar', 'lileep', 'lotad', 'lunatone', 'machop', 'makuhita', 'mareep', 'miltank', 'nincada', 'onix', 'porygon', 'ralts', 'seviper', 'scyther', 'slakoth', 'spinda', 'tauros', 'trapinch', 'togetic', 'unown', 'wailmer', 'zangoose'],
 	EGGTIERS: ['tier3', 'tier4', 'tier5'],
 	RAIDMONS: ['absol', 'aggron', 'alakazam', 'blastoise', 'charizard', 'gengar', 'kirlia', 'lapras', 'machamp', 'marowak', 'mawile', 'raichu', 'rhydon', 'shinx', 'snorlax', 'tyranitar', 'venusaur'],
-	LEGENDARYMONS: ['legendary', 'articuno', 'azelf', 'celebi', 'cresselia', 'dialga', 'deoxys', 'entei', 'giratina', 'groudon' 'heatran', 'ho-oh', 'jirachi', 'kyogre', 'latias', 'latios', 'lugia', 'mesprit', 'mew', 'mewtwo', 'moltres', 'palkia', 'raikou', 'rayquaza', 'regice', 'regigigas', 'regirock', 'registeel', 'suicune', 'uxie', 'zapdos'],
+	LEGENDARYMONS: ['legendary', 'articuno', 'azelf', 'celebi', 'cresselia', 'dialga', 'deoxys', 'entei', 'giratina', 'groudon', 'heatran', 'ho-oh', 'jirachi', 'kyogre', 'latias', 'latios', 'lugia', 'mesprit', 'mew', 'mewtwo', 'moltres', 'palkia', 'raikou', 'rayquaza', 'regice', 'regigigas', 'regirock', 'registeel', 'suicune', 'uxie', 'zapdos'],
 	SPECIALMONS: ['highiv', 'finalevo'],
 	SPECIALRAIDS: ['exgym'],
 	QUESTREWARDS: ['stardust', 'technical_machine', 'rarecandy', 'shinycheck', 'silver_pinap'],
