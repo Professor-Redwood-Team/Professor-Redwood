@@ -37,7 +37,7 @@ const data = {
 	TEAMS: ['valor', 'instinct', 'mystic'],
 	MONS: ['aerodactyl', 'blissey', 'chansey', 'cranidos', 'ditto', 'dratini', 'farfetch\'d', 'dragonite', 'gible', 'girafarig', 'grimer', 'hitmonchan', 'hitmonlee', 'hitmontop',
 		'machop', 'makuhita', 'mareep', 'miltank', 'onix', 'porygon', 'ralts', 'scyther', 'slakoth', 'tauros', 'togetic', 'larvitar', 'unown', 'zangoose', 'feebas',
-		'wailmer', 'seviper', 'lotad', 'aron', 'trapinch', 'bagon', 'beldum', 'lileep', 'chimecho', 'anorith', 'lunatone', 'spinda'],
+		'wailmer', 'seviper', 'lotad', 'aron', 'trapinch', 'bagon', 'beldum', 'lileep', 'chimecho', 'anorith', 'lunatone', 'spinda', 'nincada'],
 	EGGTIERS: ['tier3', 'tier4', 'tier5'],
 	RAIDMONS: ['absol', 'aggron', 'alakazam', 'blastoise', 'charizard', 'gengar', 'kirlia', 'lapras', 'machamp', 'marowak', 'mawile', 'raichu', 'rhydon', 'shinx', 'snorlax', 'tyranitar', 'venusaur', 'wailmer'],
 	LEGENDARYMONS: ['legendary', 'articuno', 'moltres', 'zapdos', 'mew', 'mewtwo', 'lugia', 'ho-oh', 'celebi', 'entei', 'raikou', 'suicune', 'groudon', 'regirock', 'registeel', 'kyogre', 'rayquaza', 'latios', 'latias', 'jirachi', 'deoxys', 'regice', 'azelf', 'cresselia', 'dialga', 'giratina', 'heatran', 'mesprit', 'palkia', 'regigigas', 'uxie'],
