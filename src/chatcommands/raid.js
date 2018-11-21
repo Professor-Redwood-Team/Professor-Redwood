@@ -135,7 +135,7 @@ const raid = (data, message) => {
 	*/
 	reply = data.getEmoji(boss) + bossTag + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' + specialRaidTag + '**' + detail + '**' + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
-	let forwardReply = data.getEmoji(boss) + '**' + boss.toUpperCase() + '**' + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + '**' + keyWord.toUpperCase( ) + '** ' + detail;
+	let forwardReply = data.getEmoji(boss) + '**' + boss.toUpperCase() + '**' + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
 	//send alert to #gymraids_alerts channel
 	if (data.channelsByName['gymraids_alerts']) {
 		data.channelsByName['gymraids_alerts'].send(forwardReply);
