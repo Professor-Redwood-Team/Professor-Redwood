@@ -104,7 +104,7 @@ const egg = (data, message) => {
 	reply = data.getEmoji(tierEmoji) + eggTag + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' + '**' + 
 		detail + '**' + specialRaidTag + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
-	let forwardReply = '**Tier ' + tier + '** ' + data.getEmoji(tierEmoji) + ' egg reported in ' + data.channelsByName[channelName] + ' hatching at ' + twelveHrDate + ' at ' + detail;
+	let forwardReply = '- ' + data.getEmoji(tierEmoji) + '**Tier ' + tier + '** ' + ' egg reported in ' + data.channelsByName[channelName] + ' hatching at ' + twelveHrDate + ' at ' + detail;
 	//send alert to #gymraids_alerts channel
 	if (data.channelsByName['gymraids_alerts']) {
 		data.channelsByName['gymraids_alerts'].send(forwardReply);
