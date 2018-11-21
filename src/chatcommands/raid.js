@@ -133,7 +133,7 @@ const raid = (data, message) => {
 		}
 	});
 	*/
-	reply = reply = data.getEmoji(boss) + bossTag + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' + '**' + detail + '**' + specialRaidTag +' added by ' + message.member.displayName;
+	reply = reply = data.getEmoji(boss) + bossTag + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' + '**' + detail + '**' + specialRaidTag + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
 	let forwardReply = '- ' + data.getEmoji(boss) + '**' + boss.toUpperCase() + '**' + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
 	//send alert to #gymraids_alerts channel
