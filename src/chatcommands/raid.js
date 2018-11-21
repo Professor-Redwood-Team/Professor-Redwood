@@ -34,7 +34,7 @@ const removeTags = (html) => {
 const raid = (data, message) => {
 	let reply = '';
 
-	const msgSplit = message.content.toLowerCase().split(' ');
+	const msgSplit = message.content.split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
@@ -94,10 +94,9 @@ const raid = (data, message) => {
 	*/
 
 	//'exgym' parameter checks and tag assignment
-	//  This will NOT detect @exgym in the parameter string. Must implement check/correct similar to boss, if desired.
 	var specialRaidTag = '';
-	const keyWord = msgSplit[3].toLowerCase(); //get the fourth parameter to check for matching keyword
-	if (CONSTANTS.SPECIALRAIDS.indexOf(keyWord) > -1) {
+	const keyWord = 'exgym'; //check for matching keyword
+	if (message.content.includes(keyWord)) {
 		if (data.rolesByName[keyWord]) {
 			specialRaidTag = ' <@&' + data.rolesByName[keyWord].id + '> ';
 		} else {
