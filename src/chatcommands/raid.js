@@ -34,7 +34,7 @@ const removeTags = (html) => {
 const raid = (data, message) => {
 	let reply = '';
 
-	const msgSplit = message.content.toLowerCase().split(' ');
+	const msgSplit = message.content.split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
@@ -94,10 +94,9 @@ const raid = (data, message) => {
 	*/
 
 	//'exgym' parameter checks and tag assignment
-	//  This will NOT detect @exgym in the parameter string. Must implement check/correct similar to boss, if desired.
 	var specialRaidTag = '';
-	const keyWord = msgSplit[3].toLowerCase(); //get the fourth parameter to check for matching keyword
-	if (CONSTANTS.SPECIALRAIDS.indexOf(keyWord) > -1) {
+	const keyWord = 'exgym'; //check for matching keyword
+	if (message.content.includes(keyWord)) {
 		if (data.rolesByName[keyWord]) {
 			specialRaidTag = ' <@&' + data.rolesByName[keyWord].id + '> ';
 		} else {
@@ -111,7 +110,7 @@ const raid = (data, message) => {
 	if (specialRaidTag !== '') {
 		keyWordLength = keyWord.length + 1;
 	}
-	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1 + keyWordLength);
+	var detail = msgSplit.slice(3).join(' ');
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: **!raid boss minutesRemaining [sponsored] [park] location details**';
@@ -133,9 +132,9 @@ const raid = (data, message) => {
 		}
 	});
 	*/
-	reply = data.getEmoji(boss) + bossTag + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' + specialRaidTag + '**' + detail + '**' + ' added by ' + message.member.displayName;
+	reply = data.getEmoji(boss) + bossTag + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' + '**' + detail + '**' + specialRaidTag + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
-	let forwardReply = data.getEmoji(boss) + '**' + boss.toUpperCase() + '**' + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + '**' + keyWord.toUpperCase( ) + '** ' + detail;
+	let forwardReply = '- ' + data.getEmoji(boss) + '**' + boss.toUpperCase() + '**' + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
 	//send alert to #gymraids_alerts channel
 	if (data.channelsByName['gymraids_alerts']) {
 		data.channelsByName['gymraids_alerts'].send(forwardReply);
