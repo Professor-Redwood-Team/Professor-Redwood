@@ -111,7 +111,7 @@ const raid = (data, message) => {
 	if (specialRaidTag !== '') {
 		keyWordLength = keyWord.length + 1;
 	}
-	var detail = message.content.substring(message.content.indexOf(minutesLeft.toString()) + minutesLeft.toString().length + 1 + keyWordLength);
+	var detail = msgSplit.slice(3).join(' ');
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: **!raid boss minutesRemaining [sponsored] [park] location details**';
