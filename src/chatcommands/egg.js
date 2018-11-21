@@ -33,7 +33,7 @@ const removeTags = (html) => {
 const egg = (data, message) => {
 	let reply = '';
 
-	const msgSplit = message.content.toLowerCase().split(' ');
+	const msgSplit = message.content.split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
@@ -73,17 +73,16 @@ const egg = (data, message) => {
 	var twelveHrDate = format_time(date); //calc the friendly 12h date string for the UI
 
 	//'exgym' parameter checks and tag assignment
-	//  This will NOT detect @exgym in the parameter string. Must implement check/correct similar to boss, if desired.
 	var specialRaidTag = '';
-	const keyWord = msgSplit[3].toLowerCase(); //get the fourth parameter to check for matching keyword
-	if (CONSTANTS.SPECIALRAIDS.indexOf(keyWord) > -1) {
+	const keyWord = 'exgym'; //check for matching keyword
+	if (message.content.includes(keyWord)) {
 		if (data.rolesByName[keyWord]) {
 			specialRaidTag = ' <@&' + data.rolesByName[keyWord].id + '> ';
-		} else { 		//create keyWordtag
+		} else {
 			specialRaidTag = '';
 			console.warn('Please create a role called ' + keyword + '.'); //eslint-disable-line
 		}
-	}
+	} 
 
 	//location information of raid
 	var keyWordLength = 0;
