@@ -49,8 +49,22 @@ const wild = (data, message) => {
 	if (detail.length > 255) {
 		detail = detail.substring(0,255);
 	}
-
-	reply = 'Wild **' + pokemonTag.toUpperCase() + '** ' + data.getEmoji(pokemonName) + ' at ' + detail + ' added by ' + message.member.displayName;
+	
+	var specialWildTag = '';
+	//tags role called highiv whenever 'highiv' is in a report
+	if (message.content.indexOf('highiv') > -1) { 
+		data.GUILD.roles.forEach((role) => {
+			if (role.name === 'highiv') specialWildTag += ' <@&' + role.id + '> '; //require a role called highiv
+		});
+	} 
+	//tags role called shinycheck whenever 'shiny' is in a report
+	if (message.content.indexOf('shiny') > -1) { 
+		data.GUILD.roles.forEach((role) => {
+			if (role.name === 'shinycheck') specialWildTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); //require a role called shinycheck
+		});
+	}
+	
+	reply = 'Wild **' + pokemonTag.toUpperCase() + '** ' + data.getEmoji(pokemonName) + specialWildTag + ' at ' + detail + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
 	let forwardReply = '- **' + pokemonName.toUpperCase() + '** ' + data.getEmoji(pokemonName) + ' reported in the wild in ' + data.channelsByName[message.channel.name] + ' at ' + detail;
 
