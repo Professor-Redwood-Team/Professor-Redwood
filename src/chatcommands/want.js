@@ -25,7 +25,7 @@ const assignWant = (data, message) => {
 				'\nWhere *exgym* is a raid at an EX-raid eligible gym' +
 				'\nWhere *highiv* is a wild rare spawn that a user finds that is *amazing*, a *wonder*, or *can battle with the best of them*' +
 				'\nWhere *finalevo* is a wild spawn of a final evolution' +
-				'\nWhere *shinycheck* is a Pokemon can *potentially* be shiny upon the encounter.' ;
+				'\nWhere *shinycheck* is a Pokemon that can *potentially* be shiny upon the encounter.' ;
 		message.channel.send(reply);
 		return reply;
 	}
