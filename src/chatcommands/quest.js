@@ -75,7 +75,7 @@ const quest = (data, message) => {
 
 	reply = '**QUEST ' + rewardTag.toUpperCase() + '** ' + data.getEmoji(reward) + '\nDetails: ' + detail + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
-	let forwardReply = '- **' + rewardTag.toUpperCase() + '** ' + data.getEmoji(reward) + ' reported in ' + data.channelsByName[message.channel.name] + ' at ' + detail;
+	let forwardReply = '- **' + reward.toUpperCase() + '** ' + data.getEmoji(reward) + ' reported in ' + data.channelsByName[message.channel.name] + ' at ' + detail;
 
 	message.channel.permissionOverwrites.forEach((role) => {
 		if (role.type !== 'role') return;
