@@ -34,7 +34,7 @@ const quest = (data, message) => {
 	}
 
 	let reward = msgSplit[1].toLowerCase();
-	let tms = ['chargetm','fasttm', 'tm', 'charge', 'fast'];
+	const tms = ['chargetm','chargedtm','charged_tm','fast_tm','fasttm','tm','charge','charged','fast'];
 	if (message.content.indexOf('rare cand') > -1 || message.content.indexOf('rarecand') > -1 || reward === 'rc' || reward === '1rc' || reward === '3rc') {
 		reward = 'rarecandy';
 		//if(detail.toLowerCase().indexOf(' rc') > -1)
