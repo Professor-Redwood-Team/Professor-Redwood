@@ -1,5 +1,5 @@
 ### Summary ###
-Professor Redwood has arrived from the California Bay Area. He will help you run your local discord communities for Pokemon GO. See our bot in action on the SF PoGo Raids Meetup https://discord.gg/9MJdRZm
+Professor Redwood has arrived from the California Bay Area. He will help you run your local discord communities for Pokemon GO. See our bot in action on the SF PoGo Raids Meetup https://discord.gg/7tbySPV
 
 ### How do I contribute? ###
 Make a pull request!
