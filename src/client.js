@@ -3,6 +3,7 @@
 const Discord = require('discord.js');
 
 const chatCommandsFunc = require('./chatrouter');
+const {initChannels, initRoles} = require('./init.js');
 const CONSTANTS = require('./constants');
 const logger = require('../logger');
 const client = new Discord.Client();
@@ -43,6 +44,9 @@ client.on('ready', (done) => {
 		GUILD.emojis.forEach((emoji) => {
 			emojisByName[emoji.name] = emoji;
 		});
+		initRoles(rolesByName, GUILD).then(
+			(rolesByName) => initChannels(channelsByName, rolesByName, GUILD)
+		);
 	}
 
 	CHATCOMMANDS = chatCommandsFunc({
