@@ -18,7 +18,8 @@ const wild = (data, message) => {
 	let inNeighborhood = false;
 	let usage = 'Command usage: **!wild pokemonName location details**';
 
-	const msgSplit = message.content.toLowerCase().split(' ');
+	const msglower = message.content.toLowerCase();
+	const msgSplit = msglower.split(' ');
 	if (!msgSplit || msgSplit.length < 3) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
@@ -52,13 +53,13 @@ const wild = (data, message) => {
 	
 	var specialWildTag = '';
 	//tags role called highiv whenever 'highiv' is in a report
-	if (message.content.indexOf('highiv') > -1) { 
+	if (msglower.indexOf('highiv') > -1) { 
 		data.GUILD.roles.forEach((role) => {
 			if (role.name === 'highiv') specialWildTag += ' <@&' + role.id + '> '; //require a role called highiv
 		});
 	} 
 	//tags role called shinycheck whenever 'shiny' is in a report
-	if (message.content.indexOf('shiny') > -1) { 
+	if (msglower.indexOf('shiny') > -1) { 
 		data.GUILD.roles.forEach((role) => {
 			if (role.name === 'shinycheck') specialWildTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); //require a role called shinycheck
 		});
