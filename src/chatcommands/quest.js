@@ -16,7 +16,8 @@ const quest = (data, message) => {
 
 	let inNeighborhood = false;
 	let usage = 'Command usage: **!quest reward task location** *(rewards: tm, pokemon/wild (if not sure), rarecandy)';
-
+	
+	cont msglower = message.content.toLowerCase();
 	const msgSplit = message.content.toLowerCase().split(' ');
 	if (!msgSplit || msgSplit.length < 3) {
 		reply = 'Sorry, incorrect format.\n'+usage;
@@ -35,8 +36,7 @@ const quest = (data, message) => {
 
 	let reward = msgSplit[1].toLowerCase();
 	const tms = ['chargetm','chargedtm','charged_tm','fast_tm','fasttm','tm','charge','charged','fast'];
-	if (message.content.indexOf('rare cand') > -1 || message.content.indexOf('rarecand') > -1 || reward === 'rc' || reward === '1rc' || reward === '3rc') {
-		reward = 'rarecandy';
+	if (msglower.indexOf('rare cand') > -1 || msglower.indexOf('rarecand') > -1 || reward === 'rc' || reward === '1rc' || reward === '3rc') {		reward = 'rarecandy';
 		//if(detail.toLowerCase().indexOf(' rc') > -1)
 		//	detail = detail.substring(detail.toLowerCase().indexOf(' rc') + 3);
 		//else if (detail.toLowerCase().indexOf('candy') > -1)
@@ -47,11 +47,11 @@ const quest = (data, message) => {
 		//if (detail.toLowerCase().indexOf('tm ') > -1)
 		//	detail = detail.substring(detail.toLowerCase().indexOf('tm ') + 3)
 	}
-	else if (message.content.indexOf('stardust') > -1 || message.content.indexOf('dust ') > -1) {
+	else if (msglower.indexOf('stardust') > -1 || msglower.indexOf('dust ') > -1) {
 		reward = 'stardust';
 		//detail = detail.substring(detail.toLowerCase().indexOf('dust') + 5);
 	}	
-	else if (message.content.indexOf('silverpinap') > -1 || message.content.indexOf('silver p') > -1) {
+	else if (msglower.indexOf('silverpinap') > -1 || msglower.indexOf('silver p') > -1) {
 		reward = 'silver_pinap';
 	//detail = detail.substring(detail.toLowerCase().indexOf('silver p') + 8);	
 		
@@ -63,7 +63,7 @@ const quest = (data, message) => {
 	});
 
 	//check to see if the message contains a mention of 'shiny'
-	if (message.content.indexOf('shiny') > -1) {
+	if (msglower.indexOf('shiny') > -1) {
 		data.GUILD.roles.forEach((role) => {
 			if (role.name === 'shinycheck') rewardTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); //require a role called shinycheck
 		});
