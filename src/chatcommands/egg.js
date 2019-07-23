@@ -39,7 +39,7 @@ const egg = (data, message) => {
 		message.channel.send(reply);
 		return reply;
 	}
-	
+
 	const tier = parseInt(msgSplit[1]);
 	if (isNaN(tier) || tier < 1 || tier > 5) {
 		reply = 'Sorry incorrect format. Ensure tier is a number between 1 and 5, use format:\n' + usage;
@@ -58,7 +58,7 @@ const egg = (data, message) => {
 		if(tier == 3) eggTag = ' <@&' + data.rolesByName['tier3'].id + '> ';
 		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';
 	}
-	else tierEmoji = 'normalraid'; 
+	else tierEmoji = 'normalraid';
 
 	const channelName = message.channel.name;
 	const minutesLeft = parseInt(msgSplit[2]);
@@ -82,7 +82,7 @@ const egg = (data, message) => {
 			specialRaidTag = '';
 			console.warn('Please create a role called ' + keyword + '.'); //eslint-disable-line
 		}
-	} 
+	}
 
 	//location information of raid
 	var keyWordLength = 0;
@@ -90,7 +90,7 @@ const egg = (data, message) => {
 		keyWordLength = keyWord.length + 1;
 	}
 	var detail = msgSplit.slice(3).join(' ');
-	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
+	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format:\n'+usage;
 		message.channel.send(reply);
@@ -100,7 +100,7 @@ const egg = (data, message) => {
 		detail = detail.substring(0,255);
 	}
 
-	reply = data.getEmoji(tierEmoji) + eggTag + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' + '**' + 
+	reply = data.getEmoji(tierEmoji) + eggTag + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' + '**' +
 		detail + '**' + specialRaidTag + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
 	let forwardReply = '- ' + data.getEmoji(tierEmoji) + '**Tier ' + tier + '** ' + ' egg reported in ' + data.channelsByName[channelName] + ' hatching at ' + twelveHrDate + ' at ' + detail;

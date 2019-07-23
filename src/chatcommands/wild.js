@@ -41,7 +41,7 @@ const wild = (data, message) => {
 
 	let detail = message.content.substring(message.content.indexOf(' ',message.content.indexOf(' ') +1)+1);
 
-	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
+	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Wild sighting not processed, no location details.\n'+usage;
 		message.channel.send(reply);
@@ -50,21 +50,21 @@ const wild = (data, message) => {
 	if (detail.length > 255) {
 		detail = detail.substring(0,255);
 	}
-	
+
 	var specialWildTag = '';
 	//tags role called highiv whenever 'highiv' is in a report
-	if (msglower.indexOf('highiv') > -1) { 
+	if (msglower.indexOf('highiv') > -1) {
 		data.GUILD.roles.forEach((role) => {
 			if (role.name === 'highiv') specialWildTag += ' <@&' + role.id + '> '; //require a role called highiv
 		});
-	} 
+	}
 	//tags role called shinycheck whenever 'shiny' is in a report
-	if (msglower.indexOf('shiny') > -1) { 
+	if (msglower.indexOf('shiny') > -1) {
 		data.GUILD.roles.forEach((role) => {
 			if (role.name === 'shinycheck') specialWildTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); //require a role called shinycheck
 		});
 	}
-	
+
 	reply = 'Wild **' + pokemonTag.toUpperCase() + '** ' + data.getEmoji(pokemonName) + specialWildTag + ' at ' + detail + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
 	let forwardReply = '- **' + pokemonName.toUpperCase() + '** ' + data.getEmoji(pokemonName) + ' reported in the wild in ' + data.channelsByName[message.channel.name] + ' at ' + detail;

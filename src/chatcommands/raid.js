@@ -103,7 +103,7 @@ const raid = (data, message) => {
 			specialRaidTag = '';
 			console.warn('Please create a role called ' + keyword + '.'); //eslint-disable-line
 		}
-	} 
+	}
 
 	//location information of raid
 	var keyWordLength = 0;
@@ -111,7 +111,7 @@ const raid = (data, message) => {
 		keyWordLength = keyWord.length + 1;
 	}
 	var detail = msgSplit.slice(3).join(' ');
-	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
+	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: **!raid boss minutesRemaining [sponsored] [park] location details**';
 		message.channel.send(reply);

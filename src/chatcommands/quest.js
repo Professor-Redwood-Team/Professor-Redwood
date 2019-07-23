@@ -16,7 +16,7 @@ const quest = (data, message) => {
 
 	let inNeighborhood = false;
 	let usage = 'Command usage: **!quest reward task location** *(rewards: tm, pokemon/wild (if not sure), rarecandy)';
-	
+
 	const msglower = message.content.toLowerCase();
 	const msgSplit = message.content.toLowerCase().split(' ');
 	if (!msgSplit || msgSplit.length < 3) {
@@ -24,10 +24,10 @@ const quest = (data, message) => {
 		message.channel.send(reply);
 		return reply;
 	}
-	
+
 	let detail = message.content.substring(message.content.indexOf(' ')+1);
 
-	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
+	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Quest report not processed, not enough information.\n'+usage;
 		message.channel.send(reply);
@@ -50,11 +50,11 @@ const quest = (data, message) => {
 	else if (msglower.indexOf('stardust') > -1 || msglower.indexOf('dust ') > -1) {
 		reward = 'stardust';
 		//detail = detail.substring(detail.toLowerCase().indexOf('dust') + 5);
-	}	
+	}
 	else if (msglower.indexOf('silverpinap') > -1 || msglower.indexOf('silver p') > -1) {
 		reward = 'silver_pinap';
-	//detail = detail.substring(detail.toLowerCase().indexOf('silver p') + 8);	
-		
+	//detail = detail.substring(detail.toLowerCase().indexOf('silver p') + 8);
+
 	}
 	var rewardTag = reward; //generate a tag for the pokemon to alert users
 
