@@ -17,7 +17,7 @@ const quest = (data, message) => {
 	let inNeighborhood = false;
 	let usage = 'Command usage: **!quest reward task location** *(rewards: tm, pokemon/wild (if not sure), rarecandy)';
 
-	cont msglower = message.content.toLowerCase();
+	const msglower = message.content.toLowerCase();
 	const msgSplit = message.content.toLowerCase().split(' ');
 	if (!msgSplit || msgSplit.length < 3) {
 		reply = 'Sorry, incorrect format.\n'+usage;
