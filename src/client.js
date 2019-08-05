@@ -89,15 +89,16 @@ client.on('message', (message, cb) => {
 	}
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest') {
+	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' || command === '!tr') {
 		if (message.channel.name.indexOf('-') === -1) {
-			reply = message.member.displayName + ', raid/egg/wild/quest commands should only be run in the corresponding neighborhood channel';
+			reply = message.member.displayName + ', raid/egg/wild/quest/team rocket commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
 			return reply;
 		}
 		if (command === '!raid') {return cb(CHATCOMMANDS.raid(message));}
 		else if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
 		else if(command === '!quest') {return cb(CHATCOMMANDS.quest(message));}
+		else if(command === '!tr') {return cb(CHATCOMMANDS.tr(message));}
 		else {return cb(CHATCOMMANDS.egg(message));}
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
@@ -108,10 +109,8 @@ client.on('message', (message, cb) => {
 				'For eggs, use **!egg tierNumber timeLeft location**\n' +
 				'For quests, use **!quest reward task location**\n' +
 				'For wild spawns, use **!wild pokemonName location**\n' +
+				'For Team Rocket sightings, use **!tr pokemonName location**\n' +
 				'For everything else, go to ' + channelsByName['professor_redwood'] + ' channel and type **!help**');
-		else
-			message.channel.send(message.member.displayName + ', I don\'t recognize your entry, you need to be in the channel for bot commands. Please click here: ' +
-				channelsByName['professor_redwood'] + ' and type **!help**');
 		return;
 	}
 	
