@@ -15,6 +15,7 @@ const reset = require('./chatcommands/reset');
 const team = require('./chatcommands/team');
 const want = require('./chatcommands/want');
 const wild = require('./chatcommands/wild');
+const tr = require('./chatcommands/tr');
 
 module.exports = (data) => {
 	return {
@@ -33,5 +34,6 @@ module.exports = (data) => {
 		team: team(data),
 		want: want(data),
 		wild: wild(data),
+		tr: tr(data),
 	};
 };
