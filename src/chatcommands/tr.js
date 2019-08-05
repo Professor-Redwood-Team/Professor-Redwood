@@ -52,7 +52,7 @@ const tr = (data, message) => {
 
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
-		reply = 'Team Rocket sighting not processed, no location details.\n'+usage;
+		reply = 'Team GO Rocket sighting not processed, no location details.\n'+usage;
 		message.channel.send(reply);
 		return reply
 	}
@@ -60,9 +60,9 @@ const tr = (data, message) => {
 		detail = detail.substring(0,255);
 	}
 
-	reply = 'Team Rocket with ' + '**' + shadowTag.toUpperCase() + pokemonTag.toUpperCase() + '** ' + data.getEmoji(pokemonName) + ' spotted at ' + '**' + detail + '**' +' by ' + message.member.displayName;
+	reply = 'Team GO Rocket with ' + '**' + shadowTag.toUpperCase() + pokemonTag.toUpperCase() + '** ' + data.getEmoji(pokemonName) + ' spotted at ' + '**' + detail + '**' +' by ' + message.member.displayName;
 	message.channel.send(reply);
-	let forwardReply = '- Team Rocket with **SHADOW ' + pokemonName.toUpperCase() + '** ' + data.getEmoji(pokemonName) + ' spotted in ' + data.channelsByName[message.channel.name] + ' at ' + detail;
+	let forwardReply = '- Team GO Rocket with **SHADOW ' + pokemonName.toUpperCase() + '** ' + data.getEmoji(pokemonName) + ' spotted in ' + data.channelsByName[message.channel.name] + ' at ' + detail;
 
 	if(!data.channelsByName['shadow_alerts'])
 		console.log('Please create a channel called shadow_alerts to allow the !tr function to work');
