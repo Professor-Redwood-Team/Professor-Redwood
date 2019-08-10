@@ -64,6 +64,12 @@ const wild = (data, message) => {
 			if (role.name === 'shinycheck') specialWildTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); //require a role called shinycheck
 		});
 	}
+	//tags role called shinycheck whenever 'finalevo' is in a report
+	if (msglower.indexOf('finalevo') > -1) {
+		data.GUILD.roles.forEach((role) => {
+			if (role.name === 'finalevo') specialWildTag += ' <@&' + role.id + '> '; //require a role called finalevo
+		});
+	}
 
 	reply = 'Wild **' + pokemonTag.toUpperCase() + '** ' + data.getEmoji(pokemonName) + specialWildTag + ' at ' + detail + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
