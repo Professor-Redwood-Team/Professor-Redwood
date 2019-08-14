@@ -33,6 +33,7 @@ const removeTags = (html) => {
 const egg = (data, message) => {
 	let reply = '';
 
+	const msglower = message.content.toLowerCase();
 	const msgSplit = message.content.split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
 		reply = 'Sorry, incorrect format.\n'+usage;
@@ -53,12 +54,17 @@ const egg = (data, message) => {
 		tierEmoji = 'legendaryraid';
 		eggTag = ' <@&' + data.rolesByName['tier5'].id + '> ';
 	}
+	else if (tier < 3) {
+		tierEmoji = 'normalraid';
+		if(tier == 1) eggTag = ' <@&' + data.rolesByName['tier1'].id + '> ';
+		if(tier == 2) eggTag = ' <@&' + data.rolesByName['tier2'].id + '> ';
+		
+	}
 	else if (tier > 2) {
 		tierEmoji = 'rareraid';
 		if(tier == 3) eggTag = ' <@&' + data.rolesByName['tier3'].id + '> ';
 		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';
 	}
-	else tierEmoji = 'normalraid';
 
 	const channelName = message.channel.name;
 	const minutesLeft = parseInt(msgSplit[2]);
@@ -74,21 +80,15 @@ const egg = (data, message) => {
 
 	//'exgym' parameter checks and tag assignment
 	var specialRaidTag = '';
-	const keyWord = 'exgym'; //check for matching keyword
-	if (message.content.includes(keyWord)) {
-		if (data.rolesByName[keyWord]) {
-			specialRaidTag = ' <@&' + data.rolesByName[keyWord].id + '> ';
+	if (msglower.indexOf('exgym') > -1 || msglower.indexOf(' ex gym') > -1 || msglower.indexOf('ex raid') > -1 || msglower.indexOf('(ex gym)') > -1) {
+		if (data.rolesByName['exgym']) {
+			specialRaidTag = ' <@&' + data.rolesByName['exgym'].id + '> ';
 		} else {
 			specialRaidTag = '';
-			console.warn('Please create a role called ' + keyword + '.'); //eslint-disable-line
+			console.warn('Please create a role called exgym.'); //eslint-disable-line
 		}
 	}
-
-	//location information of raid
-	var keyWordLength = 0;
-	if (specialRaidTag !== '') {
-		keyWordLength = keyWord.length + 1;
-	}
+	
 	var detail = msgSplit.slice(3).join(' ');
 	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
@@ -100,8 +100,8 @@ const egg = (data, message) => {
 		detail = detail.substring(0,255);
 	}
 
-	reply = data.getEmoji(tierEmoji) + eggTag + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' + '**' +
-		detail + '**' + specialRaidTag + ' added by ' + message.member.displayName;
+	reply = data.getEmoji(tierEmoji) + eggTag + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' + specialRaidTag + '**' +
+		detail + '**' + ' added by ' + message.member.displayName;
 	message.channel.send(reply);
 	let forwardReply = '- ' + data.getEmoji(tierEmoji) + '**Tier ' + tier + '** ' + ' egg reported in ' + data.channelsByName[channelName] + ' hatching at ' + twelveHrDate + ' at ' + detail;
 	//send alert to #gymraids_alerts channel
