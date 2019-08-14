@@ -18,7 +18,7 @@ const quest = (data, message) => {
 	let usage = 'Command usage: **!quest reward task location** *(rewards: tm, pokemon/wild (if not sure), rarecandy)';
 
 	const msglower = message.content.toLowerCase();
-	const msgSplit = message.content.toLowerCase().split(' ');
+	const msgSplit = message.content.toLowerCase().replace('\n', ' ').split(' ');
 	if (!msgSplit || msgSplit.length < 3) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
