@@ -12,20 +12,22 @@ const assignWant = (data, message) => {
 	if (CONSTANTS.MONS.indexOf(wantedMon) === -1 && CONSTANTS.RAIDMONS.indexOf(wantedMon) === -1 && CONSTANTS.LEGENDARYMONS.indexOf(wantedMon) === -1 && 
 		CONSTANTS.SPECIALMONS.indexOf(wantedMon) === -1 && CONSTANTS.SPECIALRAIDS.indexOf(wantedMon) === -1 && 
 		CONSTANTS.EGGTIERS.indexOf(wantedMon) === -1 && CONSTANTS.QUESTREWARDS.indexOf(wantedMon) === -1 && CONSTANTS.PVP.indexOf(wantedMon) === -1) {
-		reply = 'I\'m sorry, I can\'t find ' + wantedMon + '. Remember you can only type one pokemon\'s name at a time. Type **!want pokemonName** where pokemonName is one item in any of the lists below:' +
+		reply = 'I\'m sorry, I can\'t find ' + wantedMon + '. Remember, you can only type one keyword at a time. Type `!want keyword`, where `keyword` is one item in any of the lists below:' + '\n' +
 				'\n**Legendary Pokemon**: ' + CONSTANTS.LEGENDARYMONS.join('|') +
-				'\n**Egg Tiers**: ' + CONSTANTS.EGGTIERS.join('|') +
-				'\n**Quest Rewards**: ' + CONSTANTS.QUESTREWARDS.join('|') +
-				'\n**Raid Boss Pokemon**: ' + CONSTANTS.RAIDMONS.join('|') +
-				'\n**Wild Pokemon**: ' + CONSTANTS.MONS.join('|') +
+				'\n*legendary* - all Legendary Pokémon' + '\n' + '-----' +
+				'\n**Egg Tiers**: ' + CONSTANTS.EGGTIERS.join('|') + '\n' + '-----' +
+				'\n**Quest Rewards**: ' + CONSTANTS.QUESTREWARDS.join('|') + '\n' + '-----' +
+				'\n**Raid Boss Pokemon**: ' + CONSTANTS.RAIDMONS.join('|') + '\n' + '-----' +
+				'\n**Wild Pokemon**: ' + CONSTANTS.MONS.join('|') + '\n' + '-----' +
 				'\n**Special Case**: ' + CONSTANTS.SPECIALMONS.join('|') +
-				'\n**Special Raids**: ' + CONSTANTS.SPECIALRAIDS.join('|') +
+				'\n*shadow* - all shadow Pokémon' + 
+				'\n*highiv* - a wild spawn that a Trainer finds that is a 3* appraisal or 100%' +
+				'\n*shinycheck* - a Pokémon that can potentially be shiny when encountered' +
+				'\n*finalevo* - a wild spawn of a final evolution' + '\n' + '-----' +
+				'\n**Special Raids**: ' + CONSTANTS.SPECIALRAIDS.join('|') + 
+				'\n*exgym* - a Raid at an EX eligible Gym' + '\n' + '-----' +
 				'\n**PVP**: ' + CONSTANTS.PVP.join('|') +
-				'\nWhere *legendary* is any legendary pokemon' +
-				'\nWhere *exgym* is a raid at an EX-raid eligible gym' +
-				'\nWhere *highiv* is a wild rare spawn that a user finds that is *amazing*, a *wonder*, or *can battle with the best of them*' +
-				'\nWhere *finalevo* is a wild spawn of a final evolution' +
-				'\nWhere *shinycheck* is a Pokemon that can *potentially* be shiny upon the encounter.' ;
+				'\n*pvp* -  receive notifications for the latest updates regarding PVP tournaments from tournament organizers' ;
 		message.channel.send(reply);
 		return reply;
 	}
@@ -45,9 +47,11 @@ const assignWant = (data, message) => {
 		if (CONSTANTS.SPECIALRAIDS.indexOf(wantedMon) !== -1 ||  CONSTANTS.EGGTIERS.indexOf(wantedMon) !== -1) {
 			reply += ' raid.';
 		} else if (CONSTANTS.QUESTREWARDS.indexOf(wantedMon) !== -1) {
-			reply += ' quest.';
+			reply += ' quest.';	
+		} else if (CONSTANTS.SPECIALMONS.indexOf(wantedMon) !== -1) {
+			reply += ' pokemon.';
 		} else {
-			reply += ' in the wild or as a raid boss.';
+			reply += ' in the wild, as a quest reward, as a shadow, or as a raid boss.';
 		}
 		reply += '\nRemember you can **run this command again to stop alerts** for ' + wantedMon + '.';
 
