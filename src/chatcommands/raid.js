@@ -34,6 +34,7 @@ const removeTags = (html) => {
 const raid = (data, message) => {
 	let reply = '';
 
+	const msglower = message.content.toLowerCase();
 	const msgSplit = message.content.split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
 		reply = 'Sorry, incorrect format.\n'+usage;
@@ -95,21 +96,15 @@ const raid = (data, message) => {
 
 	//'exgym' parameter checks and tag assignment
 	var specialRaidTag = '';
-	const keyWord = 'exgym'; //check for matching keyword
-	if (message.content.includes(keyWord)) {
-		if (data.rolesByName[keyWord]) {
-			specialRaidTag = ' <@&' + data.rolesByName[keyWord].id + '> ';
+	if (msglower.indexOf('exgym') > -1 || msglower.indexOf(' ex gym') > -1 || msglower.indexOf('ex raid') > -1 || msglower.indexOf('(ex gym)') > -1) {
+		if (data.rolesByName['exgym']) {
+			specialRaidTag = ' <@&' + data.rolesByName['exgym'].id + '> ';
 		} else {
 			specialRaidTag = '';
-			console.warn('Please create a role called ' + keyword + '.'); //eslint-disable-line
+			console.warn('Please create a role called exgym.'); //eslint-disable-line
 		}
 	}
-
-	//location information of raid
-	var keyWordLength = 0;
-	if (specialRaidTag !== '') {
-		keyWordLength = keyWord.length + 1;
-	}
+	
 	var detail = msgSplit.slice(3).join(' ');
 	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
