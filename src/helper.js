@@ -83,8 +83,8 @@ const sendAlertToChannel = (channelName, reply, data) => {
   if (data.channelsByName[channelName]) {
 		data.channelsByName[channelName].send(reply);
 	} else {
-		console.warn('Please add a channel called #${channelName}');
-	}
+		console.warn(`Please add a channel called #${channelName}`);
+  }
 };
 
 module.exports = {

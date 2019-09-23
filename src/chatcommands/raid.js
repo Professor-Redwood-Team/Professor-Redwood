@@ -42,7 +42,6 @@ const raid = (data, message) => {
 		message.channel.send(reply);
 		return reply;
 	}
-	const endTime = getEndTime(minutesLeft);
 
 	//clean the date variable into a UTC object compatible with mysql and discord. this may no longer be required
 	/*date = date.getUTCFullYear() + '-' +
@@ -76,6 +75,7 @@ const raid = (data, message) => {
 
 	const legendaryTag = getLegendaryTag(boss, CONSTANTS.LEGENDARYMONS, data);
 	const channelName = message.channel.name;
+	const endTime = getEndTime(minutesLeft);
 	const specialRaidTag = getSpecialRaidTag(msgLower, data);
 	const hasExgymTag = message.content.includes('exgym');
 
@@ -93,11 +93,7 @@ const raid = (data, message) => {
 		const roleName = data.GUILD.roles.get(role.id).name;
 		// todo : get rid of SF reference
 		if (CONSTANTS.REGIONS.includes(roleName) && roleName !== 'sf' && roleName !== 'allregions') {
-			if (data.channelsByName[`gymraids_${roleName}`]) {
-				data.channelsByName[`gymraids_${roleName}`].send(forwardReply);
-			} else {
-				console.warn(`Please add the channel gymraids_${roleName}`); // eslint-disable-line
-			}
+			sendAlertToChannel(`gymraids_${roleName}`, forwardReply, data);
 		}
 	});
 
