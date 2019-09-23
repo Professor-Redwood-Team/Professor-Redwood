@@ -1,34 +1,9 @@
 'use strict';
 
 const CONSTANTS = require('./../constants');
+const { cleanUpDetails, getEndTime, getSpecialRaidTag, getTierEmojiAndEggTag, removeTags, sendAlertToChannel } = require('./../helper');
 
 const usage = 'Command usage: **!egg tier# minutesLeft [exgym] location details**';
-
-//Format a date object as a string in 12 hour format
-const format_time = (date_obj) => {
-	// formats a javascript Date object into a 12h AM/PM time string
-	var hour = date_obj.getHours();
-	var minute = date_obj.getMinutes();
-	const amPM = (hour > 11) ? 'pm' : 'am';
-	if(hour > 12) {
-		hour -= 12;
-	} else if(hour === 0) {
-		hour = '12';
-	}
-	if(minute < 10) {
-		minute = '0' + minute;
-	}
-	return hour + ':' + minute + amPM;
-};
-
-const removeTags = (html) => {
-	var oldHtml;
-	do {
-		oldHtml = html;
-		html = html.replace(CONSTANTS.tagOrComment, '');
-	} while (html !== oldHtml);
-	return html.replace(/</g, '&lt;');
-};
 
 const egg = (data, message) => {
 	let reply = '';
@@ -36,92 +11,58 @@ const egg = (data, message) => {
 	const msglower = message.content.toLowerCase();
 	const msgSplit = message.content.split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
-		reply = 'Sorry, incorrect format.\n'+usage;
+		reply = `Sorry, incorrect format.\n${usage}`;
 		message.channel.send(reply);
 		return reply;
 	}
 
 	const tier = parseInt(msgSplit[1]);
 	if (isNaN(tier) || tier < 1 || tier > 5) {
-		reply = 'Sorry incorrect format. Ensure tier is a number between 1 and 5, use format:\n' + usage;
+		reply = `Sorry incorrect format. Ensure tier is a number between 1 and 5, use format:\n${usage}`;
 		message.channel.send(reply);
 		return;
 	}
 
-	let tierEmoji = '';
-	var eggTag = 'Tier ' + tier;
-	if (tier == 5) {
-		tierEmoji = 'legendaryraid';
-		eggTag = ' <@&' + data.rolesByName['tier5'].id + '> ';
-	}
-	else if (tier < 3) {
-		tierEmoji = 'normalraid';
-		if(tier == 1) eggTag = ' <@&' + data.rolesByName['tier1'].id + '> ';
-		if(tier == 2) eggTag = ' <@&' + data.rolesByName['tier2'].id + '> ';
-		
-	}
-	else if (tier > 2) {
-		tierEmoji = 'rareraid';
-		if(tier == 3) eggTag = ' <@&' + data.rolesByName['tier3'].id + '> ';
-		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';
-	}
-
-	const channelName = message.channel.name;
 	const minutesLeft = parseInt(msgSplit[2]);
 	if (isNaN(minutesLeft) || minutesLeft < 1 || minutesLeft > 120) {
-		reply = 'Raid not processed, ensure minutes remaining is a integer between 1 and 120.\n'+usage;
+		reply = `Raid not processed, ensure minutes remaining is a integer between 1 and 120.\n${usage}`;
 		message.channel.send(reply);
 		return reply;
 	}
-	var date = new Date(); //get today's date/time
-	date.setMinutes(date.getMinutes() + minutesLeft); //add minutes remaining to get end time
 
-	var twelveHrDate = format_time(date); //calc the friendly 12h date string for the UI
-
-	//'exgym' parameter checks and tag assignment
-	var specialRaidTag = '';
-	if (msglower.indexOf('exgym') > -1 || msglower.indexOf(' ex gym') > -1 || msglower.indexOf('ex raid') > -1 || msglower.indexOf('(ex gym)') > -1) {
-		if (data.rolesByName['exgym']) {
-			specialRaidTag = ' <@&' + data.rolesByName['exgym'].id + '> ';
-		} else {
-			specialRaidTag = '';
-			console.warn('Please create a role called exgym.'); //eslint-disable-line
-		}
-	}
-	
-	var detail = msgSplit.slice(3).join(' ');
+	let detail = msgSplit.slice(3).join(' ');
 	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format:\n'+usage;
 		message.channel.send(reply);
 		return reply;
 	}
-	if (detail.length > 255) {
-		detail = detail.substring(0,255);
-	}
+	detail = cleanUpDetails(detail);
 
-	reply = data.getEmoji(tierEmoji) + eggTag + ' raid egg reported to ' + data.channelsByName['gymraids_alerts'] + ' (hatching: ' + twelveHrDate + ') at ' + specialRaidTag + '**' +
-		detail + '**' + ' added by ' + message.member.displayName;
+	const { tierEmoji, eggTag } = getTierEmojiAndEggTag(tier, data);
+	const channelName = message.channel.name;
+	const endTime = getEndTime(minutesLeft);
+	const specialRaidTag = getSpecialRaidTag(msglower, data);
+	const hasExgymTag = message.content.includes('exgym');
+
+	reply = `${data.getEmoji(tierEmoji)}${eggTag}raid egg reported to ${data.channelsByName['gymraids_alerts']} (hatching: ${endTime}) at ${specialRaidTag}**${detail}** added by ${message.member.displayName}`;
 	message.channel.send(reply);
-	let forwardReply = '- ' + data.getEmoji(tierEmoji) + '**Tier ' + tier + '** ' + ' egg reported in ' + data.channelsByName[channelName] + ' hatching at ' + twelveHrDate + ' at ' + detail;
-	//send alert to #gymraids_alerts channel
-	if (data.channelsByName['gymraids_alerts']) {
-		data.channelsByName['gymraids_alerts'].send(forwardReply);
-	} else {
-		console.warn('Please add a channel called #gymraids_alerts'); // eslint-disable-line
-	}
+	const forwardReply = `- ${data.getEmoji(tierEmoji)}**Tier ${tier}** egg reported in ${data.channelsByName[channelName]} hatching at ${endTime} at **${detail}** ${hasExgymTag ? '(exgym)' : ''}`;
 
-	//send alert to regional alert channel
+	// Send alert to #gymraids_alerts channel
+	sendAlertToChannel('gymraids_alerts', forwardReply, data);
+
+	// Send alert to regional alert channel
 	message.channel.permissionOverwrites.forEach((role) => {
 		if (role.type !== 'role') return;
 
-		var roleName = data.GUILD.roles.get(role.id).name;
+		const roleName = data.GUILD.roles.get(role.id).name;
 		// todo : get rid of SF reference
-		if (CONSTANTS.REGIONS.indexOf(roleName) > -1 && roleName !== 'sf' && roleName !== 'allregions') {
-			if (data.channelsByName['gymraids_' + roleName]) {
-				data.channelsByName['gymraids_' + roleName].send(forwardReply);
+		if (CONSTANTS.REGIONS.includes(roleName) && roleName !== 'sf' && roleName !== 'allregions') {
+			if (data.channelsByName[`gymraids_${roleName}`]) {
+				data.channelsByName[`gymraids_${roleName}`].send(forwardReply);
 			} else {
-				console.warn('Please add the channel gymraids_' + roleName); // eslint-disable-line
+				console.warn(`Please add the channel gymraids_${roleName}`); // eslint-disable-line
 			}
 		}
 	});
