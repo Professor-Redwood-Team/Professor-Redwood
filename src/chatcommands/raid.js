@@ -63,12 +63,11 @@ const raid = (data, message) => {
 		}
 	});
 
-	var legendaryTag = '';
-	if (CONSTANTS.LEGENDARYMONS.indexOf(boss) > -1) {
+	let legendaryTag = '';
+	if (CONSTANTS.LEGENDARYMONS.includes(boss)) {
 		if (data.rolesByName['legendary']) {
-			legendaryTag = ' <@&' + data.rolesByName['legendary'].id + '> ';
+			legendaryTag = '<@&' + data.rolesByName['legendary'].id + '> ';
 		} else {
-			legendaryTag = '';
 			console.warn('Please create a role called legendary.'); //eslint-disable-line
 		}
 	}
@@ -95,22 +94,25 @@ const raid = (data, message) => {
 	*/
 
 	//'exgym' parameter checks and tag assignment
-	var specialRaidTag = '';
+	let specialRaidTag = '';
 	if (msglower.indexOf('exgym') > -1 || msglower.indexOf(' ex gym') > -1 || msglower.indexOf('ex raid') > -1 || msglower.indexOf('(ex gym)') > -1) {
 		if (data.rolesByName['exgym']) {
-			specialRaidTag = ' <@&' + data.rolesByName['exgym'].id + '> ';
+			specialRaidTag = '<@&' + data.rolesByName['exgym'].id + '> ';
 		} else {
-			specialRaidTag = '';
 			console.warn('Please create a role called exgym.'); //eslint-disable-line
 		}
 	}
 	
-	var detail = msgSplit.slice(3).join(' ');
+	let detail = msgSplit.slice(3).join(' ');
+	const hasExgymTag = detail.includes('exgym');
 	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
 		reply = 'Raid not processed, no location details. Use format: **!raid boss minutesRemaining [sponsored] [park] location details**';
 		message.channel.send(reply);
 		return reply;
+	}
+	if (hasExgymTag) {
+		detail = detail.split(' ').filter(word => word !== 'exgym').join(' ');
 	}
 	if (detail.length > 255) {
 		detail = detail.substring(0,255);
@@ -127,9 +129,10 @@ const raid = (data, message) => {
 		}
 	});
 	*/
-	reply = data.getEmoji(boss) + ' **' + bossTag.toUpperCase() + '**' + legendaryTag + ' raid reported to ' + data.channelsByName['gymraids_alerts'] + ' (ending: ' + twelveHrDate + ') at ' + specialRaidTag + '**' + detail + '**' + ' added by ' + message.member.displayName;
+	reply = `${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag}raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${twelveHrDate}) at ${specialRaidTag}**${detail}** added by ${message.member.displayName}`;
 	message.channel.send(reply);
-	let forwardReply = '- ' + data.getEmoji(boss) + ' **' + boss.toUpperCase() + '**' + ' raid reported in ' + data.channelsByName[channelName] + ' ending at ' + twelveHrDate + ' at ' + detail;
+	const forwardReply = `- ${data.getEmoji(boss)} **${boss.toUpperCase()}** raid reported in ${data.channelsByName[channelName]} ending at ${twelveHrDate} at **${detail}** ${hasExgymTag ? '(exgym)' : ''}`;
+
 	//send alert to #gymraids_alerts channel
 	if (data.channelsByName['gymraids_alerts']) {
 		data.channelsByName['gymraids_alerts'].send(forwardReply);
