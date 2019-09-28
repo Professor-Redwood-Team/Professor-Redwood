@@ -1,15 +1,20 @@
-// Clean up details string
+/**
+ * Remove unnecessary strings in the details
+ * @param {string} detail
+ * @returns {string}
+ */
 const cleanUpDetails = (detail) => {
-  // Removes exgym string from location details
-  if (detail.includes('exgym')) detail = detail.split(' ').filter(word => word !== 'exgym').join(' ');
-  // Removes shinycheck string from location details
-  if (detail.includes('shinycheck')) detail = detail.split(' ').filter(word => word !== 'shinycheck').join(' ');
-  // Trim details if length exceeds 255 characters
+  const stringsToRemove = new Set(['exgym', 'shinycheck']);
+  detail = detail.split(' ').filter(word => !stringsToRemove.has(word)).join(' ');
   if (detail.length > 255) detail = detail.substring(0,255);
   return detail;
 };
 
-// Format a date object as a string in 12 hour format
+/**
+ * Format a date object as a string in 12 hour format
+ * @param {object} dateObj
+ * @returns {string}
+ */
 const formatTime = dateObj => {
 	let hour = dateObj.getHours();
 	let minute = dateObj.getMinutes();
@@ -23,14 +28,24 @@ const formatTime = dateObj => {
   return `${hour}:${minute}${amPM}`;
 };
 
-// Returns end time of egg/raid
+/**
+ * Returns end time of egg/raid
+ * @param {number} minutesLeft
+ * @returns {string}
+ */
 const getEndTime = minutesLeft => {
   const date = new Date();
 	date.setMinutes(date.getMinutes() + minutesLeft);
 	return formatTime(date);
 };
 
-// Checks if legendary and return @legendary tag
+/**
+ * Checks if legendary and returns @legendary tag
+ * @param {string} boss
+ * @param {array} legendaries
+ * @param {object} data
+ * @returns {string}
+ */
 const getLegendaryTag = (boss, legendaries, data) => {
 	if (legendaries.includes(boss)) {
 		if (data.rolesByName['legendary']) {
@@ -42,7 +57,12 @@ const getLegendaryTag = (boss, legendaries, data) => {
   return '';
 };
 
-// Checks if exgym and returns @exgym tag
+/**
+ * Checks if exgym and returns @exgym tag
+ * @param {string} msgLower
+ * @param {object} data
+ * @returns {string}
+ */
 const getSpecialRaidTag = (msglower, data) => {
 	if (msglower.indexOf('exgym') > -1 || msglower.indexOf(' ex gym') > -1 || msglower.indexOf('ex raid') > -1 || msglower.indexOf('(ex gym)') > -1) {
 		if (data.rolesByName['exgym']) {
@@ -54,6 +74,12 @@ const getSpecialRaidTag = (msglower, data) => {
   return '';
 };
 
+/**
+ * Checks raid type and tier then returns tier emoji and egg tag
+ * @param {number} tier
+ * @param {object} data
+ * @returns {object}
+ */
 const getTierEmojiAndEggTag = (tier, data) => {
   let tierEmoji = '';
 	let eggTag = 'Tier ' + tier;
@@ -72,6 +98,11 @@ const getTierEmojiAndEggTag = (tier, data) => {
   return { tierEmoji, eggTag };
 };
 
+/**
+ * Removes tags for html
+ * @param {string} html
+ * @returns {string}
+ */
 const removeTags = html => {
 	let oldHtml;
 	do {
@@ -81,6 +112,12 @@ const removeTags = html => {
 	return html.replace(/</g, '&lt;');
 };
 
+/**
+ * Sends alert to channel
+ * @param {string} channelName
+ * @param {string} reply
+ * @param {object} data
+ */
 const sendAlertToChannel = (channelName, reply, data) => {
   if (data.channelsByName[channelName]) {
 		data.channelsByName[channelName].send(reply);
