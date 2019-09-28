@@ -18,7 +18,3 @@ Create a secrets.json in this directory with the following structure
     }
   }
 }
-
-The discord credentials are required.
-Mysql is for optional features.
-Webhook is for debugging to a discord channel.

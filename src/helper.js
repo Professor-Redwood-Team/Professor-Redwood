@@ -2,6 +2,8 @@
 const cleanUpDetails = (detail) => {
   // Removes exgym string from location details
   if (detail.includes('exgym')) detail = detail.split(' ').filter(word => word !== 'exgym').join(' ');
+  // Removes shinycheck string from location details
+  if (detail.includes('shinycheck')) detail = detail.split(' ').filter(word => word !== 'shinycheck').join(' ');
   // Trim details if length exceeds 255 characters
   if (detail.length > 255) detail = detail.substring(0,255);
   return detail;

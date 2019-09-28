@@ -1,15 +1,7 @@
 'use strict';
 
 const CONSTANTS = require('./../constants');
-
-const removeTags = (html) => {
-	var oldHtml;
-	do {
-		oldHtml = html;
-		html = html.replace(CONSTANTS.tagOrComment, '');
-	} while (html !== oldHtml);
-	return html.replace(/</g, '&lt;');
-};
+const { cleanUpDetails, removeTags, sendAlertToChannel } = require('./../helper');
 
 const quest = (data, message) => {
 	let reply = '';
@@ -25,14 +17,15 @@ const quest = (data, message) => {
 		return reply;
 	}
 
-	let detail = message.content.substring(message.content.indexOf(' ')+1);
-
 	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
+	let detail = message.content.split(' ').slice(2).join(' ');
 	if (!detail) {
 		reply = 'Quest report not processed, not enough information.\n'+usage;
 		message.channel.send(reply);
 		return reply;
 	}
+	// Remove reward and shinycheck string from details
+	detail = cleanUpDetails(detail);
 
 	let reward = msgSplit[1].toLowerCase();
 	const tms = ['chargetm','chargedtm','charged_tm','fast_tm','fasttm','tm','charge','charged','fast'];
@@ -67,10 +60,6 @@ const quest = (data, message) => {
 		data.GUILD.roles.forEach((role) => {
 			if (role.name === 'shinycheck') rewardTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); //require a role called shinycheck
 		});
-	}
-
-	if (detail.length > 255) {
-		detail = detail.substring(0,255);
 	}
 
 	reply = '**QUEST ' + rewardTag.toUpperCase() + '** ' + data.getEmoji(reward) + '\nDetails: ' + detail + ' added by ' + message.member.displayName;
