@@ -3,8 +3,8 @@
  * @param {string} detail
  * @returns {string}
  */
-const cleanUpDetails = (detail) => {
-  const stringsToRemove = new Set(['exgym', 'shinycheck']);
+const cleanUpDetails = detail => {
+  const stringsToRemove = new Set(['exgym', 'shinycheck', 'rare', 'candy', 'silver', 'pinap', 'techincal', 'machine']);
   detail = detail.split(' ').filter(word => !stringsToRemove.has(word)).join(' ');
   if (detail.length > 255) detail = detail.substring(0,255);
   return detail;
@@ -55,6 +55,43 @@ const getLegendaryTag = (boss, legendaries, data) => {
     }
   }
   return '';
+};
+
+/**
+ * Checks what reward was reported and returns reward and reward tag
+ * @param {string} msgLower
+ * @param {object} data
+ * @returns {string}
+ */
+const getRewardAndRewardTag = (reward, msgLower, data) => {
+  const technicalMachineVariations = new Set(['chargetm', 'chargedtm', 'charged_tm', 'fast_tm', 'fasttm', 'tm', 'charge', 'charged', 'fast']);
+  const rareCandyVariations = new Set(['rc', '1rc', '3rc', 'rarecand', 'rarecandy', 'rare_candy', 'rare', 'cand', 'candy']);
+  const stardustVariations = new Set(['stardust', 'dust']);
+  const silverPinapVariations = new Set(['silverpinap', 'silver']);
+
+  if (rareCandyVariations.has(reward)) {
+    reward = 'rarecandy';
+  } else if (technicalMachineVariations.has(reward)) {
+    reward = 'technical_machine';
+  } else if (stardustVariations.has(reward)) {
+    reward = 'stardust';
+  } else if (silverPinapVariations.has(reward)) {
+    reward = 'silver_pinap';
+  }
+
+  let rewardTag = reward;
+
+  // If the reward name is found as a role, put in mention format
+  data.GUILD.roles.forEach(role => {
+    if (role.name === reward) rewardTag = '<@&' + role.id + '>';
+  });
+
+  // Check to see if the message contains a mention of 'shiny'
+  data.GUILD.roles.forEach(role => {
+    if (msgLower.includes('shiny') && role.name === 'shinycheck') rewardTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny');
+  });
+
+  return { reward, rewardTag };
 };
 
 /**
@@ -131,6 +168,7 @@ module.exports = {
   formatTime,
   getEndTime,
   getLegendaryTag,
+  getRewardAndRewardTag,
   getSpecialRaidTag,
   getTierEmojiAndEggTag,
   removeTags,
