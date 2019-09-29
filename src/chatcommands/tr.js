@@ -17,7 +17,7 @@ const tr = (data, message) => {
 
 	let pokemonName = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
 	if (!pokemonInfo[pokemonName.toUpperCase()]) {
-		reply = 'Sorry, pokemon not found. Please make sure to type the exact name of the pokemon and DO NOT USE THE @ tag. If you dont know what pokemon is at a location use **?** for pokemonName\n'+usage;
+		reply = `Sorry, Pokemon not found. Please make sure to type the exact name of the Pokemon and DO NOT USE THE @ tag. If you don't know what Pokemon is at a location, use **?** for pokemonName\n'+usage`;
 		message.channel.send(reply);
 		return reply;
 	}
@@ -27,7 +27,7 @@ const tr = (data, message) => {
 	let detail = message.content.substring(message.content.indexOf(' ',message.content.indexOf(' ') +1)+1);
 	detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
-		reply = 'Team GO Rocket sighting not processed, no location details.\n'+usage;
+		reply = `Team GO Rocket sighting not processed, no location details.\n${usage}`;
 		message.channel.send(reply);
 		return reply
 	}
