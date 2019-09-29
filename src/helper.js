@@ -4,7 +4,7 @@
  * @returns {string}
  */
 const cleanUpDetails = detail => {
-  const stringsToRemove = new Set(['exgym', 'shinycheck', 'rare', 'candy', 'silver', 'pinap', 'techincal', 'machine']);
+  const stringsToRemove = new Set(['exgym', 'shinycheck', 'rare', 'candy', 'silver', 'pinap', 'techincal', 'machine', 'finalevo', 'highiv']);
   detail = detail.split(' ').filter(word => !stringsToRemove.has(word)).join(' ');
   if (detail.length > 255) detail = detail.substring(0,255);
   return detail;
@@ -58,6 +58,20 @@ const getLegendaryTag = (boss, legendaries, data) => {
 };
 
 /**
+ * If the Pokemon name is found as a role, put in mention format
+ * @param {string} pokemonName
+ * @param {object} data
+ * @returns {string}
+ */
+const getPokemonTag = (pokemonName, data) => {
+  let pokemonTag = pokemonName;
+  data.GUILD.roles.forEach(role => {
+    if (role.name === pokemonName) pokemonTag = '<@&' + role.id + '>';
+  });
+  return pokemonTag;
+};
+
+/**
  * Checks what reward was reported and returns reward and reward tag
  * @param {string} msgLower
  * @param {object} data
@@ -101,7 +115,7 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
  * @returns {string}
  */
 const getSpecialRaidTag = (msglower, data) => {
-  if (msglower.indexOf('exgym') > -1 || msglower.indexOf(' ex gym') > -1 || msglower.indexOf('ex raid') > -1 || msglower.indexOf('(ex gym)') > -1) {
+  if (msglower.includes('exgym') > -1 || msglower.includes(' ex gym') > -1 || msglower.includes('ex raid') > -1 || msglower.includes('(ex gym)') > -1) {
     if (data.rolesByName['exgym']) {
       return '<@&' + data.rolesByName['exgym'].id + '> ';
     } else {
@@ -109,6 +123,37 @@ const getSpecialRaidTag = (msglower, data) => {
     }
   }
   return '';
+};
+
+/**
+ * Checks if message has special wild tag and returns appropriate mention tag
+ * @param {string} msgLower
+ * @param {object} data
+ * @returns {string}
+ */
+const getSpecialWildTag = (msgLower, data) => {
+  let specialWildTag = '';
+
+  // Tags role called highiv whenever 'highiv' is in a report
+  if (msgLower.includes('highiv')) {
+    data.GUILD.roles.forEach(role => {
+      if (role.name === 'highiv') specialWildTag += ' <@&' + role.id + '> '; // require a role called 'highiv'
+    });
+  }
+  // Tags role called shinycheck whenever 'shiny' is in a report
+  if (msgLower.includes('shiny')) {
+    data.GUILD.roles.forEach(role => {
+      if (role.name === 'shinycheck') specialWildTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); // require a role called 'shinycheck'
+    });
+  }
+  // Tags role called shinycheck whenever 'finalevo' is in a report
+  if (msgLower.includes('finalevo')) {
+    data.GUILD.roles.forEach(role => {
+      if (role.name === 'finalevo') specialWildTag += ' <@&' + role.id + '> '; // require a role called 'finalevo'
+    });
+  }
+
+  return specialWildTag;
 };
 
 /**
@@ -159,7 +204,7 @@ const sendAlertToChannel = (channelName, reply, data) => {
   if (data.channelsByName[channelName]) {
     data.channelsByName[channelName].send(reply);
   } else {
-    console.warn(`Please add a channel called #${channelName}`);
+    console.warn(`Please add a channel called #${channelName}.`);
   }
 };
 
@@ -168,8 +213,10 @@ module.exports = {
   formatTime,
   getEndTime,
   getLegendaryTag,
+  getPokemonTag,
   getRewardAndRewardTag,
   getSpecialRaidTag,
+  getSpecialWildTag,
   getTierEmojiAndEggTag,
   removeTags,
   sendAlertToChannel
