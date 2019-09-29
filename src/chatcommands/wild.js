@@ -2,88 +2,45 @@
 
 const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
-
-const removeTags = (html) => {
-	var oldHtml;
-	do {
-		oldHtml = html;
-		html = html.replace(CONSTANTS.tagOrComment, '');
-	} while (html !== oldHtml);
-	return html.replace(/</g, '&lt;');
-};
+const { cleanUpDetails, getPokemonTag, getSpecialWildTag, removeTags, sendAlertToChannel } = require('./../helper');
 
 const wild = (data, message) => {
 	let reply = '';
-
-	let inNeighborhood = false;
 	let usage = 'Command usage: **!wild pokemonName location details**';
 
-	const msglower = message.content.toLowerCase();
-	const msgSplit = msglower.split(' ');
+	const msgLower = message.content.toLowerCase();
+	const msgSplit = msgLower.split(' ');
 	if (!msgSplit || msgSplit.length < 3) {
-		reply = 'Sorry, incorrect format.\n'+usage;
+		reply = `Sorry, incorrect format.\n${usage}`;
 		message.channel.send(reply);
 		return reply;
 	}
-	let pokemonName = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
 
+	const pokemonName = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
 	if (!pokemonInfo[pokemonName.toUpperCase()]) {
-		reply = 'Sorry, pokemon not found. Please make sure to type the exact name of the pokemon and DO NOT USE THE @ tag.\n'+usage;
+		reply = `Sorry, pokemon not found. Please make sure to type the exact name of the pokemon and DO NOT USE THE @ tag.\n${usage}`;
 		message.channel.send(reply);
 		return reply;
 	}
-
-	var pokemonTag = pokemonName; //generate a tag for the pokemon to alert users
-
-	data.GUILD.roles.forEach((role) => {
-		if (role.name === pokemonName) pokemonTag = '<@&' + role.id + '>'; //if the pokemon name is found as a role, put in mention format
-	});
-
-	let detail = message.content.substring(message.content.indexOf(' ',message.content.indexOf(' ') +1)+1);
+	const pokemonTag = getPokemonTag(pokemonName, data);
 
 	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
+	let detail = message.content.substring(message.content.indexOf(' ', message.content.indexOf(' ') + 1) + 1);
 	if (!detail) {
-		reply = 'Wild sighting not processed, no location details.\n'+usage;
+		reply = `Wild sighting not processed, no location details.\n${usage}`;
 		message.channel.send(reply);
 		return reply;
 	}
-	if (detail.length > 255) {
-		detail = detail.substring(0,255);
-	}
+	detail = cleanUpDetails(detail);
 
-	var specialWildTag = '';
-	//tags role called highiv whenever 'highiv' is in a report
-	if (msglower.indexOf('highiv') > -1) {
-		data.GUILD.roles.forEach((role) => {
-			if (role.name === 'highiv') specialWildTag += ' <@&' + role.id + '> '; //require a role called highiv
-		});
-	}
-	//tags role called shinycheck whenever 'shiny' is in a report
-	if (msglower.indexOf('shiny') > -1) {
-		data.GUILD.roles.forEach((role) => {
-			if (role.name === 'shinycheck') specialWildTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); //require a role called shinycheck
-		});
-	}
-	//tags role called shinycheck whenever 'finalevo' is in a report
-	if (msglower.indexOf('finalevo') > -1) {
-		data.GUILD.roles.forEach((role) => {
-			if (role.name === 'finalevo') specialWildTag += ' <@&' + role.id + '> '; //require a role called finalevo
-		});
-	}
+	const specialWildTag = getSpecialWildTag(msgLower, data);
 
-	reply = 'Wild **' + pokemonTag.toUpperCase() + '** ' + data.getEmoji(pokemonName) + specialWildTag + ' at ' + detail + ' added by ' + message.member.displayName;
+	reply = `Wild **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} ${specialWildTag} at ${detail} added by ${message.member.displayName}`;
 	message.channel.send(reply);
-	let forwardReply = '- **' + pokemonName.toUpperCase() + '** ' + data.getEmoji(pokemonName) + ' reported in the wild in ' + data.channelsByName[message.channel.name] + ' at ' + detail;
+	const forwardReply = `- **${pokemonName.toUpperCase()}** ${data.getEmoji(pokemonName)} reported in the wild in ${data.channelsByName[message.channel.name]} at ${detail}`;
 
-	if(!data.channelsByName['missing_dex'])
-		console.log('Please create a channel called missing_dex to allow the !wild function to work');
-	else if (message.channel.name !== 'missing_dex') {
-		data.channelsByName['missing_dex'].send(forwardReply);
-	}
-
+	sendAlertToChannel('missing_dex', forwardReply, data);
 	return reply;
 };
 
-module.exports = (data) => ( (message) => {
-	return wild(data, message);
-});
+module.exports = (data) => (message => wild(data, message));
