@@ -6,8 +6,13 @@ const CONSTANTS = require('./constants');
  * @returns {string}
  */
 const cleanUpDetails = detail => {
-	const stringsToRemove = new Set(['exgym', 'shinycheck', 'rare', 'candy', 'silver', 'pinap', 'techincal', 'machine', 'finalevo', 'highiv']);
+	const stringsToRemove = new Set(['exgym', 'shinycheck', 'rarecandy', 'candy', 'silverpinap', 'pinap', 'technical', 'technicalmachine', 'finalevo', 'highiv']);
 	detail = detail.split(' ').filter(word => !stringsToRemove.has(word)).join(' ');
+
+	// TODO: Add ' ex gym' to stringsToRemove array, loop through array and apply regex for all items in array
+	detail = detail.replace(/ex gym /gi, '');
+	detail = detail.replace(/shiny check /gi, '');
+
 	if (detail.length > 255) detail = detail.substring(0,255);
 	return detail;
 };
@@ -132,7 +137,7 @@ const getShadowTag = (pokemonName, message, data) => {
  * @returns {string}
  */
 const getSpecialRaidTag = (msglower, data) => {
-	if (msglower.includes('exgym') > -1 || msglower.includes(' ex gym') > -1 || msglower.includes('ex raid') > -1 || msglower.includes('(ex gym)') > -1) {
+	if (msglower.includes('exgym') || msglower.includes(' ex gym') || msglower.includes('ex raid') || msglower.includes('(ex gym)')) {
 		if (data.rolesByName['exgym']) {
 			return '<@&' + data.rolesByName['exgym'].id + '> ';
 		} else {
