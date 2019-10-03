@@ -6,12 +6,12 @@ const CONSTANTS = require('./constants');
  * @returns {string}
  */
 const cleanUpDetails = detail => {
-	const exGymVariations = ['exgym ', 'ex gym ', 'ex raid ', '(exgym) ', '(ex gym) '];
+	const exGymVariations = ['(exgym) ', '(ex gym) ', 'exgym ', 'ex gym ', 'ex raid '];
 	const shinyCheckVariations = ['shiny check ', 'shinycheck '];
 	const rareCandyVariations = ['rarecandy ', 'candy '];
 	const silverPinapVariations = ['silverpinap ', 'silver pinap', 'pinap '];
 	const technicalMachineVariations = ['technical ', 'technicalmachine ', 'technical machine '];
-	const stringsToRemove = new Set([
+	const stringsToRemove = [
 		...exGymVariations,
 		...shinyCheckVariations,
 		...rareCandyVariations,
@@ -19,12 +19,13 @@ const cleanUpDetails = detail => {
 		...technicalMachineVariations,
 		'finalevo ',
 		'highiv '
-		]);
+	];
 
 	stringsToRemove.forEach(string => {
 		const regex = new RegExp(string, 'gi');
 		detail = detail.replace(regex, '');
 	});
+
 	if (detail.length > 255) detail = detail.substring(0,255);
 	return detail;
 };
