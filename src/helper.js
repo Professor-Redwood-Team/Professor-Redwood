@@ -137,11 +137,7 @@ const getShadowTag = (pokemonName, message, data) => {
  * @returns {string}
  */
 const getSpecialRaidTag = (msglower, data) => {
-<<<<<<< HEAD
 	if (msglower.includes('exgym') || msglower.includes(' ex gym') || msglower.includes('ex raid') || msglower.includes('(ex gym)')) {
-=======
-	if (msglower.includes('exgym') > -1 || msglower.includes(' ex gym') > -1 || msglower.includes('ex raid') > -1 || msglower.includes('(ex gym)') > -1) {
->>>>>>> 00fe3ad225411602747fee10a655b0b528797b05
 		if (data.rolesByName['exgym']) {
 			return '<@&' + data.rolesByName['exgym'].id + '> ';
 		} else {
