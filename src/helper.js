@@ -6,7 +6,7 @@ const CONSTANTS = require('./constants');
  * @returns {string}
  */
 const cleanUpDetails = detail => {
-	const stringsToRemove = new Set(['exgym', 'ex gym ', 'shiny check ', 'shinycheck', 'rarecandy', 'candy', 'silverpinap', 'pinap', 'technical', 'technicalmachine', 'finalevo', 'highiv']);
+	const stringsToRemove = new Set(['exgym ', 'ex gym ', 'shiny check ', 'shinycheck ', 'rarecandy ', 'candy ', 'silverpinap ', 'silver pinap', 'pinap ', 'technical ', 'technicalmachine ', 'technical machine ', 'finalevo ', 'highiv ']);
 	stringsToRemove.forEach(string => {
 		const regex = new RegExp(string, 'gi');
 		detail = detail.replace(regex, '');
