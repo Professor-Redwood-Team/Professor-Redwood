@@ -6,13 +6,11 @@ const CONSTANTS = require('./constants');
  * @returns {string}
  */
 const cleanUpDetails = detail => {
-	const stringsToRemove = new Set(['exgym', 'shinycheck', 'rarecandy', 'candy', 'silverpinap', 'pinap', 'technical', 'technicalmachine', 'finalevo', 'highiv']);
-	detail = detail.split(' ').filter(word => !stringsToRemove.has(word)).join(' ');
-
-	// TODO: Add ' ex gym' to stringsToRemove array, loop through array and apply regex for all items in array
-	detail = detail.replace(/ex gym /gi, '');
-	detail = detail.replace(/shiny check /gi, '');
-
+	const stringsToRemove = new Set(['exgym', 'ex gym ', 'shiny check ', 'shinycheck', 'rarecandy', 'candy', 'silverpinap', 'pinap', 'technical', 'technicalmachine', 'finalevo', 'highiv']);
+	stringsToRemove.forEach(string => {
+		const regex = new RegExp(string, 'gi');
+		detail = detail.replace(regex, '');
+	});
 	if (detail.length > 255) detail = detail.substring(0,255);
 	return detail;
 };
@@ -86,7 +84,7 @@ const getPokemonTag = (pokemonName, data) => {
  */
 const getRewardAndRewardTag = (reward, msgLower, data) => {
 	const technicalMachineVariations = new Set(['chargetm', 'chargedtm', 'charged_tm', 'fast_tm', 'fasttm', 'tm', 'charge', 'charged', 'fast']);
-	const rareCandyVariations = new Set(['rc', '1rc', '3rc', 'rarecand', 'rarecandy', 'rare_candy', 'rare', 'cand', 'candy']);
+	const rareCandyVariations = new Set(['rc', 'rarecand', 'rarecandy', 'rare_candy', 'rare', 'cand', 'candy']);
 	const stardustVariations = new Set(['stardust', 'dust']);
 	const silverPinapVariations = new Set(['silverpinap', 'silver']);
 

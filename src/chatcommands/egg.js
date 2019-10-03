@@ -43,11 +43,11 @@ const egg = (data, message) => {
 	const channelName = message.channel.name;
 	const endTime = getEndTime(minutesLeft);
 	const specialRaidTag = getSpecialRaidTag(msglower, data);
-	const hasExgymTag = message.content.includes('exgym');
+	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym ');
 
 	reply = `${data.getEmoji(tierEmoji)}${eggTag}raid egg reported to ${data.channelsByName['gymraids_alerts']} (hatching: ${endTime}) at ${specialRaidTag}**${detail}** added by ${message.member.displayName}`;
 	message.channel.send(reply);
-	const forwardReply = `- ${data.getEmoji(tierEmoji)}**Tier ${tier}** egg reported in ${data.channelsByName[channelName]} hatching at ${endTime} at **${detail}** ${hasExgymTag ? '(exgym)' : ''}`;
+	const forwardReply = `- ${data.getEmoji(tierEmoji)}**Tier ${tier}** egg reported in ${data.channelsByName[channelName]} hatching at ${endTime} at **${detail}** ${hasExgymTag ? '(EX gym)' : ''}`;
 
 	// Send alert to #gymraids_alerts channel
 	sendAlertToChannel('gymraids_alerts', forwardReply, data);
