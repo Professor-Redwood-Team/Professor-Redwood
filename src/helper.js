@@ -6,25 +6,28 @@ const CONSTANTS = require('./constants');
  * @returns {string}
  */
 const cleanUpDetails = detail => {
-	const exGymVariations = ['(exgym) ', '(ex gym) ', 'exgym ', 'ex gym ', 'ex raid '];
-	const shinyCheckVariations = ['shiny check ', 'shinycheck '];
-	const rareCandyVariations = ['rarecandy ', 'candy '];
-	const silverPinapVariations = ['silverpinap ', 'silver pinap', 'pinap '];
-	const technicalMachineVariations = ['technical ', 'technicalmachine ', 'technical machine '];
+  const exGymVariations = ['(exgym)', '(ex gym)', 'exgym', 'ex gym', 'exraid', 'ex raid'];
+  const shinyCheckVariations = ['shiny check', 'shinycheck'];
+	const rareCandyVariations = ['rarecandy', 'rare candy', 'candy'];
+	const silverPinapVariations = ['silverpinap', 'silver pinap', 'pinap'];
+	const technicalMachineVariations = ['technical', 'technicalmachine', 'technical machine'];
 	const stringsToRemove = [
 		...exGymVariations,
 		...shinyCheckVariations,
 		...rareCandyVariations,
 		...silverPinapVariations,
 		...technicalMachineVariations,
-		'finalevo ',
-		'highiv '
+		'finalevo',
+		'highiv'
 	];
 
 	stringsToRemove.forEach(string => {
 		const regex = new RegExp(string, 'gi');
 		detail = detail.replace(regex, '');
 	});
+
+	// Replace multiple spaces with a single space
+	detail = detail.replace(/  +/g, ' ');
 
 	if (detail.length > 255) detail = detail.substring(0,255);
 	return detail;
