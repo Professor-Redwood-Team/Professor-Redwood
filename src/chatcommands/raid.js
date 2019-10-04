@@ -80,9 +80,9 @@ const raid = (data, message) => {
 	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym') || message.content.includes('ex raid');
 
 	// Send replies to appropriate channels
-	reply = `${data.getEmoji(boss)} **${bossTag.toUpperCase().trim()}** ${legendaryTag.trim()} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag.trim()} **${detail.trim()}** added by ${message.member.displayName}`;
+	reply = `${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.member.displayName}`;
 	message.channel.send(reply);
-	const forwardReply = `- ${data.getEmoji(boss)} **${boss.toUpperCase()}** raid reported in ${data.channelsByName[channelName]} ending at ${endTime} at ${detail.trim()} ${hasExgymTag ? '**(EX gym)**' : ''}`;
+	const forwardReply = `- ${data.getEmoji(boss)} **${boss.toUpperCase()}** raid reported in ${data.channelsByName[channelName]} ending at ${endTime} at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
 
 	// Send alert to #gymraids_alerts channel
 	sendAlertToChannel('gymraids_alerts', forwardReply, data);

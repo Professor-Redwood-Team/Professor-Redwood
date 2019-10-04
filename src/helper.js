@@ -30,7 +30,7 @@ const cleanUpDetails = detail => {
 	detail = detail.replace(/  +/g, ' ');
 
 	if (detail.length > 255) detail = detail.substring(0,255);
-	return detail;
+	return detail.trim();
 };
 
 /**
@@ -72,7 +72,7 @@ const getEndTime = minutesLeft => {
 const getLegendaryTag = (boss, legendaries, data) => {
 	if (legendaries.includes(boss)) {
 		if (data.rolesByName['legendary']) {
-			return '<@&' + data.rolesByName['legendary'].id + '> ';
+			return '<@&' + data.rolesByName['legendary'].id + '>';
 		} else {
 			console.warn('Please create a role called legendary.');
 		}
@@ -155,7 +155,7 @@ const getShadowTag = (pokemonName, message, data) => {
 const getSpecialRaidTag = (msglower, data) => {
 	if (msglower.includes('exgym') || msglower.includes(' ex gym') || msglower.includes('ex raid') || msglower.includes('(ex gym)')) {
 		if (data.rolesByName['exgym']) {
-			return '<@&' + data.rolesByName['exgym'].id + '> ';
+			return '<@&' + data.rolesByName['exgym'].id + '>';
 		} else {
 			console.warn('Please create a role called exgym.');
 		}
@@ -175,19 +175,19 @@ const getSpecialWildTag = (msgLower, data) => {
 	// Tags role called highiv whenever 'highiv' is in a report
 	if (msgLower.includes('highiv')) {
 		data.GUILD.roles.forEach(role => {
-			if (role.name === 'highiv') specialWildTag += ' <@&' + role.id + '> '; // require a role called 'highiv'
+			if (role.name === 'highiv') specialWildTag += '<@&' + role.id + '>'; // require a role called 'highiv'
 		});
 	}
 	// Tags role called shinycheck whenever 'shiny' is in a report
 	if (msgLower.includes('shiny')) {
 		data.GUILD.roles.forEach(role => {
-			if (role.name === 'shinycheck') specialWildTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny'); // require a role called 'shinycheck'
+			if (role.name === 'shinycheck') specialWildTag += '<@&' + role.id + '>' + data.getEmoji('shiny'); // require a role called 'shinycheck'
 		});
 	}
 	// Tags role called shinycheck whenever 'finalevo' is in a report
 	if (msgLower.includes('finalevo')) {
 		data.GUILD.roles.forEach(role => {
-			if (role.name === 'finalevo') specialWildTag += ' <@&' + role.id + '> '; // require a role called 'finalevo'
+			if (role.name === 'finalevo') specialWildTag += '<@&' + role.id + '>'; // require a role called 'finalevo'
 		});
 	}
 
@@ -215,7 +215,10 @@ const getTierEmojiAndEggTag = (tier, data) => {
 		if(tier == 3) eggTag = ' <@&' + data.rolesByName['tier3'].id + '> ';
 		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';
 	}
-	return { tierEmoji, eggTag };
+  return {
+    tierEmoji: tierEmoji.trim(),
+    eggTag: eggTag.trim()
+  };
 };
 
 /**
