@@ -1,7 +1,7 @@
 'use strict';
 
 const CONSTANTS = require('./../constants');
-const { cleanUpDetails, getRewardAndRewardTag, removeTags, sendAlertToChannel } = require('./../helper');
+const { cleanUpDetails, getRewardAndRewardTag, sendAlertToChannel } = require('./../helper');
 
 const quest = (data, message) => {
 	let reply = '';
