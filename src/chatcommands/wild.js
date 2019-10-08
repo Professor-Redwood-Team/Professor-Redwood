@@ -35,7 +35,7 @@ const wild = (data, message) => {
 
 	const specialWildTag = getSpecialWildTag(msgLower, data);
 
-	reply = `Wild **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} ${specialWildTag.trim()} at ${detail.trim()} added by ${message.member.displayName}`;
+	reply = `Wild **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} ${specialWildTag} at ${detail} added by ${message.member.displayName}`;
 	message.channel.send(reply);
 	const forwardReply = `- **${pokemonName.toUpperCase()}** ${data.getEmoji(pokemonName)} reported in the wild in ${data.channelsByName[message.channel.name]} at ${detail}`;
 
