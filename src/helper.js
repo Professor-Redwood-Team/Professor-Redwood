@@ -174,21 +174,21 @@ const getSpecialWildTag = (msgLower, data) => {
 	let specialWildTag = '';
 
 	// Tags role called highiv whenever 'highiv' is in a report
-	if (msgLower.includes('highiv')) {
+	if  (msgLower.includes('highiv') || msgLower.includes('high iv')) {
 		data.GUILD.roles.forEach(role => {
-			if (role.name === 'highiv') specialWildTag += '<@&' + role.id + '>'; // require a role called 'highiv'
+			if (role.name === 'highiv') specialWildTag += '<@&' + role.id + '> '; // require a role called 'highiv'
 		});
 	}
 	// Tags role called shinycheck whenever 'finalevo' is in a report
 	if (msgLower.includes('finalevo')) {
 		data.GUILD.roles.forEach(role => {
-			if (role.name === 'finalevo') specialWildTag += '<@&' + role.id + '>'; // require a role called 'finalevo'
+			if (role.name === 'finalevo') specialWildTag += '<@&' + role.id + '> '; // require a role called 'finalevo'
 		});
 	}
 	// Tags role called shinycheck whenever 'shiny' is in a report
 	if (msgLower.includes('shiny')) {
 		data.GUILD.roles.forEach(role => {
-			if (role.name === 'shinycheck') specialWildTag += '<@&' + role.id + '>' + data.getEmoji('shiny'); // require a role called 'shinycheck'
+			if (role.name === 'shinycheck') specialWildTag += '<@&' + role.id + '> ' + data.getEmoji('shiny'); // require a role called 'shinycheck'
 		});
 	}
 
