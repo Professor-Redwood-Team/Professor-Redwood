@@ -7,18 +7,19 @@ const CONSTANTS = require('./constants');
  */
 const cleanUpDetails = detail => {
   const exGymVariations = ['(exgym)', '(ex gym)', 'exgym', 'ex gym', 'exraid', 'ex raid'];
-  const shinyCheckVariations = ['shiny check', 'shinycheck'];
-	const rareCandyVariations = ['rarecandy', 'rare candy', 'candy'];
+  const highIvVariations = ['highiv','high iv'];
+  const shinyCheckVariations = ['shiny check', 'shinycheck', 'shiny'];
+	const rareCandyVariations = ['rarecandy', 'rare candy'];
 	const silverPinapVariations = ['silverpinap', 'silver pinap', 'pinap'];
 	const technicalMachineVariations = ['technical', 'technicalmachine', 'technical machine'];
 	const stringsToRemove = [
 		...exGymVariations,
+		...highIvVariations,
 		...shinyCheckVariations,
 		...rareCandyVariations,
 		...silverPinapVariations,
 		...technicalMachineVariations,
 		'finalevo',
-		'highiv'
 	];
 
 	stringsToRemove.forEach(string => {
@@ -102,7 +103,7 @@ const getPokemonTag = (pokemonName, data) => {
  */
 const getRewardAndRewardTag = (reward, msgLower, data) => {
 	const technicalMachineVariations = new Set(['chargetm', 'chargedtm', 'charged_tm', 'fast_tm', 'fasttm', 'tm', 'charge', 'charged', 'fast']);
-	const rareCandyVariations = new Set(['rc', 'rarecand', 'rarecandy', 'rare_candy', 'rare', 'cand', 'candy']);
+	const rareCandyVariations = new Set(['rc', 'rarecand', 'rarecandy', 'rare_candy', 'rare']);
 	const stardustVariations = new Set(['stardust', 'dust']);
 	const silverPinapVariations = new Set(['silverpinap', 'silver']);
 
@@ -178,16 +179,16 @@ const getSpecialWildTag = (msgLower, data) => {
 			if (role.name === 'highiv') specialWildTag += '<@&' + role.id + '>'; // require a role called 'highiv'
 		});
 	}
-	// Tags role called shinycheck whenever 'shiny' is in a report
-	if (msgLower.includes('shiny')) {
-		data.GUILD.roles.forEach(role => {
-			if (role.name === 'shinycheck') specialWildTag += '<@&' + role.id + '>' + data.getEmoji('shiny'); // require a role called 'shinycheck'
-		});
-	}
 	// Tags role called shinycheck whenever 'finalevo' is in a report
 	if (msgLower.includes('finalevo')) {
 		data.GUILD.roles.forEach(role => {
 			if (role.name === 'finalevo') specialWildTag += '<@&' + role.id + '>'; // require a role called 'finalevo'
+		});
+	}
+	// Tags role called shinycheck whenever 'shiny' is in a report
+	if (msgLower.includes('shiny')) {
+		data.GUILD.roles.forEach(role => {
+			if (role.name === 'shinycheck') specialWildTag += '<@&' + role.id + '>' + data.getEmoji('shiny'); // require a role called 'shinycheck'
 		});
 	}
 
