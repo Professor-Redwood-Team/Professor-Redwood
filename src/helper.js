@@ -141,9 +141,11 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
  */
 const getShadowTag = (pokemonName, message, data) => {
 	let shadowTag = '';
-	if (message.content.includes(pokemonName) && data.rolesByName['shadow']) {
-		shadowTag = ' <@&' + data.rolesByName['shadow'].id + '> ';
-	}
+	 if (message.content.includes(pokemonName) > -1) {
+         if (data.rolesByName['shadow']) {
+            shadowTag = ' <@&' + data.rolesByName['shadow'].id + '> ';
+        } 
+    }
 	return shadowTag;
 };
 
