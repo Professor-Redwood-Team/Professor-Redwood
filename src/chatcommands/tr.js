@@ -17,7 +17,7 @@ const tr = (data, message) => {
 
 	let pokemonName = CONSTANTS.standardizePokemonName(msgSplit[1].toLowerCase());
 	if (!pokemonInfo[pokemonName.toUpperCase()]) {
-		reply = `Sorry, Pokemon not found. Please make sure to type the exact name of the Pokemon and DO NOT USE THE @ tag. If you don't know what Pokemon is at a location, use **?** for pokemonName\n'+usage`;
+		reply = `Sorry, Pokemon not found. Please make sure to type the exact name of the Pokemon and DO NOT USE THE @ tag. If you don't know what Pokemon is at a location, use **?** for pokemonName\n${usage}`;
 		message.channel.send(reply);
 		return reply;
 	}
