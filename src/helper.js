@@ -28,7 +28,7 @@ const cleanUpDetails = detail => {
 	});
 
 	// Replace multiple spaces with a single space
-	detail = detail.replace(/  +/g, ' ');
+	detail = removeExtraSpaces(detail);
 
 	if (detail.length > 255) detail = detail.substring(0,255);
 	return detail.trim();
@@ -225,6 +225,13 @@ const getTierEmojiAndEggTag = (tier, data) => {
 };
 
 /**
+ * Removes extra spaces between words
+ * @param {string} detail
+ * @returns {string}
+ */
+const removeExtraSpaces = detail => detail.replace(/  +/g, ' ');
+
+/**
  * Removes tags for html
  * @param {string} html
  * @returns {string}
@@ -263,6 +270,7 @@ module.exports = {
 	getSpecialRaidTag,
 	getSpecialWildTag,
 	getTierEmojiAndEggTag,
+	removeExtraSpaces,
 	removeTags,
 	sendAlertToChannel
 };

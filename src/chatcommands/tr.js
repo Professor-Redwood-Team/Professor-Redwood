@@ -2,7 +2,7 @@
 
 const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
-const { cleanUpDetails, getPokemonTag, getShadowTag, removeTags, sendAlertToChannel } = require('./../helper');
+const { cleanUpDetails, getPokemonTag, getShadowTag, removeExtraSpaces, removeTags, sendAlertToChannel } = require('./../helper');
 
 const tr = (data, message) => {
 	let reply = '';
@@ -33,7 +33,7 @@ const tr = (data, message) => {
 	}
 	detail = cleanUpDetails(detail);
 
-	reply = `Team GO Rocket with **${shadowTag.toUpperCase()} ${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} spotted at **${detail}** by ${message.member.displayName}`;
+	reply = removeExtraSpaces(`Team GO Rocket with **${shadowTag.toUpperCase()} ${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} spotted at **${detail}** by ${message.member.displayName}`);
 	message.channel.send(reply);
 	const forwardReply = `- Team GO Rocket with **SHADOW ${pokemonName.toUpperCase()}** ${data.getEmoji(pokemonName)} spotted in ${data.channelsByName[message.channel.name]} at ${detail}`;
 
