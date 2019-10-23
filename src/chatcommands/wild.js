@@ -2,7 +2,7 @@
 
 const pokemonInfo = require('../../data/pokemon.json');
 const CONSTANTS = require('./../constants');
-const { cleanUpDetails, getPokemonTag, getSpecialWildTag, sendAlertToChannel } = require('./../helper');
+const { cleanUpDetails, getPokemonTag, getSpecialWildTag, removeExtraSpaces, sendAlertToChannel } = require('./../helper');
 
 const wild = (data, message) => {
 	let reply = '';
@@ -35,7 +35,7 @@ const wild = (data, message) => {
 
 	const specialWildTag = getSpecialWildTag(msgLower, data);
 
-	reply = `Wild **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} ${specialWildTag} at ${detail} added by ${message.member.displayName}`;
+	reply = removeExtraSpaces(`Wild **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} ${specialWildTag} at ${detail} added by ${message.member.displayName}`);
 	message.channel.send(reply);
 	const forwardReply = `- **${pokemonName.toUpperCase()}** ${data.getEmoji(pokemonName)} reported in the wild in ${data.channelsByName[message.channel.name]} at ${detail}`;
 

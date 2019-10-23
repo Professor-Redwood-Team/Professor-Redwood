@@ -1,7 +1,7 @@
 'use strict';
 
 const CONSTANTS = require('./../constants');
-const { cleanUpDetails, getEndTime, getSpecialRaidTag, getTierEmojiAndEggTag, sendAlertToChannel } = require('./../helper');
+const { cleanUpDetails, getEndTime, getSpecialRaidTag, getTierEmojiAndEggTag, removeExtraSpaces, sendAlertToChannel } = require('./../helper');
 
 const usage = 'Command usage: **!egg tier# minutesLeft [exgym] location details**';
 
@@ -45,7 +45,7 @@ const egg = (data, message) => {
 	const specialRaidTag = getSpecialRaidTag(msglower, data);
 	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym') || message.content.includes('ex raid');
 
-	reply = `${data.getEmoji(tierEmoji)} ${eggTag} raid egg reported to ${data.channelsByName['gymraids_alerts']} (hatching: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.member.displayName}`;
+	reply = removeExtraSpaces(`${data.getEmoji(tierEmoji)} ${eggTag} raid egg reported to ${data.channelsByName['gymraids_alerts']} (hatching: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.member.displayName}`);
 	message.channel.send(reply);
 	const forwardReply = `- ${data.getEmoji(tierEmoji)}**Tier ${tier}** egg reported in ${data.channelsByName[channelName]} hatching at ${endTime} at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
 
