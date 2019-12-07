@@ -10,7 +10,7 @@ const quest = (data, message) => {
 	let usage = 'Command usage: **!quest reward task location** *(rewards: tm, pokemon/wild (if not sure), rarecandy)';
 
 	const msgLower = message.content.toLowerCase();
-	const msgSplit = msgLower.replace('\n', ' ').split(' ');
+	const msgSplit = message.content.replace('\n', ' ').split(' ');
 	if (!msgSplit || msgSplit.length < 3) {
 		reply = 'Sorry, incorrect format.\n'+usage;
 		message.channel.send(reply);
@@ -18,7 +18,7 @@ const quest = (data, message) => {
 	}
 
 	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
-	let detail = message.content.split(' ').slice(2).join(' ');
+	let detail = msgSplit.slice(2).join(' ');
 	if (!detail) {
 		reply = `Quest report not processed, not enough information.\n${usage}`;
 		message.channel.send(reply);
