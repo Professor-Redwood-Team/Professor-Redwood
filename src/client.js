@@ -89,9 +89,9 @@ client.on('message', (message, cb) => {
 	}
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' ||  command === '!tr') {
+	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' || command === '!tr') {
 		if (message.channel.name.indexOf('-') === -1) {
-			reply = message.member.displayName + ', raid/egg/wild/quest/lure/Team Go Rocket commands should only be run in the corresponding neighborhood channel';
+			reply = message.member.displayName + ', raid/egg/wild/quest/Team Go Rocket commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
 			return reply;
 		}
