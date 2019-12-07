@@ -116,7 +116,7 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
 	const unovaStonesVariations = new Set(['unova', 'unovastone', 'unovastones']);
 	const magneticLureVariations = new Set(['magnetic']);
 	const glacialLureVariations = new Set(['glacial']);
-	const mossyLureVariations = new Set(['mossy', 'moss']);
+	const mossyLureVariations = new Set(['mossy']);
 
 	if (rareCandyVariations.has(reward)) {
 		reward = 'rarecandy';
@@ -154,7 +154,7 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
 };
 
 /**
- * If TR Leader Arlo,Cliff,Sierra exists, return shinycheck mention tag
+ * If TR Leader Arlo,Cliff,Sierra exists, return shinycheck tag
  * @param {string} pokemonName
  * @param {string} message
  * @param {object} data
@@ -167,29 +167,6 @@ const getTrShinyTag = (pokemonName, message, data) => {
             trShinyTag = ' <@&' + data.rolesByName['shinycheck'].id + '> ' + data.getEmoji('shiny');
 		}};
 	return trShinyTag;
-};
-
-/**
- * If TR Leader exists, mention the corresponding pokemon or tag the pokemon if if found as a role
- * @param {string} pokemonName
- * @param {string} message
- * @param {object} data
- * @returns {string}
- */
-const getTrLeaderPokemonTag = (pokemonName, message, data) => {
-	let trLeaderPokemon = '';
-		if (pokemonName == 'cliff') {trLeaderPokemon = 'meowth';
-		} else if (pokemonName == 'sierra') {trLeaderPokemon = 'sneasel';
-		} else if (pokemonName == 'giovanni') {trLeaderPokemon = 'zapdos';
-		} else if (pokemonName == 'arlo') {trLeaderPokemon = 'scyther';}
-		
-	let trLeaderPokemonTag = trLeaderPokemon;
-	data.GUILD.roles.forEach((role) => {
-		if (role.name === trLeaderPokemon){
-			trLeaderPokemonTag = '<@&' + role.id + '>'; 
-		}
-	});
-	return getTrLeaderPokemonTag;
 };
 
 /**
@@ -236,7 +213,7 @@ const getSpecialWildTag = (msgLower, data) => {
 	let specialWildTag = '';
 
 	// Tags role called highiv whenever 'highiv' is in a report
-	if  (msgLower.includes('highiv') || msgLower.includes('high iv') || msgLower.includes('100%')) {
+	if  (msgLower.includes('highiv') || msgLower.includes('high iv') || msgLower.includes('100 iv') || msgLower.includes('100%') || msgLower.includes('hundo')) {
 		data.GUILD.roles.forEach(role => {
 			if (role.name === 'highiv') specialWildTag += '<@&' + role.id + '> '; // require a role called 'highiv'
 		});
