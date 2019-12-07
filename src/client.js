@@ -99,8 +99,6 @@ client.on('message', (message, cb) => {
 		else if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
 		else if(command === '!quest') {return cb(CHATCOMMANDS.quest(message));}
 		else if(command === '!tr') {return cb(CHATCOMMANDS.tr(message));}
-		else if(command === '!radar') {return cb(CHATCOMMANDS.radar(message));}
-		else if(command === '!lure') {return cb(CHATCOMMANDS.lure(message));}
 		else {return cb(CHATCOMMANDS.egg(message));}
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
@@ -111,7 +109,6 @@ client.on('message', (message, cb) => {
 				'**Egg command:** !egg tierNumber timeLeft `exgym`  location\n' +
 				'**Quest command:** !quest reward `shinycheck` task location\n' +
 				'**Wild command:** !wild pokémonName `shinycheck` `highiv` `finalevo` location\n' +
-				'**Lure command:** !lure lureType location\n' +
 				'**Team GO Rocket command:** !tr pokemonOrLeaderName location\n' +
 				'*NOTE: Only use `highlighted words` when applicable*');
 		return;
