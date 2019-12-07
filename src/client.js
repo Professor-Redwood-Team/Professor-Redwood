@@ -89,9 +89,9 @@ client.on('message', (message, cb) => {
 	}
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' || command === '!tr') {
+	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' ||  command === '!radar'|| command === '!lure' ||  command === '!tr') {
 		if (message.channel.name.indexOf('-') === -1) {
-			reply = message.member.displayName + ', raid/egg/wild/quest/team rocket commands should only be run in the corresponding neighborhood channel';
+			reply = message.member.displayName + ', raid/egg/wild/quest/lure/Team Go Rocket commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
 			return reply;
 		}
@@ -99,18 +99,21 @@ client.on('message', (message, cb) => {
 		else if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
 		else if(command === '!quest') {return cb(CHATCOMMANDS.quest(message));}
 		else if(command === '!tr') {return cb(CHATCOMMANDS.tr(message));}
+		else if(command === '!radar') {return cb(CHATCOMMANDS.radar(message));}
+		else if(command === '!lure') {return cb(CHATCOMMANDS.lure(message));}
 		else {return cb(CHATCOMMANDS.egg(message));}
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
-	else if (message.channel.name !== 'professor_redwood') {
+		else if (message.channel.name !== 'professor_redwood') {
 		if (message.channel.name.indexOf('-') > 0) //neighborhood channel
 			message.channel.send(message.member.displayName + ', I don\'t recognize your entry in this channel\n' +
-				'For raids, use **!raid boss timeLeft location**\n' +
-				'For eggs, use **!egg tierNumber timeLeft location**\n' +
-				'For quests, use **!quest reward task location**\n' +
-				'For wild spawns, use **!wild pokemonName location**\n' +
-				'For Team Rocket sightings, use **!tr pokemonName location**\n' +
-				'For everything else, go to ' + channelsByName['professor_redwood'] + ' channel and type **!help**');
+				'**Raid command:** !raid boss timeLeft `exgym`  location\n' +
+				'**Egg command:** !egg tierNumber timeLeft `exgym`  location\n' +
+				'**Quest command:** !quest reward `shinycheck` task location\n' +
+				'**Wild command:** !wild pokémonName `shinycheck` `highiv` `finalevo` location\n' +
+				'**Lure command:** !lure lureType location\n' +
+				'**Team GO Rocket command:** !tr pokemonOrLeaderName location\n' +
+				'*NOTE: Only use `highlighted words` when applicable*');
 		return;
 	}
 	
