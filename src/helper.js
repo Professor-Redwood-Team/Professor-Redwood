@@ -116,7 +116,7 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
 	const unovaStonesVariations = new Set(['unova', 'unovastone', 'unovastones']);
 	const magneticLureVariations = new Set(['magnetic']);
 	const glacialLureVariations = new Set(['glacial']);
-	const mossyLureVariations = new Set(['mossy']);
+	const mossyLureVariations = new Set(['mossy', 'moss']);
 
 	if (rareCandyVariations.has(reward)) {
 		reward = 'rarecandy';
