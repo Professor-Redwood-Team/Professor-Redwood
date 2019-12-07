@@ -11,14 +11,20 @@ const cleanUpDetails = detail => {
   const shinyCheckVariations = ['shiny check', 'shinycheck', 'shiny'];
 	const rareCandyVariations = ['rarecandy', 'rare candy'];
 	const silverPinapVariations = ['silverpinap', 'silver pinap', 'pinap'];
+	const sinnohStonesVariations = ['sinnoh stone', 'sinnoh_stone', 'sinnohstone'];
+	const unovaStonesVariations = ['unova stone', 'unova stones', 'unova_stone', 'unovastone'];
 	const technicalMachineVariations = ['technical', 'technicalmachine', 'technical machine'];
+	const lureVariations = ['magnetic', 'mossy', 'lure', 'glacial'];
 	const stringsToRemove = [
 		...exGymVariations,
 		...highIvVariations,
 		...shinyCheckVariations,
 		...rareCandyVariations,
 		...silverPinapVariations,
+		...sinnohStonesVariations,
+		...unovaStonesVariations,
 		...technicalMachineVariations,
+		...lureVariations,
 		'finalevo',
 	];
 
@@ -28,7 +34,7 @@ const cleanUpDetails = detail => {
 	});
 
 	// Replace multiple spaces with a single space
-	detail = detail.replace(/  +/g, ' ');
+	detail = removeExtraSpaces(detail);
 
 	if (detail.length > 255) detail = detail.substring(0,255);
 	return detail.trim();
@@ -106,6 +112,11 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
 	const rareCandyVariations = new Set(['rc', 'rarecand', 'rarecandy', 'rare_candy', 'rare']);
 	const stardustVariations = new Set(['stardust', 'dust']);
 	const silverPinapVariations = new Set(['silverpinap', 'silver']);
+	const sinnohStonesVariations = new Set(['sinnoh', 'sinnohstone', 'sinnohstones']);
+	const unovaStonesVariations = new Set(['unova', 'unovastone', 'unovastones']);
+	const magneticLureVariations = new Set(['magnetic']);
+	const glacialLureVariations = new Set(['glacial']);
+	const mossyLureVariations = new Set(['mossy']);
 
 	if (rareCandyVariations.has(reward)) {
 		reward = 'rarecandy';
@@ -115,6 +126,16 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
 		reward = 'stardust';
 	} else if (silverPinapVariations.has(reward)) {
 		reward = 'silver_pinap';
+	} else if (sinnohStonesVariations.has(reward)) {
+		reward = 'sinnoh_stone';
+	} else if (unovaStonesVariations.has(reward)) {
+		reward = 'unova_stone';
+	} else if (magneticLureVariations.has(reward)) {
+		reward = 'magnetic_lure';
+	} else if (glacialLureVariations.has(reward)) {
+		reward = 'glacial_lure';
+	} else if (mossyLureVariations.has(reward)) {
+		reward = 'mossy_lure';
 	}
 
 	let rewardTag = reward;
@@ -130,6 +151,45 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
 	});
 
 	return { reward, rewardTag };
+};
+
+/**
+ * If TR Leader Arlo,Cliff,Sierra exists, return shinycheck mention tag
+ * @param {string} pokemonName
+ * @param {string} message
+ * @param {object} data
+ * @returns {string}
+ */
+const getTrShinyTag = (pokemonName, message, data) => {
+	let trShinyTag = '';
+    if (pokemonName == 'arlo' || pokemonName == 'cliff' || pokemonName == 'sierra') {
+        if (data.rolesByName['shinycheck']) {
+            trShinyTag = ' <@&' + data.rolesByName['shinycheck'].id + '> ' + data.getEmoji('shiny');
+		}};
+	return trShinyTag;
+};
+
+/**
+ * If TR Leader exists, mention the corresponding pokemon or tag the pokemon if if found as a role
+ * @param {string} pokemonName
+ * @param {string} message
+ * @param {object} data
+ * @returns {string}
+ */
+const getTrLeaderPokemonTag = (pokemonName, message, data) => {
+	let trLeaderPokemon = '';
+		if (pokemonName == 'cliff') {trLeaderPokemon = 'meowth';
+		} else if (pokemonName == 'sierra') {trLeaderPokemon = 'sneasel';
+		} else if (pokemonName == 'giovanni') {trLeaderPokemon = 'zapdos';
+		} else if (pokemonName == 'arlo') {trLeaderPokemon = 'scyther';}
+		
+	let trLeaderPokemonTag = trLeaderPokemon;
+	data.GUILD.roles.forEach((role) => {
+		if (role.name === trLeaderPokemon){
+			trLeaderPokemonTag = '<@&' + role.id + '>'; 
+		}
+	});
+	return getTrLeaderPokemonTag;
 };
 
 /**
@@ -156,7 +216,7 @@ const getShadowTag = (pokemonName, message, data) => {
  * @returns {string}
  */
 const getSpecialRaidTag = (msglower, data) => {
-	if (msglower.includes('exgym') || msglower.includes(' ex gym') || msglower.includes('ex raid') || msglower.includes('(ex gym)')) {
+	if (msglower.includes('exgym') || msglower.includes(' ex gym') || msglower.includes('exraid') || msglower.includes('ex raid') || msglower.includes('(ex gym)')) {
 		if (data.rolesByName['exgym']) {
 			return '<@&' + data.rolesByName['exgym'].id + '>';
 		} else {
@@ -176,12 +236,12 @@ const getSpecialWildTag = (msgLower, data) => {
 	let specialWildTag = '';
 
 	// Tags role called highiv whenever 'highiv' is in a report
-	if  (msgLower.includes('highiv') || msgLower.includes('high iv')) {
+	if  (msgLower.includes('highiv') || msgLower.includes('high iv') || msgLower.includes('100%')) {
 		data.GUILD.roles.forEach(role => {
 			if (role.name === 'highiv') specialWildTag += '<@&' + role.id + '> '; // require a role called 'highiv'
 		});
 	}
-	// Tags role called shinycheck whenever 'finalevo' is in a report
+	// Tags role called finalevo whenever 'finalevo' is in a report
 	if (msgLower.includes('finalevo')) {
 		data.GUILD.roles.forEach(role => {
 			if (role.name === 'finalevo') specialWildTag += '<@&' + role.id + '> '; // require a role called 'finalevo'
@@ -225,6 +285,13 @@ const getTierEmojiAndEggTag = (tier, data) => {
 };
 
 /**
+ * Removes extra spaces between words
+ * @param {string} detail
+ * @returns {string}
+ */
+const removeExtraSpaces = detail => detail.replace(/  +/g, ' ');
+
+/**
  * Removes tags for html
  * @param {string} html
  * @returns {string}
@@ -259,10 +326,12 @@ module.exports = {
 	getLegendaryTag,
 	getPokemonTag,
 	getRewardAndRewardTag,
+	getTrShinyTag,
 	getShadowTag,
 	getSpecialRaidTag,
 	getSpecialWildTag,
 	getTierEmojiAndEggTag,
+	removeExtraSpaces,
 	removeTags,
 	sendAlertToChannel
 };
