@@ -14,6 +14,7 @@ const raidCpCommand = require('../src/chatcommands/raidcp');
 const resetCommand = require('../src/chatcommands/reset');
 const teamCommand = require('../src/chatcommands/team');
 const wantCommand = require('../src/chatcommands/want');
+const modCommand = require('../src/chatcommands/mod')
 
 const fakeDiscordData = {
 	getEmoji: (p) => {return ':' + p + ':';},
@@ -122,6 +123,65 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 			assert.equal(result, 'I\'m sorry, I can\'t find failure. Remember you can only type one region at a time. Please ' +
 				'enter **!play sf|eastsf|centralsf|westsf|southsf|peninsula|sanjose|marin|eastbay|sacramento|allregions**');
 		});
+	});
+
+	describe('quoted reply', () => {
+		const fakePrivilegedRoleDiscordData = {
+			getEmoji: (p) => {return ':' + p + ':';},
+			format_time: (p) => {return p;},
+			removeTags: (p) => {return p;},
+			rolesByName: {
+				valor: {},
+				instinct: {},
+				mystic: {},
+			},
+			channelsByName: {
+				start_here: '#start_here',
+				gymraids_alerts: {
+					send: () => {return true;},
+				},
+			},
+			GUILD: {
+				roles: [
+					{'id': 'lugia',  'name': 'lugia'},
+					{'id': 'eastsf', 'name': 'eastsf'},
+					{'id': 'tier5',  'name': 'tier5'}
+				],
+			},
+
+		};
+
+		const modMessage = {
+			channel: {
+				send: () => {},
+			},
+			member: {
+				addRole: () => {return true;},
+				removeRole: () => {return true;},
+				displayName: 'Unit Test User',
+				roles: ['@everyone']
+			},
+		};
+
+		it('ignore @ tag in quoted reply', () => {
+			let content = `> :legendaryraid: <@&tier5> raid egg reported to #gymraids_alerts (hatching: 1:15pm) at **The Awesome Gym** added by TheRaider
+				@Professor Redwood#6075 +1 for The Awesome Gym`;
+			let msg = Object.assign(modMessage, {content: content});
+			let result = modCommand(fakePrivilegedRoleDiscordData)(msg);
+
+			assert.doesNotMatch(result, /\*\*HEY\*\* :rage:/)
+			assert.equal(result, '');
+		})
+
+		it('process @ tag in message with quoted reply', () => {
+			let content = `> :legendaryraid: <@&tier5> raid egg reported to #gymraids_alerts (hatching: 1:15pm) at **The Awesome Gym** added by TheRaider
+				@Professor Redwood#6075 <@&tier5> +1 for The Awesome Gym`;
+			let msg = Object.assign(modMessage, {content: content});
+			let result = modCommand(fakePrivilegedRoleDiscordData)(msg);
+
+			assert.match(result, /\*\*HEY\*\* :rage:/)
+		})
+
 	});
 
 });
