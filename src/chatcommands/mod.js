@@ -2,11 +2,28 @@
 
 const CONSTANTS = require('./../constants');
 
+function getMessageRemoveQuotedText(contentText) {
+	if (contentText.startsWith("> ") || contentText.startsWith(">>> ")) {
+		// quote starts with '> ' or '>>> ' and ends with newline
+		// see: https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-
+		if (contentText.indexOf('\n') > -1) {
+			return contentText.substring(contentText.indexOf('\n') + 1);
+		} else {
+			// no newline in message, replay is only the quoted message!
+			return ""
+		}
+	}
+
+	return contentText;
+}
+
 const handleMod = (data, message) => {
 	let reply = '';
 	let privileged = false;
+	let content = getMessageRemoveQuotedText(message.content)
+
 	//improper pokemon tagging
-	if (message.content.indexOf('<@&') > -1) {
+	if (content.indexOf('<@&') > -1) {
 		if (message.member) {
 			if (message.member.roles) {
 				message.member.roles.forEach( (role) => {
@@ -17,7 +34,7 @@ const handleMod = (data, message) => {
 			}
 		}
 		if (!privileged) {
-			let roleid = message.content.substring(message.content.indexOf('<@&') + 3);
+			let roleid = content.substring(content.indexOf('<@&') + 3);
 			if (roleid.indexOf(' ') > -1)
 				roleid = roleid.substring(0, roleid.indexOf(' ')-1);
 			else
