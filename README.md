@@ -1,3 +1,6 @@
+# Professor Redwood
+[![Build Status](https://api.travis-ci.org/Professor-Redwood-Team/Professor-Redwood.svg?branch=master)](https://api.travis-ci.org/Professor-Redwood-Team/Professor-Redwood.svg?branch=master)
+
 ### Summary ###
 Professor Redwood has arrived from the California Bay Area. He will help you run your local discord communities for Pokemon GO. See our bot in action on the SF PoGo Raids Meetup https://discord.gg/7tbySPV
 
@@ -30,12 +33,12 @@ To run this bot you will need a ES6 node environment. The bot currently does not
 - Under App Name, type 'Professor Redwood', or another name for your bot
 - Click Create App
 - Click Create a Bot User
-- Under App Details, click to reveal the Token (This is your token needed for the bot code!)
-- Copy the Token, and paste it into your secrets.js file under BOTID
-- Now, copy the Client ID and paste it into this URL: https://discordapp.com/oauth2/authorize?&client_id=<CLIENT ID>&scope=bot&permissions=0
+- Under App Details, click to reveal the client secret, and paste it into your config/.env file under DISCORD_TOKEN
+- Paste the CLIENT ID in config/.env as well.
+- Now, copy the Client ID and paste it into this URL: `https://discordapp.com/oauth2/authorize?&client_id=<CLIENT ID>&scope=bot&permissions=1342401618`
 - Choose the name of your Discord server
 - Authorize the Bot!
 - Go to the Server Settings for your discord, and search for a user/member, find your bot and grant it mod privileges
 5) Go to the config folder and create a secrets.json. Follow instructions in the config/readme.txt.
-6) Run your bot
-node bot.js
+6) Run your bot with either 
+`node bot.js` or `node server.js`
