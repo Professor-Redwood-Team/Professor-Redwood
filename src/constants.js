@@ -3,7 +3,7 @@
 const Discord = require('discord.js');
 
 const regionsConfig = require('../config/regions.json');
-const secrets = require('../config/secrets.json');
+const secrets = require('../config/secrets.js');
 const logger = require('../logger');
 
 String.prototype.capitalize = function () {
@@ -33,7 +33,7 @@ const tagOrComment = new RegExp(
 
 const data = {
 	BOTNAME: 'Professor Redwood',
-	BOTID: secrets.discord.BOTID,
+	BOTID: process.env.DISCORD_CLIENTID,
 	TEAMS: ['valor', 'instinct', 'mystic'],
 	MONS: ['aerodactyl', 'anorith', 'bagon', 'beldum', 'blissey', 'bronzor', 'burmy', 'chansey', 'chimecho', 'combee', 'cranidos', 'cubone', 'ditto', 'dragonite', 'dratini', 'drifloon', 'feebas', 'finneon', 'gabite', 'gastly', 'geodude', 'gible', 'girafarig', 'grimer', 'hippopotas', 'hitmonchan', 'hitmonlee', 'hitmontop', 'larvitar', 'lileep', 'lotad', 'machop', 'makuhita', 'mareep', 'miltank', 'nincada', 'onix', 'poliwag', 'porygon', 'ralts', 'seviper', 'scyther', 'seel', 'shieldon', 'sableye', 'slakoth', 'sneasel', 'solrock', 'spinda', 'tauros', 'trapinch', 'togetic', 'unown', 'wailmer'],
 	EGGTIERS: ['tier1', 'tier2', 'tier3', 'tier4', 'tier5'],
