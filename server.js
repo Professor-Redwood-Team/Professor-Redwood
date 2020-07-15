@@ -2,7 +2,7 @@ const app = require('express')();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const client = require('./src/client');
-const config = require('./config/secrets.json');
+const config = require('./config/secrets.js');
 const SwitchRouter = require('./routes/switch');
 const logger = require('./logger');
 

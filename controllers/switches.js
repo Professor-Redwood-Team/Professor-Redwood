@@ -1,5 +1,5 @@
 const client = require('../src/client');
-const config = require('../config/secrets.json');
+const config = require('../config/secrets.js');
 const logger = require('../logger');
 const token = config.discord.token;
 
