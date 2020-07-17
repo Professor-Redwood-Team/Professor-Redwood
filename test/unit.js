@@ -120,7 +120,7 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 			let result = playCommand(fakeDiscordData)(msg);
 
 			assert.equal(result, 'I\'m sorry, I can\'t find failure. Remember you can only type one region at a time. Please ' +
-				'enter **!play sf|eastsf|centralsf|westsf|southsf|peninsula|sanjose|marin|eastbay|sacramento|allregions**');
+				'enter **!play sf|eastsf|centralsf|westsf|southsf|peninsula|allregions**');
 		});
 	});
 
