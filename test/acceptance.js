@@ -310,14 +310,14 @@ describe('Acceptance Chat Commands', () => {
 		it('unown', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!want unown'});
 			sendMessage(msg, (result) => {
-				assert.equal(result, 'OK Unit Test User! I will let you know when someone spots a unown in the wild or as a raid boss');
+				assert.equal(result, 'OK Unit Test User! I will let you know when someone reports a legendary in the wild, as a quest reward, as a shadow, or as a raid boss.');
 				done();
 			});
 		});
 		it('unknown', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!want unknown'});
 			sendMessage(msg, (result) => {
-				assert.equal(result, 'OK Unit Test User! I will let you know when someone spots a unown in the wild or as a raid boss');
+				assert.equal(result, 'OK Unit Test User! I will let you know when someone reports a legendary in the wild, as a quest reward, as a shadow, or as a raid boss.');
 				done();
 			});
 		});
@@ -331,15 +331,14 @@ describe('Acceptance Chat Commands', () => {
 		it('failure', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!want failure'});
 			sendMessage(msg, (result) => {
-				assert.equal(result.slice(0, 173), 'I\'m sorry, I can\'t find failure. Remember you can only type one pokemon\'s' +
-					' name at a time. Type **!want pokemonName** where pokemonName is one item in any of the lists below:');
+				assert.equal(result.slice(0, 173), 'I can\'t find failure. Type !want keyword, where keyword is an item from the lists below:');
 				done();
 			});
 		});
 		it.skip('no input', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!want'});
 			sendMessage(msg, (result) => {
-				assert.equal(result, 'Usage: !want pokemonName');
+				assert.equal(result, 'I can\'t find !want. Type !want keyword, where keyword is an item from the lists below:');
 				done();
 			});
 		});
