@@ -1,5 +1,6 @@
 'use strict';
 
+const attack = require('./chatcommands/attack');
 const breakpoint = require('./chatcommands/breakpoint');
 const checkNew = require('./chatcommands/checkNew');
 const counters = require('./chatcommands/counters');
@@ -19,6 +20,7 @@ const tr = require('./chatcommands/tr');
 
 module.exports = (data) => {
 	return {
+		attack: attack(data),
 		breakpoint: breakpoint(data),
 		checkNew: checkNew(data),
 		counters: counters(data),

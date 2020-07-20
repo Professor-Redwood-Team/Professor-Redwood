@@ -15,6 +15,10 @@ const alphanumeric = (inputtxt) => {
 	return (inputtxt.value && inputtxt.value.match(letterNumber));
 };
 
+const roundTo = (num, digits) => {
+    return +(Math.round(num + "e+"+digits)  + "e-"+digits);
+}
+
 //Function and vars for sanitizing input
 const tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
 
@@ -87,5 +91,8 @@ data.standardizePokemonName = (name) => {
 	return name;
 };
 
+//make this more elegant when we have more than one
+data.standardizePokemonName = standardizePokemonName;
+data.roundTo = roundTo;
 
 module.exports = data;

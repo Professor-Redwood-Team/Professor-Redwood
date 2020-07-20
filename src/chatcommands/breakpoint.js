@@ -4,6 +4,10 @@
 /* eslint-disable */
 
 const CONSTANTS = require('./../constants');
+const pokemon = require('../../data/pokemon.json');
+const moves = require('../../data/moves.json');
+const counters = require('../../data/counters.json');
+const damage = require('../util/damage.js');
 
 const usage = 'Command usage: **!breakpoint attacker attack_name iv (optional: defender)**';
 const counters = require('../../data/counters.json');
@@ -69,29 +73,7 @@ function getSTAB(move, attacker) {
     return 1.0;
 }
 
-function getEffectiveness(move, defender) {
-    var moveInfo = moves[move];
-    var moveType = moveInfo["type"];
-    var defenderInfo = pokemon[defender];
-    var defenderTypes = defenderInfo["types"];
-    var multiplier = 1.0;
-    for (var i=0; i<defenderTypes.length; i++) {
-        var defenderType = defenderTypes[i];
-        // check if it's super effective
-        if (types[moveType]["se"].indexOf(defenderType) >= 0) {
-            multiplier *= 1.4;
-        }
-        // check if it's not very effective
-        else if (types[moveType]["nve"].indexOf(defenderType) >= 0) {
-            multiplier *= 0.714;
-        }
-        // check if defender is "immune"
-        else if (types[moveType]["immune"].indexOf(defenderType) >= 0) {
-            multiplier *= 0.714 * 0.714;
-        }
-    }
-    return multiplier;
-}
+const usage = 'Command usage: **!breakpoint attacker attack_name iv (optional: defender)**';
 
 function calcBreakpoint(attacker, move, iv, defender) {
     attacker = attacker.toUpperCase();
@@ -109,11 +91,11 @@ function calcBreakpoint(attacker, move, iv, defender) {
     var reply = "";
     var breakpoints = {};
     if (!pokeInfo) {
-    	reply = 'Sorry, I can\'t find that pokemon. Remember to enter the pokemon\'s exact name in the pokedex.\n'+usage;
+        reply = 'Sorry, I can\'t find that pokemon. Remember to enter the pokemon\'s exact name in the pokedex.\n'+usage;
         return reply;
     }
     if (!moveInfo) {
-    	reply = 'Sorry, I can\'t find that move. Remember to replace spaces with _ when typing a move.\n'+usage;
+        reply = 'Sorry, I can\'t find that move. Remember to replace spaces with _ when typing a move.\n'+usage;
         return reply;
     }
     for (var index in bosses) {
@@ -125,32 +107,31 @@ function calcBreakpoint(attacker, move, iv, defender) {
         breakpoints[defender] = {}
         reply += move.replace("_", " ")+" damage against "+defender.capitalize()+"\n";
 
-        var currentMaxDamage = getDamage(attacker, iv, move, defender, 20);
+        var currentMaxDamage = damage.calcDamage(attacker, 20, iv, move, defender, 40, 20);
         breakpoints[defender][20] = currentMaxDamage;
         for (var level=20; level<40; level+=0.5) {
-            var damage = getDamage(attacker.toUpperCase(), iv, move, defender.toUpperCase(), level);
-            if (damage > currentMaxDamage) {
-                breakpoints[defender][level] = damage;
-                currentMaxDamage = damage;
+            var currentDamage = damage.calcDamage(attacker, level, iv, move, defender, 40, 15);
+            if (currentDamage > currentMaxDamage) {
+                breakpoints[defender][level] = currentDamage;
+                currentMaxDamage = currentDamage;
             }
         }
         var sortedKeys = Object.keys(breakpoints[defender]).sort();
         for (var i=0; i<sortedKeys.length; i++) {
             var level = parseFloat(sortedKeys[i]);
-            var damage = breakpoints[defender][level];
             var separator = (level % 1 == 0) ? ":   " : ": "; // add nice spacing for levels with .5
             reply += "Lv"+level+separator+breakpoints[defender][level];
             var percent = "";
             if (i > 0) {
                 // add a % increase calculation
                 var prevLevel = parseFloat(sortedKeys[i-1]);
-                percent = roundTo((1.0 * breakpoints[defender][level] / breakpoints[defender][prevLevel] - 1) * 100.0, 2);
+                percent = CONSTANTS.roundTo((1.0 * breakpoints[defender][level] / breakpoints[defender][prevLevel] - 1) * 100.0, 2);
                 reply += " (+"+percent+"%)"
             }
             reply += "\n";
         }
-        if (Object.keys(breakpoints[defender]).indexOf(39.5) == -1) {
-            reply = reply + "Lv39.5: "+getDamage(attacker, iv, move, defender, level);
+        if (Object.keys(breakpoints[defender]).indexOf("39.5") == -1) {
+            reply = reply + "Lv39.5: "+damage.calcDamage(attacker, level, iv, move, defender, 40, 15);
         }
         reply += "\n";
     }
@@ -168,31 +149,43 @@ function getBosses(attacker) {
 }
 
 const getBreakpoint = (data, message) => {
-	let reply = '';
-	const msgSplit = message.content.toLowerCase().split(" ");
-	if (!msgSplit || msgSplit.length < 4) {
+    let reply = '';
+    const msgSplit = message.content.toLowerCase().split(" ");
+    if (!msgSplit || msgSplit.length < 3) {
         reply = 'Sorry, incorrect format.\n'+usage;
         message.channel.send(reply);
         return reply;
     }
-	const attacker = CONSTANTS.standardizePokemonName(msgSplit[1]);
-    const move = msgSplit[2];
-    const iv = msgSplit[3]; // check for int 0-15
+    // let's be smart because the order of arguments is hard to remember.
+    let words = []; // word order should naturally be: attacker, attack, defender
+    let numbers = []; // attacker IV
+    for (var i=1; i<msgSplit.length; i++) {
+        if (isNaN(msgSplit[i])) {
+            words.push(msgSplit[i]);
+        }
+        else {
+            numbers.push(msgSplit[i]);
+        }
+    }
+    if (numbers.length == 0) { numbers.push('15'); }
+    const attacker = CONSTANTS.standardizePokemonName(words[0]);
+    const move = words[1];
+    const iv = numbers[0]; // check for int 0-15
     if (isNaN(iv) || iv > 15 || iv < 0) {
-		reply = "Sorry, IV must be 0-15.\n"+usage
+        reply = "Sorry, IV must be 0-15.\n"+usage
         message.channel.send(reply);
         return reply;
     }
     let defender = null; // specifying defender is optional
-    if (msgSplit.length >= 5) {
-        defender = CONSTANTS.standardizePokemonName(msgSplit[4]);
+    if (words.length >= 3) {
+        defender = CONSTANTS.standardizePokemonName(words[2]);
     }
     reply = calcBreakpoint(attacker, move, iv, defender);
     
-	message.channel.send(reply);
-	return reply;
+    message.channel.send(reply);
+    return reply;
 };
 
 module.exports = (data) => ( (message) => {
-	return getBreakpoint(data, message);
+    return getBreakpoint(data, message);
 });
