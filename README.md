@@ -1,11 +1,8 @@
 ### Summary ###
-Professor Redwood has arrived from the California Bay Area. He will help you run your local discord communities for Pokemon GO. See our bot in action on the SF PoGo Raids Meetup https://discord.gg/9MJdRZm
-
-### Who do I talk to? ###
-Please contact us on our discord 666theguy and plangslammer.
+Professor Redwood has arrived from the California Bay Area. He will help you run your local discord communities for Pokemon GO. See our bot in action on the SF PoGo Raids Meetup https://discord.gg/7tbySPV
 
 ### How do I contribute? ###
-Coming soon. Make a pull request!
+Make a pull request!
 
 ### How do I get set up? ###
 To run this bot you will need a ES6 node environment. The bot currently does not have database functions.
@@ -19,7 +16,7 @@ To run this bot you will need a ES6 node environment. The bot currently does not
 - valor, instinct, and mystic: all with at least: Display role members seperately, Read & Send Messages (recommend unchecking Mention Everyone), and color each team appropriately
 - create one role for each region that you plan to use. Regions consist of multiple channels. Channels consist of multiple neighborhoods. Examples in SF are: sf, peninsula, sanjose, eastbay
 - create a role named 'allregions'
-- create a role for each rare pokemon, Tier 3-5 raid boss, and 'highiv', 'legendary', 'finalevo'. **All of these roles must have the 'allow anyone to @mention this role'
+- create a role for each rare pokemon, Tier 3-5 raid boss, and 'highiv', 'legendary', 'finalevo', 'exgym'. **All of these roles must have the 'allow anyone to @mention this role'
 3) Create Channels:
 - professor_redwood (a channel specifically for bot commands) - @everyone may Read & Send messages
 - gymraids_alerts (required for alert forwarding) - only admin/mod/3 teams should have Send Message privilege, @everyone should have no privilege

@@ -9,12 +9,12 @@ const handleHide = (data, message) => {
 	let reply = '';
 
 	var hideUser = {
-			'READ_MESSAGES' : false
-		};
+		'READ_MESSAGES' : false,
+	};
 
 	const channelLink = message.content.split(' ').slice(-1)[0].toLowerCase();
 	if(!channelLink) {
-		reply = 'Testing Message, Ignore: Incorrect usage, you must specify a channel.\n' + usage;
+		reply = 'Incorrect usage, you must specify a channel.\n' + usage;
 		message.channel.send(reply);
 		return reply;
 	}

@@ -521,5 +521,26 @@
       "tyranitar":[
          "Bite + Stone Edge"
       ]
+   },
+   "absol":{
+      "stats": {
+         "HP": "?",
+         "CP": "26262"
+      },
+      "fast": ["Snarl", "Psycho Cut"],
+      "charge": ["Dark Pulse", "Megahorn", "Thunder"],
+      "weaknesses": ["Bug", "Fairy", "Fighting"],
+      "resistances": ["Dark", "Ghost", "Psychic(2x)"],
+      "counters": {
+         "Overall": {
+            "machamp": ["Counter + Dynamic Punch"],
+            "hariyama": ["Counter + Dynamic Punch"],
+            "heracross": ["Counter + Dynamic Punch"],
+            "breloom": ["Counter + Dynamic Punch"],
+            "pinsir": ["Bug Bite + X-Scissor"],
+            "blaziken": ["Counter + Overheat"],
+            "scizor": ["Fury Cutter + X-Scissor"]
+         }
+      }
    }
 }

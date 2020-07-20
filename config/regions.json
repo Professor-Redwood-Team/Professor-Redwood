@@ -6,25 +6,17 @@
     "westsf",
     "southsf",
     "peninsula",
-    "sanjose",
-    "marin",
-    "eastbay",
-    "sacramento",
     "allregions"
   ],
   "region_subregions": {
-    "sf": ["eastsf", "centralsf", "westsf"],
-    "allregions": ["eastsf", "centralsf", "westsf", "southsf", "peninsula", "sanjose", "marin", "eastbay", "sacramento"]
+    "sf": ["eastsf", "centralsf", "westsf", "southsf"],
+    "allregions": ["eastsf", "centralsf", "westsf", "southsf", "peninsula"]
   },
   "region_neighborhoods": {
     "eastsf": ["embarcadero-p39-northbeach", "missionbay-dogpatch", "soma-ferry_bldg", "fidi-union_sq", "tenderloin-civic_center", "nob-russian_hill"],
-    "centralsf": ["haight-castro", "mission-dolores", "fillmore-hayes_valley"],
-    "westsf": ["presidio-marina", "richmond-gg_park", "sunset-", "lakeview-lake_merced"],
-    "southsf": ["glen_park-twin_peaks", "ingleside-", "excelsior-portola", "outer_mission-cow_palace", "bayview-", "south_city-brisbane", "daly_city-pacifica"],
-    "peninsula": ["half_moon_bay-coast", "san_bruno-burlingame", "san_mateo-foster_city", "belmont-sc-rws", "redwood_city-palo_alto", "mt-view_sunnyvale"],
-    "sanjose": ["san-jose"],
-    "marin": ["marin-"],
-    "eastbay": ["oakland-", "berkeley-", "east-bay"],
-    "sacramento": ["sacramento-"]
+    "centralsf": ["glen_park-twin_peaks", "haight-castro", "mission-dolores", "fillmore-hayes_valley"],
+    "westsf": ["presidio-marina", "richmond-gg_park", "sunset-ucsf", "lakeview-lake_merced"],
+    "southsf": ["ingleside-ccsf", "excelsior-portola"],
+    "peninsula": ["south_city-brisbane", "daly_city-pacifica", "half_moon_bay-coast", "san_bruno-burlingame", "san_mateo-foster_city", "belmont-sc-rws", "redwood_city"]
   }
 }

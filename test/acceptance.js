@@ -145,6 +145,14 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
+
+		it('gen 3', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!bp golem rock_throw 15 regice'});
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('ROCK THROW damage against Regice\nLv20:   5') > -1);
+				done();
+			});
+		});
 		it('bad defender', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15 fail'});
 			sendMessage(msg, (result) => {
@@ -157,6 +165,14 @@ describe('Acceptance Chat Commands', () => {
 			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 16'});
 			sendMessage(msg, (result) => {
 				assert(result.indexOf('Sorry, IV must be 0-15.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
+				done();
+			});
+		});
+		it('additional spaces', (done) => {
+			let msg = Object.assign(fakeMessage, {content: '!bp alakazam  future_sight 15'});
+			sendMessage(msg, (result) => {
+				assert(result.indexOf('FUTURE SIGHT damage against Venusaur\nLv20:   103') > -1);
+				assert(result.match(/damage against/g).length >= 3);
 				done();
 			});
 		});
@@ -261,7 +277,7 @@ describe('Acceptance Chat Commands', () => {
 		it('normal', (done) => {
 			let msg = Object.assign(fakeNeighborhoodMessage, {content: '!egg 4 110 caltrain station'});
 			sendMessage(msg, (result) => {
-				console.log(result);
+				console.log(result); // remove when test works
 				done();
 			});
 		});

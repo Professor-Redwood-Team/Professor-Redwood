@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 
 const chatCommandsFunc = require('./chatrouter');
 const CONSTANTS = require('./constants');
-
+const logger = require('../logger');
 const client = new Discord.Client();
 
 const rolesByName = {};
@@ -26,6 +26,7 @@ const getEmoji = (pokemon) => {
 };
 
 client.on('ready', (done) => {
+	logger.info({ event: 'Ready!' });
 	client.channels.forEach((channel) => {
 		channelsByName[channel.name] = channel;
 	});
@@ -54,7 +55,7 @@ client.on('ready', (done) => {
 	if (done) {
 		done();
 	} else {
-		console.log('Asynchronous data loaded!'); // eslint-disable-line
+		logger.info('Asynchronous data loaded!'); // eslint-disable-line
 	}
 });
 
@@ -69,35 +70,55 @@ client.on('message', (message, cb) => {
 		return;
 	}
 
+	//REMOVE AFTER TESTING
+	//if (message.channel.name !== 'admin_testing') return;
+
+
 	// todo : make the router do the routing
 	
 	let reply = '';
 	const command = message.content.split(' ')[0].toLowerCase();
+	// replace any multiple spaces with a single space
+	while (message.content.indexOf('  ') > -1) {message.content = message.content.replace('  ', ' ');}
 
 	if (message.member && command !== '!play')	{CHATCOMMANDS.checkNew(message);}
-
+	CHATCOMMANDS.mod(message);
+	
 	if (message.content[0] !== '!') {
 		return;
 	}
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid' || command === '!egg') {
+	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' || command === '!tr') {
 		if (message.channel.name.indexOf('-') === -1) {
-			reply = message.member.displayName + ', raid commands should only be run in the corresponding neighborhood channel';
+			reply = message.member.displayName + ', raid/egg/wild/quest/Team Go Rocket commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
 			return reply;
 		}
 		if (command === '!raid') {return cb(CHATCOMMANDS.raid(message));}
+		else if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
+		else if(command === '!quest') {return cb(CHATCOMMANDS.quest(message));}
+		else if(command === '!tr') {return cb(CHATCOMMANDS.tr(message));}
 		else {return cb(CHATCOMMANDS.egg(message));}
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
-	else if (message.channel.name !== 'professor_redwood') {
-		message.channel.send(message.member.displayName + ', you may only run this command in the ' + channelsByName['professor_redwood'] + ' channel');
+		else if (message.channel.name !== 'professor_redwood') {
+		if (message.channel.name.indexOf('-') > 0) //neighborhood channel
+			message.channel.send(message.member.displayName + ', I don\'t recognize your entry in this channel\n' +
+				'**Raid command:** !raid boss timeLeft `exgym`  location\n' +
+				'**Egg command:** !egg tierNumber timeLeft `exgym`  location\n' +
+				'**Quest command:** !quest reward `shinycheck` task location\n' +
+				'**Wild command:** !wild pokémonName `shinycheck` `highiv` `finalevo` location\n' +
+				'**Team GO Rocket command:** !tr pokemonOrLeaderName location\n' +
+				'*NOTE: Only use `highlighted words` when applicable*');
 		return;
 	}
+
+	logger.info({ event: `${message.member.displayName} said ${message.content} in ${message.channel.name}` });
+
 	if (command === '!attack' || command === '!atk' ||
 		command === '!damage' || command === '!dmg') {return cb(CHATCOMMANDS.attack(message));}
-	else if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
+	else if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}  
 	else if (command === '!cp') {return cb(CHATCOMMANDS.cp(message));}
 	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
 	else if (command === '!help') {return cb(CHATCOMMANDS.help(message));}
@@ -114,8 +135,10 @@ client.on('message', (message, cb) => {
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
 
-	console.log('Command not found: ' + command); // eslint-disable-line
-	return cb('Command not found: ' + command);
+	const errorMessage = 'Command not found: ' + command;
+	logger.info({ event: `${command} was not understood `});
+	CONSTANTS.log(errorMessage);
+	return cb(errorMessage);
 });
 
 module.exports = client;

@@ -10,6 +10,70 @@ const counters = require('../../data/counters.json');
 const damage = require('../util/damage.js');
 
 const usage = 'Command usage: **!breakpoint attacker attack_name iv (optional: defender)**';
+const counters = require('../../data/counters.json');
+const levelToCPM = require('../../data/levelToCPM.json');
+const raidBossTiers = require('../../data/raidBossTiers.json');
+const pokemon = require('../../data/pokemon.json');
+const moves = require('../../data/moves.json');
+const types = require('../../data/types.json');
+
+function roundTo(num, digits) {
+    return +(Math.round(num + "e+"+digits)  + "e-"+digits);
+}
+
+function getDamage(attacker, iv, move, defender, level) {
+    attacker = attacker.toUpperCase();
+    move = move.toUpperCase();
+    defender = defender.toUpperCase();
+    var power = getPower(move);
+    var attack = getBaseStat(attacker, "attack");
+    var attackIV = iv;
+    var attackerCPM = getCPM(level);
+    var defense = getBaseStat(defender, "defense");
+    var defenseIV = 15;
+    var defenderCPM = getBossCPM(defender)
+    var STAB = getSTAB(move, attacker);
+    var effectiveness = getEffectiveness(move, defender);
+    return Math.floor(0.5 * power * ((attack+attackIV) * attackerCPM) / ((defense+defenseIV) * defenderCPM) * STAB * effectiveness) + 1;
+}
+
+function getPower(move) {
+    return moves[move]["power"];
+}
+
+function getBaseStat(name, stat) {
+    return pokemon[name]["stats"][stat];
+}
+
+function getCPM(level) {
+    return levelToCPM[level.toString()];
+}
+
+function getBossCPM(boss) {
+    var tierToCPM = {
+        "5": 0.79,
+        "4": 0.79,
+        "3": 0.73,
+        "2": 0.67,
+        "1": 0.61
+    };
+    var tier;
+    tier = raidBossTiers[boss];
+    if (!tier) {
+        return 0.79; // this isn't a raid boss, so assume tier 4/5
+    }
+    return tierToCPM[tier];
+}
+
+function getSTAB(move, attacker) {
+    var type = moves[move]["type"];
+    if (pokemon[attacker]["types"].indexOf(type) >= 0) {
+        return 1.2;
+    }
+    return 1.0;
+}
+
+const usage = 'Command usage: **!breakpoint attacker attack_name iv (optional: defender)**';
 
 function calcBreakpoint(attacker, move, iv, defender) {
     attacker = attacker.toUpperCase();
