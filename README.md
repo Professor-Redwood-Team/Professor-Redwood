@@ -21,24 +21,25 @@ To run this bot you will need a ES6 node environment. The bot currently does not
 - create a role named 'allregions'
 - create a role for each rare pokemon, Tier 3-5 raid boss, and 'highiv', 'legendary', 'finalevo', 'exgym'. **All of these roles must have the 'allow anyone to @mention this role'
 3) Create Channels:
-- professor_redwood (a channel specifically for bot commands) - @everyone may Read & Send messages
-- gymraids_alerts (required for alert forwarding) - only admin/mod/3 teams should have Send Message privilege, @everyone should have no privilege
-- start_here (required for instructing users on bot usage) - only admin/mod roles should have Send Message privilege, @everyone should have Read only
-- neighborhood channels! When creating these, make sure to use '-' in each name, even if it's at the beginning or end. Proper examples are pier39-marina and sanjose-
--- make sure to only allow allregions and the appropriate region role to access each channel
-- regional gym channels, each region role you created should have a corresponding gym channel, called gymraids_ + the name of your region role
-4) Create your bot
+- `professor_redwood` (a channel specifically for bot commands) - @everyone may Read & Send messages
+- `gymraids_alerts` (required for alert forwarding) - only admin/mod/3 teams should have Send Message privilege, @everyone should have no privilege
+- `start_here` (required for instructing users on bot usage) - only admin/mod roles should have Send Message privilege, @everyone should have Read only
+- neighborhood channels! When creating these, make sure to use '-' in each name, even if it's at the beginning or end. Proper examples are `pier39-marina` and `sanjose-`
+-- make sure to only allow `allregions` and the appropriate region role to access each channel
+- regional gym channels, each region role you created should have a corresponding gym channel, called `gymraids_` + the name of your region role
+4) Follow instructions in the config/README.md to create an .env file with secrets in the root directory.
+5) Create your bot
 - Go to your discord developers page: https://discordapp.com/developers/applications/me
 - Click New App
 - Under App Name, type 'Professor Redwood', or another name for your bot
 - Click Create App
 - Click Create a Bot User
-- Under App Details, click to reveal the client secret, and paste it into your config/.env file under DISCORD_TOKEN
-- Paste the CLIENT ID in config/.env as well.
-- Now, copy the Client ID and paste it into this URL: `https://discordapp.com/oauth2/authorize?&client_id=<CLIENT ID>&scope=bot&permissions=1342401618`
+- Under App Details, click to reveal the client secret, and paste it into your .env file under DISCORD_TOKEN
+- Paste the CLIENT ID in .env as well.
+- Now, copy the Client ID and paste it into this URL: `https://discordapp.com/oauth2/authorize?scope=bot&permissions=1342401618&client_id=<CLIENT ID>`
 - Choose the name of your Discord server
 - Authorize the Bot!
 - Go to the Server Settings for your discord, and search for a user/member, find your bot and grant it mod privileges
-5) Go to the config folder and create a secrets.json. Follow instructions in the config/readme.txt.
+
 6) Run your bot with either 
 `node bot.js` or `node server.js`
