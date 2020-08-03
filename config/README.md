@@ -1,6 +1,6 @@
 # Setting up secrets
 
-Create a `.env` file in this directory with the following structure:
+Create a `.env` file in the root directory with the following structure:
 ```
 DISCORD_TOKEN=
 DISCORD_CLIENTID=
