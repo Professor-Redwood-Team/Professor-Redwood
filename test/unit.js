@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 const assert = require('assert');
+// const CONSTANTS = require('./../src/constants');
 
 const breakpointCommand = require('../src/chatcommands/breakpoint');
 const checkNew = require('../src/chatcommands/checkNew');
@@ -25,11 +26,33 @@ const fakeDiscordData = {
 		mystic: {},
 	},
 	channelsByName: {
-		start_here: '#start_here',
-		gymraids_alerts: {
-			send: () => {return true;},
+		start_here: {
+			id: '123123213123',
+			name: 'start_here',
+			toString: () => {
+				return '#start_here'; // real discord object will return <#channel_id> when printed to string
+			}
 		},
+		professor_redwood: {
+			id: '123123123',
+			name: 'professor_redwood',
+			toString: () => {
+				return '#professor_redwood';
+			}
+		}
 	},
+	// channels: {
+	// 	start_here: {
+	// 		name: 'start_here'
+	// 	},
+	// 	gymraids_alerts: {
+	// 		name: 'gymraids_alerts',
+	// 		send: () => {return true;},
+	// 	},
+	// 	instinct: {
+	// 		name: 'instinct'
+	// 	}
+	// },
 	GUILD: {
 		roles: [
 			{'name': 'lugia'},
@@ -42,6 +65,7 @@ const fakeMessage = {
 	channel: {
 		send: () => {},
 		permissionOverwrites: [],
+		name: '#professor_redwood',
 	},
 	member: {
 		addRole: () => {return true;},
@@ -72,7 +96,7 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 			let msg = Object.assign(newUserMessage, {content: 'hi'});
 			let result = checkNew(fakeDiscordData)(msg);
 
-			assert.equal(result, 'Welcome Unit Test User - Please read discord rules and learn bot commands in #start_here before doing anything. For now, I\'ve given you allregions. Run bot commands in undefined and type **!help** for more information.');
+			assert.equal(result, 'Welcome Unit Test User - Please read discord rules and learn bot commands in #start_here before doing anything. For now, I\'ve given you allregions. Run bot commands in #professor_redwood and type **!help** for more information.');
 		});
 
 		it('subsequent message', () => {
@@ -84,11 +108,11 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 	});
 
 	describe('!reset', () => {
-		it('reset', () => {
+		it('reset command in #professor_redwood', () => {
 			let msg = Object.assign(fakeMessage, {content: '!reset'});
 			let result = resetCommand(fakeDiscordData)(msg);
 
-			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf');
+			assert.equal(result, '\n' + fakeMessage.member.displayName + ', I am removing the following roles:\n tyranitar westsf');
 		});
 
 		it('reset VIP', () => {
@@ -98,7 +122,7 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 			let msg = Object.assign(fakeMessage, {content: '!reset'});
 			let result = resetCommand(fakeDiscordData)(msg);
 
-			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf badrole');
+			assert.equal(result, '\n' + fakeMessage.member.displayName + ', I am removing the following roles:\n tyranitar westsf badrole');
 		});
 	});
 
