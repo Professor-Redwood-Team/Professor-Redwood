@@ -17,7 +17,10 @@ function formatList(list, separator) {
 }
 // Returns a String list of recommended counters for the given Pokemon
 const getCounters = (data, message) => {
-	let pokemon = message.content.split(' ').slice(-1)[0].toLowerCase();
+	let msgsplit = message.content.split(' ');
+	if (msgsplit.length < 2)
+		return 'Usage: !counter pokemonName';
+	let pokemon = msgsplit.slice(-1)[0].toLowerCase();
     
     pokemon = CONSTANTS.standardizePokemonName(pokemon);
 	var counterHash = counters[pokemon];

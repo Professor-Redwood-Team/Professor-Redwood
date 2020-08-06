@@ -74,114 +74,114 @@ describe('Acceptance Chat Commands', () => {
 
 	//wrong channel commands - check new
 
-	describe('!breakpoint', () => {
-		it('golem', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!breakpoint golem rock_throw 15'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('ROCK THROW damage against Ho-oh\nLv20:   8') > -1);
-				done();
-			});
-		});
-		it('alakazam', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('FUTURE SIGHT damage against Venusaur\nLv20:   103') > -1);
-				assert(result.match(/damage against/g).length >= 3);
-				done();
-			});
-		});
-		it('defender', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15 golduck'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('FUTURE SIGHT damage against Golduck\nLv20:   88') > -1);
-				done();
-			});
-		});
+	// describe('!breakpoint', () => {
+	// 	it('golem', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!breakpoint normal_golem rock_throw 15'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('ROCK THROW damage against Ho-oh\nLv20:   10') > -1);
+	// 			done();
+	// 		});
+	// 	});
+	// 	it('alakazam', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp alakazam futuresight 15'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('FUTURESIGHT damage against Venusaur\nLv20:   107') > -1);
+	// 			assert(result.match(/damage against/g).length >= 3);
+	// 			done();
+	// 		});
+	// 	});
+	// 	it('defender', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15 golduck'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('FUTURE SIGHT damage against Golduck\nLv20:   88') > -1);
+	// 			done();
+	// 		});
+	// 	});
 
-		it('gen 3', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp golem rock_throw 15 regice'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('ROCK THROW damage against Regice\nLv20:   5') > -1);
-				done();
-			});
-		});
-		it('bad defender', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15 fail'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('Sorry, I can\'t find that defender. Remember to enter the pokemon\'s exact name in' +
-						' the pokedex.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
-				done();
-			});
-		});
-		it('bad iv', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 16'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('Sorry, IV must be 0-15.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
-				done();
-			});
-		});
-		it('additional spaces', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp alakazam  future_sight 15'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('FUTURE SIGHT damage against Venusaur\nLv20:   103') > -1);
-				assert(result.match(/damage against/g).length >= 3);
-				done();
-			});
-		});
-		it('bad iv letters', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight zzzzz'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('Sorry, IV must be 0-15.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
-				done();
-			});
-		});
-		it('bad move', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp alakazam futuresight 2'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('Sorry, I can\'t find that move. Remember to replace spaces with _ when typing a move.\n' +
-						'Command usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
-				done();
-			});
-		});
-		it('bad attacker', (done) => {
-			let msg = Object.assign(fakeMessage, {content: '!bp fail future_sight 0'});
-			sendMessage(msg, (result) => {
-				assert(result.indexOf('Sorry, I can\'t find that pokemon. Remember to enter the pokemon\'s exact name in' +
-						' the pokedex.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
-				done();
-			});
-		});
-	});
+	// 	it('gen 3', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp golem rock_throw 15 regice'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('ROCK THROW damage against Regice\nLv20:   5') > -1);
+	// 			done();
+	// 		});
+	// 	});
+	// 	it('bad defender', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 15 fail'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('Sorry, I can\'t find that defender. Remember to enter the pokemon\'s exact name in' +
+	// 					' the pokedex.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
+	// 			done();
+	// 		});
+	// 	});
+	// 	it('bad iv', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight 16'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('Sorry, IV must be 0-15.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
+	// 			done();
+	// 		});
+	// 	});
+	// 	it('additional spaces', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp alakazam  future_sight 15'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('FUTURE SIGHT damage against Venusaur\nLv20:   103') > -1);
+	// 			assert(result.match(/damage against/g).length >= 3);
+	// 			done();
+	// 		});
+	// 	});
+	// 	it('bad iv letters', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp alakazam future_sight zzzzz'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('Sorry, IV must be 0-15.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
+	// 			done();
+	// 		});
+	// 	});
+	// 	it('bad move', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp alakazam futuresight 2'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('Sorry, I can\'t find that move. Remember to replace spaces with _ when typing a move.\n' +
+	// 					'Command usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
+	// 			done();
+	// 		});
+	// 	});
+	// 	it('bad attacker', (done) => {
+	// 		let msg = Object.assign(fakeMessage, {content: '!bp fail future_sight 0'});
+	// 		sendMessage(msg, (result) => {
+	// 			assert(result.indexOf('Sorry, I can\'t find that pokemon. Remember to enter the pokemon\'s exact name in' +
+	// 					' the pokedex.\nCommand usage: **!breakpoint attacker attack_name iv (optional: defender)**') > -1);
+	// 			done();
+	// 		});
+	// 	});
+	// });
 
 	describe('!counters', () => {
 		it('lugia', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!counter lugia'});
 			sendMessage(msg, (result) => {
-				assert.equal(result.slice(0,64), '**Lugia** <:lugia:249> HP **12500** | CP **42753** | Atk **193**');
-				assert.ok(result.indexOf('**Future Sight Counters**') > -1);
-				assert.ok(result.indexOf('__Cloyster__: Frost Breath') > -1);
+				assert.equal(result.slice(0,64), '**Lugia** <:lugia:249> HP **15000** | CP **45925** | Atk **193**');
+				assert.ok(result.indexOf('**Overall Counters**') > -1);
+				assert.ok(result.indexOf('__Raikou__: Thunder Shock + Wild Charge') > -1);
 				done();
 			});
 		});
 		it('tyranitar', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!counters tyranitar'});
 			sendMessage(msg, (result) => {
-				assert.equal(result.slice(0,43), 'Counters for **Tyranitar** <:tyranitar:248>');
-				assert.ok(result.indexOf('Poliwrath') > -1);
+				assert.equal(result.slice(0,42), '**Tyranitar** <:tyranitar:248> HP **9000**');
+				assert.ok(result.indexOf('Machamp') > -1);
 				done();
 			});
 		});
 		it('raikou', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!counters raikou'});
 			sendMessage(msg, (result) => {
-				assert.ok(result.indexOf('Dragon Breath') > -1);
+				assert.ok(result.indexOf('Earthquake') > -1);
 				done();
 			});
 		});
 		it('uppercase', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!Counters Raikou'});
 			sendMessage(msg, (result) => {
-				assert.ok(result.indexOf('Dragon Breath') > -1);
+				assert.ok(result.indexOf('Earthquake') > -1);
 				done();
 			});
 		});
@@ -192,7 +192,7 @@ describe('Acceptance Chat Commands', () => {
 				done();
 			});
 		});
-		it.skip('no content', (done) => {
+		it('no content', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!counter'});
 			sendMessage(msg, (result) => {
 				assert.equal(result, 'Usage: !counter pokemonName');
