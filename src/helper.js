@@ -10,8 +10,7 @@ const cleanUpDetails = detail => {
   const highIvVariations = ['highiv','high iv'];
   const shinyCheckVariations = ['shiny check', 'shinycheck', 'shiny'];
 	const rareCandyVariations = ['rarecandy', 'rare candy'];
-	const silverPinapVariations = ['silverpinap', 'silver pinap', 'pinap'];
-	const sinnohStonesVariations = ['sinnoh stone', 'sinnoh_stone', 'sinnohstone'];
+	const silverPinapVariations = ['silverpinap', 'silver pinap','silverpinaps', 'pinaps', 'pinap'];
 	const unovaStonesVariations = ['unova stone', 'unova stones', 'unova_stone', 'unovastone'];
 	const technicalMachineVariations = ['technical', 'technicalmachine', 'technical machine'];
 	const lureVariations = ['magnetic', 'mossy', 'lure', 'glacial'];
@@ -21,7 +20,6 @@ const cleanUpDetails = detail => {
 		...shinyCheckVariations,
 		...rareCandyVariations,
 		...silverPinapVariations,
-		...sinnohStonesVariations,
 		...unovaStonesVariations,
 		...technicalMachineVariations,
 		...lureVariations,
@@ -111,7 +109,7 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
 	const technicalMachineVariations = new Set(['chargetm', 'chargedtm', 'charged_tm', 'fast_tm', 'fasttm', 'tm', 'charge', 'charged', 'fast']);
 	const rareCandyVariations = new Set(['rc', 'rarecand', 'rarecandy', 'rare_candy', 'rare']);
 	const stardustVariations = new Set(['stardust', 'dust']);
-	const silverPinapVariations = new Set(['silverpinap', 'silver']);
+	const silverPinapVariations = new Set(['silverpinap', 'silverpinaps', 'silver']);
 	const sinnohStonesVariations = new Set(['sinnoh', 'sinnohstone', 'sinnohstones']);
 	const unovaStonesVariations = new Set(['unova', 'unovastone', 'unovastones']);
 	const magneticLureVariations = new Set(['magnetic']);
@@ -213,7 +211,7 @@ const getSpecialWildTag = (msgLower, data) => {
 	let specialWildTag = '';
 
 	// Tags role called highiv whenever 'highiv' is in a report
-	if  (msgLower.includes('highiv') || msgLower.includes('high iv') || msgLower.includes('100 iv') || msgLower.includes('100%') || msgLower.includes('hundo')) {
+	if  (msgLower.includes('highiv') || msgLower.includes('high iv') || msgLower.includes('100 iv') || msgLower.includes('100%') || msgLower.includes('hundo') || msgLower.includes('100iv')) {
 		data.GUILD.roles.forEach(role => {
 			if (role.name === 'highiv') specialWildTag += '<@&' + role.id + '> '; // require a role called 'highiv'
 		});
@@ -235,6 +233,20 @@ const getSpecialWildTag = (msgLower, data) => {
 };
 
 /**
+ * If message includes 'jpp', adds 'jpp' emoji
+ * @param {string} msgLower
+ * @param {object} data
+ * @returns {string}
+ */
+const getJppTag = (msgLower, data) => {
+	let jppTag = '';
+	if (msgLower.includes('jpp') || msgLower.includes('japantown peace plaza')) {
+			jppTag = data.getEmoji('jpp');
+		}
+	return jppTag;
+};
+
+/**
  * Checks raid type and tier then returns tier emoji and egg tag
  * @param {number} tier
  * @param {object} data
@@ -249,11 +261,14 @@ const getTierEmojiAndEggTag = (tier, data) => {
 	} else if (tier < 3) {
 		tierEmoji = 'normalraid';
 		if(tier == 1) eggTag = ' <@&' + data.rolesByName['tier1'].id + '> ';
-		if(tier == 2) eggTag = ' <@&' + data.rolesByName['tier2'].id + '> ';    
+		if(tier == 2) eggTag = ' <@&' + data.rolesByName['tier2'].id + '> ';    //tier no longer supported, but keeping code here in case Niantic changes their mind
 	} else if (tier > 2) {
 		tierEmoji = 'rareraid';
 		if(tier == 3) eggTag = ' <@&' + data.rolesByName['tier3'].id + '> ';
-		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';
+		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';   //tier no longer supported, but keeping code here in case Niantic changes their mind
+	} else if (tier = 'mega') {
+		tierEmoji = 'megaraid';
+		eggTag = ' <@&' + data.rolesByName['mega'].id + '> ';
 	}
   return {
     tierEmoji: tierEmoji.trim(),
@@ -307,6 +322,7 @@ module.exports = {
 	getShadowTag,
 	getSpecialRaidTag,
 	getSpecialWildTag,
+	getJppTag,
 	getTierEmojiAndEggTag,
 	removeExtraSpaces,
 	removeTags,
