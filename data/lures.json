@@ -1,0 +1,35 @@
+{
+  "NORMAL":{
+    "id":0
+  },
+  "REGULAR":{
+    "id":1
+  },
+  "MAGNETIC":{
+    "id":2
+  },
+  "MAGNET":{
+    "id":3
+  },
+  "MOSSY":{
+    "id":4
+  },
+  "MOSS":{
+    "id":5
+  },
+  "GRASS":{
+    "id":6
+  },
+  "GLACIAL":{
+    "id":7
+  },
+  "ICE":{
+    "id":8
+    },
+  "ICY":{
+    "id":9
+    },
+  "SNOW":{
+    "id":10
+}
+}
