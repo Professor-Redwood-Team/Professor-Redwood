@@ -1,1490 +1,2180 @@
-{
-  "BULBASAUR":{
+  {
+  "?":{
     "id":0
   },
-  "IVYSAUR":{
+  "BULBASAUR":{
     "id":1
   },
-  "VENUSAUR":{
+  "IVYSAUR":{
     "id":2
   },
-  "CHARMANDER":{
+  "VENUSAUR":{
     "id":3
   },
-  "CHARMELEON":{
+  "CHARMANDER":{
     "id":4
   },
-  "CHARIZARD":{
+  "CHARMELEON":{
     "id":5
   },
-  "SQUIRTLE":{
+  "CHARIZARD":{
     "id":6
   },
-  "WARTORTLE":{
+  "SQUIRTLE":{
     "id":7
   },
-  "BLASTOISE":{
+  "WARTORTLE":{
     "id":8
   },
-  "CATERPIE":{
+  "BLASTOISE":{
     "id":9
   },
-  "METAPOD":{
+  "CATERPIE":{
     "id":10
   },
-  "BUTTERFREE":{
+  "METAPOD":{
     "id":11
   },
-  "WEEDLE":{
+  "BUTTERFREE":{
     "id":12
   },
-  "KAKUNA":{
+  "WEEDLE":{
     "id":13
   },
-  "BEEDRILL":{
+  "KAKUNA":{
     "id":14
   },
-  "PIDGEY":{
+  "BEEDRILL":{
     "id":15
   },
-  "PIDGEOTTO":{
+  "PIDGEY":{
     "id":16
   },
-  "PIDGEOT":{
+  "PIDGEOTTO":{
     "id":17
   },
-  "RATTATA":{
+  "PIDGEOT":{
     "id":18
   },
-  "RATICATE":{
+  "RATTATA":{
     "id":19
   },
-  "SPEAROW":{
+  "RATICATE":{
     "id":20
   },
-  "FEAROW":{
+  "SPEAROW":{
     "id":21
   },
-  "EKANS":{
+  "FEAROW":{
     "id":22
   },
-  "ARBOK":{
+  "EKANS":{
     "id":23
   },
-  "PIKACHU":{
+  "ARBOK":{
     "id":24
   },
-  "RAICHU":{
+  "PIKACHU":{
     "id":25
   },
-  "SANDSHREW":{
+  "RAICHU":{
     "id":26
   },
-  "SANDSLASH":{
+  "SANDSHREW":{
     "id":27
   },
-  "NIDORAN_FEMALE":{
+  "SANDSLASH":{
     "id":28
   },
-  "NIDORINA":{
+  "NIDORAN_FEMALE":{
     "id":29
   },
-  "NIDOQUEEN":{
+  "NIDORINA":{
     "id":30
   },
-  "NIDORAN_MALE":{
+  "NIDOQUEEN":{
     "id":31
   },
-  "NIDORINO":{
+  "NIDORAN_MALE":{
     "id":32
   },
-  "NIDOKING":{
+  "NIDORINO":{
     "id":33
   },
-  "CLEFAIRY":{
+  "NIDOKING":{
     "id":34
   },
-  "CLEFABLE":{
+  "CLEFAIRY":{
     "id":35
   },
-  "VULPIX":{
+  "CLEFABLE":{
     "id":36
   },
-  "NINETALES":{
+  "VULPIX":{
     "id":37
   },
-  "JIGGLYPUFF":{
+  "NINETALES":{
     "id":38
   },
-  "WIGGLYTUFF":{
+  "JIGGLYPUFF":{
     "id":39
   },
-  "ZUBAT":{
+  "WIGGLYTUFF":{
     "id":40
   },
-  "GOLBAT":{
+  "ZUBAT":{
     "id":41
   },
-  "ODDISH":{
+  "GOLBAT":{
     "id":42
   },
-  "GLOOM":{
+  "ODDISH":{
     "id":43
   },
-  "VILEPLUME":{
+  "GLOOM":{
     "id":44
   },
-  "PARAS":{
+  "VILEPLUME":{
     "id":45
   },
-  "PARASECT":{
+  "PARAS":{
     "id":46
   },
-  "VENONAT":{
+  "PARASECT":{
     "id":47
   },
-  "VENOMOTH":{
+  "VENONAT":{
     "id":48
   },
-  "DIGLETT":{
+  "VENOMOTH":{
     "id":49
   },
-  "DUGTRIO":{
+  "DIGLETT":{
     "id":50
   },
-  "MEOWTH":{
+  "DUGTRIO":{
     "id":51
   },
-  "PERSIAN":{
+  "MEOWTH":{
     "id":52
   },
-  "PSYDUCK":{
+  "PERSIAN":{
     "id":53
   },
-  "GOLDUCK":{
+  "PSYDUCK":{
     "id":54
   },
-  "MANKEY":{
+  "GOLDUCK":{
     "id":55
   },
-  "PRIMEAPE":{
+  "MANKEY":{
     "id":56
   },
-  "GROWLITHE":{
+  "PRIMEAPE":{
     "id":57
   },
-  "ARCANINE":{
+  "GROWLITHE":{
     "id":58
   },
-  "POLIWAG":{
+  "ARCANINE":{
     "id":59
   },
-  "POLIWHIRL":{
+  "POLIWAG":{
     "id":60
   },
-  "POLIWRATH":{
+  "POLIWHIRL":{
     "id":61
   },
-  "ABRA":{
+  "POLIWRATH":{
     "id":62
   },
-  "KADABRA":{
+  "ABRA":{
     "id":63
   },
-  "ALAKAZAM":{
+  "KADABRA":{
     "id":64
   },
-  "MACHOP":{
+  "ALAKAZAM":{
     "id":65
   },
-  "MACHOKE":{
+  "MACHOP":{
     "id":66
   },
-  "MACHAMP":{
+  "MACHOKE":{
     "id":67
   },
-  "BELLSPROUT":{
+  "MACHAMP":{
     "id":68
   },
-  "WEEPINBELL":{
+  "BELLSPROUT":{
     "id":69
   },
-  "VICTREEBEL":{
+  "WEEPINBELL":{
     "id":70
   },
-  "TENTACOOL":{
+  "VICTREEBEL":{
     "id":71
   },
-  "TENTACRUEL":{
+  "TENTACOOL":{
     "id":72
   },
-  "GEODUDE":{
+  "TENTACRUEL":{
     "id":73
   },
-  "GRAVELER":{
+  "GEODUDE":{
     "id":74
   },
-  "GOLEM":{
+  "GRAVELER":{
     "id":75
   },
-  "PONYTA":{
+  "GOLEM":{
     "id":76
   },
-  "RAPIDASH":{
+  "PONYTA":{
     "id":77
   },
-  "SLOWPOKE":{
+  "RAPIDASH":{
     "id":78
   },
-  "SLOWBRO":{
+  "SLOWPOKE":{
     "id":79
   },
-  "MAGNEMITE":{
+  "SLOWBRO":{
     "id":80
   },
-  "MAGNETON":{
+  "MAGNEMITE":{
     "id":81
   },
-  "FARFETCHD":{
+  "MAGNETON":{
     "id":82
   },
-  "DODUO":{
+  "FARFETCHD":{
     "id":83
   },
-  "DODRIO":{
+  "DODUO":{
     "id":84
   },
-  "SEEL":{
+  "DODRIO":{
     "id":85
   },
-  "DEWGONG":{
+  "SEEL":{
     "id":86
   },
-  "GRIMER":{
+  "DEWGONG":{
     "id":87
   },
-  "MUK":{
+  "GRIMER":{
     "id":88
   },
-  "SHELLDER":{
+  "MUK":{
     "id":89
   },
-  "CLOYSTER":{
+  "SHELLDER":{
     "id":90
   },
-  "GASTLY":{
+  "CLOYSTER":{
     "id":91
   },
-  "HAUNTER":{
+  "GASTLY":{
     "id":92
   },
-  "GENGAR":{
+  "HAUNTER":{
     "id":93
   },
-  "ONIX":{
+  "GENGAR":{
     "id":94
   },
-  "DROWZEE":{
+  "ONIX":{
     "id":95
   },
-  "HYPNO":{
+  "DROWZEE":{
     "id":96
   },
-  "KRABBY":{
+  "HYPNO":{
     "id":97
   },
-  "KINGLER":{
+  "KRABBY":{
     "id":98
   },
-  "VOLTORB":{
+  "KINGLER":{
     "id":99
   },
-  "ELECTRODE":{
+  "VOLTORB":{
     "id":100
   },
-  "EXEGGCUTE":{
+  "ELECTRODE":{
     "id":101
   },
-  "EXEGGUTOR":{
+  "EXEGGCUTE":{
     "id":102
   },
-  "CUBONE":{
+  "EXEGGUTOR":{
     "id":103
   },
-  "MAROWAK":{
+  "CUBONE":{
     "id":104
   },
-  "HITMONLEE":{
+  "MAROWAK":{
     "id":105
   },
-  "HITMONCHAN":{
+  "HITMONLEE":{
     "id":106
   },
-  "LICKITUNG":{
+  "HITMONCHAN":{
     "id":107
   },
-  "KOFFING":{
+  "LICKITUNG":{
     "id":108
   },
-  "WEEZING":{
+  "KOFFING":{
     "id":109
   },
-  "RHYHORN":{
+  "WEEZING":{
     "id":110
   },
-  "RHYDON":{
+  "RHYHORN":{
     "id":111
   },
-  "CHANSEY":{
+  "RHYDON":{
     "id":112
   },
-  "TANGELA":{
+  "CHANSEY":{
     "id":113
   },
-  "KANGASKHAN":{
+  "TANGELA":{
     "id":114
   },
-  "HORSEA":{
+  "KANGASKHAN":{
     "id":115
   },
-  "SEADRA":{
+  "HORSEA":{
     "id":116
   },
-  "GOLDEEN":{
+  "SEADRA":{
     "id":117
   },
-  "SEAKING":{
+  "GOLDEEN":{
     "id":118
   },
-  "STARYU":{
+  "SEAKING":{
     "id":119
   },
-  "STARMIE":{
+  "STARYU":{
     "id":120
   },
-  "MR_MIME":{
+  "STARMIE":{
     "id":121
   },
-  "SCYTHER":{
+  "MR_MIME":{
     "id":122
   },
-  "JYNX":{
+  "SCYTHER":{
     "id":123
   },
-  "ELECTABUZZ":{
+  "JYNX":{
     "id":124
   },
-  "MAGMAR":{
+  "ELECTABUZZ":{
     "id":125
   },
-  "PINSIR":{
+  "MAGMAR":{
     "id":126
   },
-  "TAUROS":{
+  "PINSIR":{
     "id":127
   },
-  "MAGIKARP":{
+  "TAUROS":{
     "id":128
   },
-  "GYARADOS":{
+  "MAGIKARP":{
     "id":129
   },
-  "LAPRAS":{
+  "GYARADOS":{
     "id":130
   },
-  "DITTO":{
+  "LAPRAS":{
     "id":131
   },
-  "EEVEE":{
+  "DITTO":{
     "id":132
   },
-  "VAPOREON":{
+  "EEVEE":{
     "id":133
   },
-  "JOLTEON":{
+  "VAPOREON":{
     "id":134
   },
-  "FLAREON":{
+  "JOLTEON":{
     "id":135
   },
-  "PORYGON":{
+  "FLAREON":{
     "id":136
   },
-  "OMANYTE":{
+  "PORYGON":{
     "id":137
   },
-  "OMASTAR":{
+  "OMANYTE":{
     "id":138
   },
-  "KABUTO":{
+  "OMASTAR":{
     "id":139
   },
-  "KABUTOPS":{
+  "KABUTO":{
     "id":140
   },
-  "AERODACTYL":{
+  "KABUTOPS":{
     "id":141
   },
-  "SNORLAX":{
+  "AERODACTYL":{
     "id":142
   },
-  "ARTICUNO":{
+  "SNORLAX":{
     "id":143
   },
-  "ZAPDOS":{
+  "ARTICUNO":{
     "id":144
   },
-  "MOLTRES":{
+  "ZAPDOS":{
     "id":145
   },
-  "DRATINI":{
+  "MOLTRES":{
     "id":146
   },
-  "DRAGONAIR":{
+  "DRATINI":{
     "id":147
   },
-  "DRAGONITE":{
+  "DRAGONAIR":{
     "id":148
   },
-  "MEWTWO":{
+  "DRAGONITE":{
     "id":149
   },
-  "MEW":{
+  "MEWTWO":{
     "id":150
   },
-  "CHIKORITA":{
+  "MEW":{
     "id":151
   },
-  "BAYLEEF":{
+  "CHIKORITA":{
     "id":152
   },
-  "MEGANIUM":{
+  "BAYLEEF":{
     "id":153
   },
-  "CYNDAQUIL":{
+  "MEGANIUM":{
     "id":154
   },
-  "QUILAVA":{
+  "CYNDAQUIL":{
     "id":155
   },
-  "TYPHLOSION":{
+  "QUILAVA":{
     "id":156
   },
-  "TOTODILE":{
+  "TYPHLOSION":{
     "id":157
   },
-  "CROCONAW":{
+  "TOTODILE":{
     "id":158
   },
-  "FERALIGATR":{
+  "CROCONAW":{
     "id":159
   },
-  "SENTRET":{
+  "FERALIGATR":{
     "id":160
   },
-  "FURRET":{
+  "SENTRET":{
     "id":161
   },
-  "HOOTHOOT":{
+  "FURRET":{
     "id":162
   },
-  "NOCTOWL":{
+  "HOOTHOOT":{
     "id":163
   },
-  "LEDYBA":{
+  "NOCTOWL":{
     "id":164
   },
-  "LEDIAN":{
+  "LEDYBA":{
     "id":165
   },
-  "SPINARAK":{
+  "LEDIAN":{
     "id":166
   },
-  "ARIADOS":{
+  "SPINARAK":{
     "id":167
   },
-  "CROBAT":{
+  "ARIADOS":{
     "id":168
   },
-  "CHINCHOU":{
+  "CROBAT":{
     "id":169
   },
-  "LANTURN":{
+  "CHINCHOU":{
     "id":170
   },
-  "PICHU":{
+  "LANTURN":{
     "id":171
   },
-  "CLEFFA":{
+  "PICHU":{
     "id":172
   },
-  "IGGLYBUFF":{
+  "CLEFFA":{
     "id":173
   },
-  "TOGEPI":{
+  "IGGLYBUFF":{
     "id":174
   },
-  "TOGETIC":{
+  "TOGEPI":{
     "id":175
   },
-  "NATU":{
+  "TOGETIC":{
     "id":176
   },
-  "XATU":{
+  "NATU":{
     "id":177
   },
-  "MAREEP":{
+  "XATU":{
     "id":178
   },
-  "FLAAFFY":{
+  "MAREEP":{
     "id":179
   },
-  "AMPHAROS":{
+  "FLAAFFY":{
     "id":180
   },
-  "BELLOSSOM":{
+  "AMPHAROS":{
     "id":181
   },
-  "MARILL":{
+  "BELLOSSOM":{
     "id":182
   },
-  "AZUMARILL":{
+  "MARILL":{
     "id":183
   },
-  "SUDOWOODO":{
+  "AZUMARILL":{
     "id":184
   },
-  "POLITOED":{
+  "SUDOWOODO":{
     "id":185
   },
-  "HOPPIP":{
+  "POLITOED":{
     "id":186
   },
-  "SKIPLOOM":{
+  "HOPPIP":{
     "id":187
   },
-  "JUMPLUFF":{
+  "SKIPLOOM":{
     "id":188
   },
-  "AIPOM":{
+  "JUMPLUFF":{
     "id":189
   },
-  "SUNKERN":{
+  "AIPOM":{
     "id":190
   },
-  "SUNFLORA":{
+  "SUNKERN":{
     "id":191
   },
-  "YANMA":{
+  "SUNFLORA":{
     "id":192
   },
-  "WOOPER":{
+  "YANMA":{
     "id":193
   },
-  "QUAGSIRE":{
+  "WOOPER":{
     "id":194
   },
-  "ESPEON":{
+  "QUAGSIRE":{
     "id":195
   },
-  "UMBREON":{
+  "ESPEON":{
     "id":196
   },
-  "MURKROW":{
+  "UMBREON":{
     "id":197
   },
-  "SLOWKING":{
+  "MURKROW":{
     "id":198
   },
-  "MISDREAVUS":{
+  "SLOWKING":{
     "id":199
   },
-  "UNOWN":{
+  "MISDREAVUS":{
     "id":200
   },
-  "WOBBUFFET":{
+  "UNOWN":{
     "id":201
   },
-  "GIRAFARIG":{
+  "WOBBUFFET":{
     "id":202
   },
-  "PINECO":{
+  "GIRAFARIG":{
     "id":203
   },
-  "FORRETRESS":{
+  "PINECO":{
     "id":204
   },
-  "DUNSPARCE":{
+  "FORRETRESS":{
     "id":205
   },
-  "GLIGAR":{
+  "DUNSPARCE":{
     "id":206
   },
-  "STEELIX":{
+  "GLIGAR":{
     "id":207
   },
-  "SNUBBULL":{
+  "STEELIX":{
     "id":208
   },
-  "GRANBULL":{
+  "SNUBBULL":{
     "id":209
   },
-  "QWILFISH":{
+  "GRANBULL":{
     "id":210
   },
-  "SCIZOR":{
+  "QWILFISH":{
     "id":211
   },
-  "SHUCKLE":{
+  "SCIZOR":{
     "id":212
   },
-  "HERACROSS":{
+  "SHUCKLE":{
     "id":213
   },
-  "SNEASEL":{
+  "HERACROSS":{
     "id":214
   },
-  "TEDDIURSA":{
+  "SNEASEL":{
     "id":215
   },
-  "URSARING":{
+  "TEDDIURSA":{
     "id":216
   },
-  "SLUGMA":{
+  "URSARING":{
     "id":217
   },
-  "MAGCARGO":{
+  "SLUGMA":{
     "id":218
   },
-  "SWINUB":{
+  "MAGCARGO":{
     "id":219
   },
-  "PILOSWINE":{
+  "SWINUB":{
     "id":220
   },
-  "CORSOLA":{
+  "PILOSWINE":{
     "id":221
   },
-  "REMORAID":{
+  "CORSOLA":{
     "id":222
   },
-  "OCTILLERY":{
+  "REMORAID":{
     "id":223
   },
-  "DELIBIRD":{
+  "OCTILLERY":{
     "id":224
   },
-  "MANTINE":{
+  "DELIBIRD":{
     "id":225
   },
-  "SKARMORY":{
+  "MANTINE":{
     "id":226
   },
-  "HOUNDOUR":{
+  "SKARMORY":{
     "id":227
   },
-  "HOUNDOOM":{
+  "HOUNDOUR":{
     "id":228
   },
-  "KINGDRA":{
+  "HOUNDOOM":{
     "id":229
   },
-  "PHANPY":{
+  "KINGDRA":{
     "id":230
   },
-  "DONPHAN":{
+  "PHANPY":{
     "id":231
   },
-  "PORYGON2":{
+  "DONPHAN":{
     "id":232
   },
-  "STANTLER":{
+  "PORYGON2":{
     "id":233
   },
-  "SMEARGLE":{
+  "STANTLER":{
     "id":234
   },
-  "TYROGUE":{
+  "SMEARGLE":{
     "id":235
   },
-  "HITMONTOP":{
+  "TYROGUE":{
     "id":236
   },
-  "SMOOCHUM":{
+  "HITMONTOP":{
     "id":237
   },
-  "ELEKID":{
+  "SMOOCHUM":{
     "id":238
   },
-  "MAGBY":{
+  "ELEKID":{
     "id":239
   },
-  "MILTANK":{
+  "MAGBY":{
     "id":240
   },
-  "BLISSEY":{
+  "MILTANK":{
     "id":241
   },
-  "RAIKOU":{
+  "BLISSEY":{
     "id":242
   },
-  "ENTEI":{
+  "RAIKOU":{
     "id":243
   },
-  "SUICUNE":{
+  "ENTEI":{
     "id":244
   },
-  "LARVITAR":{
+  "SUICUNE":{
     "id":245
   },
-  "PUPITAR":{
+  "LARVITAR":{
     "id":246
   },
-  "TYRANITAR":{
+  "PUPITAR":{
     "id":247
   },
-  "LUGIA":{
+  "TYRANITAR":{
     "id":248
   },
-  "HO-OH":{
+  "LUGIA":{
     "id":249
   },
-  "CELEBI":{
+  "HO-OH":{
     "id":250
   },
-  "TREECKO":{
+  "CELEBI":{
     "id":251
   },
-  "GROVYLE":{
+  "TREECKO":{
     "id":252
   },
-  "SCEPTILE":{
+  "GROVYLE":{
     "id":253
   },
-  "TORCHIC":{
+  "SCEPTILE":{
     "id":254
   },
-  "COMBUSKEN":{
+  "TORCHIC":{
     "id":255
   },
-  "BLAZIKEN":{
+  "COMBUSKEN":{
     "id":256
   },
-  "MUDKIP":{
+  "BLAZIKEN":{
     "id":257
   },
-  "MARSHTOMP":{
+  "MUDKIP":{
     "id":258
   },
-  "SWAMPERT":{
+  "MARSHTOMP":{
     "id":259
   },
-  "POOCHYENA":{
+  "SWAMPERT":{
     "id":260
   },
-  "MIGHTYENA":{
+  "POOCHYENA":{
     "id":261
   },
-  "ZIGZAGOON":{
+  "MIGHTYENA":{
     "id":262
   },
-  "LINOONE":{
+  "ZIGZAGOON":{
     "id":263
   },
-  "WURMPLE":{
+  "LINOONE":{
     "id":264
   },
-  "SILCOON":{
+  "WURMPLE":{
     "id":265
   },
-  "BEAUTIFLY":{
+  "SILCOON":{
     "id":266
   },
-  "CASCOON":{
+  "BEAUTIFLY":{
     "id":267
   },
-  "DUSTOX":{
+  "CASCOON":{
     "id":268
   },
-  "LOTAD":{
+  "DUSTOX":{
     "id":269
   },
-  "LOMBRE":{
+  "LOTAD":{
     "id":270
   },
-  "LUDICOLO":{
+  "LOMBRE":{
     "id":271
   },
-  "SEEDOT":{
+  "LUDICOLO":{
     "id":272
   },
-  "NUZLEAF":{
+  "SEEDOT":{
     "id":273
   },
-  "SHIFTRY":{
+  "NUZLEAF":{
     "id":274
   },
-  "TAILLOW":{
+  "SHIFTRY":{
     "id":275
   },
-  "SWELLOW":{
+  "TAILLOW":{
     "id":276
   },
-  "WINGULL":{
+  "SWELLOW":{
     "id":277
   },
-  "PELIPPER":{
+  "WINGULL":{
     "id":278
   },
-  "RALTS":{
+  "PELIPPER":{
     "id":279
   },
-  "KIRLIA":{
+  "RALTS":{
     "id":280
   },
-  "GARDEVOIR":{
+  "KIRLIA":{
     "id":281
   },
-  "SURSKIT":{
+  "GARDEVOIR":{
     "id":282
   },
-  "MASQUERAIN":{
+  "SURSKIT":{
     "id":283
   },
-  "SHROOMISH":{
+  "MASQUERAIN":{
     "id":284
   },
-  "BRELOOM":{
+  "SHROOMISH":{
     "id":285
   },
-  "SLAKOTH":{
+  "BRELOOM":{
     "id":286
   },
-  "VIGOROTH":{
+  "SLAKOTH":{
     "id":287
   },
-  "SLAKING":{
+  "VIGOROTH":{
     "id":288
   },
-  "NINCADA":{
+  "SLAKING":{
     "id":289
   },
-  "NINJASK":{
+  "NINCADA":{
     "id":290
   },
-  "SHEDINJA":{
+  "NINJASK":{
     "id":291
   },
-  "WHISMUR":{
+  "SHEDINJA":{
     "id":292
   },
-  "LOUDRED":{
+  "WHISMUR":{
     "id":293
   },
-  "EXPLOUD":{
+  "LOUDRED":{
     "id":294
   },
-  "MAKUHITA":{
+  "EXPLOUD":{
     "id":295
   },
-  "HARIYAMA":{
+  "MAKUHITA":{
     "id":296
   },
-  "AZURILL":{
+  "HARIYAMA":{
     "id":297
   },
-  "NOSEPASS":{
+  "AZURILL":{
     "id":298
   },
-  "SKITTY":{
+  "NOSEPASS":{
     "id":299
   },
-  "DELCATTY":{
+  "SKITTY":{
     "id":300
   },
-  "SABLEYE":{
+  "DELCATTY":{
     "id":301
   },
-  "MAWILE":{
+  "SABLEYE":{
     "id":302
   },
-  "ARON":{
+  "MAWILE":{
     "id":303
   },
-  "LAIRON":{
+  "ARON":{
     "id":304
   },
-  "AGGRON":{
+  "LAIRON":{
     "id":305
   },
-  "MEDITITE":{
+  "AGGRON":{
     "id":306
   },
-  "MEDICHAM":{
+  "MEDITITE":{
     "id":307
   },
-  "ELECTRIKE":{
+  "MEDICHAM":{
     "id":308
   },
-  "MANECTRIC":{
+  "ELECTRIKE":{
     "id":309
   },
-  "PLUSLE":{
+  "MANECTRIC":{
     "id":310
   },
-  "MINUN":{
+  "PLUSLE":{
     "id":311
   },
-  "VOLBEAT":{
+  "MINUN":{
     "id":312
   },
-  "ILLUMISE":{
+  "VOLBEAT":{
     "id":313
   },
-  "ROSELIA":{
+  "ILLUMISE":{
     "id":314
   },
-  "GULPIN":{
+  "ROSELIA":{
     "id":315
   },
-  "SWALOT":{
+  "GULPIN":{
     "id":316
   },
-  "CARVANHA":{
+  "SWALOT":{
     "id":317
   },
-  "SHARPEDO":{
+  "CARVANHA":{
     "id":318
   },
-  "WAILMER":{
+  "SHARPEDO":{
     "id":319
   },
-  "WAILORD":{
+  "WAILMER":{
     "id":320
   },
-  "NUMEL":{
+  "WAILORD":{
     "id":321
   },
-  "CAMERUPT":{
+  "NUMEL":{
     "id":322
   },
-  "TORKOAL":{
+  "CAMERUPT":{
     "id":323
   },
-  "SPOINK":{
+  "TORKOAL":{
     "id":324
   },
-  "GRUMPIG":{
+  "SPOINK":{
     "id":325
   },
-  "SPINDA":{
+  "GRUMPIG":{
     "id":326
   },
-  "TRAPINCH":{
+  "SPINDA":{
     "id":327
   },
-  "VIBRAVA":{
+  "TRAPINCH":{
     "id":328
   },
-  "FLYGON":{
+  "VIBRAVA":{
     "id":329
   },
-  "CACNEA":{
+  "FLYGON":{
     "id":330
   },
-  "CACTURNE":{
+  "CACNEA":{
     "id":331
   },
-  "SWABLU":{
+  "CACTURNE":{
     "id":332
   },
-  "ALTARIA":{
+  "SWABLU":{
     "id":333
   },
-  "ZANGOOSE":{
+  "ALTARIA":{
     "id":334
   },
-  "SEVIPER":{
+  "ZANGOOSE":{
     "id":335
   },
-  "LUNATONE":{
+  "SEVIPER":{
     "id":336
   },
-  "SOLROCK":{
+  "LUNATONE":{
     "id":337
   },
-  "BARBOACH":{
+  "SOLROCK":{
     "id":338
   },
-  "WHISCASH":{
+  "BARBOACH":{
     "id":339
   },
-  "CORPHISH":{
+  "WHISCASH":{
     "id":340
   },
-  "CRAWDAUNT":{
+  "CORPHISH":{
     "id":341
   },
-  "BALTOY":{
+  "CRAWDAUNT":{
     "id":342
   },
-  "CLAYDOL":{
+  "BALTOY":{
     "id":343
   },
-  "LILEEP":{
+  "CLAYDOL":{
     "id":344
   },
-  "CRADILY":{
+  "LILEEP":{
     "id":345
   },
-  "ANORITH":{
+  "CRADILY":{
     "id":346
   },
-  "ARMALDO":{
+  "ANORITH":{
     "id":347
   },
-  "FEEBAS":{
+  "ARMALDO":{
     "id":348
   },
-  "MILOTIC":{
+  "FEEBAS":{
     "id":349
   },
-  "CASTFORM":{
+  "MILOTIC":{
     "id":350
   },
-  "KECLEON":{
+  "CASTFORM":{
     "id":351
   },
-  "SHUPPET":{
+  "KECLEON":{
     "id":352
   },
-  "BANETTE":{
+  "SHUPPET":{
     "id":353
   },
-  "DUSKULL":{
+  "BANETTE":{
     "id":354
   },
-  "DUSCLOPS":{
+  "DUSKULL":{
     "id":355
   },
-  "TROPIUS":{
+  "DUSCLOPS":{
     "id":356
   },
-  "CHIMECHO":{
+  "TROPIUS":{
     "id":357
   },
-  "ABSOL":{
+  "CHIMECHO":{
     "id":358
   },
-  "WYNAUT":{
+  "ABSOL":{
     "id":359
   },
-  "SNORUNT":{
+  "WYNAUT":{
     "id":360
   },
-  "GLALIE":{
+  "SNORUNT":{
     "id":361
   },
-  "SPHEAL":{
+  "GLALIE":{
     "id":362
   },
-  "SEALEO":{
+  "SPHEAL":{
     "id":363
   },
-  "WALREIN":{
+  "SEALEO":{
     "id":364
   },
-  "CLAMPERL":{
+  "WALREIN":{
     "id":365
   },
-  "HUNTAIL":{
+  "CLAMPERL":{
     "id":366
   },
-  "GOREBYSS":{
+  "HUNTAIL":{
     "id":367
   },
-  "RELICANTH":{
+  "GOREBYSS":{
     "id":368
   },
-  "LUVDISC":{
+  "RELICANTH":{
     "id":369
   },
-  "BAGON":{
+  "LUVDISC":{
     "id":370
   },
-  "SHELGON":{
+  "BAGON":{
     "id":371
   },
-  "SALAMENCE":{
+  "SHELGON":{
     "id":372
   },
-  "BELDUM":{
+  "SALAMENCE":{
     "id":373
   },
-  "METANG":{
+  "BELDUM":{
     "id":374
   },
-  "METAGROSS":{
+  "METANG":{
     "id":375
   },
-  "REGIROCK":{
+  "METAGROSS":{
     "id":376
   },
-  "REGICE":{
+  "REGIROCK":{
     "id":377
   },
-  "REGISTEEL":{
+  "REGICE":{
     "id":378
   },
-  "LATIAS":{
+  "REGISTEEL":{
     "id":379
   },
-  "LATIOS":{
+  "LATIAS":{
     "id":380
   },
-  "KYOGRE":{
+  "LATIOS":{
     "id":381
   },
-  "GROUDON":{
+  "KYOGRE":{
     "id":382
   },
-  "RAYQUAZA":{
+  "GROUDON":{
     "id":383
   },
-  "JIRACHI":{
+  "RAYQUAZA":{
     "id":384
   },
-  "DEOXYS":{
+  "JIRACHI":{
     "id":385
   },
-  "TURTWIG":{
+  "DEOXYS":{
     "id":386
   },
-  "GROTLE":{
+  "TURTWIG":{
     "id":387
   },
-  "TORTERRA":{
+  "GROTLE":{
     "id":388
   },
-  "CHIMCHAR":{
+  "TORTERRA":{
     "id":389
   },
-  "MONFERNO":{
+  "CHIMCHAR":{
     "id":390
   },
-  "INFERNAPE":{
+  "MONFERNO":{
     "id":391
   },
-  "PIPLUP":{
+  "INFERNAPE":{
     "id":392
   },
-  "PRINPLUP":{
+  "PIPLUP":{
     "id":393
   },
-  "EMPOLEON":{
+  "PRINPLUP":{
     "id":394
   },
-  "STARLY":{
+  "EMPOLEON":{
     "id":395
   },
-  "STARAVIA":{
+  "STARLY":{
     "id":396
   },
-  "STARAPTOR":{
+  "STARAVIA":{
     "id":397
   },
-  "BIDOOF":{
+  "STARAPTOR":{
     "id":398
   },
-  "BIBAREL":{
+  "BIDOOF":{
     "id":399
   },
-  "KRICKETOT":{
+  "BIBAREL":{
     "id":400
   },
-  "KRICKETUNE":{
+  "KRICKETOT":{
     "id":401
   },
-  "SHINX":{
+  "KRICKETUNE":{
     "id":402
   },
-  "LUXIO":{
+  "SHINX":{
     "id":403
   },
-  "LUXRAY":{
+  "LUXIO":{
     "id":404
   },
-  "BUDEW":{
+  "LUXRAY":{
     "id":405
   },
-  "ROSERADE":{
+  "BUDEW":{
     "id":406
   },
-  "CRANIDOS":{
+  "ROSERADE":{
     "id":407
   },
-  "RAMPARDOS":{
+  "CRANIDOS":{
     "id":408
   },
-  "SHIELDON":{
+  "RAMPARDOS":{
     "id":409
   },
-  "BASTIODON":{
+  "SHIELDON":{
     "id":410
   },
-  "BURMY":{
+  "BASTIODON":{
     "id":411
   },
-  "WORMADAM":{
+  "BURMY":{
     "id":412
   },
-  "MOTHIM":{
+  "WORMADAM":{
     "id":413
   },
-  "COMBEE":{
+  "MOTHIM":{
     "id":414
   },
-  "VESPIQUEN":{
+  "COMBEE":{
     "id":415
   },
-  "PACHIRISU":{
+  "VESPIQUEN":{
     "id":416
   },
-  "BUIZEL":{
+  "PACHIRISU":{
     "id":417
   },
-  "FLOATZEL":{
+  "BUIZEL":{
     "id":418
   },
-  "CHERUBI":{
+  "FLOATZEL":{
     "id":419
   },
-  "CHERRIM":{
+  "CHERUBI":{
     "id":420
   },
-  "SHELLOS":{
+  "CHERRIM":{
     "id":421
   },
-  "GASTRODON":{
+  "SHELLOS":{
     "id":422
   },
-  "AMBIPOM":{
+  "GASTRODON":{
     "id":423
   },
-  "DRIFLOON":{
+  "AMBIPOM":{
     "id":424
   },
-  "DRIFBLIM":{
+  "DRIFLOON":{
     "id":425
   },
-  "BUNEARY":{
+  "DRIFBLIM":{
     "id":426
   },
-  "LOPUNNY":{
+  "BUNEARY":{
     "id":427
   },
-  "MISMAGIUS":{
+  "LOPUNNY":{
     "id":428
   },
-  "HONCHKROW":{
+  "MISMAGIUS":{
     "id":429
   },
-  "GLAMEOW":{
+  "HONCHKROW":{
     "id":430
   },
-  "PURUGLY":{
+  "GLAMEOW":{
     "id":431
   },
-  "CHINGLING":{
+  "PURUGLY":{
     "id":432
   },
-  "STUNKY":{
+  "CHINGLING":{
     "id":433
   },
-  "SKUNTANK":{
+  "STUNKY":{
     "id":434
   },
-  "BRONZOR":{
+  "SKUNTANK":{
     "id":435
   },
-  "BRONZONG":{
+  "BRONZOR":{
     "id":436
   },
-  "BONSLY":{
+  "BRONZONG":{
     "id":437
   },
-  "MIME_JR":{
+  "BONSLY":{
     "id":438
   },
-  "HAPPINY":{
+  "MIME_JR":{
     "id":439
   },
-  "CHATOT":{
+  "HAPPINY":{
     "id":440
   },
-  "SPIRITOMB":{
+  "CHATOT":{
     "id":441
   },
-  "GIBLE":{
+  "SPIRITOMB":{
     "id":442
   },
-  "GABITE":{
+  "GIBLE":{
     "id":443
   },
-  "GARCHOMP":{
+  "GABITE":{
     "id":444
   },
-  "MUNCHLAX":{
+  "GARCHOMP":{
     "id":445
   },
-  "RIOLU":{
+  "MUNCHLAX":{
     "id":446
   },
-  "LUCARIO":{
+  "RIOLU":{
     "id":447
   },
-  "HIPPOPOTAS":{
+  "LUCARIO":{
     "id":448
   },
-  "HIPPOWDON":{
+  "HIPPOPOTAS":{
     "id":449
   },
-  "SKORUPI":{
+  "HIPPOWDON":{
     "id":450
   },
-  "DRAPION":{
+  "SKORUPI":{
     "id":451
   },
-  "CROAGUNK":{
+  "DRAPION":{
     "id":452
   },
-  "TOXICROAK":{
+  "CROAGUNK":{
     "id":453
   },
-  "CARNIVINE":{
+  "TOXICROAK":{
     "id":454
   },
-  "FINNEON":{
+  "CARNIVINE":{
     "id":455
   },
-  "LUMINEON":{
+  "FINNEON":{
     "id":456
   },
-  "MANTYKE":{
+  "LUMINEON":{
     "id":457
   },
-  "SNOVER":{
+  "MANTYKE":{
     "id":458
   },
-  "ABOMASNOW":{
+  "SNOVER":{
     "id":459
   },
-  "WEAVILE":{
+  "ABOMASNOW":{
     "id":460
   },
-  "MAGNEZONE":{
+  "WEAVILE":{
     "id":461
   },
-  "LICKILICKY":{
+  "MAGNEZONE":{
     "id":462
   },
-  "RHYPERIOR":{
+  "LICKILICKY":{
     "id":463
   },
-  "TANGROWTH":{
+  "RHYPERIOR":{
     "id":464
   },
-  "ELECTIVIRE":{
+  "TANGROWTH":{
     "id":465
   },
-  "MAGMORTAR":{
+  "ELECTIVIRE":{
     "id":466
   },
-  "TOGEKISS":{
+  "MAGMORTAR":{
     "id":467
   },
-  "YANMEGA":{
+  "TOGEKISS":{
     "id":468
   },
-  "LEAFEON":{
+  "YANMEGA":{
     "id":469
   },
-  "GLACEON":{
+  "LEAFEON":{
     "id":470
   },
-  "GLISCOR":{
+  "GLACEON":{
     "id":471
   },
-  "MAMOSWINE":{
+  "GLISCOR":{
     "id":472
   },
-  "PORYGON-Z":{
+  "MAMOSWINE":{
     "id":473
   },
-  "GALLADE":{
+  "PORYGON-Z":{
     "id":474
   },
-  "PROBOPASS":{
+  "GALLADE":{
     "id":475
   },
-  "DUSKNOIR":{
+  "PROBOPASS":{
     "id":476
   },
-  "FROSLASS":{
+  "DUSKNOIR":{
     "id":477
   },
-  "ROTOM":{
+  "FROSLASS":{
     "id":478
   },
-  "UXIE":{
+  "ROTOM":{
     "id":479
   },
-  "MESPRIT":{
+  "UXIE":{
     "id":480
   },
-  "AZELF":{
+  "MESPRIT":{
     "id":481
   },
-  "DIALGA":{
+  "AZELF":{
     "id":482
   },
-  "PALKIA":{
+  "DIALGA":{
     "id":483
   },
-  "HEATRAN":{
+  "PALKIA":{
     "id":484
   },
-  "REGIGIGAS":{
+  "HEATRAN":{
     "id":485
   },
-  "GIRATINA":{
+  "REGIGIGAS":{
     "id":486
   },
-  "CRESSELIA":{
+  "GIRATINA":{
     "id":487
   },
-  "PHIONE":{
+  "CRESSELIA":{
     "id":488
   },
-  "MANAPHY":{
+  "PHIONE":{
     "id":489
   },
-  "DARKRAI":{
+  "MANAPHY":{
     "id":490
   },
-  "SHAYMIN":{
+  "DARKRAI":{
     "id":491
   },
-  "ARCEUS":{
+  "SHAYMIN":{
     "id":492
   },
+  "ARCEUS":{
+    "id":493
+  },
   "VICTINI":{
-    "id":493
-	},
-  "NIDORAN F":{
-    "id":493
-	},
-  "?":{
     "id":494
+  },
+  "SNIVY": {
+    "id":495
+	},
+  "SERVINE":{
+    "id":496
+	},
+  "SERPERIOR":{
+    "id":497
+	},
+  "TEPIG":{
+    "id":498
+	},
+  "PIGNITE":{
+    "id":499
+	},
+  "EMBOAR":{
+    "id":500
+	},
+  "OSHAWOTT":{
+    "id":501
+	},
+  "DEWOTT":{
+    "id":502
+	},
+  "SAMUROTT":{
+    "id":503
+	},
+  "PATRAT":{
+    "id":504
+	},
+  "WATCHOG":{
+    "id":505
+	},
+  "LILLIPUP":{
+    "id":506
+	},
+  "HERDIER":{
+    "id":507
+	},
+  "STOUTLAND":{
+    "id":508
+	},
+  "PURRLOIN":{
+    "id":509
+	},
+  "LIEPARD":{
+    "id":510
+	},
+  "PANSAGE":{
+    "id":511
+	},
+  "SIMISAGE":{
+    "id":512
+	},
+  "PANSEAR":{
+    "id":513
+	},
+  "SIMISEAR":{
+    "id":514
+	},
+  "PANPOUR":{
+    "id":515
+	},
+  "SIMIPOUR":{
+    "id":516
+	},
+  "MUNNA":{
+    "id":517
+	},
+  "MUSHARNA":{
+    "id":518
+	},
+  "PIDOVE":{
+    "id":519
+	},
+  "TRANQUILL":{
+    "id":520
+	},
+  "UNFEZANT":{
+    "id":521
+	},
+  "BLITZLE":{
+    "id":522
+	},
+  "ZEBSTRIKA":{
+    "id":523
+	},
+  "ROGGENROLA":{
+    "id":524
+	},
+  "BOLDORE":{
+    "id":525
+	},
+  "GIGALITH":{
+    "id":526
+	},
+  "WOOBAT":{
+    "id":527
+	},
+  "SWOOBAT":{
+    "id":528
+	},
+  "DRILBUR":{
+    "id":529
+	},
+  "EXCADRILL":{
+    "id":530
+	},
+  "AUDINO":{
+    "id":531
+	},
+  "TIMBURR":{
+    "id":532
+	},
+  "GURDURR":{
+    "id":533
+	},
+  "CONKELDURR":{
+    "id":534
+	},
+  "TYMPOLE":{
+    "id":535
+	},
+  "PALPITOAD":{
+    "id":536
+	},
+  "SEISMITOAD":{
+    "id":537
+	},
+  "THROH":{
+    "id":538
+	},
+  "SAWK":{
+    "id":539
+	},
+  "SEWADDLE":{
+    "id":540
+	},
+  "SWADLOON":{
+    "id":541
+	},
+  "LEAVANNY":{
+    "id":542
+	},
+  "VENIPEDE":{
+    "id":543
+	},
+  "WHIRLIPEDE":{
+    "id":544
+	},
+  "SCOLIPEDE":{
+    "id":545
+	},
+  "COTTONEE":{
+    "id":546
+	},
+  "WHIMSICOTT":{
+    "id":547
+	},
+  "PETILIL":{
+    "id":548
+	},
+  "LILLIGANT":{
+    "id":549
+	},
+  "BASCULIN":{
+    "id":550
+	},
+  "SANDILE":{
+    "id":551
+	},
+  "KROKOROK":{
+    "id":552
+	},
+  "KROOKODILE":{
+    "id":553
+	},
+  "DARUMAKA":{
+    "id":554
+	},
+  "DARMANITAN":{
+    "id":555
+	},
+  "MARACTUS":{
+    "id":556
+	},
+  "DWEEBLE":{
+    "id":557
+	},
+  "CRUSTLE":{
+    "id":558
+	},
+  "SCRAGGY":{
+    "id":559
+	},
+  "SCRAFTY":{
+    "id":560
+	},
+  "SIGILYPH":{
+    "id":561
+	},
+  "YAMASK":{
+    "id":562
+	},
+  "COFAGRIGUS":{
+    "id":563
+	},
+  "TIRTOUGA":{
+    "id":564
+	},
+  "CARRACOSTA":{
+    "id":565
+	},
+  "ARCHEN":{
+    "id":566
+	},
+  "ARCHEOPS":{
+    "id":567
+	},
+  "TRUBBISH":{
+    "id":568
+	},
+  "GARBODOR":{
+    "id":569
+	},
+  "ZORUA":{
+    "id":570
+	},
+  "ZOROARK":{
+    "id":571
+	},
+  "MINCCINO":{
+    "id":572
+    },
+  "CINCCINO":{
+    "id":573
+    },
+  "GOTHITA":{
+    "id":574
+	},
+  "GOTHORITA":{
+    "id":575
+	},
+  "GOTHITELLE":{
+    "id":576
+	},
+  "SOLOSIS":{
+    "id":577
+	},
+  "DUOSION":{
+    "id":578
+	},
+  "REUNICLUS":{
+    "id":579
+	},
+  "DUCKLETT":{
+    "id":580
+	},
+  "SWANNA":{
+    "id":581
+	},
+  "VANILLITE":{
+    "id":582
+	},
+  "VANILLISH":{
+    "id":583
+	},
+  "VANILLUXE":{
+    "id":584
+	},
+  "DEERLING":{
+    "id":585
+	},
+  "SAWSBUCK":{
+    "id":586
+	},
+  "EMOLGA":{
+    "id":587
+	},
+  "KARRABLAST":{
+    "id":588
+	},
+  "ESCAVALIER":{
+    "id":589
+	},
+  "FOONGUS":{
+    "id":590
+	},
+  "AMOONGUSS":{
+    "id":591
+	},
+  "FRILLISH":{
+    "id":592
+	},
+  "JELLICENT":{
+    "id":593
+	},
+  "ALOMOMOLA":{
+    "id":594
+	},
+  "JOLTIK":{
+    "id":595
+	},
+  "GALVANTULA":{
+    "id":596
+	},
+  "FERROSEED":{
+    "id":597
+	},
+  "FERROTHORN":{
+    "id":598
+	},
+  "KLINK":{
+    "id":599
+	},
+  "KLANG":{
+    "id":600
+	},
+  "KLINKLANG":{
+    "id":601
+	},
+  "TYNAMO":{
+    "id":602
+	},
+  "EELETRIK":{
+    "id":603
+	},
+  "EELEKTROSS":{
+    "id":604
+	},
+  "ELGYEM":{
+    "id":605
+	},
+  "BEHEEYEM":{
+    "id":606
+	},
+  "LITWICK":{
+    "id":607
+	},
+  "LAMPENT":{
+    "id":608
+	},
+  "CHANDELURE":{
+    "id":609
+	},
+  "AXEW":{
+    "id":610
+	},
+  "FRAXURE":{
+    "id":611
+	},
+  "HAXORUS":{
+    "id":612
+	},
+  "CUBCHOO":{
+    "id":613
+	},
+  "BEARTIC":{
+    "id":614
+	},
+  "CRYOGONAL":{
+    "id":615
+	},
+  "SHELMET":{
+    "id":616
+	},
+  "ACCELGOR":{
+    "id":617
+	},
+  "STUNFISK":{
+    "id":618
+	},
+  "MIENFOO":{
+    "id":619
+	},
+  "MIENSHAO":{
+    "id":620
+	},
+  "DRUDDIGON":{
+    "id":621
+	},
+  "GOLETT":{
+    "id":622
+	},
+  "GOLURK":{
+    "id":623
+	},
+  "PAWNIARD":{
+    "id":624
+	},
+  "BISHARP":{
+    "id":625
+	},
+  "BOUFFALANT":{
+    "id":626
+	},
+  "RUFFLET":{
+    "id":627
+	},
+  "BRAVIARY":{
+    "id":628
+	},
+  "VULLABY":{
+    "id":629
+	},
+  "MANDIBUZZ":{
+    "id":630
+	},
+  "HEATMOR":{
+    "id":631
+	},
+  "DURANT":{
+    "id":632
+	},
+  "DEINO":{
+    "id":633
+	},
+  "ZWEILOUS":{
+    "id":634
+	},
+  "HYDREIGON":{
+    "id":635
+	},
+  "LARVESTA":{
+    "id":636
+	},
+  "VOLCARONA":{
+    "id":637
+	},
+  "COBALION":{
+    "id":638
+	},
+  "TERRAKION":{
+    "id":639
+	},
+  "VIRIZION":{
+    "id":640
+	},
+  "TORNADUS":{
+    "id":641
+	},
+  "THUNDURUS":{
+    "id":642
+	},
+  "RESHIRAM":{
+    "id":643
+	},
+  "ZEKROM":{
+    "id":644
+	},
+  "LANDORUS":{
+    "id":645
+	},
+  "KYUREM":{
+    "id":646
+	},
+  "KELDEO":{
+    "id":647
+	},
+  "MELOETTA":{
+    "id":648
+	},
+  "GENESECT":{
+    "id":649
+	},
+  "CHESPIN":{
+    "id":650
+	},
+  "QUILLADIN":{
+    "id":651
+	},
+   "CHESNAUGHT":{
+    "id":652
+	},
+	"FENNEKIN":{
+    "id":653
+	},
+	"BRAIXEN":{
+    "id":654
+	},
+	"DELPHOX":{
+    "id":655
+	},
+	"FROAKIE":{
+    "id":656
+	},
+	"FROGADIER":{
+    "id":657
+	},
+    "GRENINJA":{
+    "id":658
+	},
+	"BUNNELBY":{
+    "id":659
+	},
+	"DIGGERSBY":{
+    "id":660
+	},
+	"FLETCHLING":{
+    "id":661
+	},
+	"FLETCHINDER":{
+    "id":662
+	},
+	"TALONFLAME":{
+    "id":663
+	},
+	"SCATTERBUG":{
+    "id":664
+	},
+	"SPEWPA":{
+    "id":665
+	},
+	"VIVILLON":{
+    "id":666
+	},
+	"LITLEO":{
+    "id":667
+	},
+	"PYROAR":{
+    "id":668
+	},
+	"FLABEBE":{
+    "id":669
+	},
+	"FLOETTE":{
+    "id":670
+	},
+	"FLORGES":{
+    "id":671
+	},
+	"SKIDDO":{
+    "id":672
+	},
+	"GOGOAT":{
+    "id":673
+	},
+	"PANCHAM":{
+    "id":674
+	},
+	"PANGORO":{
+    "id":675
+	},
+	"FURFROU":{
+    "id":676
+	},
+	"ESPURR":{
+    "id":677
+	},
+	"MEOWSTIC":{
+    "id":678
+	},
+	"HONEDGE":{
+    "id":679
+	},
+	"DOUBLADE":{
+    "id":680
+	},
+	"AEGISLASH":{
+    "id":681
+	},
+	"SPRITZEE":{
+    "id":682
+	},
+	"AROMATISSE":{
+    "id":683
+	},
+	"SWIRLIX":{
+    "id":684
+	},
+	"SLURPUFF":{
+    "id":685
+	},
+	"INKAY":{
+    "id":686
+	},
+	"MALAMAR":{
+    "id":687
+	},
+	"BINACLE":{
+    "id":688
+	},
+	"BARBARACLE":{
+    "id":689
+	},
+	"SKRELP":{
+    "id":690
+	},
+	"DRAGALGE":{
+    "id":691
+	},
+	"CLAUNCHER":{
+    "id":692
+	},
+	"CLAWITZER":{
+    "id":693
+	},
+	"HELIOPTILE":{
+    "id":694
+	},
+	"HELIOLISK":{
+    "id":695
+	},
+	"TYRUNT":{
+    "id":696
+	},
+	"TYRANTRUM":{
+    "id":697
+	},
+	"AMAURA":{
+    "id":698
+	},
+	"AURORUS":{
+    "id":699
+	},
+	"SYLVEON":{
+    "id":700
+	},
+	"HAWLUCHA":{
+    "id":701
+	},
+	"DEDENNE":{
+    "id":702
+	},
+	"CARBINK":{
+    "id":703
+	},
+	"GOOMY":{
+    "id":704
+	},
+	"SLIGGOO":{
+    "id":705
+	},
+	"GOODRA":{
+    "id":706
+	},
+	"KLEFKI":{
+    "id":707
+	},
+	"PHANTUMP":{
+    "id":708
+	},
+	"TREVENANT":{
+    "id":709
+	},
+	"PUMPKABOO":{
+    "id":710
+	},
+	"GOURGEIST":{
+    "id":711
+	},
+	"BERGMITE":{
+    "id":712
+	},
+	"AVALUGG":{
+    "id":713
+	},
+	"NOIBAT":{
+    "id":714
+	},
+	"NOIVERN":{
+    "id":715
+	},
+	"XERNEAS":{
+    "id":716
+	},
+	"YVELTAL":{
+    "id":717
+	},
+	"ZYGARDE":{
+    "id":718
+	},
+	"DIANCIE":{
+    "id":719
+	},
+	"HOOPA":{
+    "id":720
+	},
+	"VOLCANION":{
+    "id":721
+	},
+  "CLIFF":{
+    "id":722
+	},
+  "ARLO":{
+    "id":723
+	},
+  "GIOVANNI":{
+    "id":724
+	},
+  "SIERRA":{
+    "id":725
 }
 }

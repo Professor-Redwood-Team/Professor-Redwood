@@ -2,7 +2,6 @@
 
 const CONSTANTS = require('./../constants');
 
-
 const checkNew = (data, message) => {
 	let reply = '';
 	let grantAll = true;
@@ -16,8 +15,7 @@ const checkNew = (data, message) => {
 	}
 
 	if (grantAll) {
-		message.member.roles.add(data.rolesByName['allregions']);
-		reply = `Welcome ${message.member.displayName} - Please read discord rules and learn bot commands in ${data.channelsByName['start_here']} before doing anything. For now, I've given you allregions. Run bot commands in ${data.channelsByName['professor_redwood']} and type **!help** for more information.`;
+reply = 'Welcome ${message.member.displayName} - Please read the discord rules in ${data.channelsByName['adventure_rules']} and learn bot commands in ${data.channelsByName['bot_commands']} before doing anything. To see any of the channels, you need to:' + '\n' + '**1) Set your team**  AND' + '\n' + '**2) Set your play region**' + '\n' + 'For instructions on how to do this, go to ${data.channelsByName['professor_redwood']} and type `!help`' + '\n' + '*NOTE: Make sure your status is NOT set to invisible, otherwise the bot will ignore your commands.*';
 		message.channel.send(reply);
 	}
 
