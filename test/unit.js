@@ -51,7 +51,11 @@ const fakeMessage = {
 				{'name': 'westsf'},
 			],
 			add: () => {return true;},
-			remove: () => {return true;},
+			remove: () => { 
+				return { 
+					catch: () => {return true;} 
+				} 
+			}
 		},
 	},
 };

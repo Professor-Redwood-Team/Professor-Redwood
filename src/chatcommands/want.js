@@ -62,7 +62,7 @@ const assignWant = (data, message) => {
 
 	} else {
 		message.member.roles.remove(data.rolesByName[wantedMon]);
-		reply = `Oh? I will ignore ${wantedMon} for you, ${message.member}`;
+		reply = `Oh? I will ignore ${wantedMon} for you, ${message.member.displayName}`;
 	}
 
 	message.channel.send(reply);

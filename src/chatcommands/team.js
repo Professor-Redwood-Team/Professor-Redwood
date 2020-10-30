@@ -9,7 +9,7 @@ const assignTeam = (data, message) => {
 	if (message.member.roles.cache) {
 		message.member.roles.cache.forEach( (role) => {
 			if (CONSTANTS.TEAMS.indexOf(role.name) > -1) {
-				reply = `${message.member}, you already have a team assigned. Run **!reset** to reset all of your roles on this discord.`;
+				reply = `${message.member.displayName}, you already have a team assigned. Run **!reset** to reset all of your roles on this discord.`;
 			}
 		});
 

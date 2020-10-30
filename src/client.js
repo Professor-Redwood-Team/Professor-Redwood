@@ -27,13 +27,14 @@ const getEmoji = (pokemon) => {
 
 client.on('ready', (done) => {
 	logger.info({ event: 'Ready!' });
-	client.channels.cache.forEach((channel) => {
-		channelsByName[channel.name] = channel;
-	});
-
+	
 	// todo : for the current design of the bot this is always a singleton
 	client.guilds.cache.forEach((guild) => {
 		GUILD = guild;
+	});
+	
+	GUILD.channels.cache.forEach((channel) => {
+		channelsByName[channel.name] = channel;
 	});
 
 	if (GUILD) {
