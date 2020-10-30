@@ -9,7 +9,7 @@ const usage = 'Command usage: **!raid boss minutesRemaining [exgym] location det
 const raid = (data, message) => {
 	let reply = '';
 
-	const msgLower = message.content.toLowerCase();
+	const msglower = message.content.toLowerCase();
 	const msgSplit = message.content.split(' ');
 	if (!msgSplit || msgSplit.length < 4) {
 		reply = `Sorry, incorrect format.\n${usage}`;
@@ -76,13 +76,13 @@ const raid = (data, message) => {
 	const legendaryTag = getLegendaryTag(boss, CONSTANTS.LEGENDARYMONS, data);
 	const channelName = message.channel.name;
 	const endTime = getEndTime(minutesLeft);
-	const specialRaidTag = getSpecialRaidTag(msgLower, data);
+	const specialRaidTag = getSpecialRaidTag(msglower , data);
 	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym') || message.content.includes('ex raid');
 
 	// Send replies to appropriate channels
-	reply = removeExtraSpaces(`${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.member.displayName}`);
+	reply = removeExtraSpaces(`${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** ${jppTag} added by ${message.author.username}`);
 	message.channel.send(reply);
-	const forwardReply = `- ${data.getEmoji(boss)} **${boss.toUpperCase()}** raid reported in ${data.channelsByName[channelName]} ending at ${endTime} at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
+	const forwardReply = `- ${data.getEmoji(boss)} **${boss.toUpperCase()}** raid reported in ${data.channelsByName[channelName]} (ending ${endTime}) at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
 
 	// Send alert to #gymraids_alerts channel
 	sendAlertToChannel('gymraids_alerts', forwardReply, data);
