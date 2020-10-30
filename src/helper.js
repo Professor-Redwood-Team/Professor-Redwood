@@ -233,20 +233,6 @@ const getSpecialWildTag = (msgLower, data) => {
 };
 
 /**
- * If message includes 'jpp', adds 'jpp' emoji
- * @param {string} msgLower
- * @param {object} data
- * @returns {string}
- */
-const getJppTag = (msgLower, data) => {
-	let jppTag = '';
-	if (msgLower.includes('jpp') || msgLower.includes('japantown peace plaza')) {
-			jppTag = data.getEmoji('jpp');
-		}
-	return jppTag;
-};
-
-/**
  * Checks raid type and tier then returns tier emoji and egg tag
  * @param {number} tier
  * @param {object} data
@@ -261,12 +247,12 @@ const getTierEmojiAndEggTag = (tier, data) => {
 	} else if (tier < 3) {
 		tierEmoji = 'normalraid';
 		if(tier == 1) eggTag = ' <@&' + data.rolesByName['tier1'].id + '> ';
-		if(tier == 2) eggTag = ' <@&' + data.rolesByName['tier2'].id + '> ';    //tier no longer supported, but keeping code here in case Niantic changes their mind
+		if(tier == 2) eggTag = ' <@&' + data.rolesByName['tier2'].id + '> ';    // this tier no longer supported but keeping code in in case Niantic changes their mind
 	} else if (tier > 2) {
 		tierEmoji = 'rareraid';
 		if(tier == 3) eggTag = ' <@&' + data.rolesByName['tier3'].id + '> ';
-		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';   //tier no longer supported, but keeping code here in case Niantic changes their mind
-	} else if (tier = 'mega') {
+		if(tier == 4) eggTag = ' <@&' + data.rolesByName['tier4'].id + '> ';   // this tier no longer supported but keeping code in in case Niantic changes their mind
+	}	else if (tier = 'mega') {
 		tierEmoji = 'megaraid';
 		eggTag = ' <@&' + data.rolesByName['mega'].id + '> ';
 	}
@@ -322,7 +308,6 @@ module.exports = {
 	getShadowTag,
 	getSpecialRaidTag,
 	getSpecialWildTag,
-	getJppTag,
 	getTierEmojiAndEggTag,
 	removeExtraSpaces,
 	removeTags,
