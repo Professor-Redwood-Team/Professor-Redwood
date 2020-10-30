@@ -16,9 +16,11 @@ const egg = (data, message) => {
 		return reply;
 	}
 
-	const tier = parseInt(msgSplit[1]);
-	if (isNaN(tier) || tier < 1 || tier > 5) {
-		reply = `Sorry incorrect format. Ensure tier is a number between 1 and 5, use format:\n${usage}`;
+	const tier = (msgSplit[1]);
+	let tierFormat = tier.toLowerCase();
+	let tiersPossible = ['1', '3', '5', 'mega'];
+	if (!(tiersPossible.indexOf(tierFormat) > -1)) {
+		reply = `Sorry incorrect format. Ensure tier is the number **1, 3, or 5** or **mega**, if a mega egg. \n${usage}`;
 		message.channel.send(reply);
 		return;
 	}
@@ -45,9 +47,9 @@ const egg = (data, message) => {
 	const specialRaidTag = getSpecialRaidTag(msglower, data);
 	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym') || message.content.includes('ex raid');
 
-	reply = removeExtraSpaces(`${data.getEmoji(tierEmoji)} ${eggTag} raid egg reported to ${data.channelsByName['gymraids_alerts']} (hatching: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.member.displayName}`);
+	reply = removeExtraSpaces(`${data.getEmoji(tierEmoji)} ${eggTag} raid egg reported to ${data.channelsByName['gymraids_alerts']} (hatching: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.author.username}`);
 	message.channel.send(reply);
-	const forwardReply = `- ${data.getEmoji(tierEmoji)}**Tier ${tier}** egg reported in ${data.channelsByName[channelName]} hatching at ${endTime} at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
+	const forwardReply = `- ${data.getEmoji(tierEmoji)} **Tier ${tier.toUpperCase()}** egg reported in ${data.channelsByName[channelName]} (hatching ${endTime}) at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
 
 	// Send alert to #gymraids_alerts channel
 	sendAlertToChannel('gymraids_alerts', forwardReply, data);
