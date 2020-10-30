@@ -66,7 +66,7 @@ client.on('message', (message, cb) => {
 		(message.author && message.author.id === CONSTANTS.BOTID)) return;
 
 	if (message.channel.type === 'dm' || message.channel.type === 'group') {
-		message.channel.send('I currently have no direct message functions. Please go to channel #start_here');
+		message.channel.send('I currently have no direct message functions. Please go to channel #adventure_rules');
 		return;
 	}
 
@@ -89,32 +89,25 @@ client.on('message', (message, cb) => {
 	}
 
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
-	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' || command === '!tr') {
+	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' || command === '!lure' ||  command === '!tr') {
 		if (message.channel.name.indexOf('-') === -1) {
-			reply = message.member.displayName + ', raid/egg/wild/quest/Team Go Rocket commands should only be run in the corresponding neighborhood channel';
+			reply = message.member + ', raid/egg/wild/quest/lure/Team Go Rocket commands should only be run in the corresponding neighborhood channel';
 			message.channel.send(reply);
 			return reply;
 		}
 		if (command === '!raid') {return cb(CHATCOMMANDS.raid(message));}
-		else if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
-		else if(command === '!quest') {return cb(CHATCOMMANDS.quest(message));}
-		else if(command === '!tr') {return cb(CHATCOMMANDS.tr(message));}
+		
 		else {return cb(CHATCOMMANDS.egg(message));}
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
 		else if (message.channel.name !== 'professor_redwood') {
 		if (message.channel.name.indexOf('-') > 0) //neighborhood channel
-			message.channel.send(message.member.displayName + ', I don\'t recognize your entry in this channel\n' +
-				'**Raid command:** !raid boss timeLeft `exgym`  location\n' +
-				'**Egg command:** !egg tierNumber timeLeft `exgym`  location\n' +
-				'**Quest command:** !quest reward `shinycheck` task location\n' +
-				'**Wild command:** !wild pokémonName `shinycheck` `highiv` `finalevo` location\n' +
-				'**Team GO Rocket command:** !tr pokemonOrLeaderName location\n' +
-				'*NOTE: Only use `highlighted words` when applicable*');
+			message.channel.send(message.author.username + ', I don\'t recognize your entry in this channel. Remember, ONLY RAID COMMANDS are recognized during Shelter in Place\n' +
+	
+				'**Raid command:** !raid boss timeLeft `exgym`  location');
 		return;
 	}
-	
-	logger.info({ event: `${message.member.displayName} said ${message.content} in ${message.channel.name}` });
+	logger.info({ event: `${message.author.username} said ${message.content} in ${message.channel.name}` });
 
 	if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
 	else if (command === '!cp') {return cb(CHATCOMMANDS.cp(message));}
@@ -123,7 +116,7 @@ client.on('message', (message, cb) => {
 
 	//Inside Professor Redwood Channel, OK to touch message.member
 	if (reply === '' && !message.member) {
-		message.channel.send('Member is a ' + getEmoji('gengar') + ' - Commands cannot be run for users who are invisible, please remove your invisible status');
+		message.channel.send('Member is a ' + getEmoji('gengar') + ' - Commands cannot be run for users who are invisible. **Please remove your invisible status** and try your command again.');
 		return;
 	}
 
@@ -132,6 +125,9 @@ client.on('message', (message, cb) => {
 	else if (command === '!team') {return cb(CHATCOMMANDS.team(message));}
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
+	else if (message.channel.name == 'professor_redwood') {message.channel.send(message.member + ', I don\'t recognize that command. Please type `!help` for a list of commands');
+		return;
+	}
 
 	const errorMessage = 'Command not found: ' + command;
 	logger.info({ event: `${command} was not understood `});

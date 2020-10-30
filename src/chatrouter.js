@@ -15,6 +15,7 @@ const reset = require('./chatcommands/reset');
 const team = require('./chatcommands/team');
 const want = require('./chatcommands/want');
 const wild = require('./chatcommands/wild');
+const lure = require('./chatcommands/lure');
 const tr = require('./chatcommands/tr');
 
 module.exports = (data) => {
@@ -34,6 +35,7 @@ module.exports = (data) => {
 		team: team(data),
 		want: want(data),
 		wild: wild(data),
+		lure: lure(data),
 		tr: tr(data),
 	};
 };
