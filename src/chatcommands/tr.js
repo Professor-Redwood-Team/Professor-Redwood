@@ -67,7 +67,7 @@ const tr = (data, message) => {
 	message.channel.permissionOverwrites.forEach((role) => {
 		if (role.type !== 'role') return;
 
-		const roleName = data.GUILD.roles.get(role.id).name;
+		const roleName = data.GUILD.roles.cache.get(role.id).name;
 		if (CONSTANTS.REGIONS.includes(roleName) && roleName !== 'sf' && roleName !== 'allregions') {
 			sendAlertToChannel(`tr_alerts_${roleName}`, forwardReply, data);
 		}

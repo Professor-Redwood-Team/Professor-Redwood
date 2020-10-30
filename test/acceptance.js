@@ -15,16 +15,18 @@ describe('Acceptance Chat Commands', () => {
 		client = require('../src/client');
 
 		client.guilds = [{
-			emojis: [
-				{name: 'tyranitar', id: 248},
-				{name: 'lugia', id: 249}
-			],
-			roles: [
-				{name: 'westsf', id: 1}
-			],
-			channels:[
-				{name: 'gymraids_alerts', id: 12345},
-			],
+			emojis: {
+				cache: [
+					{name: 'tyranitar', id: 248},
+					{name: 'lugia', id: 249}
+				]
+			},
+			roles: { 
+				cache: [ {name: 'westsf', id: 1} ]
+			},
+			channels: {
+				cache: [ {name: 'gymraids_alerts', id: 12345},],
+			}
 		}];
 
 		fakeMessage = {
@@ -34,13 +36,15 @@ describe('Acceptance Chat Commands', () => {
 				name: 'professor_redwood',
 			},
 			member: {
-				addRole: () => {return true;},
-				removeRole: () => {return true;},
 				displayName: 'Unit Test User',
-				roles: [
-					{'name': 'tyranitar'},
-					{'name': 'westsf'},
-				]
+				roles: {
+					cache:	[
+						{'name': 'tyranitar'},
+						{'name': 'westsf'},
+					],
+					add: () => {return true;},
+					remove: () => {return true;},
+				}
 			},
 		};
 
@@ -55,13 +59,15 @@ describe('Acceptance Chat Commands', () => {
 				overwritePermissions:() => {return true;} 
 			},
 			member: {
-				addRole: () => {return true;},
-				removeRole: () => {return true;},
 				displayName: 'Unit Test User',
-				roles: [
-					{'name': 'tyranitar'},
-					{'name': 'westsf'},
-				]
+				roles: {
+					cache:	[
+						{'name': 'tyranitar'},
+						{'name': 'westsf'},
+					],
+					add: () => {return true;},
+					remove: () => {return true;},
+				}
 			},
 		};
 
@@ -284,7 +290,7 @@ describe('Acceptance Chat Commands', () => {
 		});
 		it('already on team', (done) => {
 			let msg = Object.assign(fakeMessage, {content: '!team instinct'});
-			msg.member.roles.push({'name': 'mystic'});
+			msg.member.roles.cache.push({'name': 'mystic'});
 			sendMessage(msg, (result) => {
 				assert.equal(result, 'Unit Test User, you already have a team assigned. Run **!reset** to reset all of your roles on this discord.');
 				done();

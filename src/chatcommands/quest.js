@@ -39,7 +39,7 @@ const quest = (data, message) => {
 	message.channel.permissionOverwrites.forEach(role => {
 		if (role.type !== 'role') return;
 
-		const roleName = data.GUILD.roles.get(role.id).name;
+		const roleName = data.GUILD.roles.cache.get(role.id).name;
 		// todo : get rid of SF reference
 		if (CONSTANTS.REGIONS.indexOf(roleName) > -1 && roleName !== 'sf' && roleName !== 'allregions') {
 			sendAlertToChannel(`quests_${roleName}`, forwardReply, data);

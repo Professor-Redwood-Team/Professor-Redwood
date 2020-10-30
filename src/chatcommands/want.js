@@ -34,8 +34,8 @@ const assignWant = (data, message) => {
 	}
 
 	var currWantsMon = false;
-	if (message.member.roles) {
-		message.member.roles.forEach( (role) => {
+	if (message.member.roles.cache) {
+		message.member.roles.cache.forEach( (role) => {
 			if (!currWantsMon && role.name === wantedMon) {
 				currWantsMon = true;
 			}
@@ -43,8 +43,8 @@ const assignWant = (data, message) => {
 	}
 
 	if (!currWantsMon) {
-		message.member.addRole(data.rolesByName[wantedMon]);
-		reply = 'OK ' + message.member  + '! I will let you know when someone reports a ' + wantedMon; 
+		message.member.roles.add(data.rolesByName[wantedMon]);
+		reply = `Ok ${message.member.displayName}! I will let you know when someone reports a ${wantedMon}.`;
 		if (CONSTANTS.SPECIALRAIDS.indexOf(wantedMon) !== -1 ||  CONSTANTS.EGGTIERS.indexOf(wantedMon) !== -1) {
 			reply += ' raid.';
 		} else if (CONSTANTS.QUESTREWARDS.indexOf(wantedMon) !== -1) {
@@ -58,11 +58,11 @@ const assignWant = (data, message) => {
 		} else {
 			reply += ' in the wild, as a quest reward, as a shadow, or as a raid boss.';
 		}
-		reply += '\nRemember you can **run this command again to stop alerts** for ' + wantedMon + '.';
+		reply += `\nRemember you can **run this command again to stop alerts** for ${wantedMon}`;
 
 	} else {
-		message.member.removeRole(data.rolesByName[wantedMon]);
-		reply = 'Oh? I will ignore ' + wantedMon + ' for you, ' + message.member;
+		message.member.roles.remove(data.rolesByName[wantedMon]);
+		reply = `Oh? I will ignore ${wantedMon} for you, ${message.member}`;
 	}
 
 	message.channel.send(reply);

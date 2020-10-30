@@ -27,20 +27,20 @@ const getEmoji = (pokemon) => {
 
 client.on('ready', (done) => {
 	logger.info({ event: 'Ready!' });
-	client.channels.forEach((channel) => {
+	client.channels.cache.forEach((channel) => {
 		channelsByName[channel.name] = channel;
 	});
 
 	// todo : for the current design of the bot this is always a singleton
-	client.guilds.forEach((guild) => {
+	client.guilds.cache.forEach((guild) => {
 		GUILD = guild;
 	});
 
 	if (GUILD) {
-		GUILD.roles.forEach((role) => {
+		GUILD.roles.cache.forEach((role) => {
 			rolesByName[role.name] = role;
 		});
-		GUILD.emojis.forEach((emoji) => {
+		GUILD.emojis.cache.forEach((emoji) => {
 			emojisByName[emoji.name] = emoji;
 		});
 	}
@@ -114,7 +114,8 @@ client.on('message', (message, cb) => {
 	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
 	else if (command === '!help') {return cb(CHATCOMMANDS.help(message));}
 
-	//Inside Professor Redwood Channel, OK to touch message.member
+	// Inside Professor Redwood Channel, OK to touch message.member
+	// What is this "invisible status"? Please clarify.
 	if (reply === '' && !message.member) {
 		message.channel.send('Member is a ' + getEmoji('gengar') + ' - Commands cannot be run for users who are invisible. **Please remove your invisible status** and try your command again.');
 		return;

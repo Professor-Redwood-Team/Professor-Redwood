@@ -16,8 +16,8 @@ const assignPlay = (data, message) => {
 
 	var currHasRegion = false;
 	var currHasAllRegions = false;
-	if (message.member.roles) {
-		message.member.roles.forEach( (role) => {
+	if (message.member.roles.cache) {
+		message.member.roles.cache.forEach( (role) => {
 			if (!currHasRegion && role.name === wantedRegion) {
 				currHasRegion = true;
 			}
@@ -29,11 +29,11 @@ const assignPlay = (data, message) => {
 
 
 	if(!currHasRegion) {
-		message.member.addRole(data.rolesByName[wantedRegion]);
-		if(wantedRegion !== 'allregions' && currHasAllRegions) message.member.removeRole(data.rolesByName['allregions']); //remove all regions since they've added a defined region
+		message.member.roles.add(data.rolesByName[wantedRegion]);
+		if(wantedRegion !== 'allregions' && currHasAllRegions) message.member.roles.remove(data.rolesByName['allregions']); //remove all regions since they've added a defined region
 		reply = 'OK ' + message.member.displayName + '! I have you playing in the ' + wantedRegion + ' region';
 	} else {
-		message.member.removeRole(data.rolesByName[wantedRegion]);
+		message.member.roles.remove(data.rolesByName[wantedRegion]);
 		reply = 'Oh? You already had ' + wantedRegion + ', so I\'ll remove it for you ' + message.member.displayName;
 	}
 
