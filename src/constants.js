@@ -34,7 +34,7 @@ const tagOrComment = new RegExp(
 const data = {
 	BOTNAME: 'Professor Redwood',
 	BOTID: process.env.DISCORD_CLIENTID,
-		TEAMS: ['valor', 'instinct', 'mystic'],
+	TEAMS: ['valor', 'instinct', 'mystic'],
 	MONS: ['absol', 'aerodactyl', 'alomomola', 'archen', 'audino', 'axew', 'bagon', 'basculin', 'beedrill', 'beldum', 'blastoise', 'blissey', 'chansey', 'charizard', 'chimecho', 'cranidos', 'darumaka', 'deino', 'ditto', 'dragonite', 'dratini', 'drilbur', 'emolga', 'excadrill', 'feebas', 'ferroseed', 'gabite', 'gengar', 'gible', 'gyarados', 'heatmor', 'hitmonchan', 'hitmontop', 'houndoom', 'klink', 'lampent', 'lapras', 'larvitar', 'litwick', 'lunatone', 'machamp', 'machop', 'marowak', 'mawile', 'nincada', 'onix', 'panpour', 'pidgeot', 'porygon', 'raichu',  'ralts', 'scyther', 'seviper', 'shieldon', 'shinx', 'snorlax', 'spinda', 'tauros', 'throh', 'timburr', 'tirtouga', 'togetic', 'tyranitar', 'unown', 'venusaur', 'zweilous'],
 	EGGTIERS: ['tier1', 'tier3', 'tier5', 'mega'],
 	LEGENDARYMONS: ['legendary', 'articuno', 'azelf', 'cobalion', 'cresselia', 'darkrai', 'deoxys', 'dialga', 'entei', 'genesect', 'giratina', 'groudon', 'heatran', 'ho-oh', 'kyogre', 'kyurem', 'landorus', 'latias', 'latios', 'lugia', 'mewtwo', 'moltres', 'palkia', 'raikou', 'rayquaza', 'regice', 'regigigas', 'regirock', 'registeel', 'reshiram', 'suicune', 'terrakion', 'thundurus', 'tornadus', 'virizion', 'zapdos', 'zekrom'],
