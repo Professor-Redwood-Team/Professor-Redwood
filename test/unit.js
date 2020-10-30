@@ -44,13 +44,19 @@ const fakeMessage = {
 		permissionOverwrites: [],
 	},
 	member: {
-		addRole: () => {return true;},
-		removeRole: () => {return true;},
 		displayName: 'Unit Test User',
-		roles: [
-			{'name': 'tyranitar'},
-			{'name': 'westsf'},
-		]
+		roles: {
+			cache:	[
+				{'name': 'tyranitar'},
+				{'name': 'westsf'},
+			],
+			add: () => {return true;},
+			remove: () => { 
+				return { 
+					catch: () => {return true;} 
+				} 
+			}
+		},
 	},
 };
 
@@ -61,10 +67,12 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 				send: () => {},
 			},
 			member: {
-				addRole: () => {return true;},
-				removeRole: () => {return true;},
 				displayName: 'Unit Test User',
-				roles: []
+				roles: {
+					cache: [],
+					add: () => {return true;},
+					remove: () => {return true;},
+				}
 			},
 		};
 
@@ -88,17 +96,17 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 			let msg = Object.assign(fakeMessage, {content: '!reset'});
 			let result = resetCommand(fakeDiscordData)(msg);
 
-			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf');
+			assert.equal(result, fakeMessage.member.displayName + ', I am removing the following roles: tyranitar westsf');
 		});
 
 		it('reset VIP', () => {
 			let resetVIPMessageData = Object.assign(fakeMessage);
-			resetVIPMessageData.member.roles.push({'name': 'VIP'});
-			resetVIPMessageData.member.roles.push({'name': 'badrole'});
+			resetVIPMessageData.member.roles.cache.push({'name': 'VIP'});
+			resetVIPMessageData.member.roles.cache.push({'name': 'badrole'});
 			let msg = Object.assign(fakeMessage, {content: '!reset'});
 			let result = resetCommand(fakeDiscordData)(msg);
 
-			assert.equal(result, fakeMessage.member.displayName + ' I am removing the following roles: tyranitar westsf badrole');
+			assert.equal(result, fakeMessage.member.displayName + ', I am removing the following roles: tyranitar westsf badrole');
 		});
 	});
 
@@ -120,7 +128,7 @@ describe('UNIT TESTS PLEASE TRANSITION TO ACCEPTANCE', () => {
 			let result = playCommand(fakeDiscordData)(msg);
 
 			assert.equal(result, 'I\'m sorry, I can\'t find failure. Remember you can only type one region at a time. Please ' +
-				'enter **!play sf|eastsf|centralsf|westsf|southsf|peninsula|sanjose|marin|eastbay|sacramento|allregions**');
+				'enter **!play sf|eastsf|centralsf|westsf|southsf|peninsula|allregions**');
 		});
 	});
 

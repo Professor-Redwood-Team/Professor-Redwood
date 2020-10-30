@@ -25,7 +25,7 @@ const raid = (data, message) => {
 	}
 
 	let bossTag = boss; // Generate a tag for the boss to alert users
-	data.GUILD.roles.forEach(role => {
+	data.GUILD.roles.cache.forEach(role => {
 		if (role.name === boss) {
 			bossTag = '<@&' + role.id + '>'; // If the boss name is found as a role, put in mention format
 		} else if (boss.substring(0,3) === '<@&') {
