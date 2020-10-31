@@ -3,7 +3,7 @@
 const CONSTANTS = require('./../constants');
 const { cleanUpDetails, getEndTime, getSpecialRaidTag, getTierEmojiAndEggTag, removeExtraSpaces, sendAlertToChannel } = require('./../helper');
 
-const usage = 'Command usage: **!egg tier# minutesLeft [exgym] location details**';
+const usage = `Command usage: **!egg tier# minutesLeft [exgym] location details** \nNote: *tier#* can be 1, 3, 5, or mega \n*minutesLeft* is minutes until egg hatches`;
 
 const egg = (data, message) => {
 	let reply = '';
@@ -20,7 +20,7 @@ const egg = (data, message) => {
 	let tierFormat = tier.toLowerCase();
 	let tiersPossible = ['1', '3', '5', 'mega'];
 	if (!(tiersPossible.indexOf(tierFormat) > -1)) {
-		reply = `Sorry incorrect format. Ensure tier is the number **1, 3, or 5** or **mega**, if a mega egg. \n${usage}`;
+		reply = `Sorry incorrect format. Ensure tier is the number **1, 3, 5, or mega**. \n${usage}`;
 		message.channel.send(reply);
 		return;
 	}
@@ -35,7 +35,7 @@ const egg = (data, message) => {
 	let detail = msgSplit.slice(3).join(' ');
 	//detail = removeTags(detail).replace('\'', '\'\''); //sanitize html and format for insertion into sql;
 	if (!detail) {
-		reply = 'Raid not processed, no location details. Use format:\n'+usage;
+		reply = `Raid not processed because no location details stated. Use format:\n${usage}`;
 		message.channel.send(reply);
 		return reply;
 	}
@@ -58,14 +58,10 @@ const egg = (data, message) => {
 	message.channel.permissionOverwrites.forEach((role) => {
 		if (role.type !== 'role') return;
 
-		const roleName = data.GUILD.roles.get(role.id).name;
+		const roleName = data.GUILD.roles.cache.get(role.id).name;
 		// todo : get rid of SF reference
 		if (CONSTANTS.REGIONS.includes(roleName) && roleName !== 'sf' && roleName !== 'allregions') {
-			if (data.channelsByName[`gymraids_${roleName}`]) {
-				data.channelsByName[`gymraids_${roleName}`].send(forwardReply);
-			} else {
-				console.warn(`Please add the channel gymraids_${roleName}`); // eslint-disable-line
-			}
+			sendAlertToChannel(`gymraids_${roleName}`, forwardReply, data);
 		}
 	});
 
