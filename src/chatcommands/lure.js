@@ -68,12 +68,11 @@ const lure = (data, message) => {
 	}
 	
 	var lureTag = lureType; //generate a tag for the lure type to alert users
-	data.GUILD.roles.forEach((role) => {
+	data.GUILD.roles.cache.forEach((role) => {
 		if (role.name === lureType) lureTag = '<@&' + role.id + '>'; //if the lureType is found as a role, put in mention format
 	});
 
-	reply = '**' + 'ACTIVE ' + lureTag.toUpperCase() + '** '  + data.getEmoji(lureType) + ' reported by ' + message.member.displayName +
-	'\nLocation: ' + '**' + detail + '**';
+	reply = `**ACTIVE ${lureTag.toUpperCase()}** ${data.getEmoji(lureType)} reported by ${message.author.username} \nLocation: **${detail}**`;
 	message.channel.send(reply);
 
 	return reply;
