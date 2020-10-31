@@ -88,10 +88,10 @@ const raid = (data, message) => {
 	sendAlertToChannel('gymraids_alerts', forwardReply, data);
 
 	// Send alert to regional alert channel
-	message.channel.permissionOverwrites.forEach((role) => {
+		message.channel.permissionOverwrites.forEach((role) => {
 		if (role.type !== 'role') return;
 
-		const roleName = data.GUILD.roles.get(role.id).name;
+		const roleName = data.GUILD.roles.cache.get(role.id).name;
 		// todo : get rid of SF reference
 		if (CONSTANTS.REGIONS.includes(roleName) && roleName !== 'sf' && roleName !== 'allregions') {
 			sendAlertToChannel(`gymraids_${roleName}`, forwardReply, data);
