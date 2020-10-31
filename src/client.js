@@ -92,22 +92,31 @@ client.on('message', (message, cb) => {
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
 	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' || command === '!lure' ||  command === '!tr') {
 		if (message.channel.name.indexOf('-') === -1) {
-			reply = message.member + ', raid/egg/wild/quest/lure/Team Go Rocket commands should only be run in the corresponding neighborhood channel';
+			reply = `${message.author}, raid/egg/wild/quest/lure/Team Go Rocket commands should only be run in the corresponding neighborhood channel`;
 			message.channel.send(reply);
 			return reply;
 		}
 		if (command === '!raid') {return cb(CHATCOMMANDS.raid(message));}
-		
+		else if(command === '!wild') {return cb(CHATCOMMANDS.wild(message));}
+		else if(command === '!quest') {return cb(CHATCOMMANDS.quest(message));}
+		else if(command === '!tr') {return cb(CHATCOMMANDS.tr(message));}
+		else if(command === '!lure') {return cb(CHATCOMMANDS.lure(message));}
 		else {return cb(CHATCOMMANDS.egg(message));}
 	}
 	//Inside Professor Redwood Channel, Do not touch message.member
 		else if (message.channel.name !== 'professor_redwood') {
 		if (message.channel.name.indexOf('-') > 0) //neighborhood channel
-			message.channel.send(message.author.username + ', I don\'t recognize your entry in this channel. Remember, ONLY RAID COMMANDS are recognized during Shelter in Place\n' +
-	
-				'**Raid command:** !raid boss timeLeft `exgym`  location');
+			message.channel.send(`${message.author.username}, I don\'t recognize your entry in this channel\n` +
+				'**Raid command:** !raid boss timeLeft location `exgym`\n' +
+				'**Egg command:** !egg tierNumber timeLeft location `exgym` \n' +
+				'**Quest command:** !quest reward `shinycheck` task location\n' +
+				'**Wild command:** !wild pokémonName location `shinycheck` `highiv` `finalevo`\n' +
+				'**Lure command:** !lure lureType location\n' +
+				'**Team GO Rocket command:** !tr pokémonOrLeaderName location\n' +
+				'*NOTE: Only use `highlighted words` when applicable*');
 		return;
 	}
+	
 	logger.info({ event: `${message.author.username} said ${message.content} in ${message.channel.name}` });
 
 	if (command === '!breakpoint' || command === '!bp') {return cb(CHATCOMMANDS.breakpoint(message));}
@@ -115,7 +124,7 @@ client.on('message', (message, cb) => {
 	else if (command === '!counter' || command === '!counters') {return cb(CHATCOMMANDS.counters(message));}
 	else if (command === '!help') {return cb(CHATCOMMANDS.help(message));}
 
-	// Inside Professor Redwood Channel, OK to touch message.member
+	//Inside Professor Redwood Channel, OK to touch message.member
 	if (reply === '' && !message.member) {
 		message.channel.send(`Member is a ${data.getEmoji('gengar')} - Commands cannot be run for users with invisible online status. **Please remove your invisible status** and try your command again.\nHow To Change Online Status: \nhttps://support.discord.com/hc/en-us/articles/227779547-Changing-Online-Status`);
 		return;
@@ -126,7 +135,7 @@ client.on('message', (message, cb) => {
 	else if (command === '!team') {return cb(CHATCOMMANDS.team(message));}
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
-	else if (message.channel.name == 'professor_redwood') {message.channel.send(message.member + ', I don\'t recognize that command. Please type `!help` for a list of commands');
+	else if (message.channel.name == 'professor_redwood') {message.channel.send(`${message.author}, I don\'t recognize that command. Please type **!help** for a list of bot commands`);
 		return;
 	}
 

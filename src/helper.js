@@ -93,7 +93,7 @@ const getLegendaryTag = (boss, legendaries, data) => {
  */
 const getPokemonTag = (pokemonName, data) => {
 	let pokemonTag = pokemonName;
-	data.GUILD.roles.forEach(role => {
+	data.GUILD.roles.cache.forEach(role => {
 		if (role.name === pokemonName) pokemonTag = '<@&' + role.id + '>';
 	});
 	return pokemonTag;
@@ -139,12 +139,12 @@ const getRewardAndRewardTag = (reward, msgLower, data) => {
 	let rewardTag = reward;
 
 	// If the reward name is found as a role, put in mention format
-	data.GUILD.roles.forEach(role => {
+	data.GUILD.roles.cache.forEach(role => {
 		if (role.name === reward) rewardTag = '<@&' + role.id + '>';
 	});
 
 	// Check to see if the message contains a mention of 'shiny'
-	data.GUILD.roles.forEach(role => {
+	data.GUILD.roles.cache.forEach(role => {
 		if (msgLower.includes('shiny') && role.name === 'shinycheck') rewardTag += ' <@&' + role.id + '> ' + data.getEmoji('shiny');
 	});
 
@@ -212,19 +212,19 @@ const getSpecialWildTag = (msgLower, data) => {
 
 	// Tags role called highiv whenever 'highiv' is in a report
 	if  (msgLower.includes('highiv') || msgLower.includes('high iv') || msgLower.includes('100 iv') || msgLower.includes('100%') || msgLower.includes('hundo') || msgLower.includes('100iv')) {
-		data.GUILD.roles.forEach(role => {
+		data.GUILD.roles.cache.forEach(role => {
 			if (role.name === 'highiv') specialWildTag += '<@&' + role.id + '> '; // require a role called 'highiv'
 		});
 	}
 	// Tags role called finalevo whenever 'finalevo' is in a report
 	if (msgLower.includes('finalevo')) {
-		data.GUILD.roles.forEach(role => {
+		data.GUILD.roles.cache.forEach(role => {
 			if (role.name === 'finalevo') specialWildTag += '<@&' + role.id + '> '; // require a role called 'finalevo'
 		});
 	}
 	// Tags role called shinycheck whenever 'shiny' is in a report
 	if (msgLower.includes('shiny')) {
-		data.GUILD.roles.forEach(role => {
+		data.GUILD.roles.cache.forEach(role => {
 			if (role.name === 'shinycheck') specialWildTag += '<@&' + role.id + '> ' + data.getEmoji('shiny'); // require a role called 'shinycheck'
 		});
 	}
