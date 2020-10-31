@@ -116,9 +116,8 @@ client.on('message', (message, cb) => {
 	else if (command === '!help') {return cb(CHATCOMMANDS.help(message));}
 
 	// Inside Professor Redwood Channel, OK to touch message.member
-	// What is this "invisible status"? Please clarify.
 	if (reply === '' && !message.member) {
-		message.channel.send('Member is a ' + getEmoji('gengar') + ' - Commands cannot be run for users who are invisible. **Please remove your invisible status** and try your command again.');
+		message.channel.send(`Member is a ${data.getEmoji('gengar')} - Commands cannot be run for users with invisible online status. **Please remove your invisible status** and try your command again.\nHow To Change Online Status: \nhttps://support.discord.com/hc/en-us/articles/227779547-Changing-Online-Status`);
 		return;
 	}
 
