@@ -80,7 +80,7 @@ const raid = (data, message) => {
 	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym') || message.content.includes('ex raid');
 
 	// Send replies to appropriate channels
-	reply = removeExtraSpaces(`${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** ${jppTag} added by ${message.author.username}`);
+	reply = removeExtraSpaces(`${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.author.username}`);
 	message.channel.send(reply);
 	const forwardReply = `- ${data.getEmoji(boss)} **${boss.toUpperCase()}** raid reported in ${data.channelsByName[channelName]} (ending ${endTime}) at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
 
