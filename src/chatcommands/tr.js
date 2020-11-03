@@ -43,7 +43,7 @@ const tr = (data, message) => {
 		} else if (pokemonName == 'arlo') {trLeaderPokemon = 'scyther';}
 		
 	let trLeaderPokemonTag = trLeaderPokemon;
-	data.GUILD.roles.forEach((role) => {
+	data.GUILD.roles.cache.forEach((role) => {
 		if (role.name === trLeaderPokemon){
 			trLeaderPokemonTag = '<@&' + role.id + '>'; //if the TR boss' pokemon is found as a role, put in mention format
 		}
