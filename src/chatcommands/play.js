@@ -31,10 +31,10 @@ const assignPlay = (data, message) => {
 	if(!currHasRegion) {
 		message.member.roles.add(data.rolesByName[wantedRegion]);
 		if(wantedRegion !== 'allregions' && currHasAllRegions) message.member.roles.remove(data.rolesByName['allregions']); //remove all regions since they've added a defined region
-		reply = 'OK ' + message.member.nickname + '! I have you playing in the ' + wantedRegion + ' region';
+		reply = 'OK ' + message.author.toString() + '! I have you playing in the ' + wantedRegion + ' region';
 	} else {
 		message.member.roles.remove(data.rolesByName[wantedRegion]);
-		reply = 'Oh? You already had ' + wantedRegion + ', so I\'ll remove it for you ' + message.member.nickname;
+		reply = 'Oh? You already had ' + wantedRegion + ', so I\'ll remove it for you ' + message.author.toString();
 	}
 
 	message.channel.send(reply);

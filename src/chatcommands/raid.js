@@ -80,7 +80,7 @@ const raid = (data, message) => {
 	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym') || message.content.includes('ex raid');
 
 	// Send replies to appropriate channels
-	reply = removeExtraSpaces(`${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.author.nickname}`);
+	reply = removeExtraSpaces(`${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.member.nickname}`);
 	message.channel.send(reply);
 	const forwardReply = `- ${data.getEmoji(boss)} **${boss.toUpperCase()}** raid reported in ${data.channelsByName[channelName]} (ending ${endTime}) at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
 
@@ -103,7 +103,7 @@ const raid = (data, message) => {
 
 /*	else if (message.content.substring(0,8) == '!raidegg') {
  if (message.channel.id == CHANNEL_IDS['#gymraids-alerts'] || message.channel.id == CHANNEL_IDS['#gymraids-meetups']) {
- message.channel.send(message.member.nickname + ', raid commands should only be run in the corresponding neighborhood channel');
+ message.channel.send(message.author.toString() + ', raid commands should only be run in the corresponding neighborhood channel');
  return;
  }
  const tier = message.content.split(' ')[1];

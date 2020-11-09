@@ -44,7 +44,7 @@ const assignWant = (data, message) => {
 
 	if (!currWantsMon) {
 		message.member.roles.add(data.rolesByName[wantedMon]);
-		reply = `Ok ${message.member.nickname}! I will let you know when someone reports a ${wantedMon}.`;
+		reply = `Ok ${message.author.toString()}! I will let you know when someone reports a ${wantedMon}.`;
 		if (CONSTANTS.SPECIALRAIDS.indexOf(wantedMon) !== -1 ||  CONSTANTS.EGGTIERS.indexOf(wantedMon) !== -1) {
 			reply += ' raid.';
 		} else if (CONSTANTS.QUESTREWARDS.indexOf(wantedMon) !== -1) {
@@ -62,7 +62,7 @@ const assignWant = (data, message) => {
 
 	} else {
 		message.member.roles.remove(data.rolesByName[wantedMon]);
-		reply = `Oh? I will ignore ${wantedMon} for you, ${message.member.nickname}`;
+		reply = `Oh? I will ignore ${wantedMon} for you, ${message.author.toString()}`;
 	}
 
 	message.channel.send(reply);

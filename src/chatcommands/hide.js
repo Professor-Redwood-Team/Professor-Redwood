@@ -34,7 +34,7 @@ const handleHide = (data, message) => {
 
 	if (CONSTANTS.PROTECTED_CHANNELS.indexOf(channel.name) == -1) {
 		channel.createOverwrite(message.author, hideUser);
-		reply = 'Hiding channel #' + channel.name + ' for user: ' + message.member.nickname;
+		reply = 'Hiding channel #' + channel.name + ' for user: ' + message.author.toString();
 	}
 	else {
 		reply = 'You can\'t hide a protected channel. Protected channels are: ' + CONSTANTS.PROTECTED_CHANNELS.join(', ');
