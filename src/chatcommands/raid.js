@@ -68,7 +68,7 @@ const raid = (data, message) => {
 		if (err) {
 			console.log(err + '\n' + sql);
 			} else {
-			message.channel.send('Processed Raid #' + result.insertId + ' as ' + bossTag + ' (ending: ' + endTime + ') at ' + detail + ' added by ' + message.member.nickname);
+			message.channel.send('Processed Raid #' + result.insertId + ' as ' + bossTag + ' (ending: ' + endTime + ') at ' + detail + ' added by ' + message.member.displayName);
 		}
 	});
 	*/
@@ -80,7 +80,7 @@ const raid = (data, message) => {
 	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym') || message.content.includes('ex raid');
 
 	// Send replies to appropriate channels
-	reply = removeExtraSpaces(`${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.member.nickname}`);
+	reply = removeExtraSpaces(`${data.getEmoji(boss)} **${bossTag.toUpperCase()}** ${legendaryTag} raid reported to ${data.channelsByName['gymraids_alerts']} (ending: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.member.displayName}`);
 	message.channel.send(reply);
 	const forwardReply = `- ${data.getEmoji(boss)} **${boss.toUpperCase()}** raid reported in ${data.channelsByName[channelName]} (ending ${endTime}) at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
 
@@ -150,12 +150,12 @@ const raid = (data, message) => {
  console.log(err + '\n' + sql);
 
  } else {
- message.channel.send('Processed Unhatched Raid #' + result.insertId + ' as Tier ' + tier + ' (cracking: ' + endTime + ') at ' + detail + ' added by ' + message.member.nickname);
+ message.channel.send('Processed Unhatched Raid #' + result.insertId + ' as Tier ' + tier + ' (cracking: ' + endTime + ') at ' + detail + ' added by ' + message.member.displayName);
  }
 
  });
 
- message.channel.send('Unhatched Raid reported to ' + client.channels.get(CHANNEL_IDS['#gymraids-alerts']) + ' as Tier ' + tier + ' (cracking: ' + endTime + ') at ' + detail + ' added by ' + message.member.nickname);
+ message.channel.send('Unhatched Raid reported to ' + client.channels.get(CHANNEL_IDS['#gymraids-alerts']) + ' as Tier ' + tier + ' (cracking: ' + endTime + ') at ' + detail + ' added by ' + message.member.displayName);
  //send alert to #gymraids-alerts channel
  client.channels.get(CHANNEL_IDS['#gymraids-alerts']).send('- ***Tier ' + tier + ' egg*** reported in ' + client.channels.get(channelId) + ' cracking at ' + endTime + ' at ' + detail);
  return;
