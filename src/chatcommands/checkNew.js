@@ -15,7 +15,7 @@ const checkNew = (data, message) => {
 	}
 
 	if (grantAll) {
-	reply = `Welcome ${message.author} - Before doing anything, read discord rules in ${data.channelsByName['adventure_rules']} and learn bot commands in ${data.channelsByName['bot_commands']}. To see any of the channels, you need to: \n**1) Set your team** AND \n**2) Set your play region** \nFor instructions on how to do this, go to ${data.channelsByName['professor_redwood']} and type **!help** \n*NOTE: Make sure your status is NOT set to invisible, otherwise the bot will ignore your commands.*`; 
+	reply = `Welcome ${message.author.toString()} - Before doing anything, read discord rules in ${data.channelsByName['adventure_rules']} and learn bot commands in ${data.channelsByName['bot_commands']}. To see any of the channels, you need to: \n**1) Set your team** AND \n**2) Set your play region** \nFor instructions on how to do this, go to ${data.channelsByName['professor_redwood']} and type **!help** \n*NOTE: Make sure your status is NOT set to invisible, otherwise the bot will ignore your commands.*`; 
 	message.channel.send(reply); 
 	};
 
