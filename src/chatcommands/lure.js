@@ -72,7 +72,7 @@ const lure = (data, message) => {
 		if (role.name === lureType) lureTag = '<@&' + role.id + '>'; //if the lureType is found as a role, put in mention format
 	});
 
-	reply = `**ACTIVE ${lureTag.toUpperCase()}** ${data.getEmoji(lureType)} reported by ${message.author.username} \nLocation: **${detail}**`;
+	reply = `**ACTIVE ${lureTag.toUpperCase()}** ${data.getEmoji(lureType)} reported by ${message.author.nickname} \nLocation: **${detail}**`;
 	message.channel.send(reply);
 
 	return reply;

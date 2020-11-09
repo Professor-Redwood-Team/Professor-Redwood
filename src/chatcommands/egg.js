@@ -47,7 +47,7 @@ const egg = (data, message) => {
 	const specialRaidTag = getSpecialRaidTag(msglower, data);
 	const hasExgymTag = message.content.includes('exgym') || message.content.includes('ex gym') || message.content.includes('ex raid');
 
-	reply = removeExtraSpaces(`${data.getEmoji(tierEmoji)} ${eggTag} raid egg reported to ${data.channelsByName['gymraids_alerts']} (hatching: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.author.username}`);
+	reply = removeExtraSpaces(`${data.getEmoji(tierEmoji)} ${eggTag} raid egg reported to ${data.channelsByName['gymraids_alerts']} (hatching: ${endTime}) at ${specialRaidTag} **${detail}** added by ${message.author.nickname}`);
 	message.channel.send(reply);
 	const forwardReply = `- ${data.getEmoji(tierEmoji)} **Tier ${tier.toUpperCase()}** egg reported in ${data.channelsByName[channelName]} (hatching ${endTime}) at ${detail} ${hasExgymTag ? '**(EX gym)**' : ''}`;
 
