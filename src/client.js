@@ -92,7 +92,7 @@ client.on('message', (message, cb) => {
 	//Outside of Professor Redwood Channel, Message.member has NOT been null checked yet
 	if (command === '!raid' || command === '!egg' || command === '!wild' || command === '!quest' || command === '!lure' ||  command === '!tr') {
 		if (message.channel.name.indexOf('-') === -1) {
-			reply = `${message.author}, raid/egg/wild/quest/lure/Team Go Rocket commands should only be run in the corresponding neighborhood channel`;
+			reply = `${message.author.toString()}, raid/egg/wild/quest/lure/Team Go Rocket commands should only be run in the corresponding neighborhood channel`;
 			message.channel.send(reply);
 			return reply;
 		}
@@ -135,7 +135,7 @@ client.on('message', (message, cb) => {
 	else if (command === '!team') {return cb(CHATCOMMANDS.team(message));}
 	else if (command === '!want') {return cb(CHATCOMMANDS.want(message));}
 	else if (command === '!reset') {return cb(CHATCOMMANDS.reset(message));}
-	else if (message.channel.name == 'professor_redwood') {message.channel.send(`${message.author}, I don\'t recognize that command. Please type **!help** for a list of bot commands`);
+	else if (message.channel.name == 'professor_redwood') {message.channel.send(`${message.author.toString()}, I don\'t recognize that command. Please type **!help** for a list of bot commands`);
 		return;
 	}
 
