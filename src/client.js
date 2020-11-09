@@ -106,7 +106,7 @@ client.on('message', (message, cb) => {
 	//Inside Professor Redwood Channel, Do not touch message.member
 		else if (message.channel.name !== 'professor_redwood') {
 		if (message.channel.name.indexOf('-') > 0) //neighborhood channel
-			message.channel.send(`${message.member.nickname}, I don\'t recognize your entry in this channel\n` +
+			message.channel.send(`${message.member.displayName}, I don\'t recognize your entry in this channel\n` +
 				'**Raid command:** !raid boss timeLeft location `exgym`\n' +
 				'**Egg command:** !egg tierNumber timeLeft location `exgym` \n' +
 				'**Quest command:** !quest reward `shinycheck` task location\n' +

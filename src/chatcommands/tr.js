@@ -50,8 +50,8 @@ const tr = (data, message) => {
 	});
 	
 	if (trLeaderPresent)
-	{reply = removeExtraSpaces(`Team GO Rocket **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} with ${trShinyTag}${shadowTag} **${trLeaderPokemonTag.toUpperCase()}** ${data.getEmoji(trLeaderPokemon)} reported at **${detail}** by ${message.member.nickname}`);
-	} else {reply = removeExtraSpaces(`Team GO Rocket Grunt with ${shadowTag} **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} reported at **${detail}** by ${message.member.nickname}`)};
+	{reply = removeExtraSpaces(`Team GO Rocket **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} with ${trShinyTag}${shadowTag} **${trLeaderPokemonTag.toUpperCase()}** ${data.getEmoji(trLeaderPokemon)} reported at **${detail}** by ${message.member.displayName}`);
+	} else {reply = removeExtraSpaces(`Team GO Rocket Grunt with ${shadowTag} **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} reported at **${detail}** by ${message.member.displayName}`)};
 	message.channel.send(reply);
 
 	let forwardReply = '';

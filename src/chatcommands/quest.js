@@ -28,7 +28,7 @@ const quest = (data, message) => {
 
 	// Send replies to appropriate channels
 	const { reward, rewardTag } = getRewardAndRewardTag(msgSplit[1].toLowerCase(), msgLower, data);
-	reply = `**QUEST ${rewardTag.toUpperCase()}** ${data.getEmoji(reward)}\nDetails: ${detail} added by ${message.member.nickname}`;
+	reply = `**QUEST ${rewardTag.toUpperCase()}** ${data.getEmoji(reward)}\nDetails: ${detail} added by ${message.member.displayName}`;
 	message.channel.send(reply);
 	const forwardReply = `- **${reward.toUpperCase()}** ${data.getEmoji(reward)} reported in ${data.channelsByName[message.channel.name]} at ${detail}`;
 
