@@ -37,11 +37,23 @@ const tr = (data, message) => {
 	detail = cleanUpDetails(detail);
 
 	let trLeaderPokemon = '';
-		if (pokemonName == 'cliff') {trLeaderPokemon = 'meowth';
-		} else if (pokemonName == 'sierra') {trLeaderPokemon = 'sneasel';
-		} else if (pokemonName == 'giovanni') {trLeaderPokemon = 'zapdos';
-		} else if (pokemonName == 'arlo') {trLeaderPokemon = 'scyther';}
-		
+	switch (pokemonName) {
+		case 'cliff':
+			trLeaderPokemon = 'omanyte';
+			break;
+		case 'sierra':
+			trLeaderPokemon = 'drowzee';
+			break;
+		case 'arlo':
+			trLeaderPokemon = 'growlithe';
+			break;
+		case 'giovanni':
+			trLeaderPokemon = 'mewtwo';
+			break;
+		default:
+			break;
+	};
+
 	let trLeaderPokemonTag = trLeaderPokemon;
 	data.GUILD.roles.cache.forEach((role) => {
 		if (role.name === trLeaderPokemon){
@@ -49,9 +61,11 @@ const tr = (data, message) => {
 		}
 	});
 	
-	if (trLeaderPresent)
-	{reply = removeExtraSpaces(`Team GO Rocket **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} with ${trShinyTag}${shadowTag} **${trLeaderPokemonTag.toUpperCase()}** ${data.getEmoji(trLeaderPokemon)} reported at **${detail}** by ${message.member.displayName}`);
-	} else {reply = removeExtraSpaces(`Team GO Rocket Grunt with ${shadowTag} **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} reported at **${detail}** by ${message.member.displayName}`)};
+	if (trLeaderPresent) {
+		reply = removeExtraSpaces(`Team GO Rocket **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} with ${trShinyTag}${shadowTag} **${trLeaderPokemonTag.toUpperCase()}** ${data.getEmoji(trLeaderPokemon)} reported at **${detail}** by ${message.member.displayName}`);
+	} else {
+		reply = removeExtraSpaces(`Team GO Rocket Grunt with ${shadowTag} **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} reported at **${detail}** by ${message.member.displayName}`)
+	};
 	message.channel.send(reply);
 
 	let forwardReply = '';
