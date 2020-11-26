@@ -36,30 +36,43 @@ const tr = (data, message) => {
 	}
 	detail = cleanUpDetails(detail);
 
-	let trLeaderPokemon = '';
-		if (pokemonName == 'cliff') {trLeaderPokemon = 'meowth';
-		} else if (pokemonName == 'sierra') {trLeaderPokemon = 'sneasel';
-		} else if (pokemonName == 'giovanni') {trLeaderPokemon = 'zapdos';
-		} else if (pokemonName == 'arlo') {trLeaderPokemon = 'scyther';}
-		
-	let trLeaderPokemonTag = trLeaderPokemon;
-	data.GUILD.roles.cache.forEach((role) => {
-		if (role.name === trLeaderPokemon){
-			trLeaderPokemonTag = '<@&' + role.id + '>'; //if the TR boss' pokemon is found as a role, put in mention format
-		}
-	});
-	
-	if (trLeaderPresent)
-	{reply = removeExtraSpaces(`Team GO Rocket **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} with ${trShinyTag}${shadowTag} **${trLeaderPokemonTag.toUpperCase()}** ${data.getEmoji(trLeaderPokemon)} reported at **${detail}** by ${message.member.displayName}`);
-	} else {reply = removeExtraSpaces(`Team GO Rocket Grunt with ${shadowTag} **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} reported at **${detail}** by ${message.member.displayName}`)};
+	let forwardReply = '';
+	if (trLeaderPresent) {
+		let trLeaderPokemon = '';
+		switch (pokemonName) {
+			case 'cliff':
+				trLeaderPokemon = 'omanyte';
+				break;
+			case 'sierra':
+				trLeaderPokemon = 'drowzee';
+				break;
+			case 'arlo':
+				trLeaderPokemon = 'growlithe';
+				break;
+			case 'giovanni':
+				trLeaderPokemon = 'mewtwo';
+				break;
+			default:
+				break;
+		};
+
+		let trLeaderPokemonTag = trLeaderPokemon;
+
+		data.GUILD.roles.cache.forEach((role) => {
+			if (role.name === trLeaderPokemon){
+				trLeaderPokemonTag = '<@&' + role.id + '>'; //if the TR boss' pokemon is found as a role, put in mention format
+			}
+		});
+
+		reply = removeExtraSpaces(`Team GO Rocket **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} with ${trShinyTag}${shadowTag} **${trLeaderPokemonTag.toUpperCase()}** ${data.getEmoji(trLeaderPokemon)} reported at **${detail}** by ${message.member.displayName}`);
+		forwardReply =  `- **LEADER ${pokemonName.toUpperCase()}** ${data.getEmoji(pokemonName)} reported in ${data.channelsByName[message.channel.name]} at ${detail}`;
+	} else {
+		reply = removeExtraSpaces(`Team GO Rocket Grunt with ${shadowTag} **${pokemonTag.toUpperCase()}** ${data.getEmoji(pokemonName)} reported at **${detail}** by ${message.member.displayName}`)
+		forwardReply = `- GRUNT with **SHADOW ${pokemonName.toUpperCase()}** ${data.getEmoji(pokemonName)} reported in ${data.channelsByName[message.channel.name]} at ${detail}`;
+	};
+
 	message.channel.send(reply);
 
-	let forwardReply = '';
-	if (trLeaderPresent)
-	{forwardReply =  `- **LEADER ${pokemonName.toUpperCase()}** ${data.getEmoji(pokemonName)} reported in ${data.channelsByName[message.channel.name]} at ${detail}`;
-	} else {forwardReply = `- GRUNT with **SHADOW ${pokemonName.toUpperCase()}** ${data.getEmoji(pokemonName)} reported in ${data.channelsByName[message.channel.name]} at ${detail}`};
-	
-	
 	//send alert to #tr_alerts channel
 	sendAlertToChannel('tr_alerts', forwardReply, data);
 
