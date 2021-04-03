@@ -24,8 +24,8 @@ To run this bot you will need a ES6 node environment. The bot currently does not
 
 3) Create Channels:
 - `professor_redwood` (a channel specifically for bot commands) - @everyone may Read & Send messages
-- `missing_dex` (required for Wild report alert forwarding) - only admin/mod/3 teams should have Send Message privilege, @everyone should have no privilege
-- `gymraids_alerts` (required for egg/raid alert forwarding) - only admin/mod/3 teams should have Send Message privilege, @everyone should have no privilege
+- `missing_dex` (required for Wild report alert forwarding) - only admin/mod should have Send Message privilege, everyone else should have read only privilege
+- `gymraids_alerts` (required for egg/raid alert forwarding) - only admin/mod should have Send Message privilege, everyone ele should have read only privilege
 - `gymraids_+ the name of your region role` - Alert forwarding specific to reports from the neighborhoods in a region
 - `tr_alerts` (required for Team Rocket alert forwarding) - only admin/mod/3 teams should have Send Message privilege, @everyone should have no privilege
 - `tr_alerts__+ the name of your region role` - Alert forwarding specific to reports from the neighborhoods in a region
