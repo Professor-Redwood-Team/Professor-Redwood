@@ -65,7 +65,7 @@ const assignWant = (data, message) => {
 		reply = `Oh? I will ignore ${wantedMon} for you, ${message.author.toString()}`;
 	}
 
-	message.channel.send(reply);
+	message.channel.send(reply, { split: true});
 	return reply;
 };
 
